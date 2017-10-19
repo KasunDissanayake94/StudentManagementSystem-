@@ -8,11 +8,16 @@ session_start();
 	<link rel="stylesheet" href="../view/css/jquery-ui.css">
 <script src="../view/js/jquery.min.js"></script>
 <script src="../view/js/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../view/css/style1.css">
+	<script type="text/javascript" src="../view/js/main.js"></script>
 	<style>
+		form{
+		margin-top: 60px;
+	}
 	   .elegant-aero {
 		    margin-left:auto;
 		    margin-right:auto;
-
+		    
 		    max-width: 1000px;
 		    background: #b784e3;
 		    padding: 20px 20px 20px 20px;
@@ -23,6 +28,7 @@ session_start();
 		    font: 24px "Trebuchet MS", Arial, Helvetica, sans-serif;
 		    padding: 10px 10px 10px 20px;
 		    display: block;
+		   
 		    background: #f7ff74;
 		    border-bottom: 1px solid #B8DDFF;
 		    margin: -20px -20px 15px;
@@ -30,6 +36,7 @@ session_start();
 		.elegant-aero h1>span {
 		    display: block;
 		    font-size: 11px;
+		    
 		}
 
 		.elegant-aero label>span {
@@ -95,6 +102,72 @@ session_start();
 	</style>
 </head>
 <body>
+<p>
+	you are logged as   <?php echo $_SESSION['username'] ?> .
+	</br>
+	<a href="../index.php?op=logout">Logout</a>
+</p><div id="adduser">
+	<h2 class="animated infinite bounce">ADD USER</h2>
+	<?php if(@$_GET['err']==1){ ?>
+		<div class ="error-text">Login incorrect</div>
+	<?php } ?>
+
+<div class="header" id="header">
+		<div id="btn" class="toggle-btn" onclick="togglesidebar()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<span id="logout"><a href="">log out</a></span>
+		<span id="head_name"><h3>UCSC Student Management System</h3></span>
+		
+	</div>
+	<div class="side-nav" id="sidebar">
+		
+		<nav>
+			<div class="profile_info">
+					<div class="pic"><img src="../view/images/icon.png"></div>
+					<div class="name">Admin</div>
+			</div>
+			<ul>
+				<li>
+					<a href="lecturer.php">
+						<span  class="active_page">Profile</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Add User">	
+						<span>Add User</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Search User">
+						<span>Search User</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Update User">
+						<span>Update User</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Manage Students">
+						<span>Manage Students</span>
+					</a>
+				</li>
+				<li>
+					<a href="../controller/admin_controller.php?op=Add Time Table">
+						<span>Add Time Table</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		
+	</div>
 
 <form action="../controller/admin_controller.php" method="post" class="elegant-aero">
     <h1>ADD STUDENT FORM 

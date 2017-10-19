@@ -85,17 +85,17 @@ button:hover, a:hover {
             padding: 5px;
             width: 300px;
             align-items: center;
-            
-        } 
-        .button {background-color: #4C0050; 
-                          border: none; 
-                          color: white; 
+
+        }
+        .button {background-color: #4C0050;
+                          border: none;
+                          color: white;
                           padding:5px 30px;
                           text-align: center;
                           text-decoration: none;
                           display: inline-block;
-                          font-size: 16px;     
-                              }         
+                          font-size: 16px;
+                              }
         .dropbtn{
              background-color: #4C0050;
              color: white;
@@ -103,7 +103,7 @@ button:hover, a:hover {
              font-size: 16px;
              border: none;
              cursor: pointer;
-             margin-bottom:15px; 
+             margin-bottom:15px;
          }
 
 /* The container <div> - needed to position the dropdown content */

@@ -6,29 +6,9 @@ session_start();
  <html>
  <head>
  	<title>View Student Profile</title>
- 	<style>
-		#login-controls {
-			margin: 0 auto;
-			border: 1px solod #cc;
-			padding: 50px;
-			width: 300px;
-		}
-		.error-text{
-			color: #f00;
-		}
-		.view_all {
-		    background-color: #4C0050; /* Purple */
-		    border: none;
-		    color: white;
-		    padding: 10px 20px;
-		    text-align: center;
-		    text-decoration: none;
-		    display: inline-block;
-		    font-size: 16px;
-		}
-		
-
-	</style>
+ 	<link rel="stylesheet" type="text/css" href="../view/css/style1.css">
+	<script type="text/javascript" src="../view/js/main.js"></script>
+ 	
  </head>
 <body>
 <p>
@@ -37,22 +17,66 @@ session_start();
 	<a href="../index.php?op=logout">Logout</a>
 </p>
 
-<div id="login-controls">
-	<h2 class="animated infinite bounce">VIEW STUDENT DETAILS</h2>
+
+	
 	<?php if(@$_GET['err']==1){ ?>
 		<div class ="error-text">Login incorrect</div>
 	<?php } ?>
-	<form method="POST" action="../controller/admin_controller.php"><br>
-		<br><input class="view_all" type="submit" name="op" value="Home"><br>
-		<br><input class="view_all" type="submit" name="op" value="Modify Students"><br>
-		<br><input class="view_all" type="submit" name="op" value="Search Students"><br>
-		<br><input class="view_all" type="submit" name="op" value="Add Student Details"><br>
+	<div class="header" id="header">
+		<div id="btn" class="toggle-btn" onclick="togglesidebar()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+
+		<span id="logout"><a href="../index.php?op=logout">log out</a></span>
+		<span id="head_name"><h3>UCSC Student Management System</h3></span>
 		
+	</div>
+	<div class="side-nav" id="sidebar">
 		
+		<nav>
+			<div class="profile_info">
+					<div class="pic"><img src="../view/images/icon.png"></div>
+					<div class="name">Admin</div>
+			</div>
+			<ul>
+				<li>
+					<a href="lecturer.php">
+						<span  class="active_page">Profile</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Home">	
+						<span>Home</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Modify Students">
+						<span>Modify Students</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Search Students">
+						<span>Search Students</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Add Student Details">
+						<span>Add Student Details</span>
+					</a>
+				</li>
+				
+			</ul>
+		</nav>
 		
-		
-	</form>
-</div>
+	</div>
+	
+
 
 </body>
  </html>
