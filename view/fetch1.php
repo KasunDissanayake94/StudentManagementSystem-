@@ -5,8 +5,7 @@
  * Date: 10/15/2017
  * Time: 9:38 PM
  */
-echo "come";
-die();
+
 $connect = mysqli_connect("localhost", "root", "", "sms");
 
 
@@ -32,11 +31,14 @@ if(mysqli_num_rows($result2)>0)
     {
 
 
-
-
-        echo $rows[first_name];
+        echo" 
+          
+          
+            <img  src=".$rows['stu_image']. " style=\"width:19%\">
+            ";
     }
 }
+
 else
 {
     echo "No doctors found";

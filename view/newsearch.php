@@ -362,7 +362,7 @@ body h1{
        <br> 
        <div class="tableform">
          <h1>Details here</h1>
-           <div class="live_search">
+           <div class="live_search" id="live_search">
                Good
            </div>
        </div>
@@ -385,7 +385,7 @@ body h1{
 
             $.ajax(
                 {
-                    url:"Location:../view/fetch1.php",
+                    url:"../view/fetch1.php",
                     method:"get",
                     data:{searchData:txt},
                     dataType:"text",
