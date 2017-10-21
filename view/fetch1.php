@@ -35,6 +35,8 @@ if(mysqli_num_rows($result2)>0)
           
           
             <img  src=".$rows['stu_image']. " style=\"width:19%\">
+            <br>
+            <h1>Name</h1>
             ";
     }
 }

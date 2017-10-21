@@ -3,11 +3,73 @@
 <head>
   <title>New Search Student</title>
   <style type="text/css">
+
  a {
     text-decoration: none;
     display: inline-block;
     padding: 2px 2px;
-}   
+}
+ .live_search body {
+     width: 80%;
+     margin: 30px auto;
+     font-family: sans-serif;
+ }
+
+
+ .live_search{
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between; /* or space-around */
+ }
+ .live_search a {
+     display: inline-block;
+     margin-bottom: 8px;
+     width: calc(50% - 4px);
+     text-decoration: none;
+     color: black;
+ }
+ bsdbs@media screen and (min-width: 50em) {
+     .live_search a {
+         width: calc(25% - 6px);
+     }
+ }
+
+ .live_search a:hover img {
+     transform: scale(1.15);
+ }
+
+ .livesarch figure {
+     margin: 0;
+     overflow: hidden;
+ }
+
+ .live_search figcaption {
+     margin-top: 15px;
+ }
+
+ .live_search img {
+     border: none;
+     max-width: 50%;
+     height: auto;
+     display: block;
+     background: #ccc;
+     transition: transform .2s ease-in-out;
+ }
+
+ .live_search .p a {
+     display: inline;
+     font-size: 13px;
+     margin: 0;
+     text-decoration: underline;
+     color: blue;
+ }
+
+ .live_search .p {
+     text-align: center;
+     font-size: 13px;
+     padding-top: 100px;
+ }
+
 a:hover {
     background-color: #ddd;
     color: black;
@@ -363,7 +425,14 @@ body h1{
        <div class="tableform">
          <h1>Details here</h1>
            <div class="live_search" id="live_search">
-               Good
+               <a href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/placeimg03.jpg">
+                   <figure>
+                       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/placeimg03.jpg" alt="">
+                       <figcaption>
+                           Name here
+                       </figcaption>
+                   </figure>
+               </a>
            </div>
        </div>
   </div>
