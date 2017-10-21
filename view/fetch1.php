@@ -29,22 +29,40 @@ if(mysqli_num_rows($result2)>0)
 {
     while($rows = mysqli_fetch_assoc($result2))
     {
+        $first_name=($rows['first_name']);
+        $last_name=($rows['last_name']);
+        $s_id=($rows['s_id']);
+        $i_image=($rows['stu_image']);
+        $link= '../view/images/profile_pic/'.$s_id.'.jpg';
+        $more_link='../view/more.php';
+        echo "<div class=\"member\" style='display: inline-block;
+     width:20%;
+     vertical-align: top;
+     text-align:center;'>
+    <br><br>
+    <img style=\"margin: 0 10px 0 0;\" src=".$link. " alt=\"Click the link to see more info\"  />
+    <div class=\"name\">
+        <h4 style=\"font-size: 20px\" class=\"card-title\">
+        $first_name
+
+        </h4>
+        <p style=\"font-size:15px\"  class=\"card-text\">$last_name</p>
+        <p style=\"color: #003399; font-size: 15px\"  class=\"card-text\"><a href=".$more_link.">more</a></p>
+    </div>
+    <br><br>
 
 
-        echo" 
-          
-          
-            <img  src=".$rows['stu_image']. " style=\"width:19%\">
-            <br>
-            <h1>Name</h1>
-            ";
+</div>";
+
     }
 }
-
 else
 {
-    echo "No doctors found";
+    echo "No Students found";
 }
 
 
 ?>
+
+
+

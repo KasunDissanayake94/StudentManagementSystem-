@@ -9,65 +9,19 @@
     display: inline-block;
     padding: 2px 2px;
 }
- .live_search body {
-     width: 80%;
-     margin: 30px auto;
-     font-family: sans-serif;
- }
-
-
- .live_search{
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: space-between; /* or space-around */
- }
- .live_search a {
+ .member {
      display: inline-block;
-     margin-bottom: 8px;
-     width: calc(50% - 4px);
-     text-decoration: none;
-     color: black;
+     width:20%;
+     vertical-align: top;
+     text-align:center;
  }
- bsdbs@media screen and (min-width: 50em) {
-     .live_search a {
-         width: calc(25% - 6px);
-     }
- }
-
- .live_search a:hover img {
-     transform: scale(1.15);
- }
-
- .livesarch figure {
-     margin: 0;
-     overflow: hidden;
- }
-
- .live_search figcaption {
-     margin-top: 15px;
- }
-
- .live_search img {
-     border: none;
-     max-width: 50%;
-     height: auto;
-     display: block;
-     background: #ccc;
-     transition: transform .2s ease-in-out;
- }
-
- .live_search .p a {
+ .name {
      display: inline;
-     font-size: 13px;
-     margin: 0;
-     text-decoration: underline;
-     color: blue;
  }
-
- .live_search .p {
-     text-align: center;
-     font-size: 13px;
-     padding-top: 100px;
+ .member img {
+     width: 250px;
+     height:180px;
+     display: block;
  }
 
 a:hover {
@@ -425,14 +379,21 @@ body h1{
        <div class="tableform">
          <h1>Details here</h1>
            <div class="live_search" id="live_search">
-               <a href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/placeimg03.jpg">
-                   <figure>
-                       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/placeimg03.jpg" alt="">
-                       <figcaption>
-                           Name here
-                       </figcaption>
-                   </figure>
-               </a>
+               <div class="member">
+                   <br><br>
+                   <img style="size: 50px" src="../view/images/001.jpg" alt="Click the link to see more info"  />
+                   <div class="name">
+                       <h4 style="font-size: 20px" class="card-title">
+
+
+                       </h4>
+                       <p style="font-size: 15px"  class="card-text">Rs</p>
+                       <p style="color: #003399; font-size: 15px"  class="card-text"><a href="#">more</a></p>
+                   </div>
+                   <br>
+
+
+               </div>
            </div>
        </div>
   </div>
