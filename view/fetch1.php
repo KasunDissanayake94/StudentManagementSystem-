@@ -35,18 +35,23 @@ if(mysqli_num_rows($result2)>0)
         $i_image=($rows['stu_image']);
         $link= '../view/images/profile_pic/'.$s_id.'.jpg';
         $more_link='../view/more.php';
-        echo "<div class=\"member\" style='display: inline-block;
-     width:20%;
-     vertical-align: top;
-     text-align:center;'>
+        echo "<div class=\"member\" style='float:left;
+    width:200px;
+    height:350px;
+    background:#fff;
+    padding:3px;
+    margin-right:3px;
+    -moz-box-shadow: 1px 2px 2px #ccc;
+    -webkit-box-shadow: 1px 2px 2px #ccc;
+    box-shadow: 1px 2px 2px #ccc;'>
     <br><br>
-    <img style=\"margin: 0 10px 0 0;\" src=".$link. " alt=\"Click the link to see more info\"  />
+    <img style=\"width: 200px;\" src=".$link. " alt=\"Click the link to see more info\"  />
     <div class=\"name\">
         <h4 style=\"font-size: 20px\" class=\"card-title\">
-        $first_name
+        $first_name $last_name
 
         </h4>
-        <p style=\"font-size:15px\"  class=\"card-text\">$last_name</p>
+        <p style=\"font-size:15px\"  class=\"card-text\"></p>
         <p style=\"color: #003399; font-size: 15px\"  class=\"card-text\"><a href=".$more_link.">more</a></p>
     </div>
     <br><br>

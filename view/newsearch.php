@@ -377,7 +377,7 @@ body h1{
        <br>
        <br> 
        <div class="tableform">
-         <h1>Details here</h1>
+         <h1>Student Details</h1>
            <div class="live_search" id="live_search">
                <div class="member">
                    <br><br>
