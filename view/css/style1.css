@@ -8,7 +8,7 @@
 
 .header{
 	position: absolute;
-	height: 50px;
+	height: 120px;
 	width: 100%;
 	background-color:#ffcc00;
 	transform: translateY(0);
@@ -46,13 +46,18 @@
   font-size: 15px;
 
 }
-.header #logout a{
-	text-decoration: none;
-	float: right;
-	padding: 15px;
-	font-weight: bold;
-	font-size: 15px;
-
+.header #logout a {
+    text-decoration: none;
+    float: right;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+.header #user_status h3{
+    position: absolute;
+    padding: 15px;
+    left: 500px;
+    color: #151719;
 }
 
 .header #head_name h3{
