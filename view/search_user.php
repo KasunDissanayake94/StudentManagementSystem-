@@ -56,7 +56,7 @@ session_start();
 			<ul>
 				<li>
 					<a href="../controller/admin_controller.php">
-						<span  class="active_page">Profile</span>
+						<span>Profile</span>
 					</a>
 				</li>
 
@@ -68,7 +68,7 @@ session_start();
 
 				<li>
 					<a href="../controller/admin_controller.php?op=Search User">
-						<span>Search User</span>
+						<span class="active_page">Search User</span>
 					</a>
 				</li>
 
