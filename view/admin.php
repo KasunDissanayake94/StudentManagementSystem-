@@ -54,18 +54,17 @@
 </head>
 <body>
 
+	<div class="header" id="header">
+			<div id="btn" class="toggle-btn" onclick="togglesidebar()">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+	    <span id="logout"><a href="../index.php?op=logout">Log out</a></span>
+	    <span id="head_name"><h3>Student Management System </h3></span>
+	    <span id="user_status"><p style="float: right;padding: 15px;font-weight: bold;font-size: 15px;text-decoration: none;">You logged as <?php echo $_SESSION['username'] ?></p></span>
 
-<div class="header" id="header">
-		<div id="btn" class="toggle-btn" onclick="togglesidebar()">
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-    <span id="logout"><a href="../index.php?op=logout">Log out</a></span>
-    <span id="head_name"><h3>Student Management System </h3></span>
-    <span id="user_status"><p style="float: right;padding: 15px;font-weight: bold;font-size: 15px;text-decoration: none;">You logged as <?php echo $_SESSION['username'] ?></p></span>
-
-</div>
+	</div>
 	<div class="side-nav" id="sidebar">
 		
 		<nav>
@@ -75,8 +74,8 @@
 			</div>
 			<ul>
 				<li>
-					<a href="lecturer.php">
-						<span  class="active_page">Profile</span>
+					<a href="../controller/admin_controller.php">
+						<span class="active_page">Profile</span>
 					</a>
 				</li>
 

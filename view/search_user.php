@@ -34,20 +34,17 @@ session_start();
 	</style>
 </head>
 <body>
-<p>
-	you are logged as   <?php echo $_SESSION['username'] ?> 
-	</br>
-	<a href="../index.php?op=logout">Logout</a>
-</p>
-<div class="header" id="header">
-		<div id="btn" class="toggle-btn" onclick="togglesidebar()">
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-		<span id="logout"><a href="">log out</a></span>
-		<span id="head_name"><h3>UCSC Student Management System</h3></span>
-		
+
+	<div class="header" id="header">
+			<div id="btn" class="toggle-btn" onclick="togglesidebar()">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<span id="logout"><a href="">log out</a></span>
+			<span id="head_name"><h3>UCSC Student Management System</h3></span>
+			<span id="user_status"><p style="float: right;padding: 15px;font-weight: bold;font-size: 15px;text-decoration: none;">You logged as <?php echo $_SESSION['username'] ?></p></span>
+			
 	</div>
 	<div class="side-nav" id="sidebar">
 		
@@ -58,7 +55,7 @@ session_start();
 			</div>
 			<ul>
 				<li>
-					<a href="lecturer.php">
+					<a href="../controller/admin_controller.php">
 						<span  class="active_page">Profile</span>
 					</a>
 				</li>
@@ -96,22 +93,26 @@ session_start();
 		
 	</div>
 
-<div id="modify">
-	<h2>MODIFY USER DETAILS</h2>
-	<?php if(@$_GET['err']==1){ ?>
-		<div class ="error-text">Login incorrect</div>
-	<?php } ?>
-	
-	<form method="POST" action="../controller/admin_controller.php">
-		<p>User Name:  <br>
-		<input  type="text" name="uname">
-		</p>
-		
-		<input class="button"  type="submit" name="op" value="Search User Now" /><br>		
-		
-		
-	</form>
-</div>
+	<div id="content">
+		<div id="modify">
+			<h2>MODIFY USER DETAILS</h2>
+			<?php if(@$_GET['err']==1){ ?>
+				<div class ="error-text">Login incorrect</div>
+			<?php } ?>
+			
+			<form method="POST" action="../controller/admin_controller.php">
+				<p>User Name:  <br>
+				<input  type="text" name="uname">
+				</p>
+				
+				<input class="button"  type="submit" name="op" value="Search User Now" /><br>		
+				
+				
+			</form>
+		</div>
+	</div>
+
+
 
 </body>
 </html>
