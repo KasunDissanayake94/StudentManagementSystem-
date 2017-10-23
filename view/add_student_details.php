@@ -102,126 +102,126 @@ session_start();
 	</style>
 </head>
 <body>
-<p>
-	you are logged as   <?php echo $_SESSION['username'] ?> .
-	</br>
-	<a href="../index.php?op=logout">Logout</a>
-</p><div id="adduser">
-	<h2 class="animated infinite bounce">ADD USER</h2>
+
 	<?php if(@$_GET['err']==1){ ?>
 		<div class ="error-text">Login incorrect</div>
 	<?php } ?>
 
-<div class="header" id="header">
-		<div id="btn" class="toggle-btn" onclick="togglesidebar()">
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-		<span id="logout"><a href="">log out</a></span>
-		<span id="head_name"><h3>UCSC Student Management System</h3></span>
-		
-	</div>
-	<div class="side-nav" id="sidebar">
-		
-		<nav>
-			<div class="profile_info">
-					<div class="pic"><img src="../view/images/icon.png"></div>
-					<div class="name">Admin</div>
+	<div class="header" id="header">
+			<div id="btn" class="toggle-btn" onclick="togglesidebar()">
+				<span></span>
+				<span></span>
+				<span></span>
 			</div>
-			<ul>
-				<li>
-					<a href="lecturer.php">
-						<span  class="active_page">Profile</span>
-					</a>
-				</li>
+			<span id="logout"><a href="../index.php?op=logout">log out</a></span>
+			<span id="head_name"><h3>UCSC Student Management System</h3></span>
+			<span id="user_status"><p style="float: right;padding: 15px;font-weight: bold;font-size: 15px;text-decoration: none;">You logged as <?php echo $_SESSION['username'] ?></p></span>
+			
+		</div>
+		<div class="side-nav" id="sidebar">
+			
+			<nav>
+				<div class="profile_info">
+						<div class="pic"><img src="../view/images/icon.png"></div>
+						<div class="name">Admin</div>
+				</div>
+				<ul>
+					<li>
+						<a href="lecturer.php">
+							<span  class="active_page">Profile</span>
+						</a>
+					</li>
 
-				<li>
-					<a href="../controller/admin_controller.php?op=Add User">	
-						<span>Add User</span>
-					</a>
-				</li>
+					<li>
+						<a href="../controller/admin_controller.php?op=Add User">	
+							<span>Add User</span>
+						</a>
+					</li>
 
-				<li>
-					<a href="../controller/admin_controller.php?op=Search User">
-						<span>Search User</span>
-					</a>
-				</li>
+					<li>
+						<a href="../controller/admin_controller.php?op=Search User">
+							<span>Search User</span>
+						</a>
+					</li>
 
-				<li>
-					<a href="../controller/admin_controller.php?op=Update User">
-						<span>Update User</span>
-					</a>
-				</li>
+					<li>
+						<a href="../controller/admin_controller.php?op=Update User">
+							<span>Update User</span>
+						</a>
+					</li>
 
-				<li>
-					<a href="../controller/admin_controller.php?op=Manage Students">
-						<span>Manage Students</span>
-					</a>
-				</li>
-				<li>
-					<a href="../controller/admin_controller.php?op=Add Time Table">
-						<span>Add Time Table</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
+					<li>
+						<a href="../controller/admin_controller.php?op=Manage Students">
+							<span>Manage Students</span>
+						</a>
+					</li>
+					<li>
+						<a href="../controller/admin_controller.php?op=Add Time Table">
+							<span>Add Time Table</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
 		
 	</div>
 
-<form action="../controller/admin_controller.php" method="post" class="elegant-aero">
-    <h1>ADD STUDENT FORM 
-        <span>Please fill all the texts in the fields.</span>
-    </h1>
-    <label>
-        <span>First Name :</span>
-        <input id="name" type="text" name="firstname" placeholder="Student First Name" />
-    </label>
-    
-    <label>
-        <span>Last Name :</span>
-        <input id="email" type="text" name="lastname" placeholder="Student Last Name" />
-    </label>
-    <label>
-        <span>Email :</span>
-        <input id="email" type="email" name="email" placeholder="Valid Email Address" />
-    </label>
-    <label>
-        <span>School :</span>
-        <input id="email" type="text" name="school" placeholder="School" />
-    </label>
-    <label>
-        <span>Birthday :</span>
-        <input id="datepicker1" type="text" name="birthday" placeholder="Birthdate" />
-    </label>
-    <label>
-        <span>Race :</span>
-        <input id="email" type="text" name="race" placeholder="Race" />
-    </label>
-    <label>
-        <span>Religion :</span>
-        <input id="email" type="text" name="religion" placeholder="Religion" />
-    </label>
-    <label>	
-        <span>Registered Date :</span>
-        <input id="datepicker2" type="text" name="regdate" placeholder="Date" />
-    </label>
-    <label>
-        <span>Pass Out Date :</span>
-        <input id="datepicker3" type="text" name="passdate" placeholder="Date" />
-    </label>
-     
-     <label>	
-        <span>Gender :</span><select name="gender">
-        <option   value="male">MALE</option>
-        <option    value="female">FEMALE</option>	
-        </select>
-    </label>    
-     <label>
-        <span>&nbsp;</span> 
-        <input type="submit" class="button" name="op" value="Add Student" /> 
-    </label>    
-</form>
+	<div id="content">
+		<form action="../controller/admin_controller.php" method="post" class="elegant-aero">
+		    <h1>ADD STUDENT FORM 
+		        <span>Please fill all the texts in the fields.</span>
+		    </h1>
+		    <label>
+		        <span>First Name :</span>
+		        <input id="name" type="text" name="firstname" placeholder="Student First Name" />
+		    </label>
+		    
+		    <label>
+		        <span>Last Name :</span>
+		        <input id="email" type="text" name="lastname" placeholder="Student Last Name" />
+		    </label>
+		    <label>
+		        <span>Email :</span>
+		        <input id="email" type="email" name="email" placeholder="Valid Email Address" />
+		    </label>
+		    <label>
+		        <span>School :</span>
+		        <input id="email" type="text" name="school" placeholder="School" />
+		    </label>
+		    <label>
+		        <span>Birthday :</span>
+		        <input id="datepicker1" type="text" name="birthday" placeholder="Birthdate" />
+		    </label>
+		    <label>
+		        <span>Race :</span>
+		        <input id="email" type="text" name="race" placeholder="Race" />
+		    </label>
+		    <label>
+		        <span>Religion :</span>
+		        <input id="email" type="text" name="religion" placeholder="Religion" />
+		    </label>
+		    <label>	
+		        <span>Registered Date :</span>
+		        <input id="datepicker2" type="text" name="regdate" placeholder="Date" />
+		    </label>
+		    <label>
+		        <span>Pass Out Date :</span>
+		        <input id="datepicker3" type="text" name="passdate" placeholder="Date" />
+		    </label>
+		     
+		     <label>	
+		        <span>Gender :</span><select name="gender">
+		        <option   value="male">MALE</option>
+		        <option    value="female">FEMALE</option>	
+		        </select>
+		    </label>    
+		     <label>
+		        <span>&nbsp;</span> 
+		        <input type="submit" class="button" name="op" value="Add Student" /> 
+		    </label>    
+		</form>
+	</div>
+
+
 
 </body>
 </html>

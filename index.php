@@ -46,6 +46,11 @@ switch ($op) {
 				case 'ar':					
 					header("Location:controller/ar_controller.php");
 					break;
+
+				case 'lecturer':
+					header("Location:controller/lecturer_controller.php");
+					break;
+					
 				default:
 					
 					die( header( 'location: /error.php' ) );

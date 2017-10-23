@@ -14,6 +14,11 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		case 'student':
 			header("Location:student_controller.php");
 			break;
+
+		case 'lecturer':
+			header("Location:lecturer_controller.php");
+			break;
+			
 		default:
 			header( 'location: ../index.php' ) ;
 			break;
@@ -57,16 +62,28 @@ class UserController
 
 			$user = new UserModel($username);
 			$type = $this->gettype($username);
+			$id=$this->getId($username);
 
 			$_SESSION['user'] = $user;
 			$_SESSION['type'] = $type;
 			$_SESSION['username'] = $username;
+			$_SESSION['id']=$id;
  
 			return true;
 		}else{
 			return false;
 		}
 
+	}
+
+	function getId($u){
+		$id="null";
+		$query="SELECT `id` FROM user WHERE `username`=".$u."";
+		$result=self::$db->select($query);
+		if($result){
+			$id=$result[0]['id'];
+		}
+		return $id;
 	}
 
 	function getType($u){

@@ -45,6 +45,7 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
 		return $result;
  	}
+ 	
  	function view_list($list,$size){ 	
 		$string='SELECT ';	
 		echo $list[0][1].$list[1][1];
