@@ -35,6 +35,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			break;
 		case 'Profile':
 			$student_controller->fill_profile();
+			break;
+		case 'TimeTable':
+			$student_controller->timetable();	
 		
 		default:
 			//header("Location:../index.php");
@@ -75,7 +78,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		function fill_profile(){
 			header("Location:../view/student_detail.php");
 		}
-		
+		function timetable(){
+			header("Location:../view/timetable.php");
+		}
 
 
 	}

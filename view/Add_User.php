@@ -6,7 +6,12 @@ session_start();
 <html>
 <head>
 	<title>Add User</title>
+	<link rel="stylesheet" type="text/css" href="../view/css/style1.css">
+	<script type="text/javascript" src="../view/js/main.js"></script>
 	<style>
+	form{
+		margin-top: 60px;
+	}
 	   .elegant-aero {
 		    margin-left:auto;
 		    margin-right:auto;
@@ -102,6 +107,67 @@ session_start();
 	<?php if(@$_GET['err']==1){ ?>
 		<div class ="error-text">Login incorrect</div>
 	<?php } ?>
+
+
+
+	<div class="header" id="header">
+		<div id="btn" class="toggle-btn" onclick="togglesidebar()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<span id="logout"><a href="">log out</a></span>
+		<span id="head_name"><h3>UCSC Student Management System</h3></span>
+		
+	</div>
+	<div class="side-nav" id="sidebar">
+		
+		<nav>
+			<div class="profile_info">
+					<div class="pic"><img src="../view/images/icon.png"></div>
+					<div class="name">Admin</div>
+			</div>
+			<ul>
+				<li>
+					<a href="lecturer.php">
+						<span  class="active_page">Profile</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Add User">	
+						<span>Add User</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Search User">
+						<span>Search User</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Update User">
+						<span>Update User</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Manage Students">
+						<span>Manage Students</span>
+					</a>
+				</li>
+				<li>
+					<a href="../controller/admin_controller.php?op=Add Time Table">
+						<span>Add Time Table</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		
+	</div>
+
+
 	<form action="" method="post" class="elegant-aero">
     <h1>ADD USER FORM 
         <span>Please fill all the texts in the fields.</span>

@@ -1,238 +1,402 @@
-<?php 
-session_start();
- ?>
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-.dropbtn {  
-    background-color:#b784e3;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #460b5a;
-}
-#myInput {
-    border-box: box-sizing;
-    background-image: url('searchicon.png');
-    background-position: 14px 12px;
-    background-repeat: no-repeat;
-    font-size: 16px;
-    padding: 14px 20px 12px 45px;
-    border: none;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f6f6f6;
-    min-width: 230px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black; 
-    padding: 12px 16px;
+  <title>New Search Student</title>
+  <style type="text/css">
+ a {
     text-decoration: none;
+    display: inline-block;
+    padding: 2px 2px;
+}   
+a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.fname {
+  float: right;
+  
+}
+.next {
+    background-color: #4CAF50;
+    color: white;
+}
+.wrap {
+    width: 100%;
+    overflow:auto;
+}
+
+.fleft {
+    float:left; 
+    width: 20%;
+    background:#F0F555;
+    height: 100%;
+    padding-right: 1%;
+}
+
+.topic{
+  padding-left: 10px;
+}
+.fright {
+    float: right;
+    background:#C696DA;
+    height: 100%;
+    width: 79%;  
+
+}
+.fright h1{
+  text-align: center;
+}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+body h1{
+  text-align: center;
+}
+.onclick-menu {
+    
+    float: left;
+}
+.onclick-menu:before {
+  padding: 10px;
+    content: "Search by Category";
+}
+.onclick-menu:focus .onclick-menu-content {
     display: block;
 }
-
-.dropdown a:hover {background-color: #ddd}
-
-.show {display:block;}
-body {font-family: "Lato", sans-serif;}
-
-/* Style the tab */
-div.tab {
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f7ff74;
-}
-
-/* Style the buttons inside the tab */
-div.tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
-}
-
-/* Change background color of buttons on hover */
-div.tab button:hover {
-    background-color: #eec10e;
-}
-
-/* Create an active/current tablink class */
-div.tab button.active {
-    background-color:#eec10e;
-}
-
-/* Style the tab content */
-.tabcontent {
+.onclick-menu-content {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    width: 40%;
     display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
 }
 
-/* Style the close button */
-.topright {
-    float: right;
-    cursor: pointer;
-    font-size: 20px;
+.search {
+  width: 80%;
+  float: right;
+  position: relative
 }
 
-.topright:hover {color: red;}
-</style>
+.searchTerm {
+  float: left;
+  width: 80%;
+  border: 3px solid #55256B;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #55256B;
+}
+
+.searchTerm:focus{
+  color: #55256B;
+}
+
+.searchButton {
+  position: absolute;  
+  right: 150px;
+  width: 40px;
+  height: 36px;
+  border: 1px solid #55256B;
+  background: #55256B;
+  text-align: left;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.tableform{
+  width:90%;
+  height:1200px;
+  margin:30px auto;
+  border:1px solid silver;
+  background:white;  
+  border-radius:0.3em;
+  box-shadow:0 0 5px rgba(0,0,0,0.3);
+  padding:20px;
+
+
+}
+
+/* Style show more show less field */
+.read-more-state {
+  display: none;
+}
+
+.read-more-target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: 'Show more';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {  
+  content: 'Show less';
+}
+
+.read-more-trigger {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 .5em;
+  color: #666;
+  font-size: .9em;
+  line-height: 2;
+  border: 1px solid #ddd;
+  border-radius: .25em;
+}
+
+  </style>
+    <!-- Script files here -->
+    <script src="../view/js/jquery.js"></script>
+    <script src="../view/js/jquery-migrate-1.1.1.js"></script>
+    <script src="../view/js/jquery.easing.1.3.js"></script>
+    <script src="../view/js/script.js"></script>
+    <script src="../view/js/superfish.js"></script>
+    <script src="../view/js/jquery.equalheights.js"></script>
+    <script src="../view/js/jquery.mobilemenu.js"></script>
+    <script src="../view/js/tmStickUp.js"></script>
+    <script src="../view/js/jquery.ui.totop.js"></script>
+
+
 </head>
 <body>
 
 
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Student</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Course</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Degree</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Location</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Hostal</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Scholarship</button>
-</div>
+<div class="wrap">
+    <!--Updated on 10/8/2016; fixed center alignment percentage-->
+    <div class="fleft">
+      <h1>Categories</h1>
+      <div class="topic">
+        <h2>All</h2>
+        <h3>Student</h3>
+                <ul>
+                  <li><input  type="checkbox" name="main"><label>First Name</label><br></li>
+                  <li><input  type="checkbox" name="main"><label>Last Name</label><br></li>                  
+                </ul>
 
-<div id="London" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">x</span>
-  <div class="dropdown">
-<button onclick="myFunction()" class="dropbtn">First Name</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="#about">About</a>
-    <a href="#base">Base</a>
-    <a href="#blog">Blog</a>
-    <a href="#contact">Contact</a>
-    <a href="#custom">Custom</a>
-    <a href="#support">Support</a>
-    <a href="#tools">Tools</a>  
-  </div>
-  <button onclick="myFunction()" class="dropbtn">Last Name</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="#about">About</a>
-    <a href="#base">Base</a>
-    <a href="#blog">Blog</a>
-    <a href="#contact">Contact</a>
-    <a href="#custom">Custom</a>
-    <a href="#support">Support</a>
-    <a href="#tools">Tools</a>  
-  </div>
-  <button onclick="myFunction()" class="dropbtn">Birthday</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="#about">About</a>
-    <a href="#base">Base</a>
-    <a href="#blog">Blog</a>
-    <a href="#contact">Contact</a>
-    <a href="#custom">Custom</a>
-    <a href="#support">Support</a>
-    <a href="#tools">Tools</a>  
-  </div>
-  <button onclick="myFunction()" class="dropbtn">Gender</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="#male">Male</a>
-    <a href="#female">Female</a>
+                <div>
+                  <input type="checkbox" class="read-more-state" id="post-2" />
+
+                  <ul class="read-more-wrap">
+                    <li  class="read-more-target"><input type="checkbox" name="main">Race</li>                    
+                    <li  class="read-more-target"><input type="checkbox" name="main">Religion</li> 
+                    <li  class="read-more-target"><input type="checkbox" name="main">Date of Birth</li>
+                    <li  class="read-more-target"><input type="checkbox" name="main">Registered Date</li>
+                    <li  class="read-more-target"><input type="checkbox" name="main">Pass out Date</li>
+                    <li  class="read-more-target"><input type="checkbox" name="main">Gender</li>                   
+                  </ul>
+                  
+                  <label for="post-2" class="read-more-trigger"></label>
+                </div>
+        <h3>Course</h3>
+                <ul>
+                  <li><input  type="checkbox" name="main"><label>Course Name</label><br></li>
+                  <li><input  type="checkbox" name="main"><label>Course Code</label><br></li>                  
+                </ul>
+
+                <div>
+                  <input type="checkbox" class="read-more-state" id="post-3" />
+
+                  <ul class="read-more-wrap">
+                    <li  class="read-more-target"><input type="checkbox" name="main">Course Year</li>                    
+                    <li  class="read-more-target"><input type="checkbox" name="main">Credits</li> 
+                    <li  class="read-more-target"><input type="checkbox" name="main">Description</li>
+                                       
+                  </ul>
+                  
+                  <label for="post-3" class="read-more-trigger"></label>
+                </div>        
+
+
+        <hr>
+        <!--*****************************Student Details *****************************-->
+        <h2>Student</h2>
+
+        <b>First Name :</b><input type="text" class="fname" name="first_name" value="" placeholder=" first name here"><br><br>
+        <b>Last Name :</b><input type="text" class="fname" name="first_name" value="" placeholder=" last name here"><br><br>
+        <b>Race :</b><input type="text" class="fname" name="first_name" value="" placeholder=" race here"><br><br>
+        <b>Religion :</b><input type="text" class="fname" name="first_name" value="" placeholder=" religion here"><br><br>
+        <b>School :</b><input type="text" class="fname" name="first_name" value="" placeholder=" school here"><br><br>
+        
+        <br>
+         <b>Register Date :</b><br>
+        <input type="date" name="date" value="startdate" > to now  <a href="#" class="next"> &raquo;</a>
+        <br><br>
+         <b>Pass out Date :</b><br>
+        <input type="date" name="date" value="startdate" > to now <a href="#" class="next"> &raquo;</a>
+        <br><br>
+        <b>Date of Birth :</b><br>
+        <input type="date" name="date" value="startdate" > to <input type="date" name="lastdate"><a href="#" class="next"> &raquo;</a><br><br>
+
+        <hr>
+        <!--****************************Course Details****************************** -->
+        <h2>Course</h2>
+        <b>Course Name :</b><input type="text" class="fname" name="first_name" value="" placeholder=" course name here"><br><br>
+        <b>Course Code :</b><input type="text" class="fname" name="first_name" value="" placeholder=" course code here"><br><br>
+        <b>Corse Year :</b>
+        <select> 
+            <option value="volvo">1st</option>
+            <option value="saab">2nd</option>
+            <option value="opel">3rd</option>
+            <option value="audi">4th</option>
+                        
+        </select>
+        <br><br>  
+        
+        <b>Credit :</b>   
+        <select> 
+            <option value="volvo">A+</option>
+            <option value="saab">A</option>
+            <option value="opel">A-</option>
+            <option value="audi">B+</option>
+            <option value="volvo">B</option>
+            <option value="saab">B-</option>
+            <option value="opel">C+</option>
+            <option value="audi">C</option>
+            <option value="volvo">C-</option>
+            <option value="saab">W</option>            
+        </select>
+        <br><br>
+        <hr>
+        <!--********************Degree Details*************************** -->
+        <h2>Degree</h2>
+        <b> Degree Name <b>
+        <select> 
+            <option value="volvo">CS</option>
+            <option value="saab">IS</option>
+                       
+        </select><br><br>
+               
+        
+        <hr>
+        <!--*****************************Hostel Details************************* -->
+        <h2>Hostel</h2>
+        <!--Pick a start date -->
+        Start Date :<br>
+        <input type="date" name="date" value="startdate" > to now  <a href="#" class="next"> &raquo;</a>
+        <br><br>
+        <!--Pick an end date -->
+        End Date :<br>
+        <input type="date" name="date" value="startdate" > to now <a href="#" class="next"> &raquo;</a>
+        <br><br>
+        <hr>
+        <!--*********************************Scholarship Details*****************************-->
+        <h2>Scholarship</h2>
+        <!-- Choose the kind of scholarship -->
+        <b>Scholarship Name :</b>
+        <select> 
+            <option value="volvo">Bursary</option>
+            <option value="saab">Mahapola</option>
+            <option value="opel">IFS</option>
+            <option value="audi">Other</option>
+                       
+        </select>
+        <br><br>
+        <hr>
+        <!--********************************Area Details****************************** -->
+        <h2>Student Area</h2>
+        <!-- Enter area details -->
+        Number :<input type="text" class="fname" name="first_name" value="" placeholder=" street number  here"><br><br>
+        Street :<input type="text" class="fname" name="first_name" value="" placeholder=" street name here"><br><br>
+        Area :<input type="text" class="fname" name="first_name" value="" placeholder=" area here"><br><br>
+      </div>
       
+    </div>
+<!--Right hand side menu -->   
+<div class="fright">
+    <h1>Search Students </h1>
+
+    <br>
+  <div class="wrap">
+      <div tabindex="0" class="onclick-menu">&nabla; 
+          <ul class="onclick-menu-content">
+              <form>
+                <p>Student</p>
+                <ul>
+                  <li><a href="#">First Name</a></li>
+                  <li><a href="#">Last Name</a></li>
+                  <li><a href="#">Religion</a></li>
+                  <li><a href="#">Race</a></li>
+                  <li><a href="#">Date of Birth</a></li>
+                </ul>
+                <p>Course</p>
+                <ul>
+                  <li><a href="#">First Name</a></li>
+                  <li><a href="#">Last Name</a></li>
+                  <li><a href="#">Religion</a></li>
+                  <li><a href="#">Race</a></li>
+                  <li><a href="#">Date of Birth</a></li>
+                </ul>
+                <p>Degree</p>
+                <ul>
+                  <li><a href="#">First Name</a></li>
+                  <li><a href="#">Last Name</a></li>
+                  <li><a href="#">Religion</a></li>
+                  <li><a href="#">Race</a></li>
+                  <li><a href="#">Date of Birth</a></li>
+                </ul>
+              </form>
+          </ul>
+      </div>
+
+       <div class="search">
+          <input type="text" class="searchTerm" placeholder="What are you looking for?" id="search">
+          <button type="submit" class="searchButton">
+
+         </button>
+       </div>
+       <br>
+       <br> 
+       <div class="tableform">
+         <h1>Details here</h1>
+           <div class="live_search">
+               Good
+           </div>
+       </div>
   </div>
-  <button onclick="myFunction()" class="dropbtn">Race</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="#about">About</a>
-    <a href="#base">Base</a>
-    <a href="#blog">Blog</a>
-    <a href="#contact">Contact</a>
-    <a href="#custom">Custom</a>
-    <a href="#support">Support</a>
-    <a href="#tools">Tools</a>  
-  </div>  
-  <button onclick="myFunction()" class="dropbtn">Religion</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="#about">About</a>
-    <a href="#base">Base</a>
-    <a href="#blog">Blog</a>
-    <a href="#contact">Contact</a>
-    <a href="#custom">Custom</a>
-    <a href="#support">Support</a>
-    <a href="#tools">Tools</a>  
-  </div>
-</div>
+
 </div>
 
-<div id="Paris" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">x</span>
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p> 
 </div>
 
-<div id="Tokyo" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">x</span>
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
-</div>
-
-<script>
-function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-<script>
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-function filterFunction() {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown");
-    a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
-        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-            a[i].style.display = "";
-        } else {
-            a[i].style.display = "none";
-        }
-    }
-}
-</script>
-     
 </body>
-</html> 
+</html>
+<script>
+    $(document).ready(function()
+    {
+        $('#search').keyup(function()
+        {
+            var txt = document.getElementById('search').value;
+            var txt2 = "";
+
+
+            $.ajax(
+                {
+                    url:"Location:../view/fetch1.php",
+                    method:"get",
+                    data:{searchData:txt},
+                    dataType:"text",
+                    success:function(data)
+                    {
+                        $('#live_search').html(data);
+                    }
+                });
+
+        });
+    });
+</script>
+
+

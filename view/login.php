@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
 	$type = $_SESSION['type'];
@@ -101,7 +101,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		</p>
 		</br>
 		<input class="button" type="submit" name="op" value="login" />
-	     <a href="forgot_password.php?user_id=<?php echo $user_id; ?>">Forgot Password</a>
+	     <a href="forgot_password.php">Forgot Password</a>
 		
 	</form>
 </div>

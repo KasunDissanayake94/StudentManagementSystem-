@@ -78,6 +78,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         	break;
         case 'Search Result':
         	$admin_controller->serach_result();	
+        	break;	
+        case 'Add Time Table':
+        	$admin_controller->add_timetable();	
         	break;											
 		default:
 			//header("Location:../index.php");
@@ -249,8 +252,12 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 				header("Location:../example/first.php");
 			} 
 				
+	}
+	function add_timetable(){
+		header("Location:../view/add_timetable.php");
+	}
 	}	
-	}	
+		
 	
  ?>
 
