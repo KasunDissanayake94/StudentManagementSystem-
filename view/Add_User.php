@@ -14,9 +14,11 @@ session_start();
 	}
 	   .elegant-aero {
 		    margin-left:auto;
-		    max-width: 1350px;
+		    margin-right:auto;
+
+		    max-width: 1000px;
 		    background: #b784e3;
-		    padding: 80px 20px 20px 20px;
+		    padding: 20px 20px 20px 20px;
 		    font: 12px Arial, Helvetica, sans-serif;
 		    color: #666;
 		}
@@ -96,45 +98,32 @@ session_start();
 	</style>
 </head>
 <body>
-<<<<<<< HEAD
-=======
+<p>
+	you are logged as   <?php echo $_SESSION['username'] ?> .
+	</br>
 
+</p>
 
->>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 	<?php if(@$_GET['err']==1){ ?>
 		<div class ="error-text">Login incorrect</div>
 	<?php } ?>
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
+
 	<div class="header" id="header">
 		<div id="btn" class="toggle-btn" onclick="togglesidebar()">
 			<span></span>
 			<span></span>
 			<span></span>
 		</div>
-<<<<<<< HEAD
-		<span id="logout"><a href="../index.php?op=logout">Log out</a></span>
-		<span id="head_name"><h3>UCSC Student Management System</h3></span>
-		<span id="user_status"><p style="float: right;padding: 15px;font-weight: bold;font-size: 15px;text-decoration: none;">You logged as <?php echo $_SESSION['username'] ?></p></span>
-		
-	</div>
-	<div class="side-nav" id="sidebar">
-		
-=======
 		<span id="logout"><a href="../index.php?op=logout">Logout</a></span>
-
+		<span id="login"><a href="../index.php?op=logout">Logout</a></span>
 		<span id="head_name"><h3>UCSC Student Management System</h3></span>
-        <h3>ans</h3>
 
 
 	</div>
-
 	<div class="side-nav" id="sidebar">
 
->>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 		<nav>
 			<div class="profile_info">
 					<div class="pic"><img src="../view/images/icon.png"></div>
@@ -142,24 +131,14 @@ session_start();
 			</div>
 			<ul>
 				<li>
-<<<<<<< HEAD
-					<a href="../controller/admin_controller.php">
-						<span>Profile</span>
-=======
 					<a href="lecturer.php">
 						<span  class="active_page">Profile</span>
->>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 					</a>
 				</li>
 
 				<li>
-<<<<<<< HEAD
-					<a href="../controller/admin_controller.php?op=Add User">	
-						<span class="active_page">Add User</span>
-=======
 					<a href="../controller/admin_controller.php?op=Add User">
 						<span>Add User</span>
->>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 					</a>
 				</li>
 
@@ -187,54 +166,44 @@ session_start();
 				</li>
 			</ul>
 		</nav>
-<<<<<<< HEAD
-		
-	</div>
-
-	<div id="content">
-		<form action="" method="post" class="elegant-aero">
-		    <h1>ADD USER FORM 
-		        <span>Please fill all the texts in the fields.</span>
-		    </h1>
-		    <label>
-		        <span>UserID :</span>
-		        <input id="u_id" type="text" name="name" placeholder="User ID here" />
-		    </label> 
-		    <label>
-		        <span>Username :</span>
-		        <input id="username" type="text" name="name" placeholder="User Name" />
-		    </label> 
-		    <label>
-		        <span>NIC :</span>
-		        <input id="nic" type="text" name="name" placeholder="NIC" />
-		    </label>    
-		    
-		    <label>
-		        <span>Email :</span>
-		        <input id="email" type="email" name="name" placeholder="Valid Email here" />
-		    </label> 
-		    <label>
-		        <span>Type :</span>
-		        <input id="type" type="text" name="type" placeholder="User Type here" />
-		    </label>
-		    <label>
-		        <span>Password :</span>
-		        <input id="password" type="password" name="password" placeholder="Password here" />
-		    </label><br>         
-		     <label>
-		        <span>&nbsp;</span> 
-		        <input type="button" class="button" value="Add Student" /> 
-		    </label>    
-		</form>
-	</div>
-	
-=======
 
 	</div>
 
 
+	<form action="" method="post" class="elegant-aero">
+    <h1>ADD USER FORM
+        <span>Please fill all the texts in the fields.</span>
+    </h1>
+    <label>
+        <span>UserID :</span>
+        <input id="u_id" type="text" name="name" placeholder="User ID here" />
+    </label>
+    <label>
+        <span>Username :</span>
+        <input id="username" type="text" name="name" placeholder="User Name" />
+    </label>
+    <label>
+        <span>NIC :</span>
+        <input id="nic" type="text" name="name" placeholder="NIC" />
+    </label>
 
->>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
+    <label>
+        <span>Email :</span>
+        <input id="email" type="email" name="name" placeholder="Valid Email here" />
+    </label>
+    <label>
+        <span>Type :</span>
+        <input id="type" type="text" name="type" placeholder="User Type here" />
+    </label>
+    <label>
+        <span>Password :</span>
+        <input id="password" type="password" name="password" placeholder="Password here" />
+    </label><br>
+     <label>
+        <span>&nbsp;</span>
+        <input type="button" class="button" value="Add Student" />
+    </label>
+</form>
 </div>
 </body>
 </html>
