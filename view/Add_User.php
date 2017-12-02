@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
  ?>
 
@@ -9,13 +9,14 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="../view/css/style1.css">
 	<script type="text/javascript" src="../view/js/main.js"></script>
 	<style>
+	form{
+		margin-top: 60px;
+	}
 	   .elegant-aero {
 		    margin-left:auto;
-		    margin-right:auto;
-
-		    max-width: 1000px;
+		    max-width: 1350px;
 		    background: #b784e3;
-		    padding: 20px 20px 20px 20px;
+		    padding: 80px 20px 20px 20px;
 		    font: 12px Arial, Helvetica, sans-serif;
 		    color: #666;
 		}
@@ -72,7 +73,7 @@ session_start();
 		    background: #fbfbfb url('down-arrow.png') no-repeat right;
 		    background: #fbfbfb url('down-arrow.png') no-repeat right;
 		   appearance:none;
-		    -webkit-appearance:none; 
+		    -webkit-appearance:none;
 		   -moz-appearance: none;
 		    text-indent: 0.01px;
 		    text-overflow: '';
@@ -87,7 +88,7 @@ session_start();
 		    -webkit-box-shadow: 1px 1px 1px #4C6E91;
 		    -moz-box-shadow: 1px 1px 1px #4C6E91;
 		    text-shadow: 1px 1px 1px #5079A3;
-		    
+
 		}
 		.elegant-aero .button:hover{
 		    background: #460b5a;
@@ -95,16 +96,26 @@ session_start();
 	</style>
 </head>
 <body>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 	<?php if(@$_GET['err']==1){ ?>
 		<div class ="error-text">Login incorrect</div>
 	<?php } ?>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 	<div class="header" id="header">
 		<div id="btn" class="toggle-btn" onclick="togglesidebar()">
 			<span></span>
 			<span></span>
 			<span></span>
 		</div>
+<<<<<<< HEAD
 		<span id="logout"><a href="../index.php?op=logout">Log out</a></span>
 		<span id="head_name"><h3>UCSC Student Management System</h3></span>
 		<span id="user_status"><p style="float: right;padding: 15px;font-weight: bold;font-size: 15px;text-decoration: none;">You logged as <?php echo $_SESSION['username'] ?></p></span>
@@ -112,6 +123,18 @@ session_start();
 	</div>
 	<div class="side-nav" id="sidebar">
 		
+=======
+		<span id="logout"><a href="../index.php?op=logout">Logout</a></span>
+
+		<span id="head_name"><h3>UCSC Student Management System</h3></span>
+        <h3>ans</h3>
+
+
+	</div>
+
+	<div class="side-nav" id="sidebar">
+
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 		<nav>
 			<div class="profile_info">
 					<div class="pic"><img src="../view/images/icon.png"></div>
@@ -119,14 +142,24 @@ session_start();
 			</div>
 			<ul>
 				<li>
+<<<<<<< HEAD
 					<a href="../controller/admin_controller.php">
 						<span>Profile</span>
+=======
+					<a href="lecturer.php">
+						<span  class="active_page">Profile</span>
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 					</a>
 				</li>
 
 				<li>
+<<<<<<< HEAD
 					<a href="../controller/admin_controller.php?op=Add User">	
 						<span class="active_page">Add User</span>
+=======
+					<a href="../controller/admin_controller.php?op=Add User">
+						<span>Add User</span>
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 					</a>
 				</li>
 
@@ -154,6 +187,7 @@ session_start();
 				</li>
 			</ul>
 		</nav>
+<<<<<<< HEAD
 		
 	</div>
 
@@ -194,6 +228,13 @@ session_start();
 		</form>
 	</div>
 	
+=======
+
+	</div>
+
+
+
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 </div>
 </body>
 </html>

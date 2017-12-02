@@ -3,11 +3,15 @@
 <head>
   <title>New Search Student</title>
   <style type="text/css">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
  a {
     text-decoration: none;
     display: inline-block;
     padding: 2px 2px;
+<<<<<<< HEAD
 }
  .member {
      display: inline-block;
@@ -24,6 +28,9 @@
      display: block;
  }
 
+=======
+}   
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 a:hover {
     background-color: #ddd;
     color: black;
@@ -94,6 +101,7 @@ body h1{
   width: 80%;
   float: right;
   position: relative
+<<<<<<< HEAD
 }
 
 .searchTerm {
@@ -135,6 +143,73 @@ body h1{
   padding:20px;
 
 
+=======
+}
+
+.searchTerm {
+  float: left;
+  width: 80%;
+  border: 3px solid #55256B;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #55256B;
+}
+
+.searchTerm:focus{
+  color: #55256B;
+}
+
+.searchButton {
+  position: absolute;  
+  right: 150px;
+  width: 40px;
+  height: 36px;
+  border: 1px solid #55256B;
+  background: #55256B;
+  text-align: left;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
+}
+.tableform{
+  width:90%;
+  height:1200px;
+  margin:30px auto;
+  border:1px solid silver;
+  background:white;  
+  border-radius:0.3em;
+  box-shadow:0 0 5px rgba(0,0,0,0.3);
+  padding:20px;
+
+
+<<<<<<< HEAD
+/* Style show more show less field */
+.read-more-state {
+  display: none;
+}
+
+.read-more-target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: 'Show more';
+}
+
+=======
 }
 
 /* Style show more show less field */
@@ -159,6 +234,7 @@ body h1{
   content: 'Show more';
 }
 
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 .read-more-state:checked ~ .read-more-trigger:before {  
   content: 'Show less';
 }
@@ -377,6 +453,7 @@ body h1{
        <br>
        <br> 
        <div class="tableform">
+<<<<<<< HEAD
          <h1>Filter Details</h1>
            <div class="live_search" id="live_search">
                <div class="member">
@@ -394,6 +471,11 @@ body h1{
 
 
                </div>
+=======
+         <h1>Details here</h1>
+           <div class="live_search">
+               Good
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
            </div>
        </div>
   </div>
@@ -415,7 +497,11 @@ body h1{
 
             $.ajax(
                 {
+<<<<<<< HEAD
                     url:"../view/fetch1.php",
+=======
+                    url:"Location:../view/fetch1.php",
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
                     method:"get",
                     data:{searchData:txt},
                     dataType:"text",

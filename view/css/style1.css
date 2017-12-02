@@ -38,6 +38,7 @@
 	margin: 4px 0px;
 }
 
+<<<<<<< HEAD
 .header #login a{
   text-decoration: none;
   float: left;
@@ -66,6 +67,10 @@
 	left: 500px;
 	color: #151719;
 }
+=======
+
+
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 
 .side-nav{
 	position: fixed;

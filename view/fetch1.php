@@ -5,7 +5,12 @@
  * Date: 10/15/2017
  * Time: 9:38 PM
  */
+<<<<<<< HEAD
 
+=======
+echo "come";
+die();
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 $connect = mysqli_connect("localhost", "root", "", "sms");
 
 
@@ -29,6 +34,7 @@ if(mysqli_num_rows($result2)>0)
 {
     while($rows = mysqli_fetch_assoc($result2))
     {
+<<<<<<< HEAD
         $first_name=($rows['first_name']);
         $last_name=($rows['last_name']);
         $s_id=($rows['s_id']);
@@ -59,10 +65,18 @@ if(mysqli_num_rows($result2)>0)
 
 </div>";
 
+=======
+
+
+
+
+        echo $rows[first_name];
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
     }
 }
 else
 {
+<<<<<<< HEAD
     echo "No Students found";
 }
 
@@ -71,3 +85,10 @@ else
 
 
 
+=======
+    echo "No doctors found";
+}
+
+
+?>
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d

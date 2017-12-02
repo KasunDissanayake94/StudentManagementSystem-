@@ -11,10 +11,18 @@ session_start();
  	
  </head>
 <body>
+<<<<<<< HEAD
 
 
 
 
+=======
+<p>
+	you are logged as   <?php echo $_SESSION['username'] ?> .
+	</br>
+	<a href="../index.php?op=logout">Logout</a>
+</p>
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 
 
 	
@@ -28,12 +36,18 @@ session_start();
 			<span></span>
 		</div>
 
+<<<<<<< HEAD
 
 
 		<span id="logout"><a href="../index.php?op=logout">Log out</a></span>
 		<span id="head_name"><h3>Student Management System </h3></span>
 		<span id="user_status"><p style="float: right;padding: 15px;font-weight: bold;font-size: 15px;text-decoration: none;">You logged as <?php echo $_SESSION['username'] ?></p></span>
 
+=======
+		<span id="logout"><a href="../index.php?op=logout">log out</a></span>
+		<span id="head_name"><h3>UCSC Student Management System</h3></span>
+		
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 	</div>
 	<div class="side-nav" id="sidebar">
 		

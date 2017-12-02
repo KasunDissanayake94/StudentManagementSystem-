@@ -34,6 +34,7 @@ session_start();
 	</style>
 </head>
 <body>
+<<<<<<< HEAD
 
 	<div class="header" id="header">
 			<div id="btn" class="toggle-btn" onclick="togglesidebar()">
@@ -47,6 +48,82 @@ session_start();
 			
 	</div>
 	<div class="side-nav" id="sidebar">
+=======
+<p>
+	you are logged as   <?php echo $_SESSION['username'] ?> 
+	</br>
+	<a href="../index.php?op=logout">Logout</a>
+</p>
+<div class="header" id="header">
+		<div id="btn" class="toggle-btn" onclick="togglesidebar()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<span id="logout"><a href="">log out</a></span>
+		<span id="head_name"><h3>UCSC Student Management System</h3></span>
+		
+	</div>
+	<div class="side-nav" id="sidebar">
+		
+		<nav>
+			<div class="profile_info">
+					<div class="pic"><img src="../view/images/icon.png"></div>
+					<div class="name">Admin</div>
+			</div>
+			<ul>
+				<li>
+					<a href="lecturer.php">
+						<span  class="active_page">Profile</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Add User">	
+						<span>Add User</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Search User">
+						<span>Search User</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Update User">
+						<span>Update User</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="../controller/admin_controller.php?op=Manage Students">
+						<span>Manage Students</span>
+					</a>
+				</li>
+				<li>
+					<a href="../controller/admin_controller.php?op=Add Time Table">
+						<span>Add Time Table</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		
+	</div>
+
+<div id="modify">
+	<h2>MODIFY USER DETAILS</h2>
+	<?php if(@$_GET['err']==1){ ?>
+		<div class ="error-text">Login incorrect</div>
+	<?php } ?>
+	
+	<form method="POST" action="../controller/admin_controller.php">
+		<p>User Name:  <br>
+		<input  type="text" name="uname">
+		</p>
+		
+		<input class="button"  type="submit" name="op" value="Search User Now" /><br>		
+>>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 		
 		<nav>
 			<div class="profile_info">
