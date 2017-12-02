@@ -38,29 +38,8 @@
 	margin: 4px 0px;
 }
 
-.header #login a{
-  text-decoration: none;
-  float: left;
-  padding: 15px;
-  font-weight: bold;
-  font-size: 15px;
 
-}
-.header #logout a{
-	text-decoration: none;
-	float: right;
-	padding: 15px;
-	font-weight: bold;
-	font-size: 15px;
 
-}
-
-.header #head_name h3{
-	position: absolute;
-	padding: 15px;
-	left: 500px;
-	color: #151719;
-}
 
 .side-nav{
 	position: fixed;

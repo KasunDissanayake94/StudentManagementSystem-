@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
  ?>
 
@@ -14,11 +14,9 @@ session_start();
 	}
 	   .elegant-aero {
 		    margin-left:auto;
-		    margin-right:auto;
-
-		    max-width: 1000px;
+		    max-width: 1350px;
 		    background: #b784e3;
-		    padding: 20px 20px 20px 20px;
+		    padding: 80px 20px 20px 20px;
 		    font: 12px Arial, Helvetica, sans-serif;
 		    color: #666;
 		}
@@ -75,7 +73,7 @@ session_start();
 		    background: #fbfbfb url('down-arrow.png') no-repeat right;
 		    background: #fbfbfb url('down-arrow.png') no-repeat right;
 		   appearance:none;
-		    -webkit-appearance:none; 
+		    -webkit-appearance:none;
 		   -moz-appearance: none;
 		    text-indent: 0.01px;
 		    text-overflow: '';
@@ -90,7 +88,7 @@ session_start();
 		    -webkit-box-shadow: 1px 1px 1px #4C6E91;
 		    -moz-box-shadow: 1px 1px 1px #4C6E91;
 		    text-shadow: 1px 1px 1px #5079A3;
-		    
+
 		}
 		.elegant-aero .button:hover{
 		    background: #460b5a;
@@ -98,16 +96,11 @@ session_start();
 	</style>
 </head>
 <body>
-<p>
-	you are logged as   <?php echo $_SESSION['username'] ?> .
-	</br>
-	<a href="../index.php?op=logout">Logout</a>
-</p><div id="adduser">
-	<h2 class="animated infinite bounce">ADD USER</h2>
+
+
 	<?php if(@$_GET['err']==1){ ?>
 		<div class ="error-text">Login incorrect</div>
 	<?php } ?>
-
 
 
 	<div class="header" id="header">
@@ -116,12 +109,16 @@ session_start();
 			<span></span>
 			<span></span>
 		</div>
-		<span id="logout"><a href="">log out</a></span>
+		<span id="logout"><a href="../index.php?op=logout">Logout</a></span>
+
 		<span id="head_name"><h3>UCSC Student Management System</h3></span>
-		
+        <h3>ans</h3>
+
+
 	</div>
+
 	<div class="side-nav" id="sidebar">
-		
+
 		<nav>
 			<div class="profile_info">
 					<div class="pic"><img src="../view/images/icon.png"></div>
@@ -135,7 +132,7 @@ session_start();
 				</li>
 
 				<li>
-					<a href="../controller/admin_controller.php?op=Add User">	
+					<a href="../controller/admin_controller.php?op=Add User">
 						<span>Add User</span>
 					</a>
 				</li>
@@ -164,44 +161,11 @@ session_start();
 				</li>
 			</ul>
 		</nav>
-		
+
 	</div>
 
 
-	<form action="" method="post" class="elegant-aero">
-    <h1>ADD USER FORM 
-        <span>Please fill all the texts in the fields.</span>
-    </h1>
-    <label>
-        <span>UserID :</span>
-        <input id="u_id" type="text" name="name" placeholder="User ID here" />
-    </label> 
-    <label>
-        <span>Username :</span>
-        <input id="username" type="text" name="name" placeholder="User Name" />
-    </label> 
-    <label>
-        <span>NIC :</span>
-        <input id="nic" type="text" name="name" placeholder="NIC" />
-    </label>    
-    
-    <label>
-        <span>Email :</span>
-        <input id="email" type="email" name="name" placeholder="Valid Email here" />
-    </label> 
-    <label>
-        <span>Type :</span>
-        <input id="type" type="text" name="type" placeholder="User Type here" />
-    </label>
-    <label>
-        <span>Password :</span>
-        <input id="password" type="password" name="password" placeholder="Password here" />
-    </label><br>         
-     <label>
-        <span>&nbsp;</span> 
-        <input type="button" class="button" value="Add Student" /> 
-    </label>    
-</form>
+
 </div>
 </body>
 </html>
