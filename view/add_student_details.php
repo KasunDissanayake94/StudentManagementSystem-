@@ -108,7 +108,7 @@ session_start();
         <span></span>
         <span></span>
     </div>
-    <span id="logout"><a href="">log out</a></span>
+    <span id="logout"><a href="../index.php?op=logout">log out</a></span>
     <span id="login"><h3>you are logged as   <?php echo $_SESSION['username'] ?></h3></span>
     <span id="head_name"><h3>UCSC Student Management System</h3></span>
 
