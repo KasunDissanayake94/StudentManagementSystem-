@@ -109,12 +109,6 @@ session_start();
     <span id="head_name"><h3>UCSC Student Management System</h3></span>
 
 </div>
-		<span id="logout"><a href="../index.php?op=logout">Logout</a></span>
-		<span id="login"><a href="../index.php?op=logout">Logout</a></span>
-		<span id="head_name"><h3>UCSC Student Management System</h3></span>
-
-
-	</div>
 	<div class="side-nav" id="sidebar">
 
 		<nav>
@@ -162,7 +156,7 @@ session_start();
 
 	</div>
 
-
+<div id="content">
 	<form action="" method="post" class="elegant-aero">
     <h1>ADD USER FORM
         <span>Please fill all the texts in the fields.</span>
@@ -198,5 +192,6 @@ session_start();
     </label>
 </form>
 </div>
+
 </body>
 </html>
