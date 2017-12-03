@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 session_start();
 if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
@@ -25,8 +25,6 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 	}
 	
  }
-
- 	
 
  	// load the view
 	require('../view/lecturer.php');
@@ -93,6 +91,4 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  		}
 
  	}
-	
-
 ?>
