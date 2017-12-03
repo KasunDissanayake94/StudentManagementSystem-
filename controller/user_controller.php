@@ -63,12 +63,17 @@ class UserController
 			$user = new UserModel($username);
 			$type = $this->gettype($username);
 			$id=$this->getId($username);
+			$fname=$this->getFname($username);
+			$lname=$this->getLname($username);
+
 
 			$_SESSION['user'] = $user;
 			$_SESSION['type'] = $type;
 			$_SESSION['username'] = $username;
 			$_SESSION['id']=$id;
- 
+			$_SESSION['fname']=$fname;
+			$_SESSION['lname']=$lname;
+
 			return true;
 		}else{
 			return false;
@@ -84,6 +89,26 @@ class UserController
 			$id=$result[0]['id'];
 		}
 		return $id;
+	}
+
+	function getFname($u){
+		$fname="null";
+		$query="SELECT `first_name` FROM lecturer WHERE `user_name`=".$u."";
+		$result=self::$db->select($query);
+		if($result){
+			$fname=$result[0]['first_name'];
+		}
+		return $fname;
+	}
+
+	function getLname($u){
+		$lname="null";
+		$query="SELECT `last_name` FROM lecturer WHERE `user_name`=".$u."";
+		$result=self::$db->select($query);
+		if($result){
+			$lname=$result[0]['last_name'];
+		}
+		return $lname;
 	}
 
 	function getType($u){

@@ -90,14 +90,14 @@
                                         </a>
                                     </li>
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="http://jskrishna.com/work/merkury/images/user-pic.jpg" alt="user">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['lname'] ?>
                                             <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <div class="navbar-content">
-                                                    <span>JS Krishna</span>
+                                                    <span><?php echo $_SESSION['fname'] ?><?php echo $_SESSION['lname'] ?></span>
                                                     <p class="text-muted small">
-                                                        me@jskrishna.com
+                                                        <?php echo $_SESSION['username'] ?>
                                                     </p>
                                                     <div class="divider">
                                                     </div>
