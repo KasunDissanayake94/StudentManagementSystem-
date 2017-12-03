@@ -54,11 +54,7 @@
 </head>
 <body>
 
-<p>
-	you are logged as   <?php echo $_SESSION['username'] ?> .
-	</br>
-	<a href="../index.php?op=logout">Logout</a>
-</p>
+
 <div class="header" id="header">
 		<div id="btn" class="toggle-btn" onclick="togglesidebar()">
 			<span></span>
@@ -66,6 +62,7 @@
 			<span></span>
 		</div>
 		<span id="logout"><a href="">log out</a></span>
+		<span id="login"><h3>you are logged as   <?php echo $_SESSION['username'] ?></h3></span>
 		<span id="head_name"><h3>UCSC Student Management System</h3></span>
 
 	</div>

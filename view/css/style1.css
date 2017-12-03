@@ -38,7 +38,7 @@
 	margin: 4px 0px;
 }
 
-<<<<<<< HEAD
+
 .header #login a{
   text-decoration: none;
   float: left;
@@ -54,23 +54,21 @@
     font-weight: bold;
     font-size: 15px;
 }
-.header #user_status h3{
+.header #login h3{
     position: absolute;
     padding: 15px;
-    left: 500px;
+    right: 100px;
     color: #151719;
 }
 
 .header #head_name h3{
 	position: absolute;
 	padding: 15px;
-	left: 500px;
+	right: 500px;
 	color: #151719;
 }
-=======
 
 
->>>>>>> 639c3fc81c484b2ff3a5bfd79a3ce57f87ee534d
 
 .side-nav{
 	position: fixed;
