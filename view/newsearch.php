@@ -3,11 +3,27 @@
 <head>
     <title>New Search Student</title>
     <style type="text/css">
+
         a {
             text-decoration: none;
             display: inline-block;
             padding: 2px 2px;
         }
+        .member {
+            display: inline-block;
+            width:20%;
+            vertical-align: top;
+            text-align:center;
+        }
+        .name {
+            display: inline;
+        }
+        .member img {
+            width: 250px;
+            height:180px;
+            display: block;
+        }
+
         a:hover {
             background-color: #ddd;
             color: black;
@@ -361,9 +377,20 @@
             <br>
             <br>
             <div class="tableform">
-                <h1>Details here</h1>
-                <div class="live_search">
-                    Good
+                <h1>Filter Details</h1>
+                <div class="live_search" id="live_search">
+
+                    <p>
+                        <img src="../view/images/001.jpg" style="float:left; width:300px;height: 300px;border-right: #999999 10px outset; border-bottom: #999999 4px outset; border-left: #000000 4px outset; border-top: #000000 4px outset;" />
+                        dvsddbsdbsdbs
+                    </p>
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>
@@ -385,7 +412,7 @@
 
             $.ajax(
                 {
-                    url:"Location:../view/fetch1.php",
+                    url:"../view/fetch1.php",
                     method:"get",
                     data:{searchData:txt},
                     dataType:"text",
