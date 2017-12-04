@@ -122,7 +122,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			header("Location:../view/Add_User.php");
 		}
 		function search_user(){
-			header("Location:../view/search_user.php");
+			header("Location:../view/search.php");
 		}
 		function modify_user(){
 			header("Location:../view/search_user.php");
