@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2017 at 05:51 AM
+-- Generation Time: Dec 04, 2017 at 06:10 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -69,7 +69,7 @@ CREATE TABLE `hostel` (
 
 CREATE TABLE `lecturer` (
   `id` int(20) NOT NULL,
-  `user_name` varchar(30) NOT NULL,
+  `username` varchar(30) NOT NULL,
   `first_name` varchar(40) NOT NULL,
   `last_name` varchar(40) NOT NULL,
   `gender` varchar(10) NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE `lecturer` (
 -- Dumping data for table `lecturer`
 --
 
-INSERT INTO `lecturer` (`id`, `user_name`, `first_name`, `last_name`, `gender`, `dob`, `telephone`, `email`, `education`, `research`, `courses`, `awards`) VALUES
+INSERT INTO `lecturer` (`id`, `username`, `first_name`, `last_name`, `gender`, `dob`, `telephone`, `email`, `education`, `research`, `courses`, `awards`) VALUES
 (33, 'john01', 'John', 'Ward', 'male', '2017-10-03', '0771234567', 'a@gmail.com', 'BSc (Col),MSc (Swansea),PhD(Cardiff)', 'Multidatabase & Knowledgebases', 'SCS 2109 Database II', 'Not included yet'),
 (34, 'l1', 'K.P.M.K.', 'Silva', 'Male', '2016-07-20', '0714576125', 'mks@ucsc.cmb.ac.lk', 'BSc - Computer Science Special (Colombo) 1992', 'Computer Hardware and Systems', 'Theory of Computing', 'Not included yet');
 
@@ -256,6 +256,8 @@ CREATE TABLE `user` (
   `id` int(10) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `first_name` varchar(40) NOT NULL,
+  `last_name` varchar(40) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `type` varchar(255) NOT NULL,
   `nic` int(11) DEFAULT NULL
@@ -265,24 +267,24 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `type`, `nic`) VALUES
-(33, 'a', '$2y$12$gGNIqrD/GIdm6JdbVevvsekRzeEH0NJk4oe26N4BWKVAk9CBJvZmG', NULL, 'admin', NULL),
-(34, 'l1', '$2y$12$WJ.ccZX/gQ5J7sTPm1hCRu7VoGpJ8BvJgY0wB.9i3qFbNDQoIx8Km', 'mks@ucsc.cmb.ac.lk', 'lecturer', 111111111),
-(35, 'a1', '$2y$12$V6Frmy8B3QsD/cY2A5dxe.uEYatfLESri5S7G9AoHPjO3U.BUXTh2', NULL, 'admin', NULL),
-(37, 'a2', '$2y$12$XdW/K5vRiNfLcPVR8xhj6uzIDyKuqSPDmmLZq1ajOQIWtyIxVrzKu', NULL, 'admin', NULL),
-(38, 's1', '$2y$12$Zio8FQrdadoGJw1mDYALze9O13VIwtiXsqpgaegjwrrEJtnKWRgYS', NULL, 'student', NULL),
-(39, 's2', '$2y$12$8Auu4gLKTAYRRZvqm8uSzehiS7SvgDkEQqXR9dvcB8A3NP0oYmJCy', NULL, 'student', NULL),
-(40, 'a3', '$2y$12$DlQc0sWW8vRc0SZw1tBSeObR4hBFBf3LuRCu/8TbrhveyLmx1Vgde', NULL, 'admin', NULL),
-(41, 's3', '$2y$12$kuCGs4HQ6ptnjn.beFKdBOtaXNK8RFtBehX6rJ8KwdQCEoM6l9w7a', NULL, 'student', NULL),
-(42, 'student1', '$2y$12$PbYjaQQe50tfrMGsXq48z.Xu1Jkwuyd4IGUjhr1ivGn85sTZjwV5y', NULL, 'student', NULL),
-(43, 'JacintaRCarpenter@armyspy.com', '$2y$12$c0XDXprJhW7jU9OunYV3MuIO.z8VIDkfUAXptn.WLbpprlmzNWzCm', NULL, 'student', NULL),
-(44, '', '$2y$12$FPLDakoNXuDax1V6KzWeI.Q2IzMTt3WRDDeuNlKkXMwnzCnC4QMuG', NULL, '', NULL),
-(45, '001', '$2y$12$E8cIy3Aa3KrGGxPsNQUC0OurefWWeZWnGICp8dkR.n6HoTJMyYdVq', NULL, 'student', NULL),
-(46, '002', '$2y$12$bZBhQRP5r9KduKqzwKf3HuFzRm0uTXwW7XSo2ol.yp4l3uOM2FGZq', NULL, 'student', NULL),
-(47, '003', '$2y$12$bjgTnV1UIaFQU.LoLD8rdu7JXiceVFL8uI0bwHAYPEG.yp13V.SzK', NULL, 'student', NULL),
-(48, 'e', '$2y$12$4easLKnzbT5fZR3sHzIFzejV/7Bcnys73QDBOJg9Q9S1PXW7J9f/W', NULL, 'staff', NULL),
-(49, 'aca1', '$2y$12$pqvpk4FvbCiXOBEN0sIFtehD6ai6TPIG2uzs1AoEx3fOXj3/y6qHq', NULL, 'ar', NULL),
-(50, 'mks', 'mks', 'mks@ucsc.cmb.ac.lk', 'lecturer', 995486251);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `type`, `nic`) VALUES
+(33, 'a', '$2y$12$gGNIqrD/GIdm6JdbVevvsekRzeEH0NJk4oe26N4BWKVAk9CBJvZmG', 'anga', 'angathan', NULL, 'admin', NULL),
+(34, 'l1', '$2y$12$WJ.ccZX/gQ5J7sTPm1hCRu7VoGpJ8BvJgY0wB.9i3qFbNDQoIx8Km', 'K.P.M.K.', 'Silva', 'mks@ucsc.cmb.ac.lk', 'lecturer', 111111111),
+(35, 'a1', '$2y$12$V6Frmy8B3QsD/cY2A5dxe.uEYatfLESri5S7G9AoHPjO3U.BUXTh2', '', '', NULL, 'admin', NULL),
+(37, 'a2', '$2y$12$XdW/K5vRiNfLcPVR8xhj6uzIDyKuqSPDmmLZq1ajOQIWtyIxVrzKu', '', '', NULL, 'admin', NULL),
+(38, 's1', '$2y$12$Zio8FQrdadoGJw1mDYALze9O13VIwtiXsqpgaegjwrrEJtnKWRgYS', '', '', NULL, 'student', NULL),
+(39, 's2', '$2y$12$8Auu4gLKTAYRRZvqm8uSzehiS7SvgDkEQqXR9dvcB8A3NP0oYmJCy', '', '', NULL, 'student', NULL),
+(40, 'a3', '$2y$12$DlQc0sWW8vRc0SZw1tBSeObR4hBFBf3LuRCu/8TbrhveyLmx1Vgde', '', '', NULL, 'admin', NULL),
+(41, 's3', '$2y$12$kuCGs4HQ6ptnjn.beFKdBOtaXNK8RFtBehX6rJ8KwdQCEoM6l9w7a', '', '', NULL, 'student', NULL),
+(42, 'student1', '$2y$12$PbYjaQQe50tfrMGsXq48z.Xu1Jkwuyd4IGUjhr1ivGn85sTZjwV5y', '', '', NULL, 'student', NULL),
+(43, 'JacintaRCarpenter@armyspy.com', '$2y$12$c0XDXprJhW7jU9OunYV3MuIO.z8VIDkfUAXptn.WLbpprlmzNWzCm', '', '', NULL, 'student', NULL),
+(44, '', '$2y$12$FPLDakoNXuDax1V6KzWeI.Q2IzMTt3WRDDeuNlKkXMwnzCnC4QMuG', '', '', NULL, '', NULL),
+(45, '001', '$2y$12$E8cIy3Aa3KrGGxPsNQUC0OurefWWeZWnGICp8dkR.n6HoTJMyYdVq', '', '', NULL, 'student', NULL),
+(46, '002', '$2y$12$bZBhQRP5r9KduKqzwKf3HuFzRm0uTXwW7XSo2ol.yp4l3uOM2FGZq', '', '', NULL, 'student', NULL),
+(47, '003', '$2y$12$bjgTnV1UIaFQU.LoLD8rdu7JXiceVFL8uI0bwHAYPEG.yp13V.SzK', '', '', NULL, 'student', NULL),
+(48, 'e', '$2y$12$4easLKnzbT5fZR3sHzIFzejV/7Bcnys73QDBOJg9Q9S1PXW7J9f/W', '', '', NULL, 'staff', NULL),
+(49, 'aca1', '$2y$12$pqvpk4FvbCiXOBEN0sIFtehD6ai6TPIG2uzs1AoEx3fOXj3/y6qHq', '', '', NULL, 'ar', NULL),
+(50, 'mks', 'mks', '', '', 'mks@ucsc.cmb.ac.lk', 'lecturer', 995486251);
 
 --
 -- Indexes for dumped tables

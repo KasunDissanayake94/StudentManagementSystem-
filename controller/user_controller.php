@@ -93,7 +93,7 @@ class UserController
 
 	function getFname($u){
 		$fname="null";
-		$query="SELECT `first_name` FROM lecturer WHERE `user_name`=".$u."";
+		$query="SELECT `first_name` FROM user WHERE `username`=".$u."";
 		$result=self::$db->select($query);
 		if($result){
 			$fname=$result[0]['first_name'];
@@ -103,7 +103,7 @@ class UserController
 
 	function getLname($u){
 		$lname="null";
-		$query="SELECT `last_name` FROM lecturer WHERE `user_name`=".$u."";
+		$query="SELECT `last_name` FROM user WHERE `username`=".$u."";
 		$result=self::$db->select($query);
 		if($result){
 			$lname=$result[0]['last_name'];

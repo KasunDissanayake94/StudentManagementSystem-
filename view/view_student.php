@@ -1,31 +1,32 @@
-<?php
-	if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
-	        /* 
-	           Up to you which header to send, some prefer 404 even if 
-	           the files does exist for security
-	        */
-	        header( 'HTTP/1.0 403 Forbidden', TRUE, 403 );
+<?php 
+session_start();
+ ?>
 
-	        /* choose the appropriate page to redirect users */
-	        die( header( 'location: /error.php' ) );
+ <?php
+    if(isset($_SESSION['value'])){
 
-	    }
-
-	    @session_start();
-		if(!isset($_SESSION['user'])){
-			header("Location:../index.php");
-		}
-
+    foreach ($_SESSION['value'] as $lecturer) {
+            $first_name=$lecturer['first_name'];
+            $last_name=$lecturer['last_name'];
+            $gender=$lecturer['gender'];
+            $dob=$lecturer['dob'];
+            $telephone=$lecturer['telephone'];
+            $email=$lecturer['email'];
+            $education=$lecturer['education'];
+            $research=$lecturer['research'];
+            $courses=$lecturer['courses'];
+            $awards=$lecturer['awards'];
+        }
+    }
 ?>
-
-
 <!DOCTYPE html>
 <html>
 
 
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../view/css/style2.css">
+    <link rel="stylesheet" type="text/css" href="../view/css/style1.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -44,9 +45,9 @@
                 </div>
                 <div class="navi">
                     <ul>
-                        <li class="active"><a href="../controller/lecturer_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                        <li><a href="../controller/lecturer_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
                         <li><a href="../controller/lecturer_controller.php?op=view_lecturer"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Profile</span></a></li>
-                        <li><a href="../controller/lecturer_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
+                        <li class="active"><a href="../controller/lecturer_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
                         <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Subjects</span></a></li>
                         <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calender</span></a></li>
                         <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
@@ -111,50 +112,75 @@
                         </div>
                     </header>
                 </div>
-                <div class="user-dashboard">
-                    <h1>Lecturer</h1>
-                    <div class="row">
-                        <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+                <div class="content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
 
-                            <div class="sales">
-                                <h2>Details</h2>
-
-                                <div class="btn-group">
-                                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span>Period:</span> Last Year
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a href="#">2012</a>
-                                        <a href="#">2014</a>
-                                        <a href="#">2015</a>
-                                        <a href="#">2016</a>
+                                <div class="panel panel-default panel-table">
+                                  <div class="panel-heading">
+                                    <div class="row">
+                                      <div class="col col-xs-6">
+                                        <h3 class="panel-title">Student Details</h3>
+                                      </div>
+                                      <div class="col col-xs-6 text-right">
+                                        <button type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+                                      </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7 col-sm-7 col-xs-12 gutter">
-
-                            <div class="sales report">
-                                <h2>Report</h2>
-                                <div class="btn-group">
-                                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span>Period:</span> Last Year
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a href="#">2012</a>
-                                        <a href="#">2014</a>
-                                        <a href="#">2015</a>
-                                        <a href="#">2016</a>
+                                  </div>
+                                  <div class="panel-body">
+                                    <table class="table table-striped table-bordered table-list">
+                                      <thead>
+                                        <tr>
+                                            <th><em class="fa fa-cog"></em></th>
+                                            <th class="hidden-xs">ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                        </tr> 
+                                      </thead>
+                                      <tbody>
+                                              <tr>
+                                                <td align="center">
+                                                  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                                                  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                                </td>
+                                                <td class="hidden-xs">1</td>
+                                                <td>John Doe</td>
+                                                <td>johndoe@example.com</td>
+                                              </tr>
+                                            </tbody>
+                                    </table>
+                                
+                                  </div>
+                                  <div class="panel-footer">
+                                    <div class="row">
+                                      <div class="col col-xs-4">Page 1 of 5
+                                      </div>
+                                      <div class="col col-xs-8">
+                                        <ul class="pagination hidden-xs pull-right">
+                                          <li><a href="#">1</a></li>
+                                          <li><a href="#">2</a></li>
+                                          <li><a href="#">3</a></li>
+                                          <li><a href="#">4</a></li>
+                                          <li><a href="#">5</a></li>
+                                        </ul>
+                                        <ul class="pagination visible-xs pull-right">
+                                            <li><a href="#">«</a></li>
+                                            <li><a href="#">»</a></li>
+                                        </ul>
+                                      </div>
                                     </div>
+                                  </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    </div></div></div>
+                    
                 </div>
             </div>
         </div>
 
     </div>
+
 
 </body>
 

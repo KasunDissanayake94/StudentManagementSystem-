@@ -25,7 +25,7 @@ li,ul{
 .login-header {
     display: inline-block;
     width: 100%;
-    background: #0e1a35;
+    background:rgba(38, 70, 146, 0.94);
 }
 
 .login-signup {
@@ -200,7 +200,7 @@ li,ul{
     border-collapse: collapse;
     border-spacing: 0;
     font: normal 15px Arial, sans-serif;
-    width: 50%;
+    width: 60%;
     border-left: none;
     border-right: none;
 }
@@ -239,6 +239,7 @@ li,ul{
 
 #navigation {
     padding: 0;
+    height: 100%
 }
 
 .display-table {
