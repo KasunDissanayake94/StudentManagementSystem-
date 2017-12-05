@@ -53,6 +53,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         case 'edit_by_student':
             $student_controller->edit_by_student();
             break;
+		case 'Problems':
+			$student_controller->problems();
+			break;
 		default:
             header("Location:../view/student.php");
 			break;
@@ -104,6 +107,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		}
 		function exam(){
             header("Location:../view/exam_details.php");
+		}
+		//Send problems to the Admin
+		function problems(){
+            header("Location:../view/problems.php");
 		}
 
 
