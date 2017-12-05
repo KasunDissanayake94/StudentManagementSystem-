@@ -136,7 +136,7 @@ if(isset($_SESSION['details'])){
 
 
                         <!-- We're going to place the form here in the next step -->
-                        <form id="contact-form" method="post" action="contact.php" role="form">
+                        <form id="contact-form" method="post" action="../view/mail.php" role="form">
 
                             <div class="messages"></div>
 
@@ -170,6 +170,20 @@ if(isset($_SESSION['details'])){
                                         <div class="form-group">
                                             <label for="form_phone">Phone</label>
                                             <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_phone">Subject</label>
+                                            <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please ebter subjects here *" required="required">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_phone">Send To</label>
+                                            <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please Enter senders Name or Email">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
