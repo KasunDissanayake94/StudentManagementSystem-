@@ -32,6 +32,10 @@ session_start();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="test/main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="../view/js/jquery-3.2.1.min.js"></script>
+  <script src="../view/js/jquery.tabledit.min.js"></script>
+  <script src="../view/js/jquery.tabledit.js"></script>
+  <script src="../view/js/jquery.min.js"></script>
 </head>
 
 <body class="home">
@@ -91,7 +95,7 @@ session_start();
                                         </a>
                                     </li>
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['lname'] ?>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['type'] ?>
                                             <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                             <li>
@@ -112,9 +116,8 @@ session_start();
                         </div>
                     </header>
                 </div>
-                <div class="content">
-                    <div class="container">
-                        <div class="row">
+                <div>
+                    <div class="row">
                             <div class="col-md-10 col-md-offset-1">
 
                                 <div class="panel panel-default panel-table">
@@ -129,27 +132,22 @@ session_start();
                                     </div>
                                   </div>
                                   <div class="panel-body">
-                                    <table class="table table-striped table-bordered table-list">
-                                      <thead>
-                                        <tr>
-                                            <th><em class="fa fa-cog"></em></th>
-                                            <th class="hidden-xs">ID</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                        </tr> 
-                                      </thead>
-                                      <tbody>
-                                              <tr>
-                                                <td align="center">
-                                                  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                                  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                                </td>
-                                                <td class="hidden-xs">1</td>
-                                                <td>John Doe</td>
-                                                <td>johndoe@example.com</td>
-                                              </tr>
-                                            </tbody>
-                                    </table>
+                                    <body>
+                                      <div class="container">
+                                       <br />
+                                       <h1 align="center">Search Student</h1><br />
+                                       <div class="form-group">
+                                        <div class="input-group">
+                                         <span class="search"><h><b>Search</b></h></span>
+                                         <input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" />
+
+                                        </div>
+                                       </div>
+                                       <br />
+                                       <div id="result"></div>
+                                      </div>
+                                     </body>
+                                    
                                 
                                   </div>
                                   <div class="panel-footer">
@@ -173,8 +171,7 @@ session_start();
                                   </div>
                                 </div>
 
-                    </div></div></div>
-                    
+                    </div></div>
                 </div>
             </div>
         </div>
@@ -185,3 +182,34 @@ session_start();
 </body>
 
 </html>
+
+<script>
+                                        $(document).ready(function(){
+
+                                         load_data();
+
+                                         function load_data(query)
+                                         {
+                                          $.ajax({
+                                           url:"fetch.php",
+                                           method:"POST",
+                                           data:{query:query},
+                                           success:function(data)
+                                           {
+                                            $('#result').html(data);
+                                           }
+                                          });
+                                         }
+                                         $('#search_text').keyup(function(){
+                                          var search = $(this).val();
+                                          if(search != '')
+                                          {
+                                           load_data(search);
+                                          }
+                                          else
+                                          {
+                                           load_data();
+                                          }
+                                         });
+                                        });
+                                        </script>s

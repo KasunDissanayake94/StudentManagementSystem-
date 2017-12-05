@@ -90,7 +90,7 @@
                                         </a>
                                     </li>
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['lname'] ?>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['type'] ?>
                                             <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                             <li>
