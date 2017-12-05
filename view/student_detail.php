@@ -151,7 +151,7 @@ if(isset($_SESSION['details'])){
                                 <div class="col-lg-3 col-md-3">
                                     <center>
                                         <span class="text-left">
-                                        <img src="../view/images/profile_pic/<?php echo $s_id;?>" class="img-responsive img-thumbnail">
+                                        <img src="../view/images/profile_pic/001" class="img-responsive img-thumbnail">
 
 
                                             <!-- Modal -->
@@ -162,12 +162,15 @@ if(isset($_SESSION['details'])){
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                             <h4 class="modal-title text-success" id="myModalLabel"><i class="fa fa-gear"></i> <span class="text-right">Change Photo</span></h4>
                                                         </div>
-                                                        <div class="modal-body">
-    <center><img src="../view/images/profile_pic/<?php echo $s_id;?>" class="img-responsive img-thumbnail"></center>
+                                                        <div class="modal-body"><center><img src="../view/images/profile_pic/<?php echo $s_id;?>" class="img-responsive img-thumbnail"></center>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a href="upload/upload-view.php?id=68" class="btn btn-success"><i class="fa fa-photo"></i> Upload</a>
-                                                            <a href="upload/upload-view.php?id=68&amp;name=Viddhyut Mall&amp;src=view" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                                                            <form class="uplaod" action="../view/upload.php" method="post" enctype="multipart/form-data" >
+                                                                <input class="up1" type="file" name="fileToUpload" value="Chose Image" >
+                                                                <button class="btn btn-success" type="submit" value="<?php echo $s_id;?>" name="stu_id"><i class="fa fa-photo"></i> Upload</button>
+                                                                <a href="../view/student_detail.php" class="btn btn-danger"><i class="fa fa-trash"></i> Cancel</a>
+                                                            </form>
+
                                                         </div>
                                                     </div>
                                                     <!-- /.modal-content -->

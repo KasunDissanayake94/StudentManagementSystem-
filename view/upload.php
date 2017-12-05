@@ -1,5 +1,8 @@
-    <?php
-    $target_dir = "../images/";
+<!--File to Upload-->
+<?php
+    $s_id=$_REQUEST['stu_id'];
+    $target_dir = "../view/images/profile_pic/";
+    unlink('../view/images/profile_pic/'.$s_id.".jpg");
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -36,7 +39,8 @@
     // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            rename("../view/images/profile_pic/".basename( $_FILES["fileToUpload"]["name"]),"../view/images/profile_pic/".$s_id.".jpg");
+            header("Location:../view/student_detail.php");
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
