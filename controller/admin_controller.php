@@ -38,6 +38,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		$op="moreinfo";
 	}
 
+
 	$admin_controller = new AdminController();
 
 	switch ($op) {
@@ -96,8 +97,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             $admin_controller->show_moreinformation($var);
             break;
 		default:
-
-			//header("Location:../index.php");
+			//index.php
 			break;
 	}
 
@@ -109,7 +109,8 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		function __construct()
 		{
 			self::$db = new DB();
-			self::$admin = new AdminModel();	
+			self::$admin = new AdminModel();
+
 		}
 
 		function addUser(){

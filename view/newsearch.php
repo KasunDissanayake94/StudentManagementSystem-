@@ -393,8 +393,8 @@ session_start();
                     <?php
                     // Live Search here.Display all the results in the Search area
 
-                    if(isset($_SESSION['value'])){
-                        foreach ($_SESSION['value'] as $user) {
+                    if(isset($_SESSION['student_info'])){
+                        foreach ($_SESSION['student_info'] as $user) {
                             $first_name=($user['first_name']);
                             $last_name=($user['last_name']);
                             $s_id=($user['s_id']);

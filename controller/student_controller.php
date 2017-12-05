@@ -27,7 +27,12 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 	@$op = $_REQUEST['op'];
 	@$id = $_SESSION['user'];
 
+
+
 	$student_controller = new StudentController();
+
+
+
 
 	switch ($op) {
 		case 'add_user':
@@ -37,10 +42,13 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			$student_controller->fill_profile();
 			break;
 		case 'TimeTable':
-			$student_controller->timetable();	
-		
+			$student_controller->timetable();
+			break;
+        case 'edit_by_student':
+            $student_controller->edit_by_student();
+            break;
 		default:
-			//header("Location:../index.php");
+            header("Location:../view/student.php");
 			break;
 	}
 
@@ -61,7 +69,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			$result = self::$student->getdetails($st_id);
 			if ($result) {
 				$_SESSION['details']=$result;
-				header("Location:../view/student.php");
+
 			}else{
 				die("not");
 			}
@@ -80,6 +88,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		}
 		function timetable(){
 			header("Location:../view/timetable.php");
+		}
+
+		function edit_by_student(){
+            header("Location:../view/student_detail.php");
 		}
 
 
