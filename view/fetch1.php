@@ -34,7 +34,7 @@ if(mysqli_num_rows($result2)>0)
         $s_id=($rows['s_id']);
         $i_image=($rows['stu_image']);
         $link= '../view/images/profile_pic/'.$s_id.'.jpg';
-        $_SESSION['student_details']=$rows;
+        //Call the admin controller calss to get the more information about the student
         $more_link='../controller/admin_controller?student_id='.$s_id;
         echo "<div class=\"member\" style='float:left;
     width:200px;

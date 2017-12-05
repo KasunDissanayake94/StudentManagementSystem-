@@ -237,7 +237,14 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			header("Location:../view/search.php");
 		}
 		function search_by(){
-			header("Location:../view/newsearch.php");
+            $result = self::$admin->view_all_students();
+            if($result){
+                $_SESSION['value']=$result;
+                header("Location:../view/newsearch.php");
+            }else{
+                echo "something wrong";
+            }
+
 		}
 		function serach_result(){	
 
