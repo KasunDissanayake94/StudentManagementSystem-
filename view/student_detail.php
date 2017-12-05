@@ -13,7 +13,6 @@ if(isset($_SESSION['details'])){
         $lname=$user['last_name'];
         $area=$user['area'];
         $s_id=$user['s_id'];
-        $area=$user['area'];
         $school=$user['school'];
         $bday=$user['birthdate'];
         $race=$user['race'];
@@ -211,7 +210,7 @@ if(isset($_SESSION['details'])){
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Full Name</td>
-                                                        <td>Viddhyut Mall</td>
+                                                        <td><?php echo $fname." ".$lname; ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-list-ol"></i> Scholar Number</td>
@@ -227,13 +226,13 @@ if(isset($_SESSION['details'])){
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-calendar"></i> Birthday</td>
-                                                        <td>December 2, 2011</td>
+                                                        <td><?php echo $bday; ?></td>
                                                     </tr>
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-university"></i> School</td>
                                                         <td>
-                                                            Shyama Mall Girls Inter College                                                                 </td>
+                                                            <?php echo $school; ?>                                                                </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -249,10 +248,8 @@ if(isset($_SESSION['details'])){
                                                         <td class="text-success"><i class="fa fa-home"></i> Address</td>
                                                         <td>
                                                             <address>
-                                                                <strong>
-                                                                    C-***, Amahiya </strong><br>
-                                                                Kharobar, ****** <br>
-                                                                Gorakhpur, Utter Pradesh, India<br>
+                                                                
+                                                                    <?php echo $area; ?>
                                                             </address>
                                                         </td>
                                                     </tr>
