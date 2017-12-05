@@ -44,6 +44,12 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		case 'TimeTable':
 			$student_controller->timetable();
 			break;
+        case 'AcadamicDetails':
+            $student_controller->acadamic();
+            break;
+        case 'ExaminationDetails':
+            $student_controller->exam();
+            break;
         case 'edit_by_student':
             $student_controller->edit_by_student();
             break;
@@ -92,6 +98,12 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
 		function edit_by_student(){
             header("Location:../view/student_detail.php");
+		}
+		function acadamic(){
+            header("Location:../view/acadamic_details.php");
+		}
+		function exam(){
+            header("Location:../view/exam_details.php");
 		}
 
 

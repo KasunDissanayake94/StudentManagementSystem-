@@ -1,4 +1,11 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Kasun Dissanayake
+ * Date: 12/5/2017
+ * Time: 9:05 PM
+ */
+
 session_start();
 ?>
 
@@ -44,11 +51,12 @@ if(isset($_SESSION['details'])){
             </div>
             <div class="navi">
                 <ul>
-                    <li class="active"><a href="../controller/admin_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
-                    <li ><a href="../controller/student_controller.php?op=TimeTable"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Table</span></a></li>
-                    <li><a href="../controller/student_controller.php?op=AcadamicDetails"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Acadamic Details</span></a></li>
-                    <li><a href="../controller/student_controller.php?op=ExaminationDetails"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Examination Details</span></a></li>
-                    <li><a href="../controller/student_controller.php?op=Problems"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Problems</span></a></li>
+                    <li class="active"><a href="../controller/admin_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                    <li><a href="../controller/admin_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">GPA</span></a></li>
+                    <li ><a href="../controller/student_controller.php?op=TimeTable"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarship Details</span></a></li>
+                    <li><a href="../controller/student_controller.php?op=AcadamicDetails"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Medical Reports Submission</span></a></li>
+                    <li><a href="../controller/student_controller.php?op=ExaminationDetails"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Season Forms</span></a></li>
+                    <li><a href="../controller/student_controller.php?op=Problems"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Request Letters</span></a></li>
                 </ul>
             </div>
         </div>

@@ -53,10 +53,10 @@ if(isset($_SESSION['details'])){
             <div class="navi">
                 <ul>
                     <li><a href="../controller/admin_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
-                    <li class="active"><a href="../controller/admin_controller.php?op=Home"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Table</span></a></li>
-                    <li><a href="../controller/admin_controller.php?op=Modify Students"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Acadamic Details</span></a></li>
-                    <li><a href="../controller/admin_controller.php?op=Search Students"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Examination Details</span></a></li>
-                    <li><a href="../controller/admin_controller.php?op=Add Student Details"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Problems</span></a></li>
+                    <li class="active"><a href="../controller/admin_controller.php?op=TimeTable"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Table</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=AcadamicDetails"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Acadamic Details</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=ExaminationDetails"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Examination Details</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Problems"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Problems</span></a></li>
                 </ul>
             </div>
         </div>
@@ -160,7 +160,7 @@ if(isset($_SESSION['details'])){
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                            <h4 class="modal-title text-success" id="myModalLabel"><i class="fa fa-gear"></i> <span class="text-right">Viddhyut Mall</span></h4>
+                                                            <h4 class="modal-title text-success" id="myModalLabel"><i class="fa fa-gear"></i> <span class="text-right">Change Photo</span></h4>
                                                         </div>
                                                         <div class="modal-body">
     <center><img src="../view/images/profile_pic/<?php echo $s_id;?>" class="img-responsive img-thumbnail"></center>
@@ -248,7 +248,7 @@ if(isset($_SESSION['details'])){
                                                         <td class="text-success"><i class="fa fa-home"></i> Address</td>
                                                         <td>
                                                             <address>
-                                                                
+
                                                                     <?php echo $area; ?>
                                                             </address>
                                                         </td>
