@@ -34,7 +34,8 @@ if(mysqli_num_rows($result2)>0)
         $s_id=($rows['s_id']);
         $i_image=($rows['stu_image']);
         $link= '../view/images/profile_pic/'.$s_id.'.jpg';
-        $more_link='../view/more.php';
+        //Call the admin controller calss to get the more information about the student
+        $more_link='../controller/admin_controller?student_id='.$s_id;
         echo "<div class=\"member\" style='float:left;
     width:200px;
     height:350px;
@@ -44,6 +45,7 @@ if(mysqli_num_rows($result2)>0)
     -moz-box-shadow: 1px 2px 2px #ccc;
     -webkit-box-shadow: 1px 2px 2px #ccc;
     box-shadow: 1px 2px 2px #ccc;'>
+    
     <br><br>
     <img style=\"width: 200px;\" src=".$link. " alt=\"Click the link to see more info\"  />
     <div class=\"name\">
@@ -51,7 +53,7 @@ if(mysqli_num_rows($result2)>0)
         $first_name $last_name
         </h4>
         <p style=\"font-size:15px\"  class=\"card-text\"></p>
-        <p style=\"color: #003399; font-size: 15px\"  class=\"card-text\"><a href=".$more_link.">more</a></p>
+        <p style=\"color: #003399; font-size: 15px\"  class=\"card-text\"><a href=".$more_link.">More Information</a></p>
     </div>
     
 

@@ -1,3 +1,13 @@
+<?php
+session_start();
+/**
+ * Created by PhpStorm.
+ * User: Kasun Dissanayake
+ * Date: 12/4/2017
+ * Time: 5:42 PM
+ */
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -380,10 +390,47 @@
                 <h1>Filter Details</h1>
                 <div class="live_search" id="live_search">
 
-                    <p>
-                        <img src="../view/images/001.jpg" style="float:left; width:300px;height: 300px;border-right: #999999 10px outset; border-bottom: #999999 4px outset; border-left: #000000 4px outset; border-top: #000000 4px outset;" />
-                        dvsddbsdbsdbs
-                    </p>
+                    <?php
+
+                    if(isset($_SESSION['value'])){
+                        foreach ($_SESSION['value'] as $user) {
+                            $first_name=($user['first_name']);
+                            $last_name=($user['last_name']);
+                            $s_id=($user['s_id']);
+                            $i_image=($user['stu_image']);
+                            $link= '../view/images/profile_pic/'.$s_id.'.jpg';
+                            //Call the admin controller calss to get the more information about the student
+                            $more_link='../controller/admin_controller?student_id='.$s_id;
+                            echo "<div class=\"member\" style='float:left;
+                                width:200px;
+                                height:350px;
+                                background:#fff;
+                                padding:3px;
+                                margin-right:3px;
+                                -moz-box-shadow: 1px 2px 2px #ccc;
+                                -webkit-box-shadow: 1px 2px 2px #ccc;
+                                box-shadow: 1px 2px 2px #ccc;'>
+                                
+                                <br><br>
+                                <img style=\"width: 200px;\" src=".$link. " alt=\"Click the link to see more info\"  />
+                                <div class=\"name\">
+                                    <h4 style=\"font-size: 20px\" class=\"card-title\">
+                                    $first_name $last_name
+                                    </h4>
+                                    <p style=\"font-size:15px\"  class=\"card-text\"></p>
+                                    <p style=\"color: #003399; font-size: 15px\"  class=\"card-text\"><a href=".$more_link.">More Information</a></p>
+                                </div>          
+                        
+                                 </div>";
+
+
+                        }
+                                echo "<br>";
+                    }
+
+                    ?>
+
+
 
 
 
