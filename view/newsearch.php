@@ -391,6 +391,7 @@ session_start();
                 <div class="live_search" id="live_search">
 
                     <?php
+                    // Live Search here.Display all the results in the Search area
 
                     if(isset($_SESSION['value'])){
                         foreach ($_SESSION['value'] as $user) {
@@ -429,14 +430,6 @@ session_start();
                     }
 
                     ?>
-
-
-
-
-
-
-
-
 
                 </div>
             </div>
