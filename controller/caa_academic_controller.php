@@ -42,20 +42,18 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
 	@$op = $_REQUEST['op'];
 
-	$lecturer_controller = new LecturerController();
+	$caa_academic_controller = new CaaAcademicController();
 	
 	switch ($op) {
-		case 'view_lecturer':
-			$lecturer_controller->view_lecturer();
-			break;
+		
 		case 'view_student':
-			$lecturer_controller->view_student();
+			$caa_academic_controller->view_student();
 			break;
-		case 'view_subjects':
-        	$lecturer_controller->view_subjects();
+		case 'view_events':
+        	$caa_academic_controller->view_events();
         	break;
-        case 'view_exams':
-        	$lecturer_controller->view_exams();
+        case 'view_scholarships':
+        	$caa_academic_controller->view_scholarships();
         	break;										
 		default:
 			//header("Location:../index.php");
@@ -63,39 +61,27 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 	}
 
 
- 	class LecturerController{
+ 	class CaaAcademicController{
  		protected static $db;
- 		protected static $lecturer;
+ 		protected static $caa_academic;
 
  		function __construct(){
  			self::$db = new DB();
- 			self::$lecturer=new LecturerModel(); 			
+ 			self::$caa_academic=new caa_academicModel(); 			
  		}
 
- 		function view_lecturer(){
-
- 			$lec_id=$_SESSION['id'];
- 			$result = self::$lecturer->view_lecturer($lec_id);
- 			if($result){
-				$_SESSION['value']=$result;
-				header("Location:../view/view_lecturer.php");
-			}else{
-				echo "something wrong";
-			}
-
- 			
- 		}
+ 		
 
  		function view_student(){
- 			header("Location:../view/view_student.php");
+ 			header("Location:../view/caa_view_student.php");
  		}
 
- 		function view_subjects(){
- 			header("Location:../view/view_subjects.php");
+ 		function view_events(){
+ 			header("Location:../view/view_events.php");
  		}
 
- 		function view_exams(){
- 			header("Location:../view/view_exams.php");
+ 		function view_scholarships(){
+ 			header("Location:../view/view_scholarships.php");
  		}
 
  	}

@@ -11,7 +11,7 @@
 
     }
 
-    class LecturerModel{
+    class caa_academicModel{
       protected static $db;
 
       function __construct(){
@@ -19,13 +19,13 @@
 
       } 
 
-      function view_lecturer($lec_id){
-        $query = "SELECT * FROM `lecturer` WHERE id = ".$lec_id." ";
+      // function view_lecturer($lec_id){
+      //   $query = "SELECT * FROM `lecturer` WHERE id = ".$lec_id." ";
 
-        $result = self::$db->select($query);
+      //   $result = self::$db->select($query);
 
-        return $result;
-      }
+      //   return $result;
+      // }
 
     }
 ?>
