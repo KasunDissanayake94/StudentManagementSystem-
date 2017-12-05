@@ -116,63 +116,19 @@ session_start();
                         </div>
                     </header>
                 </div>
-                <div>
-                    <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-
-                                <div class="panel panel-default panel-table">
-                                  <div class="panel-heading">
-                                    <div class="row">
-                                      <div class="col col-xs-6">
-                                        <h3 class="panel-title">Student Details</h3>
-                                      </div>
-                                      <div class="col col-xs-6 text-right">
-                                        <button type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="panel-body">
-                                    <body>
-                                      <div class="container">
-                                       <br />
-                                       <h1 align="center">Search Student</h1><br />
-                                       <div class="form-group">
-                                        <div class="input-group">
-                                         <span class="search"><h><b>Search</b></h></span>
-                                         <input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" />
-
-                                        </div>
-                                       </div>
-                                       <br />
-                                       <div id="result"></div>
-                                      </div>
-                                     </body>
-                                    
-                                
-                                  </div>
-                                  <div class="panel-footer">
-                                    <div class="row">
-                                      <div class="col col-xs-4">Page 1 of 5
-                                      </div>
-                                      <div class="col col-xs-8">
-                                        <ul class="pagination hidden-xs pull-right">
-                                          <li><a href="#">1</a></li>
-                                          <li><a href="#">2</a></li>
-                                          <li><a href="#">3</a></li>
-                                          <li><a href="#">4</a></li>
-                                          <li><a href="#">5</a></li>
-                                        </ul>
-                                        <ul class="pagination visible-xs pull-right">
-                                            <li><a href="#">«</a></li>
-                                            <li><a href="#">»</a></li>
-                                        </ul>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-
-                    </div></div>
+                <div class="user-dashboard">
+                    <div class="panel-heading">
+                      <h4>
+                        <b>Student Details</b>
+                      </h4>
+                      <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
+                    </div>
+                    
+                    <div id="result"></div>
+                    
                 </div>
+
+
             </div>
         </div>
 
@@ -184,32 +140,32 @@ session_start();
 </html>
 
 <script>
-                                        $(document).ready(function(){
+$(document).ready(function(){
 
-                                         load_data();
+ load_data();
 
-                                         function load_data(query)
-                                         {
-                                          $.ajax({
-                                           url:"fetch.php",
-                                           method:"POST",
-                                           data:{query:query},
-                                           success:function(data)
-                                           {
-                                            $('#result').html(data);
-                                           }
-                                          });
-                                         }
-                                         $('#search_text').keyup(function(){
-                                          var search = $(this).val();
-                                          if(search != '')
-                                          {
-                                           load_data(search);
-                                          }
-                                          else
-                                          {
-                                           load_data();
-                                          }
-                                         });
-                                        });
-                                        </script>s
+ function load_data(query)
+ {
+  $.ajax({
+   url:"fetch_student_lecturer.php",
+   method:"POST",
+   data:{query:query},
+   success:function(data)
+   {
+    $('#result').html(data);
+   }
+  });
+ }
+ $('#search_text').keyup(function(){
+  var search = $(this).val();
+  if(search != '')
+  {
+   load_data(search);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+});
+</script>
