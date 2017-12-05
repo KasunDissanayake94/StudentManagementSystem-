@@ -1,5 +1,5 @@
 <?php
-	if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
+  if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
         /* 
            Up to you which header to send, some prefer 404 even if 
            the files does exist for security
@@ -11,7 +11,7 @@
 
     }
 
-    class CaaAcademicModel{
+    class LecturerModel{
       protected static $db;
 
       function __construct(){
@@ -19,8 +19,8 @@
 
       } 
 
-      function view_CaaAcademic($CaaAcademic_id){
-        $query = "SELECT * FROM `CaaAcademic` WHERE id = ".$CaaAcademicc_id." ";
+      function view_lecturer($lec_id){
+        $query = "SELECT * FROM `lecturer` WHERE id = ".$lec_id." ";
 
         $result = self::$db->select($query);
 

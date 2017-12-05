@@ -50,6 +50,14 @@ switch ($op) {
 				case 'lecturer':
 					header("Location:controller/lecturer_controller.php");
 					break;
+
+				case 'caa_academic':
+					header("Location:controller/caa_academic_controller.php");
+					break;
+
+				case 'SAR_exam':
+					header("Location:controller/SAR_exam_controller.php");
+					break;
 					
 				default:
 					

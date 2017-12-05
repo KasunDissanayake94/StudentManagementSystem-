@@ -19,7 +19,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			header("Location:lecturer_controller.php");
 			break;
 
-		case 'caa_academic':
+		case 'caa':
 			header("Location:caa_academic_controller.php");
 			break;
 

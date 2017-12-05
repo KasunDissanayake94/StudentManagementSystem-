@@ -18,10 +18,14 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		case 'lecturer':
 			header("Location:lecturer_controller.php");
 			break;
+
 		case 'caa_academic':
-			// caa academic contoller is here
+			// caa_academic contoller is here
 			break;
 
+		case 'SAR_exam':
+			header("Location:SAR_exam_controller.php");
+			break;
 			
 		default:
 			header( 'location: ../index.php' ) ;
@@ -38,20 +42,20 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
 	@$op = $_REQUEST['op'];
 
-	$CaaAcademic_controller = new CaaAcademicController();
+	$lecturer_controller = new LecturerController();
 	
 	switch ($op) {
-		case 'view_CaaAcademic':
-			$CaaAcademic_controller->view_CaaAcademic();
+		case 'view_lecturer':
+			$lecturer_controller->view_lecturer();
 			break;
-		case 'view_students':
-			$CaaAcademic_controller->view_students();
+		case 'view_student':
+			$lecturer_controller->view_student();
 			break;
-		case 'view_events':
-        	$CaaAcademic_controller->view_events();
+		case 'view_subjects':
+        	$lecturer_controller->view_subjects();
         	break;
-        case 'view_scholarships':
-        	$CaaAcademic_controller->view_scholarships();
+        case 'view_exams':
+        	$lecturer_controller->view_exams();
         	break;										
 		default:
 			//header("Location:../index.php");
@@ -59,19 +63,19 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 	}
 
 
- 	class CaaAcademicController{
+ 	class LecturerController{
  		protected static $db;
- 		protected static $CaaAcademic;
+ 		protected static $lecturer;
 
  		function __construct(){
  			self::$db = new DB();
- 			self::$CaaAcademic=new CaaAcademicModel(); 			
+ 			self::$lecturer=new LecturerModel(); 			
  		}
 
- 		function view_CaaAcademic(){
+ 		function view_lecturer(){
 
- 			$CaaAcademic_id=$_SESSION['id'];
- 			$result = self::$CaaAcademic->view_CaaAcademic($CaaAcademic_id);
+ 			$lec_id=$_SESSION['id'];
+ 			$result = self::$lecturer->view_lecturer($lec_id);
  			if($result){
 				$_SESSION['value']=$result;
 				header("Location:../view/view_lecturer.php");
@@ -82,20 +86,17 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  			
  		}
 
- 	
-
- 		function view_students(){
+ 		function view_student(){
  			header("Location:../view/view_student.php");
  		}
 
- 		function view_events(){
- 			header("Location:../view/view_events.php");
+ 		function view_subjects(){
+ 			header("Location:../view/view_subjects.php");
  		}
 
- 		function view_scholarships(){
- 			header("Location:../view/view_scholarships.php");
+ 		function view_exams(){
+ 			header("Location:../view/view_exams.php");
  		}
-
 
  	}
 ?>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2017 at 08:13 AM
+-- Generation Time: Dec 05, 2017 at 09:59 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -275,7 +275,7 @@ INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `em
 (38, 's1', '$2y$12$Zio8FQrdadoGJw1mDYALze9O13VIwtiXsqpgaegjwrrEJtnKWRgYS', '', '', NULL, 'student', NULL),
 (39, 's2', '$2y$12$8Auu4gLKTAYRRZvqm8uSzehiS7SvgDkEQqXR9dvcB8A3NP0oYmJCy', '', '', NULL, 'student', NULL),
 (40, 'SAR', '$2y$12$DlQc0sWW8vRc0SZw1tBSeObR4hBFBf3LuRCu/8TbrhveyLmx1Vgde', 'kasuni', 'kassa', 'asas@gmail.com', 'SAR_examin', 1234567895),
-(41, 'CAA', '$2y$12$kuCGs4HQ6ptnjn.beFKdBOtaXNK8RFtBehX6rJ8KwdQCEoM6l9w7a', 'araffa', 'fathima', 'aaa@gmail.com', 'caa_academic', 954621420),
+(41, 'caa', '$2y$12$kuCGs4HQ6ptnjn.beFKdBOtaXNK8RFtBehX6rJ8KwdQCEoM6l9w7a', 'araffa', 'fathima', 'aaa@gmail.com', 'caa_academic', 954621420),
 (42, 'student1', '$2y$12$PbYjaQQe50tfrMGsXq48z.Xu1Jkwuyd4IGUjhr1ivGn85sTZjwV5y', '', '', NULL, 'student', NULL),
 (43, 'JacintaRCarpenter@armyspy.com', '$2y$12$c0XDXprJhW7jU9OunYV3MuIO.z8VIDkfUAXptn.WLbpprlmzNWzCm', '', '', NULL, 'student', NULL),
 (44, '', '$2y$12$FPLDakoNXuDax1V6KzWeI.Q2IzMTt3WRDDeuNlKkXMwnzCnC4QMuG', '', '', NULL, '', NULL),
