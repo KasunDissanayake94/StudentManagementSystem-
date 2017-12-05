@@ -236,7 +236,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		function search(){
 			header("Location:../view/search.php");
 		}
-		//Search Information for the live Search 
+		//Search Information for the live Search
 		function search_by(){
             $result = self::$admin->view_all_students();
             if($result){
