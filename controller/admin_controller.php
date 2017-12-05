@@ -32,6 +32,11 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 	require('../model/db_model.php');
 
 	@$op = $_REQUEST['op'];
+	//Get the student id from the url and show more information to the more.php page
+	if(isset($_GET['student_id'])){
+		$var = $_GET['student_id']; //some_value
+		$op="moreinfo";
+	}
 
 	$admin_controller = new AdminController();
 
@@ -86,8 +91,12 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         	break;	
         case 'Add Time Table':
         	$admin_controller->add_timetable();	
-        	break;											
+        	break;
+        case 'moreinfo':
+            $admin_controller->show_moreinformation($var);
+            break;
 		default:
+
 			//header("Location:../index.php");
 			break;
 	}
@@ -261,6 +270,19 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 	function add_timetable(){
 		header("Location:../view/add_timetable.php");
 	}
+	//Return the more information about the student (Actually returns to the more.php page)
+	function show_moreinformation($var){
+
+        $result = self::$admin->search_student($var);
+        if ($result) {
+
+            $_SESSION['details'] = $result;
+            header("Location:../view/more.php");
+
+
+        }
+    }
+//end of the class
 	}	
 		
 	
