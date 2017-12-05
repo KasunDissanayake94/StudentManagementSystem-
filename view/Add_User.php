@@ -2,23 +2,7 @@
 session_start();
  ?>
 
- <?php
-    if(isset($_SESSION['value'])){
 
-    foreach ($_SESSION['value'] as $lecturer) {
-            $first_name=$lecturer['first_name'];
-            $last_name=$lecturer['last_name'];
-            $gender=$lecturer['gender'];
-            $dob=$lecturer['dob'];
-            $telephone=$lecturer['telephone'];
-            $email=$lecturer['email'];
-            $education=$lecturer['education'];
-            $research=$lecturer['research'];
-            $courses=$lecturer['courses'];
-            $awards=$lecturer['awards'];
-        }
-    }
-?>
 <!DOCTYPE html>
 <html>
 
