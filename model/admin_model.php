@@ -56,7 +56,19 @@ VALUES ($s_id, $firstname,$lastname,'$last_login',$area,$school,$birthday,$race,
 
  	//Add student to the database when the user add into the system
      function addStudentfromAdmin($username,$fname,$lname,$email){
-         $query = "INSERT INTO `student` (`s_id`,`first_name`,`last_name`) VALUES (".$username.",".$fname.",".$lname.")";
+         $last_login="";
+         $area="";
+         $school="";
+         $birthday="";
+         $race="";
+         $religion="";
+         $regdate="";
+         $passdate="";
+         $active="";
+         $gender="";
+
+         $query="INSERT INTO student (s_id, first_name,last_name,last_login,area,school,birthdate,race,religion,reg_date,out_date,active,gender,stu_image)
+VALUES ($username,$fname,$lname,'','','','','','','','','','','')";
 
          $result = self::$db->query($query);
 
