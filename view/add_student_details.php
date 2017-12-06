@@ -1,6 +1,13 @@
 
 <?php
 session_start();
+$result='';
+if(isset($_GET['result'])){
+    $result=$_GET['result'];
+}
+else{
+    $result=null;
+}
 ?>
 
 <!DOCTYPE html>
@@ -105,6 +112,11 @@ session_start();
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal" action="../controller/admin_controller.php" method="post">
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    <?php echo $result; ?>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Username :</label>
                                 <div class="col-sm-10">

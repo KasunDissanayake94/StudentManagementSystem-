@@ -200,15 +200,33 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			$gender = self::$db->quote($_POST['gender']);
 			$last_login='0';
 			$area= self::$db->quote($_POST['area']);
-			$stu_image="../view/images/profile_pic/";
-			$result = self::$admin->addStudent($s_id,$firstname,$lastname,$last_login,$area,$email,$school,$birthday,$race,$religion,$regdate,$passdate,$gender,$stu_image);
+			$stu_image="../view/images/profile_pic/'$s_id'";
 
-			if($result == 1){
-				echo "User Added Successfully....";
-				
-			}else{
-				echo "something wrong";
-			}
+            //Check this student already in the system
+            $st_id = self::$db->quote($_POST['username']);
+            $result1 = self::$admin->search_student($st_id);
+            if($result1){
+				//If student already in the system show error message
+                $result='<div class="alert alert-danger">This User already in the System</div>';
+                header("Location:../view/add_student_details.php?result=$result");
+
+            }else{
+                //Add Student to the system
+                $result = self::$admin->addStudent($s_id,$firstname,$lastname,$last_login,$area,$email,$school,$birthday,$race,$religion,$regdate,$passdate,$gender,$stu_image);
+                if($result == 1){
+                	//Successfully Added
+                    $result='<div class="alert alert-success">Student Sccessfully Added to the System</div>';
+                    header("Location:../view/add_student_details.php?result=$result");
+                    //Error Message
+                }else{
+                    $result='<div class="alert alert-danger">Sory Failed to Add the Student</div>';
+                    header("Location:../view/add_student_details.php?result=$result");
+                }
+            }
+
+
+
+
 		}
 		function search_student_now(){
 
