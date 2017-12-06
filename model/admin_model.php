@@ -40,11 +40,21 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
 		$result = self::$db->select($query);
 
-		return $result;
+        return $result;
  	}
 
+     //Add student to the database
+     function addStudent($s_id,$firstname,$lastname,$last_login,$area,$email,$school,$birthday,$race,$religion,$regdate,$passdate,$gender,$stu_image){
+         $active="0";
+         $query="INSERT INTO student (s_id, first_name,last_name,last_login,area,school,birthdate,race,religion,reg_date,out_date,active,gender,stu_image)
+VALUES ($s_id, $firstname,$lastname,'.$last_login.',$area,$school,$birthday,$race,$religion,$regdate,$passdate,'.$active.',$gender,'dvdvdvv')";
+         $result = self::$db->query($query);
 
+         return $result;
 
+     }
+
+ 	//Add student to the database when the user add into the system
      function addStudentfromAdmin($username,$fname,$lname,$email){
          $query = "INSERT INTO `student` (`s_id`,`first_name`,`last_name`) VALUES (".$username.",".$fname.",".$lname.")";
 
@@ -53,6 +63,7 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
          return $result;
 
      }
+
  	function search_user($uname){
  		$query = "SELECT * FROM `user` WHERE username = {$uname} ";
 

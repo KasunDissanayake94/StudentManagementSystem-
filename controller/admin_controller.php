@@ -187,17 +187,21 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		//add students to the database
 		function add_student(){
 			
+			$s_id = self::$db->quote($_POST['username']);
 			$firstname = self::$db->quote($_POST['firstname']);
 			$lastname = self::$db->quote($_POST['lastname']);
 			$email = self::$db->quote($_POST['email']);
 			$school = self::$db->quote($_POST['school']);
-			$birthday = self::$db->quote($_POST['birthday']);
+			$birthday = self::$db->quote($_POST['bday']);
 			$race = self::$db->quote($_POST['race']);
 			$religion = self::$db->quote($_POST['religion']);
 			$regdate = self::$db->quote($_POST['regdate']);
 			$passdate = self::$db->quote($_POST['passdate']);
 			$gender = self::$db->quote($_POST['gender']);
-			$result = self::$admin->addStudent($firstname,$lastname,$email,$school,$birthday,$race,$religion,$regdate,$passdate,$gender);
+			$last_login='0';
+			$area= self::$db->quote($_POST['area']);
+			$stu_image="../view/images/profile_pic/";
+			$result = self::$admin->addStudent($s_id,$firstname,$lastname,$last_login,$area,$email,$school,$birthday,$race,$religion,$regdate,$passdate,$gender,$stu_image);
 
 			if($result == 1){
 				echo "User Added Successfully....";

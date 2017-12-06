@@ -106,6 +106,12 @@ session_start();
                     <div class="modal-body">
                         <form class="form-horizontal" action="../controller/admin_controller.php" method="post">
                             <div class="form-group">
+                                <label class="control-label col-sm-2">Username :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="username" type="text" name="username" placeholder="Type Student ID here" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-sm-2">First Name :</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" id="firstname" type="text" name="firstname" placeholder="Type first name here" required />
@@ -114,7 +120,13 @@ session_start();
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Last Name :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="lastname" type="text" name="lastname" placeholder="Type last name here" />
+                                    <input class="form-control" id="lastname" type="text" name="lastname" placeholder="Type last name here" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="email">Area:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="area" name="area" placeholder="Enter area here" required>
                                 </div>
                             </div>
 
@@ -129,52 +141,56 @@ session_start();
                             <div class="form-group">
                                 <label class="control-label col-sm-2">School :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="school" type="text" name="school" placeholder="Type school here" />
+                                    <input class="form-control" id="school" type="text" name="school" placeholder="Type school here" required />
                                 </div>
                             </div>
 
                             <div class="form-group"> <!-- Date input -->
-                                <label class="control-label" for="date">Date</label>
-                                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+                                <label class="control-label col-sm-2" for="date">Birthdate :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="bday" name="bday" placeholder="MM/DD/YYY" type="text" required/>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Race :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="race" type="text" name="race" placeholder="Valid your race here" />
+                                    <input class="form-control" id="race" type="text" name="race" placeholder="Valid your race here" required />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Religion :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="religion" type="text" name="religion" placeholder="Type religion here" />
+                                    <input class="form-control" id="religion" type="text" name="religion" placeholder="Type religion here" required/>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="control-label col-sm-2">Register Date :</label>
+                            <div class="form-group"> <!-- Date input -->
+                                <label class="control-label col-sm-2" for="date">Registered Date :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="regdate" type="date" name="regdate" placeholder="Select date here" />
+                                    <input class="form-control" id="regdate" name="regdate" placeholder="MM/DD/YYY" type="text" required/>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2">Passout Date :</label>
+                            <div class="form-group"> <!-- Date input -->
+                                <label class="control-label col-sm-2" for="date">PassOut Date :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="passdate" type="date" name="passdate" placeholder="Select date here" />
+                                    <input class="form-control" id="passdate" name="passdate" placeholder="MM/DD/YYY" type="text" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Gender :</label>
                                 <div class="col-sm-10">
-                                    <span>Gender :</span><select name="gender">
-                                        <option   value="male">MALE</option>
-                                        <option    value="female">FEMALE</option>
+                                    <select class="custom-select" name="gender">
+                                        <option selected>Open this select menu</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+
                                     </select>
                                 </div>
                             </div>
 
                             <div class="modal-footer">
-                                <button type="submit" class="add-project" data-dismiss="modal"name="op" value="Add Student">Add</button>
+                                <button type="submit" class="add-project" data-dismiss="modal"name="op" value="Add Student">Add Student</button>
                             </div>
 
 
