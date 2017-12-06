@@ -136,15 +136,20 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 				if ($type ){
                     $result = self::$admin->addStudentfromAdmin($username,$fname,$lname,$email);
                     if($result == 1){
-                    	echo "This user Added Successfully to the User Table and Student table";
+                        $result='<div class="alert alert-success">This user Added Successfully to the System</div>';
+                        header("Location:../view/Add_User.php?result=$result");
+
 					}
 					else{
-                    	echo "This Student Already in our System.Now This Student can access to the site...";
+                        $result='<div class="alert alert-success">This Student Already in the System.Student can access the System now</div>';
+                        header("Location:../view/Add_User.php?result=$result");
+
 					}
 				}
 
 			}else{
-				echo "This User Already in the system";
+                $result='<div class="alert alert-danger">Sorry! This User already in the System</div>';
+                header("Location:../view/Add_User.php?result=$result");
 
 			}
 
