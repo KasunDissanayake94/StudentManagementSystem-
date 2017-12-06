@@ -115,16 +115,37 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
 		function addUser(){
 			
-			$name = self::$db->quote($_POST['user']);
-			$pass = self::$db->quote($_POST['pass']);
+			$id = self::$db->quote($_POST['id']);
+			$username = self::$db->quote($_POST['username']);
+			$pass = self::$db->quote($_POST['password']);
+			$fname = self::$db->quote($_POST['fname']);
+			$lname = self::$db->quote($_POST['lname']);
+			$email = self::$db->quote($_POST['email']);
 			$type = self::$db->quote($_POST['type']);
+			$nic = self::$db->quote($_POST['nic']);
 
-			$result = self::$admin->addUser($name,$pass,$type);
+
+
+			$result = self::$admin->addUser($username,$pass,$fname,$lname,$email,$type,$nic);
 
 			if($result == 1){
-				echo "user added ...";
+				//User Sucessfully Added to the user table
+
+
+				//If this user is a student add him into the student table too
+				if ($type ){
+                    $result = self::$admin->addStudentfromAdmin($username,$fname,$lname,$email);
+                    if($result == 1){
+                    	echo "This user Added Successfully to the User Table and Student table";
+					}
+					else{
+                    	echo "This Student Already in our System.Now This Student can access to the site...";
+					}
+				}
+
 			}else{
-				echo "something wrong";
+				echo "This User Already in the system";
+
 			}
 
 		}

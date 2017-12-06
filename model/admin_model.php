@@ -25,17 +25,14 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 	}
 
 
- 	function addUser($name,$pass,$type){
 
- 		$password = $this->hashPassword($pass);
- 
- 		$query = "INSERT INTO `user` (`username`,`password`,`type`) VALUES (".$name.",".$password.",".$type.")";
-
-		$result = self::$db->query($query);
-
-		return $result;
-
- 	}
+    function addUser($username,$pass,$fname,$lname,$email,$type,$nic){
+    //Insert user into the database
+         $password = $this->hashPassword($pass);
+         $query = "INSERT INTO `user` (`username`,`password`,`first_name`,`last_name`,`email`,`type`,`nic`) VALUES (".$username.",".$password.",".$fname.",".$lname.",".$email.",".$type.",".$nic.")";
+         $result = self::$db->query($query);
+         return $result;
+     }
  	//view all students in the system
 
  	function view_all_students(){
@@ -45,67 +42,17 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
 		return $result;
  	}
- 	
- 	function view_list($list,$size){ 	
-		$string='SELECT ';	
-		echo $list[0][1].$list[1][1];
-		echo $list[0][2].$list[1][2];
-		echo $list[0][3].$list[1][3];
-		
-		die();
-		if(!empty($list)) {					
-			for ($i=1; $i < $size; $i++) { 
-				
-				if ($list[1][$i]==1) {
-				
-					$string.=$list[0][$i];
-					if ($i!=$size-1) {
-					$string.=",";
 
-				} 	
-				}				
-			}
-			
 
-			$string=chop($string,', ');
-			$string.=" FROM `student` WHERE ";
-			if(!empty($list)) {					
-			for ($i=1; $i < $size; $i++) { 
-				if ($list[1][$i]!=1 && $list[1][$i]!='') {
-					$string.=$list[0][$i];
-					$string.="=";
-					$string.="'".$list[1][$i]."'";
-					if ($i!=$size-1) {
-					$string.=" AND ";
-				}
-				}
 
-				}
-				
-			}
-				
-			}
-		echo $string;
-		die();
-		
-		$result = self::$db->select($string);
-		return $result;
+     function addStudentfromAdmin($username,$fname,$lname,$email){
+         $query = "INSERT INTO `student` (`s_id`,`first_name`,`last_name`) VALUES (".$username.",".$fname.",".$lname.")";
 
-		//"SELECT first_name,last_name FROM `student` WHERE school = 'Royal College'"
+         $result = self::$db->query($query);
 
-			
-	 	}
- 	function addStudent($firstname,$lastname,$email,$school,$birthday,$race,$religion,$regdate,$passdate,$gender){
+         return $result;
 
- 	
- 
- 		$query = "INSERT INTO `student` (`first_name`,`last_name`,`school`,`birthdate`,`race`,`religion`,`reg_date`,`out_date`,`gender`) VALUES (".$firstname.",".$lastname.",".$school.",".$birthday.",".$race.",".$religion.",".$regdate.",".$passdate.",".$gender.")";
-
-		$result = self::$db->query($query);
-		
-		return $result;
-
- 	}
+     }
  	function search_user($uname){
  		$query = "SELECT * FROM `user` WHERE username = {$uname} ";
 

@@ -102,41 +102,47 @@ session_start();
                             <h4 class="modal-title">Add User Form</h4>
                         </div>   
                         <div class="modal-body">
-                            <form class="form-horizontal">
-                              <div class="form-group">
+                            <form class="form-horizontal" action="../controller/admin_controller.php" method="post">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">UserID :</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="id" type="text" name="id" placeholder="User ID here" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Username :</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="username" type="text" name="username" placeholder="User Name" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                 <label class="control-label col-sm-2" for="email">Email:</label>
                                 <div class="col-sm-10">
-                                  <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
                                 </div>
                               </div>
 
-                              <div class="form-group">
-                                <label class="control-label col-sm-2">UserID :</label>
-                                <div class="col-sm-10">
-                                  <input class="form-control" id="u_id" type="text" name="name" placeholder="User ID here" />
-                                </div>
-                              </div>
-
-                              <div class="form-group">
-                                <label class="control-label col-sm-2">Username :</label>
-                                <div class="col-sm-10">
-                                  <input class="form-control" id="username" type="text" name="name" placeholder="User Name" />
-                                </div>
-                              </div>
 
                               <div class="form-group">
                                 <label class="control-label col-sm-2">NIC :</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" id="nic" type="text" name="name" placeholder="NIC" />
+                                  <input class="form-control" id="nic" type="text" name="nic" placeholder="NIC" />
                                 </div>
                               </div>
 
                               <div class="form-group">
-                                <label class="control-label col-sm-2">Email :</label>
+                                <label class="control-label col-sm-2">First Name :</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" id="email" type="email" name="name" placeholder="Valid Email here" />
+                                  <input class="form-control" id="fname" type="text" name="fname" placeholder="Valid Email here" />
                                 </div>
                               </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Last Name :</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="lname" type="text" name="lname" placeholder="Valid Email here" />
+                                    </div>
+                                </div>
 
                               <div class="form-group">
                                 <label class="control-label col-sm-2">Type :</label>
@@ -153,7 +159,7 @@ session_start();
                               </div>
 
                                 <div class="modal-footer">
-                                    <button type="button" class="add-project" data-dismiss="modal">Add Student</button>
+                                    <button type="submit" class="add-project" data-dismiss="modal" name="op" value="Add">Add</button>
                                 </div>
 
                               

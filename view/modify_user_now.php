@@ -63,7 +63,7 @@ foreach ($_SESSION['details'] as $user) {
 		<input  type="text" name="type" <?php echo 'value="' . $type . '"'; ?>>
 		</p>	
 	<p>Password: <br>
-		<span>******</span> | <a href="change_password.php?user_id=<?php echo $user_id; ?>">Change Password</a>
+		<span>******</span> | <a href="change_password.php">Change Password</a>
 		</p>
 	<p>
 		<input class="button"  type="submit" name="op" value="Save User Details">
