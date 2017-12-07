@@ -77,5 +77,13 @@
         return $result;
       }
 
+      function view_result($year,$subject){
+        $query = "SELECT s_id,assignment_grade,exam_grade FROM student_course where year=$year AND course_id=$subject ORDER BY s_id";
+
+        $result = self::$db->select($query);
+
+        return $result;
+      }
+
     }
 ?>

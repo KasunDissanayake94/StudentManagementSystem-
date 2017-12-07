@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2017 at 08:06 AM
+-- Generation Time: Dec 07, 2017 at 11:03 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sma`
+-- Database: `sms`
 --
 
 -- --------------------------------------------------------
@@ -245,9 +245,9 @@ CREATE TABLE `student_course` (
 --
 
 INSERT INTO `student_course` (`s_id`, `course_id`, `exam_grade`, `assignment_grade`, `start_date`, `end_date`, `attendance`, `year`) VALUES
-('001', 'SCS1101', 'B', NULL, NULL, NULL, NULL, '2015/2016'),
-('002', 'SCS1101', 'A', NULL, NULL, NULL, NULL, '2015/2016'),
-('003', 'SCS1101', 'B', NULL, NULL, NULL, NULL, '2014/2015');
+('001', 'SCS1101', 'A', 'A', NULL, NULL, NULL, '2015/2016'),
+('002', 'SCS1101', 'B', 'C', NULL, NULL, NULL, '2015/2016'),
+('003', 'SCS1101', 'A', 'B', NULL, NULL, NULL, '2014/2015');
 
 -- --------------------------------------------------------
 

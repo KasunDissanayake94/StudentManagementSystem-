@@ -250,18 +250,40 @@ session_start();
             <div class="modal-content">
                 <div class="modal-header login-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">Student Results</h4>
+                    <h4 class="modal-title">View Results</h4>
                 </div>
-                <form class="modal-body">
+                <form action="../controller/lecturer_controller.php" method="post" class="modal-body">
                     <div class="form-group">
-                        <label>Index Number</label>
-                        <input type="" name="">
+                        <label>Academic year</label>
+                        <select class="form-control" name="year">
+                          <option value="2013/2014">2013/2014</option>
+                          <option value="2014/2015">2014/2015</option>
+                          <option value="2015/2016">2015/2016</option>
+                        </select>
                     </div>
 
-                    
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <select class="form-control" name="subject">
+                            <option>select subject code
+                                
+                              <?php
+                              $lect_id=$_SESSION['id'];
+                              $connect = mysqli_connect("localhost", "root", "", "sms");
+
+                              $query = "SELECT course_code FROM course where lect_id=$lect_id ORDER BY course_code";
+                              $result = mysqli_query($connect, $query);
+                              while($row = mysqli_fetch_array($result))
+                              {
+                               echo "<option>".$row['course_code']."</option>";
+                              }
+                             ?>
+                             </option>
+                        </select>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="cancel" data-dismiss="modal">Close</button>
-                        <button type="button" class="add-project" data-dismiss="modal">view</button>
+                        <button type="submit" class="add-project" name="op" value="view_student_results">View</button>
                     </div>
                 </form>
                 

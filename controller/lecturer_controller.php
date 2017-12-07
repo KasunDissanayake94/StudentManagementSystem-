@@ -73,6 +73,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         	$lecturer_controller->update_assignment_results();
         	break;
 
+        case 'view_student_results':
+        	$lecturer_controller->view_student_results();
+        	break;
+
 		default:
 			//header("Location:../index.php");
 			break;
@@ -195,6 +199,23 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 					
 			}
 
+ 		}
+
+ 		function view_student_results(){
+ 			$year = self::$db->quote($_POST['year']);
+			$subject = self::$db->quote($_POST['subject']);
+
+			$_SESSION['year']=$_POST['year'];
+			$_SESSION['subject']=$_POST['subject'];
+
+			$result = self::$lecturer->view_result($year,$subject);
+
+			if($result){
+				$_SESSION['student_list']=$result;
+				header("Location:../view/view_results_form.php");
+			}else{
+				echo "something wrong";
+			}
  		}
 
  	}
