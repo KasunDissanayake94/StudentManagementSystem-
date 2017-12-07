@@ -17,7 +17,17 @@
       function __construct(){
         self::$db = new DB();
 
-      } 
+      }
+
+      function add_scholarship($name,$indexno,$course,$stype,$samount){
+
+  
+      $query = "INSERT INTO `scholarship`( `name`, `indexno`, `course`, `schol_type`, `schol_amount`) VALUES (".$name.",".$indexno.",".$course.",".$stype.",".$samount.")";
+
+      $result = self::$db->query($query);
+    
+      return $result;
+
 
       // function view_lecturer($lec_id){
       //   $query = "SELECT * FROM `lecturer` WHERE id = ".$lec_id." ";
@@ -28,4 +38,15 @@
       // }
 
     }
+
+    function view_by_mahapola(){
+    $query = "SELECT * FROM `scholarship`
+              WHERE schol_type='Mahapola'
+    ";
+
+    $result = self::$db->select($query);
+
+    return $result;
+  }
+  }
 ?>

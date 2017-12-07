@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2017 at 07:17 AM
+-- Generation Time: Dec 07, 2017 at 08:06 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sms`
+-- Database: `sma`
 --
 
 -- --------------------------------------------------------
@@ -108,8 +108,23 @@ INSERT INTO `lecturer` (`id`, `username`, `first_name`, `last_name`, `gender`, `
 CREATE TABLE `scholarship` (
   `scol_id` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL
+  `indexno` varchar(45) DEFAULT NULL,
+  `course` varchar(20) NOT NULL,
+  `schol_type` varchar(40) NOT NULL,
+  `schol_amount` int(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `scholarship`
+--
+
+INSERT INTO `scholarship` (`scol_id`, `name`, `indexno`, `course`, `schol_type`, `schol_amount`) VALUES
+(1, 'arafa', '123', 'IS', 'Mahapola', 5000),
+(2, 'fathima', '456', 'CS', 'Bursary', 10000),
+(3, 'angathan', '7895', 'CS', 'Mahapola', 5000),
+(4, 'zahra', '141', 'CS', 'Mahapola', 5000),
+(5, 'De soyza', '7895', 'IS', 'Bursary', 5000),
+(8, 'angathan', '7895', 'CS', 'Mahapola', 5000);
 
 -- --------------------------------------------------------
 
@@ -438,6 +453,11 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `scholarship`
+--
+ALTER TABLE `scholarship`
+  MODIFY `scol_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `staff`
 --
