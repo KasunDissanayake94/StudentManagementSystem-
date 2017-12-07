@@ -65,10 +65,124 @@ if(mysqli_num_rows($result) > 0)
     <td>'.$row["religion"].'</td>
     <td>'.$row["gender"].'</td>
     <td id="c22">
-        <button class="btn btn-basic" id="btn2" onclick="btn1Call(event);">View</button>
+        <button class="btn btn-basic" data-toggle="modal" data-target="#view"">View</button>
+    </td>
+    <td id="c23">
+        <button class="btn btn-basic" data-toggle="modal" data-target="#edit"">Edit</button>
+    </td>
+    <td id="c24">
+        <button class="btn btn-basic" data-toggle="modal" data-target="#delete"">Delete</button>
     </td>
     
    </tr>
+       <!-- View Modal -->
+    <div id="view" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header login-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">View Results</h4>
+                </div>
+                <form action="../controller/lecturer_controller.php" method="post" class="modal-body">
+                    <div class="form-group">
+                        <label>Academic year</label>
+                        <select class="form-control" name="year">
+                          <option value="2013/2014">2013/2014</option>
+                          <option value="2014/2015">2014/2015</option>
+                          <option value="2015/2016">2015/2016</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <select class="form-control" name="subject">
+                            <option>select subject code
+                                
+                              
+                             </option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cancel" data-dismiss="modal">Close</button>                        
+                    </div>
+                </form>
+                
+                
+            </div>
+
+        </div>
+    </div>
+       <!-- Edit Modal -->
+    <div id="edit" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header login-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Edit Form</h4>
+                </div>
+                <form action="../controller/lecturer_controller.php" method="post" class="modal-body">
+                    <div class="form-group">
+                        <label>Academic year</label>
+                        <select class="form-control" name="year">
+                          <option value="2013/2014">2013/2014</option>
+                          <option value="2014/2015">2014/2015</option>
+                          <option value="2015/2016">2015/2016</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <select class="form-control" name="subject">
+                            <option>select subject code
+                                
+                              
+                             </option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cancel" data-dismiss="modal">Close</button>
+                        <button type="submit" class="add-project" name="op" value="add_final_results">Add</button>
+                    </div>
+                </form>
+                
+                
+            </div>
+
+        </div>
+    </div>
+   
+       <!-- Delete Modal -->
+    <div id="delete" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header login-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Delete Form</h4>
+                </div>
+                <form action="../controller/lecturer_controller.php" method="post" class="modal-body">
+                    <div class="form-group">
+                        <label>Are you sure do you want to Delete </label>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cancel" data-dismiss="modal">Yes</button>                        
+                        <button type="button" class="cancel" data-dismiss="modal">No</button>                        
+                    </div>
+
+                    
+                </form>
+                
+                
+            </div>
+
+        </div>
+    </div>
 
   ';
     }
