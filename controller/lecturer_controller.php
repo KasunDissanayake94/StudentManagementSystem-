@@ -51,12 +51,24 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		case 'view_student':
 			$lecturer_controller->view_student();
 			break;
-		case 'view_subjects':
-        	$lecturer_controller->view_subjects();
+		case 'view_academic':
+        	$lecturer_controller->view_academic();
         	break;
         case 'view_exams':
         	$lecturer_controller->view_exams();
-        	break;										
+        	break;
+		case 'add_final_results':
+        	$lecturer_controller->add_final_results();
+        	break;
+
+        case 'update_final_results':
+        	$lecturer_controller->update_final_results();
+        	break;
+
+        case 'add_assignment_results':
+        	$lecturer_controller->add_assignment_results();
+        	break;
+
 		default:
 			//header("Location:../index.php");
 			break;
@@ -90,12 +102,52 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  			header("Location:../view/view_student.php");
  		}
 
- 		function view_subjects(){
- 			header("Location:../view/view_subjects.php");
+ 		function view_academic(){
+ 			header("Location:../view/lecturer_academic.php");
  		}
 
  		function view_exams(){
  			header("Location:../view/view_exams.php");
+ 		}
+
+ 		function add_final_results(){
+ 			$year = self::$db->quote($_POST['year']);
+			$subject = self::$db->quote($_POST['subject']);
+
+			$_SESSION['year']=$year;
+			$_SESSION['subject']=$subject;
+			header("Location:../view/add_final_results_form.php");
+
+
+			// $result = self::$lecturer->get_student($year,$subject);
+
+			// if($result){
+			// 	$_SESSION['value']=$result;
+			// 	header("Location:../view/add_final_results_form.php");
+			// }else{
+			// 	echo "something wrong";
+			// }
+
+ 			
+ 		}
+
+ 		function update_final_results(){
+ 			$s_id = self::$db->quote($_POST['s_id']);
+			$final_result = self::$db->quote($_POST['final_result']);
+
+
+			$result = self::$lecturer->update_final_results($s_id,$final_result);
+
+			if($result){
+				echo "Successfully updated";
+			}else{
+				echo "something wrong";
+			}
+
+ 		}
+
+ 		function add_assignment_results(){
+ 			header("Location:../view/add_assignment_results_form.php");
  		}
 
  	}

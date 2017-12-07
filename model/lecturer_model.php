@@ -27,5 +27,21 @@
         return $result;
       }
 
+      function get_student($year,$subject){
+        $query = "SELECT * FROM `lecturer` WHERE id = ".$lec_id." ";
+
+        $result = self::$db->select($query);
+
+        return $result;
+      }
+
+      function update_final_results($s_id,$final_result){
+        $query="UPDATE  `student_course` SET `exam_grade`='{$final_result}'WHERE s_id='{$s_id}'";
+
+        $result = self::$db->select($query);
+
+        return $result;
+      }
+
     }
 ?>

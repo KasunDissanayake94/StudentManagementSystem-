@@ -231,6 +231,7 @@ li,ul{
 
 .home {
     background: #f6f7fa;
+
 }
 
 #navigation {
@@ -488,11 +489,13 @@ header {
 .sales {
     background: #ffffff none repeat scroll 0 0;
     border: 1px solid #d4d9e3;
+    border-radius: 10px;
     display: inline-block;
-    padding: 15px;
-    width: 100%;
+    padding: 20px;
+    width: 90%;
+    margin-top: 20px;
 }
-.sales button {
+/*.sales button {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 1px solid #dadee7;
     border-radius: 100px;
@@ -500,22 +503,23 @@ header {
     letter-spacing: 0.5px;
     padding-right: 32px;
     color: #0e1a35;
-}
+}*/
 
-.sales button::before {
+/*.sales button::before {
     content: "";
     font-family: FontAwesome;
     position: absolute;
     right: 12px;
     top: 11px;
-}
+}*/
 .sales  .btn-group {
+    margin-top: 25px;
     float: right;
 }
 .sales h2 {
     color: #8492af;
-    float: left;
-    font-size: 21px;
+    float: bottom;
+    font-size: 20px;
     font-weight: 600;
     margin: 0;
     padding: 9px 0 0;
