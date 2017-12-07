@@ -55,6 +55,10 @@ switch ($op) {
 					header("Location:controller/caa_academic_controller.php");
 					break;
 
+                case 'ar_acedemic':
+                    header("Location:controller/ar_acedemic_controller.php");
+                    break;
+
 				case 'SAR_exam':
 					header("Location:controller/SAR_exam_controller.php");
 					break;
