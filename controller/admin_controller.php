@@ -334,7 +334,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         if ($result) {
 
             $_SESSION['details'] = $result;
-            header("Location:../view/more.php");
+            header("Location:../view/student_detail.php");
 
 
         }
