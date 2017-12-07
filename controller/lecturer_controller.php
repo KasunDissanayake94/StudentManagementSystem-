@@ -114,34 +114,39 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  			$year = self::$db->quote($_POST['year']);
 			$subject = self::$db->quote($_POST['subject']);
 
-			$_SESSION['year']=$year;
-			$_SESSION['subject']=$subject;
-			header("Location:../view/add_final_results_form.php");
+			$_SESSION['year']=$_POST['year'];
+			$_SESSION['subject']=$_POST['subject'];
 
+			$result = self::$lecturer->get_student_result($year,$subject);
 
-			// $result = self::$lecturer->get_student($year,$subject);
-
-			// if($result){
-			// 	$_SESSION['value']=$result;
-			// 	header("Location:../view/add_final_results_form.php");
-			// }else{
-			// 	echo "something wrong";
-			// }
+			if($result){
+				$_SESSION['student_list']=$result;
+				header("Location:../view/add_final_results_form.php");
+			}else{
+				$result1 = self::$lecturer->add_to_student_course();
+				header("Location:../view/lecturer_academic.php");
+			}
 
  			
  		}
 
  		function update_final_results(){
- 			$s_id = self::$db->quote($_POST['s_id']);
-			$final_result = self::$db->quote($_POST['final_result']);
+ 			foreach ($_SESSION['student_list'] as $user) {
+			        $s_id =self::$db->quote($user['s_id']);
+					$final_result = self::$db->quote($_POST[$user['s_id']]);
 
+					$result = self::$lecturer->update_final_results($s_id,$final_result);
 
-			$result = self::$lecturer->update_final_results($s_id,$final_result);
+					if($result){
+						echo "Successfully updated";
+						header("Location:../view/lecturer_academic.php");
+					}else{
+						echo "something wrong";
+					}
 
-			if($result){
-				echo "Successfully updated";
-			}else{
-				echo "something wrong";
+					// echo $s_id;
+					// echo $final_result;
+					
 			}
 
  		}
