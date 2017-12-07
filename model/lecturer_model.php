@@ -27,14 +27,6 @@
         return $result;
       }
 
-      function get_student_result($year,$subject){
-        $query = "SELECT s_id,exam_grade FROM student_course where year=$year AND course_id=$subject ORDER BY s_id";
-
-        $result = self::$db->select($query);
-
-        return $result;
-      }
-
       function add_to_student_course(){
         $query = "SELECT s_id FROM student ORDER BY s_id";
         $result = self::$db->select($query);
@@ -53,8 +45,32 @@
 
       }
 
+      function get_student_result($year,$subject){
+        $query = "SELECT s_id,exam_grade FROM student_course where year=$year AND course_id=$subject ORDER BY s_id";
+
+        $result = self::$db->select($query);
+
+        return $result;
+      }
+
       function update_final_results($s_id,$final_result){
         $query="UPDATE  `student_course` SET `exam_grade`=$final_result WHERE s_id=$s_id";
+
+        $result = self::$db->query($query);
+
+        return $result;
+      }
+
+      function get_assignment_result($year,$subject){
+        $query = "SELECT s_id,assignment_grade FROM student_course where year=$year AND course_id=$subject ORDER BY s_id";
+
+        $result = self::$db->select($query);
+
+        return $result;
+      }
+
+      function update_assignment_results($s_id,$assignment_result){
+        $query="UPDATE  `student_course` SET `assignment_grade`=$assignment_result WHERE s_id=$s_id";
 
         $result = self::$db->query($query);
 

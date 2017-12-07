@@ -162,8 +162,8 @@ session_start();
 
                     <div class="form-group">
                         <label>Subject</label>
-                        <select class="form-control" >
-                            <option>Select state</option>
+                        <select class="form-control" name="subject">
+                            <option>select subject code
                                 
                               <?php
                               $lect_id=$_SESSION['id'];
@@ -176,6 +176,7 @@ session_start();
                                echo "<option>".$row['course_code']."</option>";
                               }
                              ?>
+                             </option>
                         </select>
                     </div>
                     <div class="modal-footer">

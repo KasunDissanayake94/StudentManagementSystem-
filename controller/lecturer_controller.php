@@ -69,6 +69,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         	$lecturer_controller->add_assignment_results();
         	break;
 
+        case 'update_assignment_results':
+        	$lecturer_controller->update_assignment_results();
+        	break;
+
 		default:
 			//header("Location:../index.php");
 			break;
@@ -110,6 +114,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  			header("Location:../view/view_exams.php");
  		}
 
+ 		// Used for Add button in add final result model
  		function add_final_results(){
  			$year = self::$db->quote($_POST['year']);
 			$subject = self::$db->quote($_POST['subject']);
@@ -151,8 +156,45 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
  		}
 
+ 		// Used for Add button in add assignment result model
+
  		function add_assignment_results(){
- 			header("Location:../view/add_assignment_results_form.php");
+ 			$year = self::$db->quote($_POST['year']);
+			$subject = self::$db->quote($_POST['subject']);
+
+			$_SESSION['year']=$_POST['year'];
+			$_SESSION['subject']=$_POST['subject'];
+
+			$result = self::$lecturer->get_assignment_result($year,$subject);
+
+			if($result){
+				$_SESSION['student_list']=$result;
+				header("Location:../view/add_assignment_results_form.php");
+			}else{
+				$result1 = self::$lecturer->add_to_student_course();
+				header("Location:../view/lecturer_academic.php");
+			}
+ 		}
+
+ 		function update_assignment_results(){
+ 			foreach ($_SESSION['student_list'] as $user) {
+			        $s_id =self::$db->quote($user['s_id']);
+					$assignment_result = self::$db->quote($_POST[$user['s_id']]);
+
+					$result = self::$lecturer->update_assignment_results($s_id,$assignment_result);
+
+					if($result){
+						echo "Successfully updated";
+						header("Location:../view/lecturer_academic.php");
+					}else{
+						echo "something wrong";
+					}
+
+					// echo $s_id;
+					// echo $final_result;
+					
+			}
+
  		}
 
  	}
