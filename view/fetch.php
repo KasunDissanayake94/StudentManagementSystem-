@@ -75,6 +75,7 @@ if(mysqli_num_rows($result) > 0)
     </td>
     
    </tr>
+   
        <!-- View Modal -->
     <div id="view" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -124,7 +125,7 @@ if(mysqli_num_rows($result) > 0)
                     <button type="button" class="close" data-dismiss="modal">×</button>
                     <h4 class="modal-title">Edit Form</h4>
                 </div>
-                <form action="../controller/lecturer_controller.php" method="post" class="modal-body">
+                <form action="../controller/lecturer_controller.php" method="post" class="form-horizontal">
                     <div class="form-group">
                         <label>Academic year</label>
                         <select class="form-control" name="year">
@@ -133,6 +134,7 @@ if(mysqli_num_rows($result) > 0)
                           <option value="2015/2016">2015/2016</option>
                         </select>
                     </div>
+                    
 
                     <div class="form-group">
                         <label>Subject</label>
@@ -156,33 +158,116 @@ if(mysqli_num_rows($result) > 0)
     </div>
    
        <!-- Delete Modal -->
-    <div id="delete" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header login-header">
+       
+  <!-- Modal -->
+  <div class="modal fade" id="delete" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header login-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">Delete Form</h4>
+                    <h4 class="modal-title">Edit Form</h4>
                 </div>
-                <form action="../controller/lecturer_controller.php" method="post" class="modal-body">
-                    <div class="form-group">
-                        <label>Are you sure do you want to Delete </label>
-                        
+        <div class="modal-body">
+          <form class="form-horizontal" role="form">
+          <div class="form-group">
+                    <label  class="col-sm-2 control-label"
+                              for="inputEmail3">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" 
+                        id="inputEmail3" placeholder="Email"/>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="cancel" data-dismiss="modal">Yes</button>                        
-                        <button type="button" class="cancel" data-dismiss="modal">No</button>                        
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label"
+                              for="inputEmail3">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" 
+                        id="inputEmail3" placeholder="Email"/>
                     </div>
-
-                    
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label"
+                              for="inputEmail3">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" 
+                        id="inputEmail3" placeholder="Email"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label"
+                              for="inputEmail3">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" 
+                        id="inputEmail3" placeholder="Email"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label  class="col-sm-2 control-label"
+                              for="inputEmail3">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" 
+                        id="inputEmail3" placeholder="Email"/>
+                    </div>
+                  </div><div class="form-group">
+                    <label  class="col-sm-2 control-label"
+                              for="inputEmail3">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" 
+                        id="inputEmail3" placeholder="Email"/>
+                    </div>
+                  </div><div class="form-group">
+                    <label  class="col-sm-2 control-label"
+                              for="inputEmail3">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" 
+                        id="inputEmail3" placeholder="Email"/>
+                    </div>
+                  </div><div class="form-group">
+                    <label  class="col-sm-2 control-label"
+                              for="inputEmail3">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" 
+                        id="inputEmail3" placeholder="Email"/>
+                    </div>
+                  </div><div class="form-group">
+                    <label  class="col-sm-2 control-label"
+                              for="inputEmail3">First Name:</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" 
+                        id="inputEmail3" placeholder="Email"/>
+                    </div>
+                  </div><div class="form-group">
+                    <label  class="col-sm-2 control-label"
+                              for="inputEmail3">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" 
+                        id="inputEmail3" placeholder="Email"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label"
+                          for="inputPassword3" >Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control"
+                            id="inputPassword3" placeholder="Password"/>
+                    </div>
+                  </div>
+                  
+                  
+                  
+                  <div class="modal-footer">
+                        <button type="button" class="cancel" data-dismiss="modal">Close</button>
+                        <button type="submit" class="add-project" name="op" value="add_final_results">Add</button>
+                    </div>
                 </form>
-                
-                
-            </div>
-
         </div>
+        
+      </div>
+      
     </div>
+  </div>
 
   ';
     }
