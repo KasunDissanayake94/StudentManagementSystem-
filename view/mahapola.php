@@ -96,15 +96,70 @@ session_start();
                 </div>
                 <div class="user-dashboard">
                     <h1> Computer Application Assistant </h1>
-                    <a href="add_scholarship.php"> <button type="button"> Add Scholarship </button> </a>
-                    <hr>
-               <!--  <form action= method="post"> -->
-                   <a href="../controller/caa_academic_controller.php?op=View by Mahapola"><button type="button" name="op" value="View by Mahapola" > Mahapola </button> </a> <br><br> 
-               <!-- </form> -->
+                   
 
-                    <button type="button"> Bursery </button> <br> <br> 
-                    <button type="button"> Other Scholarships </button> <br> 
-                       
+<?php 
+$user_list='';
+                 
+if(isset($_SESSION['value'])){
+
+foreach ($_SESSION['value'] as $user) {
+        $user_list .= "<tr>";
+        $user_list .= "<td>{$user['name']}</td>";
+        $user_list .= "<td>{$user['indexno']}</td>";
+        $user_list .= "<td>{$user['course']}</td>";
+        $user_list .= "<td>{$user['schol_amount']}</td>";
+        
+        $user_list .= "</tr>";
+        unset($_SESSION['value']);
+    }
+}
+
+ ?>
+ 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View All</title> 
+    <style> 
+        .masterlist {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .masterlist th {
+            background: #aaa;
+            text-align: left;
+        }
+
+        .masterlist th, .masterlist td {
+            padding: 10px;
+            border-bottom: 1px solid #aaa;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<h1>View All Students</h1>
+
+ <table class="masterlist">
+            <tr>
+                <th>Student Name</th>
+                <th>Index No</th>
+                <th>Course</th>
+                <th>Scholarship Amount</th>
+             
+                
+            </tr>
+
+            <?php echo $user_list; ?>
+
+        </table>
+</body>
+</html>
+
                     </div>
                 </div>
             </div>
@@ -115,3 +170,10 @@ session_start();
 </body>
 
 </html>
+
+
+
+
+
+
+

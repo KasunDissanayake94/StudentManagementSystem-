@@ -95,16 +95,48 @@ session_start();
                     </header>
                 </div>
                 <div class="user-dashboard">
-                    <h1> Computer Application Assistant </h1>
-                    <a href="add_scholarship.php"> <button type="button"> Add Scholarship </button> </a>
-                    <hr>
-               <!--  <form action= method="post"> -->
-                   <a href="../controller/caa_academic_controller.php?op=View by Mahapola"><button type="button" name="op" value="View by Mahapola" > Mahapola </button> </a> <br><br> 
-               <!-- </form> -->
+                    <h1> Add Scholarship </h1>
+<div id="content">
+        <form action="../controller/caa_academic_controller.php" method="post" class="elegant-aero"> 
+       
+            
+          <table align="center" border="1"> 
+       
 
-                    <button type="button"> Bursery </button> <br> <br> 
-                    <button type="button"> Other Scholarships </button> <br> 
-                       
+            <tr>
+                <td>Name </td>
+                <td><input type='text' name="name" size="100%"  ></td>
+            </tr>
+            <tr>
+                <td>Index Number </td>
+                <td><input type="text" name="indexno" ></td>
+            </tr>
+            <tr>
+                <td>Course</td>
+                <td><input type="radio" name="course" value="IS">Information Systems
+                <input type="radio" name="course" value="CS">Computer Science
+                </td>
+            </tr>
+             <tr>
+                <td>Type Of Scholarship</td>
+                <td><input type="radio" name="stype" value="Mahapola">Mahapola <br>
+                <input type="radio" name="stype" value="Bursary">Bursary <br>
+                <input type="radio" name="stype" value="Other">Other <br>
+                </td>
+            </tr>
+                 <td>Amount </td>
+                <td><input type="text" name="samount"></td>
+            </tr>
+            <tr>
+                <td colspan=2 align="center">
+                <input type="submit" class="button" name="op" value="Add Scholarship">
+                <input type="reset" value="Cancel">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    </div>                   
                     </div>
                 </div>
             </div>

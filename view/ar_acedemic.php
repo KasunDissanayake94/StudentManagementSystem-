@@ -1,6 +1,23 @@
-<?php 
-session_start();
- ?>
+<?php
+	if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
+	        /* 
+	           Up to you which header to send, some prefer 404 even if 
+	           the files does exist for security
+	        */
+	        header( 'HTTP/1.0 403 Forbidden', TRUE, 403 );
+
+	        /* choose the appropriate page to redirect users */
+	        die( header( 'location: /error.php' ) );
+
+	    }
+
+	    @session_start();
+		if(!isset($_SESSION['user'])){
+			header("Location:../index.php");
+		}
+
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -27,12 +44,12 @@ session_start();
                 </div>
                 <div class="navi">
                     <ul>
-                        <li><a href="../controller/caa_academic_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                       
-                        <li class="active"><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
-                        <li><a href="../controller/caa_academic_controller.php?op=view_events"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
-                        <li><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
-                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
+                        <li class="active"><a href="../controller/ar_acedemic_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                        <li><a href="../controller/ar_acedemic_controller.php?op=view_ar_acedemic"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Profile</span></a></li>
+                        <li><a href="../controller/ar_acedemic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
+                        <li><a href="../controller/ar_acedemic_controller.php?op=ar_approv"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Approvals</span></a></li>
+                        <li><a href="../controller/ar_acedemic_controller.php?op=manage_user"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Manage Users</span></a></li>
+                        <li><a href="../controller/ar_acedemic_controller.php?op=report"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -94,21 +111,8 @@ session_start();
                         </div>
                     </header>
                 </div>
-                <div class="user-dashboard">
-                    <h1> Computer Application Assistant </h1>
-                    <a href="add_scholarship.php"> <button type="button"> Add Scholarship </button> </a>
-                    <hr>
-               <!--  <form action= method="post"> -->
-                   <a href="../controller/caa_academic_controller.php?op=View by Mahapola"><button type="button" name="op" value="View by Mahapola" > Mahapola </button> </a> <br><br> 
-               <!-- </form> -->
+    <div class="user-dashboard">
 
-                    <button type="button"> Bursery </button> <br> <br> 
-                    <button type="button"> Other Scholarships </button> <br> 
-                       
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
 

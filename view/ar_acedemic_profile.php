@@ -2,13 +2,31 @@
 session_start();
  ?>
 
+ <?php
+    if(isset($_SESSION['value'])){
+
+    foreach ($_SESSION['value'] as $ar_acedemic) {
+            $first_name=$ar_acedemic['first_name'];
+            $last_name=$ar_acedemic['last_name'];
+            $gender=$ar_acedemic['gender'];
+            $dob=$ar_acedemic['dob'];
+            $telephone=$ar_acedemic['telephone'];
+            $email=$ar_acedemic['email'];
+            $education=$ar_acedemic['education'];
+            $research=$ar_acedemic['research'];
+            $courses=$ar_acedemic['courses'];
+            $awards=$ar_acedemic['awards'];
+        }
+    }
+?>
 <!DOCTYPE html>
 <html>
 
 
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../view/css/style2.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -26,13 +44,14 @@ session_start();
                     </a>
                 </div>
                 <div class="navi">
+
                     <ul>
-                        <li><a href="../controller/caa_academic_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                       
-                        <li class="active"><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
-                        <li><a href="../controller/caa_academic_controller.php?op=view_events"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
-                        <li><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
-                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
+                        <li><a href="../controller/ar_acedemic_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                        <li class="active"><a href="../controller/ar_acedemic_controller.php?op=view_ar_acedemic"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Profile</span></a></li>
+                        <li><a href="../controller/ar_acedemic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
+                        <li><a href="../controller/ar_acedemic_controller.php?op=ar_approv"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Approvals</span></a></li>
+                        <li><a href="../controller/ar_acedemic_controller.php?op=manage_user"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Manage Users</span></a></li>
+                        <li><a href="../controller/ar_acedemic_controller.php?op=report"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -95,22 +114,66 @@ session_start();
                     </header>
                 </div>
                 <div class="user-dashboard">
-                    <h1> Computer Application Assistant </h1>
-                    <a href="add_scholarship.php"> <button type="button"> Add Scholarship </button> </a>
-                    <hr>
-               <!--  <form action= method="post"> -->
-                   <a href="../controller/caa_academic_controller.php?op=View by Mahapola"><button type="button" name="op" value="View by Mahapola" > Mahapola </button> </a> <br><br> 
-               <!-- </form> -->
+                    
+                    <div id="content">
+                        <h3>Profile</h3>
+                        <div id="line"></div>
 
-                    <button type="button"> Bursery </button> <br> <br> 
-                    <button type="button"> Other Scholarships </button> <br> 
-                       
+                        <div id="table_lecturer">
+                            <table class="zui-table zui-table-horizontal">          
+                                <tbody>
+                                    <tr>
+                                        <td><b>First Name</b></td>
+                                        <td><?php echo $first_name?></td>            
+                                    </tr>
+                                    <tr>
+                                        <td><b>Last Name</b></td>
+                                        <td><?php echo $last_name?></td>                    
+                                    </tr>
+                                    <tr>
+                                        <td><b>Gender</b></td>
+                                        <td><?php echo $gender?></td>                   
+                                    </tr>
+                                    <tr>
+                                        <td><b>DOB</b></td>
+                                        <td><?php echo $dob?></td>                 
+                                    </tr>
+                                    <tr>
+                                        <td><b>Telephone</b></td>
+                                        <td><?php echo $telephone?></td>                    
+                                    </tr>
+                                    <tr>
+                                        <td><b>E-mail</b></td>
+                                        <td><?php echo $email?></td>                    
+                                    </tr>
+                                    <tr>
+                                        <td><b>Educational Details</b></td>
+                                        <td><?php echo $education?></td>                    
+                                    </tr>
+                                    <tr>
+                                        <td><b>Research Interests</b></td>
+                                        <td><?php echo $research?></td>                 
+                                    </tr>
+                                    <tr>
+                                        <td><b>Courses</b></td>
+                                        <td><?php echo $courses?></td>                  
+                                    </tr>
+                                    <tr>
+                                        <td><b>Awards</b></td>
+                                        <td><?php echo $awards?></td>                   
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>    
+                        </div>  
+
                     </div>
                 </div>
             </div>
         </div>
 
     </div>
+
 
 </body>
 
