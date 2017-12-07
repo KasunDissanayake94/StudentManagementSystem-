@@ -17,6 +17,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		case 'lecturer':
 			header("Location:lecturer_controller.php");
 			break;
+
+        case 'ar_acedemic':
+            header("Location:ar_acedemic_controller.php");
+            break;
 			
 		default:
 			header( 'location: ../index.php' ) ;
