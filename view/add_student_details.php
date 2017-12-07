@@ -192,7 +192,7 @@ else{
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Gender :</label>
                                 <div class="col-sm-10">
-                                    <select class="custom-select" name="gender">
+                                    <select class="form-control" name="gender">
                                         <option selected>Open this select menu</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>

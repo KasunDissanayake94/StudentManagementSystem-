@@ -44,6 +44,8 @@ if(mysqli_num_rows($result) > 0)
      <th>Religion</th>
      <th>Gender</th>
      <th>View</th>
+     <th>Edit</th>
+     <th>Delete</th>
      
     </tr>
  ';
@@ -77,197 +79,233 @@ if(mysqli_num_rows($result) > 0)
    </tr>
    
        <!-- View Modal -->
-    <div id="view" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header login-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">View Results</h4>
-                </div>
-                <form action="../controller/lecturer_controller.php" method="post" class="modal-body">
-                    <div class="form-group">
-                        <label>Academic year</label>
-                        <select class="form-control" name="year">
-                          <option value="2013/2014">2013/2014</option>
-                          <option value="2014/2015">2014/2015</option>
-                          <option value="2015/2016">2015/2016</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Subject</label>
-                        <select class="form-control" name="subject">
-                            <option>select subject code
-                                
-                              
-                             </option>
-                        </select>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="cancel" data-dismiss="modal">Close</button>                        
-                    </div>
-                </form>
-                
-                
-            </div>
-
-        </div>
-    </div>
-       <!-- Edit Modal -->
-    <div id="edit" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header login-header">
+    <div  id="view" class="modal fade" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header login-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
                     <h4 class="modal-title">Edit Form</h4>
                 </div>
-                <form action="../controller/lecturer_controller.php" method="post" class="form-horizontal">
-                    <div class="form-group">
-                        <label>Academic year</label>
-                        <select class="form-control" name="year">
-                          <option value="2013/2014">2013/2014</option>
-                          <option value="2014/2015">2014/2015</option>
-                          <option value="2015/2016">2015/2016</option>
-                        </select>
-                    </div>
-                    
+                    <div class="modal-body">
+                        <form class="form-horizontal" action="../controller/admin_controller.php" method="post">
+                            
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Username :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="username" value="'.$row["s_id"].'" type="text" name="username" placeholder="Type Student ID here" required disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">First Name :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="firstname" value="'.$row["first_name"].'" type="text" name="firstname" placeholder="Type first name here" required disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Last Name :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="lastname" value="'.$row["last_name"].'" type="text" name="lastname" placeholder="Type last name here" required disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="email">Area:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="area" value="'.$row["area"].'" name="area" placeholder="Enter area here" required disabled/>
+                                </div>
+                            </div>
 
-                    <div class="form-group">
-                        <label>Subject</label>
-                        <select class="form-control" name="subject">
-                            <option>select subject code
-                                
-                              
-                             </option>
-                        </select>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="email">Email:</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email here" required disabled/>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">School :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="school" value="'.$row["school"].'" type="text" name="school" placeholder="Type school here" required disabled/>
+                                </div>
+                            </div>
+
+                            <div class="form-group"> <!-- Date input -->
+                                <label class="control-label col-sm-2" for="date">Birthdate :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" value="'.$row["birthdate"].'" id="bday" name="bday" placeholder="MM/DD/YYY" type="text" required disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Race :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="race" value="'.$row["race"].'" type="text" name="race" placeholder="Valid your race here" required disabled/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Religion :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="religion" value="'.$row["religion"].'" type="text" name="religion" placeholder="Type religion here" required disabled/>
+                                </div>
+                            </div>
+
+                            <div class="form-group"> <!-- Date input -->
+                                <label class="control-label col-sm-2" for="date">Registered Date :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="regdate" value="'.$row["reg_date"].'" name="regdate" placeholder="MM/DD/YYY" type="text" required disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group"> <!-- Date input -->
+                                <label class="control-label col-sm-2" for="date">PassOut Date :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="passdate" value="'.$row["out_date"].'" name="passdate" placeholder="MM/DD/YYY" type="text" required disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group"> <!-- Date input -->
+                                <label class="control-label col-sm-2" for="date">Gender</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="passdate" value="'.$row["gender"].'" name="passdate" placeholder="MM/DD/YYY" type="text" required disabled/>
+                                </div>
+                            </div>
+                            
+
+                            <div class="modal-footer">
+                                <button type="button" class="cancel" data-dismiss="modal">Close</button> 
+                            </div>
+
+
+                        </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="cancel" data-dismiss="modal">Close</button>
-                        <button type="submit" class="add-project" name="op" value="add_final_results">Add</button>
-                    </div>
-                </form>
-                
-                
+                </div>
             </div>
+       <!-- Edit Modal -->
+    <div  id="edit" class="modal fade" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header login-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Edit Form</h4>
+                </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" action="../controller/admin_controller.php" method="post">
+                            
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Username :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="username" type="text" name="username" placeholder="Type Student ID here" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">First Name :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="firstname" type="text" name="firstname" placeholder="Type first name here" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Last Name :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="lastname" type="text" name="lastname" placeholder="Type last name here" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="email">Area:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="area" name="area" placeholder="Enter area here" required>
+                                </div>
+                            </div>
 
-        </div>
-    </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="email">Email:</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email here" required>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">School :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="school" type="text" name="school" placeholder="Type school here" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group"> <!-- Date input -->
+                                <label class="control-label col-sm-2" for="date">Birthdate :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="bday" name="bday" placeholder="MM/DD/YYY" type="text" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Race :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="race" type="text" name="race" placeholder="Valid your race here" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Religion :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="religion" type="text" name="religion" placeholder="Type religion here" required/>
+                                </div>
+                            </div>
+
+                            <div class="form-group"> <!-- Date input -->
+                                <label class="control-label col-sm-2" for="date">Registered Date :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="regdate" name="regdate" placeholder="MM/DD/YYY" type="text" required/>
+                                </div>
+                            </div>
+                            <div class="form-group"> <!-- Date input -->
+                                <label class="control-label col-sm-2" for="date">PassOut Date :</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="passdate" name="passdate" placeholder="MM/DD/YYY" type="text" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Gender :</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="gender">
+                                        <option selected>Open this select menu</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="add-project" data-dismiss="modal"name="op" value="Add Student">Edit </button>
+                                <button type="button" class="cancel" data-dismiss="modal">Close</button> 
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
    
        <!-- Delete Modal -->
-       
-  <!-- Modal -->
-  <div class="modal fade" id="delete" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header login-header">
+           <div class="modal fade" id="delete" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header login-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
                     <h4 class="modal-title">Edit Form</h4>
                 </div>
-        <div class="modal-body">
-          <form class="form-horizontal" role="form">
-          <div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="inputEmail3">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" 
-                        id="inputEmail3" placeholder="Email"/>
+            <div class="modal-body">
+              <p>Are you sure you want to delete this data?</p>
+            </div>
+            <div class="modal-footer">
+                        <button type="button" class="add-project" data-dismiss="modal">Yes</button>                        
+                        <button type="button" class="cancel" data-dismiss="modal">No</button>                        
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="inputEmail3">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" 
-                        id="inputEmail3" placeholder="Email"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="inputEmail3">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" 
-                        id="inputEmail3" placeholder="Email"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="inputEmail3">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" 
-                        id="inputEmail3" placeholder="Email"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="inputEmail3">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" 
-                        id="inputEmail3" placeholder="Email"/>
-                    </div>
-                  </div><div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="inputEmail3">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" 
-                        id="inputEmail3" placeholder="Email"/>
-                    </div>
-                  </div><div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="inputEmail3">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" 
-                        id="inputEmail3" placeholder="Email"/>
-                    </div>
-                  </div><div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="inputEmail3">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" 
-                        id="inputEmail3" placeholder="Email"/>
-                    </div>
-                  </div><div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="inputEmail3">First Name:</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" 
-                        id="inputEmail3" placeholder="Email"/>
-                    </div>
-                  </div><div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="inputEmail3">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" 
-                        id="inputEmail3" placeholder="Email"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label"
-                          for="inputPassword3" >Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control"
-                            id="inputPassword3" placeholder="Password"/>
-                    </div>
-                  </div>
-                  
-                  
-                  
-                  <div class="modal-footer">
-                        <button type="button" class="cancel" data-dismiss="modal">Close</button>
-                        <button type="submit" class="add-project" name="op" value="add_final_results">Add</button>
-                    </div>
-                </form>
+          </div>
+          
         </div>
-        
       </div>
       
     </div>
-  </div>
+       
 
   ';
     }
