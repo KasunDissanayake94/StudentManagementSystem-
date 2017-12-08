@@ -98,6 +98,14 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
  		$h_password = "'" . $hash . "'";
  		return $h_password;
  	}
+ 	function delete($del_id){
+
+        $query = "DELETE FROM student WHERE s_id ={$del_id} ";
+
+        $result = self::$db->query($query);
+
+        return $result;
+    }
  }
 
 ?>

@@ -1,5 +1,6 @@
 <?php
 //fetch.php
+session_start();
 $connect = mysqli_connect("localhost", "root", "", "sms");
 $output = '';
 if(isset($_POST["query"]))
@@ -51,6 +52,7 @@ if(mysqli_num_rows($result) > 0)
  ';
     while($row = mysqli_fetch_array($result))
     {
+        $row_student_id=$row["s_id"];
         $output .= '
 
 
@@ -66,14 +68,14 @@ if(mysqli_num_rows($result) > 0)
     <td>'.$row["race"].'</td>
     <td>'.$row["religion"].'</td>
     <td>'.$row["gender"].'</td>
-    <td id="c22">
+    <td id="'.$row["s_id"].'">
         <button class="btn btn-basic" data-toggle="modal" data-target="#view"">View</button>
     </td>
-    <td id="c23">
+    <td id="'.$row["s_id"].'">
         <button class="btn btn-basic" data-toggle="modal" data-target="#edit"">Edit</button>
     </td>
-    <td id="c24">
-        <button class="btn btn-basic" data-toggle="modal" data-target="#delete"">Delete</button>
+    <td id="'.$row["s_id"].'">
+        <button class="btn btn-basic" data-toggle="modal" data-target="#'.$row["s_id"].'"">Delete</button>
     </td>
     
    </tr>
@@ -272,7 +274,7 @@ if(mysqli_num_rows($result) > 0)
                             </div>
 
                             <div class="modal-footer">
-                                <button type="submit" class="add-project" data-dismiss="modal"name="op" value="Add Student">Edit </button>
+                                <button type="submit" class="add-project" name="op" value="Add Student">Edit </button>
                                 <button type="button" class="cancel" data-dismiss="modal">Close</button> 
                             </div>
 
@@ -283,7 +285,7 @@ if(mysqli_num_rows($result) > 0)
             </div>
    
        <!-- Delete Modal -->
-           <div class="modal fade" id="delete" role="dialog">
+           <div class="modal fade" id="'.$row["s_id"].'" role="dialog">
         <div class="modal-dialog">
         
           <!-- Modal content-->
@@ -296,7 +298,7 @@ if(mysqli_num_rows($result) > 0)
               <p>Are you sure you want to delete this data?</p>
             </div>
             <div class="modal-footer">
-            <a href="../controller/admin_controller.php?op=Delete"><button type="button" class="add-project" >Yes</button> </a>
+            <a href="../controller/admin_controller.php?delete_id='.$row_student_id.'"><button type="button" class="add-project">Yes</button> </a>
                                                
                         <button type="button" class="cancel" data-dismiss="modal">No</button>                        
                     </div>

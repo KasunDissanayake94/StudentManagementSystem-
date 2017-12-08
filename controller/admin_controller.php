@@ -1,4 +1,4 @@
-<?php 
+<?php
 ob_start();
 session_start();
 if(isset($_SESSION['type']) && isset($_SESSION['user'])){
@@ -40,6 +40,11 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 	if(isset($_GET['student_id'])){
 		$var = $_GET['student_id']; //some_value
 		$op="moreinfo";
+	}
+	//Get the id of the delete student
+	if(isset($_GET['delete_id'])){
+		$del_id = $_GET['delete_id']; //some_value
+		$op="Delete";
 	}
 
 
@@ -101,7 +106,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             $admin_controller->show_moreinformation($var);
             break;
 		case 'Delete':
-			$admin_controller->delete();
+			$admin_controller->delete($del_id);
 		default:
 			//index.php
 			break;
@@ -345,8 +350,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
         }
     }
-    function delete(){
-
+    //Admin delete Student
+    function delete($del_id){
+        $result = self::$admin->delete($del_id);
+        header("Location:../view/search.php");
 	}
 //end of the class
 	}	

@@ -65,17 +65,13 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
  	}
 
  	function hashPassword($password){
- 		//using bcrypt 
+ 		//using bcrypt
  		$option = ['cost' => 12];
  		$hash = password_hash($password,PASSWORD_BCRYPT,$option);
  		//add quotes
  		$h_password = "'" . $hash . "'";
  		return $h_password;
  	}
- 	//Delete student from the database
- 	function delete($s_id){
-        $query = "SELECT * FROM `student` WHERE s_id = {$st_id} ";
-    }
  }
 
 ?>
