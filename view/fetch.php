@@ -184,37 +184,37 @@ if(mysqli_num_rows($result) > 0)
                     <h4 class="modal-title">Edit Form</h4>
                 </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="../controller/admin_controller.php" method="post">
+                        <form id="userForm" class="form-horizontal" action="../controller/admin_controller.php" method="post">
                             
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Username :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="username" type="text" name="username" placeholder="Type Student ID here" required />
+                                    <input class="form-control" id="username" value="'.$row_student_id.'" type="text" name="username" placeholder="Type Student ID here" required />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">First Name :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="firstname" type="text" name="firstname" placeholder="Type first name here" required />
+                                    <input class="form-control" id="firstname" value="'.$row["first_name"].'" type="text" name="firstname" placeholder="Type first name here" required />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Last Name :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="lastname" type="text" name="lastname" placeholder="Type last name here" required />
+                                    <input class="form-control" id="lastname" value="'.$row["last_name"].'" type="text" name="lastname" placeholder="Type last name here" required />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="email">Area:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="area" name="area" placeholder="Enter area here" required>
+                                    <input type="text" class="form-control" id="area" value="'.$row["area"].'" name="area" placeholder="Enter area here" required />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="email">Email:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email here" required>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email here" required />
                                 </div>
                             </div>
 
@@ -222,57 +222,54 @@ if(mysqli_num_rows($result) > 0)
                             <div class="form-group">
                                 <label class="control-label col-sm-2">School :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="school" type="text" name="school" placeholder="Type school here" required />
+                                    <input class="form-control" id="school" value="'.$row["school"].'" type="text" name="school" placeholder="Type school here" required />
                                 </div>
                             </div>
 
                             <div class="form-group"> <!-- Date input -->
                                 <label class="control-label col-sm-2" for="date">Birthdate :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="bday" name="bday" placeholder="MM/DD/YYY" type="text" required/>
+                                    <input class="form-control" value="'.$row["birthdate"].'" id="bday" name="bday" placeholder="MM/DD/YYY" type="text" required />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Race :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="race" type="text" name="race" placeholder="Valid your race here" required />
+                                    <input class="form-control" id="race" value="'.$row["race"].'" type="text" name="race" placeholder="Valid your race here" required />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Religion :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="religion" type="text" name="religion" placeholder="Type religion here" required/>
+                                    <input class="form-control" id="religion" value="'.$row["religion"].'" type="text" name="religion" placeholder="Type religion here" required />
                                 </div>
                             </div>
 
                             <div class="form-group"> <!-- Date input -->
                                 <label class="control-label col-sm-2" for="date">Registered Date :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="regdate" name="regdate" placeholder="MM/DD/YYY" type="text" required/>
+                                    <input class="form-control" id="regdate" value="'.$row["reg_date"].'" name="regdate" placeholder="MM/DD/YYY" type="text" required />
                                 </div>
                             </div>
                             <div class="form-group"> <!-- Date input -->
                                 <label class="control-label col-sm-2" for="date">PassOut Date :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="passdate" name="passdate" placeholder="MM/DD/YYY" type="text" required/>
+                                    <input class="form-control" id="passdate" value="'.$row["out_date"].'" name="passdate" placeholder="MM/DD/YYY" type="text" required />
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2">Gender :</label>
+                            <div class="form-group"> <!-- Date input -->
+                                <label class="control-label col-sm-2" for="date">Gender</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" name="gender">
-                                        <option selected>Open this select menu</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-
-                                    </select>
+                                    <input class="form-control" id="passdate" value="'.$row["gender"].'" name="passdate" placeholder="MM/DD/YYY" type="text" required />
                                 </div>
                             </div>
+                            
 
                             <div class="modal-footer">
-                                <button type="submit" class="add-project" name="op" value="Add Student">Edit </button>
-                                <button type="button" class="cancel" data-dismiss="modal">Close</button> 
+                                <button type="button"  class="add-project" data-dismiss="modal">Edit</button> 
+                                <button type="button"  class="cancel" data-dismiss="modal">Close</button> 
+                                
                             </div>
 
 
@@ -305,6 +302,8 @@ if(mysqli_num_rows($result) > 0)
       </div>
       
     </div>
+
+
        
 
   ';

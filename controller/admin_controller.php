@@ -107,6 +107,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             break;
 		case 'Delete':
 			$admin_controller->delete($del_id);
+			break;
+		case 'Edit':
+			$admin_controller->edit();
+			break;
 		default:
 			//index.php
 			break;
@@ -354,6 +358,12 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
     function delete($del_id){
         $result = self::$admin->delete($del_id);
         header("Location:../view/search.php");
+	}
+	//Admin update student details
+	function edit(){
+        $id = self::$db->quote($_POST['firstname']);
+        echo $id;
+    	die("come to the edit");
 	}
 //end of the class
 	}	
