@@ -100,6 +100,8 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         case 'moreinfo':
             $admin_controller->show_moreinformation($var);
             break;
+		case 'Delete':
+			$admin_controller->delete();
 		default:
 			//index.php
 			break;
@@ -343,6 +345,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
         }
     }
+    function delete(){
+
+	}
 //end of the class
 	}	
 		

@@ -296,7 +296,8 @@ if(mysqli_num_rows($result) > 0)
               <p>Are you sure you want to delete this data?</p>
             </div>
             <div class="modal-footer">
-                        <button type="button" class="add-project" data-dismiss="modal">Yes</button>                        
+            <a href="../controller/admin_controller.php?op=Delete"><button type="button" class="add-project" >Yes</button> </a>
+                                               
                         <button type="button" class="cancel" data-dismiss="modal">No</button>                        
                     </div>
           </div>
