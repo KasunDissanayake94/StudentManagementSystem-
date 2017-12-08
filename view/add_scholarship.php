@@ -29,10 +29,10 @@ session_start();
                     <ul>
                         <li><a href="../controller/caa_academic_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
                        
-                        <li class="active"><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
+                        <li><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
                         <li><a href="../controller/caa_academic_controller.php?op=view_events"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
-                        <li><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
-                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
+                        <li class="active"><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
+                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Table</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -94,50 +94,76 @@ session_start();
                         </div>
                     </header>
                 </div>
-                <div class="user-dashboard">
-                    <h1> Add Scholarship </h1>
-<div id="content">
-        <form action="../controller/caa_academic_controller.php" method="post" class="elegant-aero"> 
-       
-            
-          <table align="center" border="1"> 
-       
+                                <div class="user-dashboard">
+                    <div class="modal-content">
+                        <div class="modal-header login-header">
+                            <h4 class="modal-title">Add Scholarship </h4>
+                        </div>   
+                        <div class="modal-body">
+                            <form class="form-horizontal" action="../controller/caa_academic_controller.php" method="post">
+                               
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Name :</label>
+                                    <div class="col-sm-10">
+                                        <input  class="form-control" id="name" type="text" name="name" placeholder="Student name here" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Index Number :</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="indexno" type="text" name="indexno" placeholder="Student index No here" />
+                                    </div>
+                                </div>
 
-            <tr>
-                <td>Name </td>
-                <td><input type='text' name="name" size="100%"  ></td>
-            </tr>
-            <tr>
-                <td>Index Number </td>
-                <td><input type="text" name="indexno" ></td>
-            </tr>
-            <tr>
-                <td>Course</td>
-                <td><input type="radio" name="course" value="IS">Information Systems
-                <input type="radio" name="course" value="CS">Computer Science
-                </td>
-            </tr>
-             <tr>
-                <td>Type Of Scholarship</td>
-                <td><input type="radio" name="stype" value="Mahapola">Mahapola <br>
-                <input type="radio" name="stype" value="Bursary">Bursary <br>
-                <input type="radio" name="stype" value="Other">Other <br>
-                </td>
-            </tr>
-                 <td>Amount </td>
-                <td><input type="text" name="samount"></td>
-            </tr>
-            <tr>
-                <td colspan=2 align="center">
-                <input type="submit" class="button" name="op" value="Add Scholarship">
-                <input type="reset" value="Cancel">
-                </td>
-            </tr>
-        </table>
-    </form>
+                                <div class="form-group">
+                                <label class="control-label col-sm-2" for="radio">Course:</label>
+                                <div class="col-sm-10">
+                                    <div class="radio">
+                                        <label><input type="radio" name="course" value="IS" required>Information Systems</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="course" value="CS" required>Computer Science</label>
+                                    </div>
+                                  
+                                  
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-2"  for="radio">Type Of Scholarship :</label>
+                                <div class="col-sm-10">
+                                   <div class="radio"><label><input type="radio" id="stype" name="stype" value="Mahapola" required>Mahapola </label></div>
+                                   <div class="radio"><label><input type="radio" id="stype" name="stype" value="Bursary" required>Bursary </label></div>
+                                   <div class="radio"><label><input type="radio" id="stype" name="stype" value="Other" required>Other </label></div>
+                                 
+                                </div>
+                              </div>
 
-    </div>                   
+                              <div class="form-group">
+                                <label class="control-label col-sm-2">Mention if other :</label>
+                                <div class="col-sm-10">
+                                  <input class="form-control" id="schol_type" type="text" name="schol_other" placeholder="If other Mention details of the Scholarship " />
+                                </div>
+                              </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Amount  :</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="samount" type="text" name="samount" placeholder="Mention Scholarship amount" />
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="add-project" data-dismiss="modal" name="op" value="Add Scholarship">
+                                    Add Scholarship</button>
+                                    <button type="reset" class="add-project" data-dismiss="modal" value="Cancel">
+                                    Cancel</button>
+                                   
+                                </div>
+
+                              
+                            </form>
+                        </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

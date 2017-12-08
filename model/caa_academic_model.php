@@ -19,10 +19,10 @@
 
       }
 
-      function add_scholarship($name,$indexno,$course,$stype,$samount){
+      function add_scholarship($name,$indexno,$course,$stype,$schol_other,$samount){
 
   
-      $query = "INSERT INTO `scholarship`( `name`, `indexno`, `course`, `schol_type`, `schol_amount`) VALUES (".$name.",".$indexno.",".$course.",".$stype.",".$samount.")";
+      $query = "INSERT INTO `scholarship`( `name`, `indexno`, `course`, `schol_type`,`schol_other`, `schol_amount`) VALUES (".$name.",".$indexno.",".$course.",".$stype.",".$schol_other.",".$samount.")";
 
       $result = self::$db->query($query);
     
@@ -42,6 +42,26 @@
     function view_by_mahapola(){
     $query = "SELECT * FROM `scholarship`
               WHERE schol_type='Mahapola'
+    ";
+
+    $result = self::$db->select($query);
+
+    return $result;
+  }
+
+  function view_by_bursary(){
+    $query = "SELECT * FROM `scholarship`
+              WHERE schol_type='Bursary'
+    ";
+
+    $result = self::$db->select($query);
+
+    return $result;
+  }
+
+  function view_by_other_scholarship(){
+    $query = "SELECT * FROM `scholarship`
+              WHERE schol_type='Other'
     ";
 
     $result = self::$db->select($query);

@@ -60,7 +60,13 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         	break;	
         case "View by Mahapola":
          	$caa_academic_controller->view_by_mahapola();
-        	break;								
+        	break;	
+        case "View by Bursary":
+         	$caa_academic_controller->view_by_bursary();
+        	break;
+        case "View by Other Scholarship":
+         	$caa_academic_controller->view_by_other_scholarship();
+        	break;						
 		default:
 			//header("Location:../index.php");
 			break;
@@ -100,9 +106,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			$indexno = self::$db->quote($_POST['indexno']);
 			$course = self::$db->quote($_POST['course']);
 			$stype = self::$db->quote($_POST['stype']);
+			$schol_other = self::$db->quote($_POST['schol_other']);
 			$samount = self::$db->quote($_POST['samount']);
 			
-			$result = self::$caa_academic->add_scholarship($name,$indexno,$course,$stype,$samount);
+			$result = self::$caa_academic->add_scholarship($name,$indexno,$course,$stype,$schol_other,$samount);
 
 			if($result == 1){
 				echo "Scholarship Details Added Successfully....";
@@ -119,6 +126,32 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			if($result){
 				$_SESSION['value']=$result;
 				header("Location:../view/mahapola.php");
+			}else{
+				echo "something wrong";
+			}
+		}
+
+	function view_by_bursary(){
+			
+
+			$result = self::$caa_academic->view_by_bursary();
+
+			if($result){
+				$_SESSION['value']=$result;
+				header("Location:../view/bursary.php");
+			}else{
+				echo "something wrong";
+			}
+		}
+
+	function view_by_other_scholarship(){
+			
+
+			$result = self::$caa_academic->view_by_other_scholarship();
+
+			if($result){
+				$_SESSION['value']=$result;
+				header("Location:../view/other_scholarship.php");
 			}else{
 				echo "something wrong";
 			}

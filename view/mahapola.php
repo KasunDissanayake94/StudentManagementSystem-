@@ -29,10 +29,10 @@ session_start();
                     <ul>
                         <li><a href="../controller/caa_academic_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
                        
-                        <li class="active"><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
+                        <li><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
                         <li><a href="../controller/caa_academic_controller.php?op=view_events"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
-                        <li><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
-                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
+                        <li class="active"><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
+                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Table</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -144,7 +144,7 @@ foreach ($_SESSION['value'] as $user) {
 
 <h1>View All Students</h1>
 
- <table class="masterlist">
+<!--  <table class="masterlist">
             <tr>
                 <th>Student Name</th>
                 <th>Index No</th>
@@ -156,9 +156,45 @@ foreach ($_SESSION['value'] as $user) {
 
             <?php echo $user_list; ?>
 
-        </table>
+        </table> -->
+
+ <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
+
+ <div id="result"></div>
 </body>
 </html>
+
+
+<script>
+$(document).ready(function(){
+
+ load_data();
+
+ function load_data(query)
+ {
+  $.ajax({
+   url:"fetch_student_mahapola.php",
+   method:"POST",
+   data:{query:query},
+   success:function(data)
+   {
+    $('#result').html(data);
+   }
+  });
+ }
+ $('#search_text').keyup(function(){
+  var search = $(this).val();
+  if(search != '')
+  {
+   load_data(search);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+});
+</script>
 
                     </div>
                 </div>

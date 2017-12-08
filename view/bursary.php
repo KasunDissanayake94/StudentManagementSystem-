@@ -1,23 +1,6 @@
-<?php
-	if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
-	        /* 
-	           Up to you which header to send, some prefer 404 even if 
-	           the files does exist for security
-	        */
-	        header( 'HTTP/1.0 403 Forbidden', TRUE, 403 );
-
-	        /* choose the appropriate page to redirect users */
-	        die( header( 'location: /error.php' ) );
-
-	    }
-
-	    @session_start();
-		if(!isset($_SESSION['user'])){
-			header("Location:../index.php");
-		}
-
-?>
-
+<?php 
+session_start();
+ ?>
 
 <!DOCTYPE html>
 <html>
@@ -44,12 +27,12 @@
                 </div>
                 <div class="navi">
                     <ul>
-                        <li class="active"><a href="../controller/caa_academic_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                        <li><a href="../controller/caa_academic_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
                        
                         <li><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
                         <li><a href="../controller/caa_academic_controller.php?op=view_events"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
-                        <li><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
-                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Tables</span></a></li>
+                        <li class="active"><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
+                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Bursary</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -114,7 +97,89 @@
                 <div class="user-dashboard">
                     <h1> Computer Application Assistant </h1>
                    
-                       
+
+<?php 
+$user_list='';
+                 
+if(isset($_SESSION['value'])){
+
+foreach ($_SESSION['value'] as $user) {
+        $user_list .= "<tr>";
+        $user_list .= "<td>{$user['name']}</td>";
+        $user_list .= "<td>{$user['indexno']}</td>";
+        $user_list .= "<td>{$user['course']}</td>";
+        $user_list .= "<td>{$user['schol_amount']}</td>";
+        
+        $user_list .= "</tr>";
+        unset($_SESSION['value']);
+    }
+}
+
+ ?>
+ 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View All</title> 
+    <style> 
+        .masterlist {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .masterlist th {
+            background: #aaa;
+            text-align: left;
+        }
+
+        .masterlist th, .masterlist td {
+            padding: 10px;
+            border-bottom: 1px solid #aaa;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<h1>View All Students</h1>
+ <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
+
+ <div id="result"></div>
+        
+</body>
+</html>
+
+<script>
+$(document).ready(function(){
+
+ load_data();
+
+ function load_data(query)
+ {
+  $.ajax({
+   url:"fetch_student_bursary.php",
+   method:"POST",
+   data:{query:query},
+   success:function(data)
+   {
+    $('#result').html(data);
+   }
+  });
+ }
+ $('#search_text').keyup(function(){
+  var search = $(this).val();
+  if(search != '')
+  {
+   load_data(search);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+});
+</script>
                     </div>
                 </div>
             </div>
@@ -125,3 +190,10 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
