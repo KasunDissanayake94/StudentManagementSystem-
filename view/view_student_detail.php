@@ -1,4 +1,11 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Kasun Dissanayake
+ * Date: 12/8/2017
+ * Time: 10:40 PM
+ */
+
 session_start();
 ?>
 
@@ -143,7 +150,7 @@ if(isset($_SESSION['details'])){
                 <div class="panel-body">
 
 
-                <form action="../controller/student_controller.php" method="post">
+
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
 
@@ -151,7 +158,7 @@ if(isset($_SESSION['details'])){
                                 <div class="col-lg-3 col-md-3">
                                     <center>
                                         <span class="text-left">
-                                        <img src="../view/images/profile_pic/<?php echo $s_id;?>" class="img-responsive img-thumbnail">
+                                        <img src="../view/images/profile_pic/001" class="img-responsive img-thumbnail">
 
 
                                             <!-- Modal -->
@@ -217,7 +224,7 @@ if(isset($_SESSION['details'])){
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-list-ol"></i> Scholar Number</td>
-                                                        <td> <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required/></td>
+                                                        <td>45</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-book"></i> Medium</td>
@@ -252,7 +259,7 @@ if(isset($_SESSION['details'])){
                                                         <td>
                                                             <address>
 
-                                                                    <?php echo $area; ?>
+                                                                <?php echo $area; ?>
                                                             </address>
                                                         </td>
                                                     </tr>
@@ -342,15 +349,9 @@ if(isset($_SESSION['details'])){
                                                     </tbody>
                                                 </table>
                                             </div>
-
                                         </div>
 
-                                        <button name="cancel_changes" type="submit" class="btn btn-danger" style="float: right; margin-left: 10px;"><i class="fa fa-trash"></i> Cancel</button>
-                                        <button name="save_changes" type="submit" class="btn btn-success" style="float: right"><i class="fa fa-gear"></i> Save Changes</button>
-
-
                                     </div>
-
 
                                 </div>
 
@@ -359,8 +360,7 @@ if(isset($_SESSION['details'])){
                     </div>
                     <!-- /.table-responsive -->
 
-                </div><!-- /.contend -->
-                </form>
+                </div>
             </div>
 
 

@@ -89,7 +89,8 @@ if(isset($_SESSION['details'])){
                                     <ul class="dropdown-menu">
                                         <li>
                                             <div class="navbar-content">
-                                                <a href="../controller/student_controller.php?op=edit_by_student" class="view btn-sm active">View Profile</a>
+                                                <a href="../controller/student_controller.php?op=edit_by_student" class="view btn-sm active">Edit Profile</a>
+                                                <a href="../controller/student_controller.php?op=view_by_student" class="view btn-sm active">View Profile</a>
 
                                             </div>
                                         </li>

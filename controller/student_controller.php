@@ -53,9 +53,15 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         case 'edit_by_student':
             $student_controller->edit_by_student();
             break;
+        case 'view_by_student':
+            $student_controller->view_by_student();
+            break;
 		case 'Problems':
 			$student_controller->problems();
 			break;
+        case 'save_changes':
+            $student_controller->save_changes();
+            break;
 		default:
             header("Location:../view/student.php");
 			break;
@@ -102,6 +108,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		function edit_by_student(){
             header("Location:../view/student_detail.php");
 		}
+        function view_by_student(){
+            header("Location:../view/view_student_detail.php");
+        }
 		function acadamic(){
             header("Location:../view/acadamic_details.php");
 		}
@@ -111,6 +120,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		//Send problems to the Admin
 		function problems(){
             header("Location:../view/problems.php");
+		}
+		function save_changes(){
+
 		}
 
 
