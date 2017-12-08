@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2017 at 11:03 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 7.0.13
+-- Generation Time: Dec 08, 2017 at 11:04 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `sms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ar_acedemic`
+--
+
+CREATE TABLE `ar_acedemic` (
+  `id` int(20) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `first_name` varchar(40) NOT NULL,
+  `last_name` varchar(40) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `dob` date NOT NULL,
+  `telephone` varchar(10) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `education` varchar(50) NOT NULL,
+  `research` varchar(50) NOT NULL,
+  `courses` varchar(30) NOT NULL,
+  `awards` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ar_acedemic`
+--
+
+INSERT INTO `ar_acedemic` (`id`, `username`, `first_name`, `last_name`, `gender`, `dob`, `telephone`, `email`, `education`, `research`, `courses`, `awards`) VALUES
+(123456, 'anuradha', 'thilakarathne', 'mohan', 'male', '1994-10-03', '0776709705', 'mohan@gamil.com', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -57,6 +85,26 @@ CREATE TABLE `degree` (
   `description` varchar(45) DEFAULT NULL,
   `start_year` varchar(45) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `eventdate` varchar(20) NOT NULL,
+  `eventtitle` varchar(100) NOT NULL,
+  `eventdes` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`eventdate`, `eventtitle`, `eventdes`) VALUES
+('0000-00-00', 'vacation', 'Event Description'),
+('12/08/2017', 'iygjuh', 'Event Description');
 
 -- --------------------------------------------------------
 
@@ -340,11 +388,18 @@ INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `em
 (47, '003', '$2y$12$bjgTnV1UIaFQU.LoLD8rdu7JXiceVFL8uI0bwHAYPEG.yp13V.SzK', '', '', NULL, 'student', NULL),
 (48, 'e', '$2y$12$4easLKnzbT5fZR3sHzIFzejV/7Bcnys73QDBOJg9Q9S1PXW7J9f/W', '', '', NULL, 'staff', NULL),
 (49, 'aca1', '$2y$12$pqvpk4FvbCiXOBEN0sIFtehD6ai6TPIG2uzs1AoEx3fOXj3/y6qHq', '', '', NULL, 'ar', NULL),
-(50, 'mks', 'mks', '', '', 'mks@ucsc.cmb.ac.lk', 'lecturer', 995486251);
+(50, 'mks', 'mks', '', '', 'mks@ucsc.cmb.ac.lk', 'lecturer', 995486251),
+(123456, 'anuradha', '$2y$12$WJ.ccZX/gQ5J7sTPm1hCRu7VoGpJ8BvJgY0wB.9i3qFbNDQoIx8Km', 'anuradha', 'thilakarathne', 'anuradha@gmail.com', 'ar_acedemic', 942770405);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `ar_acedemic`
+--
+ALTER TABLE `ar_acedemic`
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Indexes for table `course`
@@ -358,6 +413,12 @@ ALTER TABLE `course`
 --
 ALTER TABLE `degree`
   ADD PRIMARY KEY (`degree_id`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`eventdate`);
 
 --
 -- Indexes for table `hostel`
@@ -467,7 +528,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123457;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
