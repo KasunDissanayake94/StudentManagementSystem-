@@ -106,6 +106,14 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
         return $result;
     }
+    //Get data to appear user profile
+     function view_profile($u_id){
+         $query = "SELECT * FROM `user` WHERE id = ".$u_id." ";
+
+         $result = self::$db->select($query);
+
+         return $result;
+     }
  }
 
 ?>

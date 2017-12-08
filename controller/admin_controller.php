@@ -111,6 +111,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		case 'Edit':
 			$admin_controller->edit();
 			break;
+        case 'Profile':
+            $admin_controller->profile();
+            break;
 		default:
 			//index.php
 			break;
@@ -365,6 +368,20 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         echo $id;
     	die("come to the edit");
 	}
+	//View Current User profile
+        function profile(){
+		
+            $u_id=$_SESSION['id'];
+            $result = self::$admin->view_profile($u_id);
+            if($result){
+                $_SESSION['value']=$result;
+                header("Location:../view/view_user_profile.php");
+            }else{
+                echo "something wrong";
+            }
+
+
+        }
 //end of the class
 	}	
 		
