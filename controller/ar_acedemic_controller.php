@@ -68,6 +68,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         case 'events':
             $aracedemic_controller->events();
             break;
+        case 'addevent':
+            $aracedemic_controller->addevent();
+            break;
 		default:
 			//header("Location:../index.php");
 			break;
@@ -105,7 +108,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  		}
 
  		function manage_user(){
-            header("Location:../view/search.php");
+            header("Location:../view/ar_acedemic_manusr.php");
         }
 
         function report(){
@@ -115,5 +118,37 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         function events(){
             header("Location:../view/ar_acedemic_event.php");
         }
+
+        function addevent(){
+
+            $event_date = self::$db->quote($_POST['event-date']);
+            $event_title = self::$db->quote($_POST['event-title']);
+            $event_des = self::$db->quote($_POST['event-descripton']);
+
+            //Check this student already in the system
+
+            /*
+            $st_id = self::$db->quote($_POST['username']);
+            $result1 = self::$admin->search_student($st_id);
+            if($result1){
+                //If student already in the system show error message
+                $result='<div class="alert alert-danger">This User already in the System</div>';
+                header("Location:../view/add_student_details.php?result=$result");
+
+            }else{
+                //Add Student to the system
+            */
+                $result = self::$ar_acedemic->addevent($event_date,$event_title,$event_des);
+                if($result == 1){
+                    //Successfully Added
+                    $result='<div class="alert alert-success">Event Sccessfully Added to the System</div>';
+                    header("Location:../view/ar_acedemic_event.php?result=$result");
+                    //Error Message
+                }else{
+                    $result='<div class="alert alert-danger">Sorry Failed to Add the Event</div>';
+                    header("Location:../view/ar_acedemic_event.php?result=$result");
+                }
+            }
+
  	}
 ?>

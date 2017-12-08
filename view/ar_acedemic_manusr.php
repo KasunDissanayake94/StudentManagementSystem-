@@ -1,11 +1,22 @@
 <?php
 session_start();
-$result='';
-if(isset($_GET['result'])){
-    $result=$_GET['result'];
-}
-else{
-    $result=null;
+?>
+
+<?php
+if(isset($_SESSION['value'])){
+
+    foreach ($_SESSION['value'] as $ar_acedemic) {
+        $first_name=$ar_acedemic['first_name'];
+        $last_name=$ar_acedemic['last_name'];
+        $gender=$ar_acedemic['gender'];
+        $dob=$ar_acedemic['dob'];
+        $telephone=$ar_acedemic['telephone'];
+        $email=$ar_acedemic['email'];
+        $education=$ar_acedemic['education'];
+        $research=$ar_acedemic['research'];
+        $courses=$ar_acedemic['courses'];
+        $awards=$ar_acedemic['awards'];
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -13,20 +24,18 @@ else{
 
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../view/css/style2.css">
+    <link rel="stylesheet" type="text/css" href="../view/css/style1.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../view/css/style4.css"  />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="test/main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
+    <script src="../view/js/jquery-3.2.1.min.js"></script>
+    <script src="../view/js/jquery.tabledit.min.js"></script>
+    <script src="../view/js/jquery.tabledit.js"></script>
+    <script src="../view/js/jquery.min.js"></script>
 </head>
 
 <body class="home">
@@ -44,9 +53,9 @@ else{
                     <li><a href="../controller/ar_acedemic_controller.php?op=view_ar_acedemic"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Profile</span></a></li>
                     <li><a href="../controller/ar_acedemic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
                     <li><a href="../controller/ar_acedemic_controller.php?op=ar_approv"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Approvals</span></a></li>
-                    <li><a href="../controller/ar_acedemic_controller.php?op=manage_user"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Manage Users</span></a></li>
+                    <li class="active"><a href="../controller/ar_acedemic_controller.php?op=manage_user"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Manage Users</span></a></li>
                     <li><a href="../controller/ar_acedemic_controller.php?op=report"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
-                    <li class="active"><a href="../controller/ar_acedemic_controller.php?op=events"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
+                    <li><a href="../controller/ar_acedemic_controller.php?op=events"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
                 </ul>
             </div>
         </div>
@@ -109,35 +118,55 @@ else{
                 </header>
             </div>
             <div class="user-dashboard">
-                <div class="container">
-                    <form class="form-horizontal" action="../controller/ar_acedemic_controller.php" method="post">
-                        <div class="form-group">
-                            <div class="col-sm-12 col-sm-offset-0">
-                                <?php echo $result; ?>
-                            </div>
-                        </div>
-
-                    <div id="newEventHolder">
-                        <span><i class="fa fa-plus"></i> Add New Event</span>
-                    </div>
-
-                    <div id="newEventForm">
-                        <label for="event-date">Event Date</label>
-                        <input type="text" id="eventDate" name="event-date">
-                        <label for="event-title">Event Title</label>
-                        <input type="text" name="event-title" id="eventTitleInput" maxlength="80"/>
-                        <label for="event-description">Description</label>
-                        <textarea name="event-descripton" id="eventDescriptionInput">Event Description</textarea>
-                        <button type="submit" name="op" value="addevent" id="addEvent">Add New Event</button>
-                        <button name="cancel-add-event" id="cancelAddEvent">Cancel</button>
-                    </div>
-                    </form>
+                <div class="panel-heading">
+                    <h4>
+                        <b>Student Details</b>
+                    </h4>
+                    <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
                 </div>
-                <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-                <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
-                <script type="text/javascript" src="../view/js/js4.js" ></script>
+
+                <div id="result"></div>
+
             </div>
+
+
+        </div>
+    </div>
+
+</div>
+
 
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function(){
+
+        load_data();
+
+        function load_data(query)
+        {
+            $.ajax({
+                url:"fetch.php",
+                method:"POST",
+                data:{query:query},
+                success:function(data)
+                {
+                    $('#result').html(data);
+                }
+            });
+        }
+        $('#search_text').keyup(function(){
+            var search = $(this).val();
+            if(search != '')
+            {
+                load_data(search);
+            }
+            else
+            {
+                load_data();
+            }
+        });
+    });
+</script>

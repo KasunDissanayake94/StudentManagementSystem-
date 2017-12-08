@@ -27,5 +27,16 @@
         return $result;
       }
 
+      function addevent($event_date,$event_title,$event_des){
+         $query="INSERT INTO events (eventdate,eventtitle,eventdes)
+         VALUES ($event_date,$event_title,$event_des)";
+
+          $result = self::$db->query($query);
+
+          return $result;
+
+        }
+
+
     }
 ?>
