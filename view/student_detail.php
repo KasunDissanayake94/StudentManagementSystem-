@@ -143,7 +143,6 @@ if(isset($_SESSION['details'])){
                 <div class="panel-body">
 
 
-                <form action="../controller/student_controller.php" method="post">
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
 
@@ -204,7 +203,11 @@ if(isset($_SESSION['details'])){
                                         <li><a data-toggle="tab" href="#General" class="text-success"><i class="fa fa-info"></i> General Info</a></li>
                                     </ul>
 
+
+                                    <form action="../controller/student_controller.php" method="post">
+
                                     <div class="tab-content">
+
                                         <div id="Summery" class="tab-pane fade in active">
 
                                             <div class="table-responsive panel">
@@ -212,30 +215,42 @@ if(isset($_SESSION['details'])){
                                                     <tbody>
 
                                                     <tr>
-                                                        <td class="text-success"><i class="fa fa-user"></i> Full Name</td>
-                                                        <td><?php echo $fname." ".$lname; ?></td>
+                                                        <td class="text-success"><i class="fa fa-user"></i> Student ID :</td>
+                                                        <td> <input type="text" value="<?php echo $s_id; ?>" class="form-control" id="email" name="email" placeholder="Enter email" required /></td>
+
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="text-success"><i class="fa fa-user"></i> First Name</td>
+                                                        <td> <input type="text" value="<?php echo $fname; ?>" class="form-control" id="email" name="email" placeholder="Enter email" required /></td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-success"><i class="fa fa-user"></i> Last Name</td>
+                                                        <td> <input type="text" value="<?php echo $lname; ?>" class="form-control" id="email" name="email" placeholder="Enter email" required /></td>
+
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-list-ol"></i> Scholar Number</td>
-                                                        <td> <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required/></td>
+                                                        <td> <input type="text" value="45" class="form-control" id="email" name="email" placeholder="Enter email" required disabled/></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-book"></i> Medium</td>
-                                                        <td>English</td>
+                                                        <td> <input type="email" value="English" class="form-control" id="email" name="email" placeholder="Enter email" required disabled/></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-group"></i> Class &amp; Section</td>
-                                                        <td>12-F</td>
+                                                        <td> <input type="email" value="12-F" class="form-control" id="email" name="email" placeholder="Enter email" required disabled /></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-calendar"></i> Birthday</td>
-                                                        <td><?php echo $bday; ?></td>
+                                                        <td> <input type="date" value="<?php echo $bday; ?>" class="form-control" id="email" name="email" placeholder="Enter email" required /></td>
                                                     </tr>
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-university"></i> School</td>
-                                                        <td>
-                                                            <?php echo $school; ?>                                                                </td>
+
+                                                        <td> <input type="text" value="<?php echo $school; ?>" class="form-control" id="email" name="email" placeholder="Enter email" required /></td>                                                               </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -345,11 +360,12 @@ if(isset($_SESSION['details'])){
 
                                         </div>
 
-                                        <button name="cancel_changes" type="submit" class="btn btn-danger" style="float: right; margin-left: 10px;"><i class="fa fa-trash"></i> Cancel</button>
-                                        <button name="save_changes" type="submit" class="btn btn-success" style="float: right"><i class="fa fa-gear"></i> Save Changes</button>
+                                        <button name="op" value="cancel_changes" type="submit" class="btn btn-danger" style="float: right; margin-left: 10px;"><i class="fa fa-trash"></i> Cancel</button>
+                                        <button name="op" value="save_changes" type="submit" class="btn btn-success" style="float: right"><i class="fa fa-gear"></i> Save Changes</button>
 
 
                                     </div>
+                                    </form>
 
 
                                 </div>
@@ -360,7 +376,7 @@ if(isset($_SESSION['details'])){
                     <!-- /.table-responsive -->
 
                 </div><!-- /.contend -->
-                </form>
+
             </div>
 
 

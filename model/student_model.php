@@ -54,6 +54,14 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
  		return $result;
  	}
+ 	function update_student($st_id,$firstname,$lastname){
+ 	    die($st_id.$firstname.$lastname);
+        $query= "UPDATE `student` SET `first_name` = ".$firstname."  WHERE `s_id` = ".$st_id."";
+
+        $result = self::$db->query($query);
+
+        return $result;
+    }
 
  	
  }

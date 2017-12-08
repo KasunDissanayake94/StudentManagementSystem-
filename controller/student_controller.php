@@ -1,5 +1,5 @@
-<?php 
-
+<?php
+ob_start();
 session_start();
 if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
@@ -121,9 +121,27 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		function problems(){
             header("Location:../view/problems.php");
 		}
-		function save_changes(){
+        function save_changes(){
 
-		}
+            $s_id = self::$db->quote($_POST['s_id']);
+            $firstname = self::$db->quote($_POST['firstname']);
+            $lastname = self::$db->quote($_POST['lastname']);
+
+            $result = self::$student->update_student($s_id,$firstname,$lastname);
+            if($result){
+                //If student already in the system show error message
+                $result='<div class="alert alert-danger">Updated </div>';
+                header("Location:../view/view_student_detail.php?result=$result");
+
+            }else{
+                $result='<div class="alert alert-danger">Sory Failed to Update</div>';
+                header("Location:../view/view_student_detail.php?result=$result");
+            }
+
+
+
+
+        }
 
 
 	}

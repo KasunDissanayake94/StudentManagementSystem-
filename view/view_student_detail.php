@@ -7,6 +7,12 @@
  */
 
 session_start();
+if(isset($_GET['result'])){
+    $result=$_GET['result'];
+}
+else{
+    $result=null;
+}
 ?>
 
 <?php
@@ -148,6 +154,11 @@ if(isset($_SESSION['details'])){
                     </div>
                 </div>
                 <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <?php echo $result; ?>
+                        </div>
+                    </div>
 
 
 
@@ -203,13 +214,16 @@ if(isset($_SESSION['details'])){
 
 
                                 </div>
+
                                 <div class="col-lg-9 col-md-9">
+
                                     <ul class="nav nav-tabs">
                                         <li class="active"><a data-toggle="tab" href="#Summery" class="text-success"><i class="fa fa-indent"></i> Summery</a></li>
                                         <li><a data-toggle="tab" href="#Contact" class="text-success"><i class="fa fa-bookmark-o"></i> Contact Info</a></li>
                                         <li><a data-toggle="tab" href="#Address" class="text-success"><i class="fa fa-home"></i> Address</a></li>
                                         <li><a data-toggle="tab" href="#General" class="text-success"><i class="fa fa-info"></i> General Info</a></li>
                                     </ul>
+
 
                                     <div class="tab-content">
                                         <div id="Summery" class="tab-pane fade in active">
