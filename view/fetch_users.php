@@ -19,6 +19,7 @@ if(isset($_POST["query"]))
   OR first_name LIKE '%".$search."%' 
   OR last_name LIKE '%".$search."%' 
   OR email LIKE '%".$search."%' 
+  OR type LIKE '%".$search."%' 
    
 
  ";
