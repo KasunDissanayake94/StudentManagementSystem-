@@ -65,8 +65,8 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         case 'report':
             $aracedemic_controller->report();
             break;
-        case 'event':
-            $aracedemic_controller->event();
+        case 'events':
+            $aracedemic_controller->events();
             break;
 		default:
 			//header("Location:../index.php");
@@ -112,7 +112,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             header("Location:../view/ar_acedemic_report.php");
         }
 
-        function event(){
+        function events(){
             header("Location:../view/ar_acedemic_event.php");
         }
  	}
