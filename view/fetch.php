@@ -53,10 +53,7 @@ if(mysqli_num_rows($result) > 0)
     while($row = mysqli_fetch_array($result))
     {
         $row_student_id=$row["s_id"];
-        $output .= '
-
-
-    
+        $output .= '   
     
    <tr>
     <td>'.$row["s_id"].'</td>
@@ -69,19 +66,19 @@ if(mysqli_num_rows($result) > 0)
     <td>'.$row["religion"].'</td>
     <td>'.$row["gender"].'</td>
     <td id="'.$row["s_id"].'">
-        <button class="btn btn-basic" data-toggle="modal" data-target="#view"">View</button>
+        <button class="btn btn-basic" data-toggle="modal" data-target="#v'.$row["s_id"].'"">View</button>
     </td>
     <td id="'.$row["s_id"].'">
-        <button class="btn btn-basic" data-toggle="modal" data-target="#edit"">Edit</button>
+        <button class="btn btn-basic" data-toggle="modal" data-target="#e'.$row["s_id"].'"">Edit</button>
     </td>
     <td id="'.$row["s_id"].'">
-        <button class="btn btn-basic" data-toggle="modal" data-target="#'.$row["s_id"].'"">Delete</button>
+        <button class="btn btn-basic" data-toggle="modal" data-target="#d'.$row["s_id"].'"">Delete</button>
     </td>
     
    </tr>
    
        <!-- View Modal -->
-    <div  id="view" class="modal fade" role="dialog">
+    <div  id="v'.$row["s_id"].'" class="modal fade" role="dialog">
                 <div class="modal-content">
                     <div class="modal-header login-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
@@ -93,7 +90,7 @@ if(mysqli_num_rows($result) > 0)
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Username :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="username" value="'.$row["s_id"].'" type="text" name="username" placeholder="Type Student ID here" required disabled/>
+                                    <input class="form-control" id="username" value="'.$row_student_id.'" type="text" name="username" placeholder="Type Student ID here" required disabled/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -180,7 +177,7 @@ if(mysqli_num_rows($result) > 0)
                 </div>
             </div>
        <!-- Edit Modal -->
-    <div  id="edit" class="modal fade" role="dialog">
+    <div  id="e'.$row["s_id"].'" class="modal fade" role="dialog">
                 <div class="modal-content">
                     <div class="modal-header login-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
@@ -285,7 +282,7 @@ if(mysqli_num_rows($result) > 0)
             </div>
    
        <!-- Delete Modal -->
-           <div class="modal fade" id="'.$row["s_id"].'" role="dialog">
+           <div class="modal fade" id="d'.$row["s_id"].'" role="dialog">
         <div class="modal-dialog">
         
           <!-- Modal content-->
