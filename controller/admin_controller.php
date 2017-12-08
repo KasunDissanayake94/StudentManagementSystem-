@@ -176,7 +176,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			header("Location:../view/Add_User.php");
 		}
 		function search_user(){
-			header("Location:../view/search.php");
+			header("Location:../view/search_users_by_admin.php");
 		}
 		function modify_user(){
 			header("Location:../view/search_user.php");
@@ -370,11 +370,11 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 	}
 	//View Current User profile
         function profile(){
-		
+
             $u_id=$_SESSION['id'];
             $result = self::$admin->view_profile($u_id);
             if($result){
-                $_SESSION['value']=$result;
+                $_SESSION['value1']=$result;
                 header("Location:../view/view_user_profile.php");
             }else{
                 echo "something wrong";

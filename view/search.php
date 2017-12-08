@@ -2,23 +2,6 @@
 session_start();
 ?>
 
-<?php
-if(isset($_SESSION['value'])){
-
-    foreach ($_SESSION['value'] as $lecturer) {
-        $first_name=$lecturer['first_name'];
-        $last_name=$lecturer['last_name'];
-        $gender=$lecturer['gender'];
-        $dob=$lecturer['dob'];
-        $telephone=$lecturer['telephone'];
-        $email=$lecturer['email'];
-        $education=$lecturer['education'];
-        $research=$lecturer['research'];
-        $courses=$lecturer['courses'];
-        $awards=$lecturer['awards'];
-    }
-}
-?>
 <!DOCTYPE html>
 <html>
 
@@ -49,12 +32,12 @@ if(isset($_SESSION['value'])){
             </div>
             <div class="navi">
                 <ul>
-                    <li><a href="../controller/lecturer_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                    <li><a href="../controller/lecturer_controller.php?op=view_lecturer"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Profile</span></a></li>
-                    <li class="active"><a href="../controller/lecturer_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
-                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Subjects</span></a></li>
-                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calender</span></a></li>
-                    <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Profile"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">My Profile</span></a></li>
+                    <li class="active"><a href="../controller/admin_controller.php?op=Add User"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add User</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Search User"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Search User</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Update User"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Update User</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Manage Students"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Manage Students</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Add Time Table"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add Time table</span></a></li
                 </ul>
             </div>
         </div>

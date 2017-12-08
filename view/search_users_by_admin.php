@@ -1,21 +1,14 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Kasun Dissanayake
+ * Date: 12/8/2017
+ * Time: 8:37 PM
+ */
+
 session_start();
 ?>
 
-<?php
-if(isset($_SESSION['value1'])){
-
-    foreach ($_SESSION['value1'] as $user) {
-        $first_name=$user['first_name'];
-        $last_name=$user['last_name'];
-        $uname=$user['username'];
-        $email=$user['email'];
-        $type=$user['type'];
-
-
-    }
-}
-?>
 <!DOCTYPE html>
 <html>
 
@@ -23,12 +16,16 @@ if(isset($_SESSION['value1'])){
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../view/css/style2.css">
-
+    <link rel="stylesheet" type="text/css" href="../view/css/style1.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="test/main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="../view/js/jquery-3.2.1.min.js"></script>
+    <script src="../view/js/jquery.tabledit.min.js"></script>
+    <script src="../view/js/jquery.tabledit.js"></script>
+    <script src="../view/js/jquery.min.js"></script>
 </head>
 
 <body class="home">
@@ -36,18 +33,18 @@ if(isset($_SESSION['value1'])){
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
             <div class="logo">
-                <a href="home.html"><img src="../view/images/admin.jpg" alt="merkery_logo" class="hidden-xs hidden-sm">
-                    <img src="../view/images/admin.jpg" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
+                <a href="home.html"><img src="../view/images/<?php echo $_SESSION['type'] ?>.jpg" alt="merkery_logo" class="hidden-xs hidden-sm">
+                    <img src="../view/images/<?php echo $_SESSION['type'] ?>.jpg" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
                 </a>
             </div>
             <div class="navi">
                 <ul>
-                    <li class="active"><a href="../controller/admin_controller.phpop=Profile"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Profile</span></a></li>
-                    <li><a href="../controller/admin_controller.php?op=Add User"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add User</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Profile"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">My Profile</span></a></li>
+                    <li class="active"><a href="../controller/admin_controller.php?op=Add User"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add User</span></a></li>
                     <li><a href="../controller/admin_controller.php?op=Search User"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Search User</span></a></li>
                     <li><a href="../controller/admin_controller.php?op=Update User"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Update User</span></a></li>
                     <li><a href="../controller/admin_controller.php?op=Manage Students"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Manage Students</span></a></li>
-                    <li><a href="../controller/admin_controller.php?op=Add Time Table"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add Time table</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Add Time Table"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add Time table</span></a></li
                 </ul>
             </div>
         </div>
@@ -110,42 +107,18 @@ if(isset($_SESSION['value1'])){
                 </header>
             </div>
             <div class="user-dashboard">
-
-                <div id="content">
-                    <h3>Profile</h3>
-                    <div id="line"></div>
-
-                    <div id="table_lecturer">
-                        <table class="zui-table zui-table-horizontal">
-                            <tbody>
-                            <tr>
-                                <td><b>First Name</b></td>
-                                <td><?php echo $first_name?></td>
-                            </tr>
-                            <tr>
-                                <td><b>Last Name</b></td>
-                                <td><?php echo $last_name?></td>
-                            </tr>
-                            <tr>
-                                <td><b>Username</b></td>
-                                <td><?php echo $uname?></td>
-                            </tr>
-                            <tr>
-                                <td><b>Email</b></td>
-                                <td><?php echo $email;?></td>
-                            </tr>
-                            <tr>
-                                <td><b>Type</b></td>
-                                <td><?php echo $type?></td>
-                            </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-
+                <div class="panel-heading">
+                    <h4>
+                        <b>Student Details</b>
+                    </h4>
+                    <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
                 </div>
+
+                <div id="result"></div>
+
             </div>
+
+
         </div>
     </div>
 
@@ -155,3 +128,35 @@ if(isset($_SESSION['value1'])){
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function(){
+
+        load_data();
+
+        function load_data(query)
+        {
+            $.ajax({
+                url:"fetch_users.php",
+                method:"POST",
+                data:{query:query},
+                success:function(data)
+                {
+                    $('#result').html(data);
+                }
+            });
+        }
+        $('#search_text').keyup(function(){
+            var search = $(this).val();
+            if(search != '')
+            {
+                load_data(search);
+            }
+            else
+            {
+                load_data();
+            }
+        });
+    });
+</script>
+
