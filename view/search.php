@@ -1,5 +1,11 @@
 <?php
 session_start();
+if(isset($_GET['status'])){
+    $status=$_GET['status'];
+}
+else{
+    $status=null;
+}
 ?>
 
 <!DOCTYPE html>
@@ -101,6 +107,11 @@ session_start();
             </div>
             <div class="user-dashboard">
                 <div class="panel-heading">
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <?php echo $status; ?>
+                        </div>
+                    </div>
                     <h4>
                         <b>Student Details</b>
                     </h4>

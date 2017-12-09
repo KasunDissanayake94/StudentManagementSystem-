@@ -10,6 +10,7 @@
 session_start();
 $connect = mysqli_connect("localhost", "root", "", "sms");
 $output = '';
+
 if(isset($_POST["query"]))
 {
     $search = mysqli_real_escape_string($connect, $_POST["query"]);
@@ -35,6 +36,7 @@ if(mysqli_num_rows($result) > 0)
 {
     $output .= '
 
+
    <table class="table" >
     <tr>
      <th>User Name</th>
@@ -52,7 +54,8 @@ if(mysqli_num_rows($result) > 0)
     while($row = mysqli_fetch_array($result))
     {
         $username=$row["username"];
-        $output .= '   
+        $output .= '
+   
     
    <tr>
     <td>'.$row["username"].'</td>
@@ -194,7 +197,7 @@ if(mysqli_num_rows($result) > 0)
           <div class="modal-content">
             <div class="modal-header login-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">Edit Form</h4>
+                    <h4 class="modal-title">Delete Form</h4>
                 </div>
             <div class="modal-body">
               <p>Are you sure you want to delete this data?</p>

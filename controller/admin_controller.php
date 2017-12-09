@@ -48,7 +48,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 	}
 	//Get the id of the delete user
 	if(isset($_GET['delete_user_id'])){
-		$del_id = $_GET['delete_user_id']; //some_value
+        $delete_user_id = $_GET['delete_user_id']; //some_value
 		$op="Delete_User";
 
 	}
@@ -116,7 +116,8 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			$admin_controller->delete($del_id);
 			break;
         case 'Delete_User':
-            $admin_controller->delete_user($del_id);
+
+            $admin_controller->delete_user($delete_user_id);
             break;
 		case 'Edited':
 			$admin_controller->edit();
@@ -380,9 +381,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         }
 	}
 	//Delete User
-        function delete_user($del_id){
+        function delete_user($delete_user_id){
 
-            $result = self::$admin->delete_user($del_id);
+            $result = self::$admin->delete_user($delete_user_id);
             if($result){
                 $result='<div class="alert alert-success">Successfully Deleted</div>';
                 header("Location:../view/search_users_by_admin.php?status=$result");
