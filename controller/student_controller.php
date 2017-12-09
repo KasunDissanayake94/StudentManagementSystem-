@@ -131,11 +131,11 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             if($result){
                 //If student already in the system show error message
                 $result='<div class="alert alert-danger">Updated </div>';
-                header("Location:../view/view_student_detail.php?result=$result");
+                header("Location:../controller/student_controller?op=edit_by_student");
 
             }else{
                 $result='<div class="alert alert-danger">Sory Failed to Update</div>';
-                header("Location:../view/view_student_detail.php?result=$result");
+                header("Location:../controller/student_controller?op=edit_by_student");
             }
 
 

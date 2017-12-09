@@ -1,5 +1,12 @@
 <?php
+
 session_start();
+if(isset($_GET['result'])){
+    $result=$_GET['result'];
+}
+else{
+    $result=null;
+}
 ?>
 
 <?php
@@ -141,6 +148,11 @@ if(isset($_SESSION['details'])){
                     </div>
                 </div>
                 <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <?php echo $result; ?>
+                        </div>
+                    </div>
 
 
                     <div class="row">
@@ -204,9 +216,8 @@ if(isset($_SESSION['details'])){
                                     </ul>
 
 
-                                    <form action="../controller/student_controller.php" method="post">
 
-                                    <div class="tab-content">
+                                        <form action="../controller/student_controller.php" method="post" class="tab-content">
 
                                         <div id="Summery" class="tab-pane fade in active">
 
@@ -216,18 +227,18 @@ if(isset($_SESSION['details'])){
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Student ID :</td>
-                                                        <td> <input type="text" value="<?php echo $s_id; ?>" class="form-control" id="email" name="email" placeholder="Enter email" required /></td>
+                                                        <td> <input type="text" value="<?php echo $s_id; ?>" class="form-control" id="email" name="s_id" placeholder="Enter email" required /></td>
 
                                                     </tr>
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> First Name</td>
-                                                        <td> <input type="text" value="<?php echo $fname; ?>" class="form-control" id="email" name="email" placeholder="Enter email" required /></td>
+                                                        <td> <input type="text" value="<?php echo $fname; ?>" class="form-control" id="email" name="firstname" placeholder="Enter email" required /></td>
 
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Last Name</td>
-                                                        <td> <input type="text" value="<?php echo $lname; ?>" class="form-control" id="email" name="email" placeholder="Enter email" required /></td>
+                                                        <td> <input type="text" value="<?php echo $lname; ?>" class="form-control" id="email" name="lastname" placeholder="Enter email" required /></td>
 
                                                     </tr>
                                                     <tr>
@@ -362,10 +373,10 @@ if(isset($_SESSION['details'])){
 
                                         <button name="op" value="cancel_changes" type="submit" class="btn btn-danger" style="float: right; margin-left: 10px;"><i class="fa fa-trash"></i> Cancel</button>
                                         <button name="op" value="save_changes" type="submit" class="btn btn-success" style="float: right"><i class="fa fa-gear"></i> Save Changes</button>
-
+                                    </form>
 
                                     </div>
-                                    </form>
+
 
 
                                 </div>
