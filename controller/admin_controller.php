@@ -108,7 +108,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		case 'Delete':
 			$admin_controller->delete($del_id);
 			break;
-		case 'Edit':
+		case 'Edited':
 			$admin_controller->edit();
 			break;
         case 'Profile':
@@ -363,11 +363,26 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         header("Location:../view/search.php");
 	}
 	//Admin update student details
-	function edit(){
-        $id = self::$db->quote($_POST['firstname']);
-        echo $id;
-    	die("come to the edit");
-	}
+        function edit(){
+            $username = $_REQUEST['username'];
+            $firstname = $_REQUEST['firstname'];
+            $lastname = $_REQUEST['lastname'];
+            $email = $_REQUEST['email'];
+            $school = $_REQUEST['school'];
+            $bday = $_REQUEST['bday'];
+            $race = $_REQUEST['race'];
+            $religion = $_REQUEST['religion'];
+            $regdate = $_REQUEST['regdate'];
+            $passdate = $_REQUEST['passdate'];
+            $gender = $_REQUEST['gender'];
+            $area = $_REQUEST['area'];
+
+            $connection = mysqli_connect('localhost', 'root', '', 'sms') or die('unable to connect to the DB');
+
+            $query = "INSERT INTO student(s_id, first_name, last_name, email, school) VALUES('$username', '$firstname', '$lastname', '$email', '$school')";
+
+            mysqli_query($connection, $query) or die('unable to execute');
+        }
 	//View Current User profile
         function profile(){
 
