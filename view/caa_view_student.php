@@ -32,7 +32,7 @@ session_start();
                         <li class="active"><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
                         <li><a href="../controller/caa_academic_controller.php?op=view_events"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
                         <li><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
-                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Table</span></a></li>
+                        <li><a href="../controller/caa_academic_controller.php?op=view_timetable"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Table</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -97,7 +97,14 @@ session_start();
                 <div class="user-dashboard">
                     <h1> Computer Application Assistant </h1>
                    
-                       
+                         <div class="panel-heading">
+                    <h4>
+                        <b>Student Details</b>
+                    </h4>
+                    <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
+                </div>
+
+                <div id="result"></div>  
                     </div>
                 </div>
             </div>
@@ -108,3 +115,35 @@ session_start();
 </body>
 
 </html>
+
+
+<script>
+    $(document).ready(function(){
+
+        load_data();
+
+        function load_data(query)
+        {
+            $.ajax({
+                url:"fetch.php",
+                method:"POST",
+                data:{query:query},
+                success:function(data)
+                {
+                    $('#result').html(data);
+                }
+            });
+        }
+        $('#search_text').keyup(function(){
+            var search = $(this).val();
+            if(search != '')
+            {
+                load_data(search);
+            }
+            else
+            {
+                load_data();
+            }
+        });
+    });
+</script>

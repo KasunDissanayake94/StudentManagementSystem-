@@ -66,6 +66,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         	break;
         case "View by Other Scholarship":
          	$caa_academic_controller->view_by_other_scholarship();
+        	break;	
+        case "view_timetable":
+         	$caa_academic_controller->view_timetable();
         	break;						
 		default:
 			//header("Location:../index.php");
@@ -95,7 +98,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  		function view_scholarships(){
  			header("Location:../view/view_scholarships.php");
  		}
-
+        
+        function view_timetable(){
+ 			header("Location:../view/view_timetable.php");
+ 		}
 
  		function add_scholarship(){
  		// 	header("Location:../view/view_scholarships.php");

@@ -1,23 +1,6 @@
-<?php
-	if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
-	        /* 
-	           Up to you which header to send, some prefer 404 even if 
-	           the files does exist for security
-	        */
-	        header( 'HTTP/1.0 403 Forbidden', TRUE, 403 );
-
-	        /* choose the appropriate page to redirect users */
-	        die( header( 'location: /error.php' ) );
-
-	    }
-
-	    @session_start();
-		if(!isset($_SESSION['user'])){
-			header("Location:../index.php");
-		}
-
-?>
-
+<?php 
+session_start();
+ ?>
 
 <!DOCTYPE html>
 <html>
@@ -44,12 +27,12 @@
                 </div>
                 <div class="navi">
                     <ul>
-                        <li class="active"><a href="../controller/caa_academic_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                        <li><a href="../controller/caa_academic_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
                        
-                        <li><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
+                        <li ><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
                         <li><a href="../controller/caa_academic_controller.php?op=view_events"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
-                        <li><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
-                        <li><a href="../controller/caa_academic_controller.php?op=view_timetable"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Tables</span></a></li>
+                        <li ><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
+                        <li class="active"><a href="../controller/caa_academic_controller.php?op=view_timetable"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Table</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -112,8 +95,60 @@
                     </header>
                 </div>
                 <div class="user-dashboard">
-                    <h1> Computer Application Assistant </h1>
-                   
+                    
+                          <h1>Academic Years</h1>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12 ">
+
+                        <div class="sales">
+                            <h2>First Year</h2>
+                            <div class="btn-group">
+                                <a href="chose_details_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12 ">
+                        <div class="sales">
+                            <h2>Second Year</h2>
+                            <div class="btn-group">
+                                <a href="chose_details_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12 ">
+                        <div class="sales">
+                            <h2>Third Year</h2>
+                            <div class="btn-group">
+                                <a href="chose_details_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 ">
+                        <div class="sales">
+                            <h2>Fourth Year</h2>
+                            <div class="btn-group">
+                                <a href="chose_details_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                 
+
+                    
+
+                    
+
+                     
                        
                     </div>
                 </div>

@@ -32,7 +32,7 @@ session_start();
                         <li><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
                         <li><a href="../controller/caa_academic_controller.php?op=view_events"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
                         <li class="active"><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
-                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Table</span></a></li>
+                        <li><a href="../controller/caa_academic_controller.php?op=view_timetable"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Table</span></a></li>
                     </ul>
                 </div>
             </div>
