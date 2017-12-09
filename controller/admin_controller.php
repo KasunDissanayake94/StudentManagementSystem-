@@ -151,7 +151,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
 
 				//If this user is a student add him into the student table too
-				if ($type ){
+				if ($type=='student' ){
                     $result = self::$admin->addStudentfromAdmin($username,$fname,$lname,$email);
                     if($result == 1){
                         $result='<div class="alert alert-success">This user Added Successfully to the System</div>';
