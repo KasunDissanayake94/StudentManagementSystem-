@@ -7,12 +7,12 @@ if(isset($_POST["query"]))
  $search = mysqli_real_escape_string($connect, $_POST["query"]);
  $query = "
   SELECT * FROM scholarship 
-  WHERE name LIKE '%".$search."%'
+  WHERE schol_type='Mahapola' AND (
+  name LIKE '%".$search."%'
   OR indexno LIKE '%".$search."%' 
   OR course LIKE '%".$search."%' 
   OR schol_type LIKE '%".$search."%' 
-  OR schol_amount LIKE '%".$search."%' 
- 
+  OR schol_amount LIKE '%".$search."%')
  ";
 }
 else

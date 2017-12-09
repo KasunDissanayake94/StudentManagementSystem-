@@ -244,6 +244,7 @@ li,ul{
 }
 
 .display-table {
+    position: absolute;
     display: table;
     padding: 0;
     height: 100%;
@@ -388,12 +389,12 @@ li,ul{
 }
 
 .title h3{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Garamond','Montserrat', sans-serif;
     margin-left: 50px;
     margin-top: 0px;
-    padding: 5px;
-    font-size: 180%;
-    font-weight:bolder;
+    padding: 0px;
+    font-size: 200%;
+    font-weight:1000;
     color: rgba(62, 7, 94, 1.0);
     
 }
@@ -495,6 +496,7 @@ header {
     width: 90%;
     margin-top: 20px;
 }
+
 /*.sales button {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 1px solid #dadee7;
@@ -712,6 +714,7 @@ header {
         margin: 0;
         padding: 13px 0 0;
 }
+
     .user-dashboard .btn.btn-secondary.btn-lg.dropdown-toggle > span {
         font-size: 11px;
 }

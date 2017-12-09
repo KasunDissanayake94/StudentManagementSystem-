@@ -142,8 +142,8 @@ foreach ($_SESSION['value'] as $user) {
 </head>
 <body>
 
-<h1>View All Students</h1>
-
+<h1>View All Students - Other Scholarships</h1>
+<!-- 
  <table class="masterlist">
             <tr>
                 <th>Student Name</th>
@@ -156,9 +156,44 @@ foreach ($_SESSION['value'] as $user) {
 
             <?php echo $user_list; ?>
 
-        </table>
+        </table> -->
+         <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
+
+ <div id="result"></div>
 </body>
 </html>
+
+ <script>
+$(document).ready(function(){
+
+ load_data();
+
+ function load_data(query)
+ {
+  $.ajax({
+   url:"fetch_student_other_scholarship.php",
+   method:"POST",
+   data:{query:query},
+   success:function(data)
+   {
+    $('#result').html(data);
+   }
+  });
+ }
+ $('#search_text').keyup(function(){
+  var search = $(this).val();
+  if(search != '')
+  {
+   load_data(search);
+  }
+  else
+  {
+   load_data();
+  }
+ });
+});
+</script>
+
 
                     </div>
                 </div>

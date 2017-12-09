@@ -142,7 +142,7 @@ foreach ($_SESSION['value'] as $user) {
 </head>
 <body>
 
-<h1>View All Students</h1>
+<h1>View All Students - Bursary </h1>
  <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
 
  <div id="result"></div>
