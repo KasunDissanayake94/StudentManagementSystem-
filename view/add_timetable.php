@@ -112,7 +112,7 @@ else{
                         <div class="sales">
                             <h2>First Year</h2>
                             <div class="btn-group">
-                                <a href="../view/create_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
+                                <a href="chose_details_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
                                     </button>
                                 </a>
                             </div>
@@ -123,7 +123,7 @@ else{
                         <div class="sales">
                             <h2>Second Year</h2>
                             <div class="btn-group">
-                                <a href="../view/create_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
+                                <a href="chose_details_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
                                     </button>
                                 </a>
                             </div>
@@ -135,7 +135,7 @@ else{
                         <div class="sales">
                             <h2>Third Year</h2>
                             <div class="btn-group">
-                                <a href="../view/create_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
+                                <a href="chose_details_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
                                     </button>
                                 </a>
                             </div>
@@ -145,7 +145,7 @@ else{
                         <div class="sales">
                             <h2>Fourth Year</h2>
                             <div class="btn-group">
-                                <a href="../view/create_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
+                                <a href="chose_details_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
                                     </button>
                                 </a>
                             </div>
