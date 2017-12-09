@@ -98,6 +98,7 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
  		$h_password = "'" . $hash . "'";
  		return $h_password;
  	}
+ 	//delete student
  	function delete($del_id){
 
         $query = "DELETE FROM student WHERE s_id ={$del_id} ";
@@ -106,6 +107,16 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
         return $result;
     }
+    //delete user
+     function delete_user($del_id){
+
+
+         $query = "DELETE FROM `user` WHERE username ='a1'";
+
+         $result = self::$db->query($query);
+
+         return $result;
+     }
     //Get data to appear user profile
      function view_profile($u_id){
          $query = "SELECT * FROM `user` WHERE id = ".$u_id." ";

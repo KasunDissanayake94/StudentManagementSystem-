@@ -46,6 +46,13 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		$del_id = $_GET['delete_id']; //some_value
 		$op="Delete";
 	}
+	//Get the id of the delete user
+	if(isset($_GET['delete_user_id'])){
+		$del_id = $_GET['delete_user_id']; //some_value
+		$op="Delete_User";
+
+	}
+
 
 
 	$admin_controller = new AdminController();
@@ -108,6 +115,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		case 'Delete':
 			$admin_controller->delete($del_id);
 			break;
+        case 'Delete_User':
+            $admin_controller->delete_user($del_id);
+            break;
 		case 'Edited':
 			$admin_controller->edit();
 			break;
@@ -360,8 +370,28 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
     //Admin delete Student
     function delete($del_id){
         $result = self::$admin->delete($del_id);
-        header("Location:../view/search.php");
+        if($result){
+            $result='<div class="alert alert-success">Successfully Deleted</div>';
+            header("Location:../view/search.php?status=$result");
+        }
+        else{
+            $result='<div class="alert alert-danger">Failed to Delete</div>';
+            header("Location:../view/search.php?status=$result");
+        }
 	}
+	//Delete User
+        function delete_user($del_id){
+
+            $result = self::$admin->delete_user($del_id);
+            if($result){
+                $result='<div class="alert alert-success">Successfully Deleted</div>';
+                header("Location:../view/search_users_by_admin.php?status=$result");
+			}
+			else{
+                $result='<div class="alert alert-danger">Failed to Delete</div>';
+                header("Location:../view/search_users_by_admin.php?status=$result");
+			}
+        }
 	//Admin update student details
         function edit(){
             $username = $_REQUEST['username'];
