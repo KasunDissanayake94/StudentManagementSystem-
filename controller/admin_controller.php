@@ -132,7 +132,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		}
 
 		function addUser(){
-			
+
 			$id = self::$db->quote($_POST['id']);
 			$username = self::$db->quote($_POST['username']);
 			$pass = self::$db->quote($_POST['password']);
