@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2017 at 11:04 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.1
+-- Generation Time: Dec 09, 2017 at 03:50 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -69,8 +69,8 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `course_name`, `course_code`, `course_year`, `credits`, `description`, `lect_id`) VALUES
-(1, 'Software enginering', 'SCS1101', '1 st year', '2', NULL, 34),
-(2, 'database', 'SCS1102', '1st year', '1', NULL, 33);
+(1, 'Software enginering', 'SCS1101', '2014/2015', '2', NULL, 34),
+(2, 'database', 'SCS1102', '2015/2016', '1', NULL, 123457);
 
 -- --------------------------------------------------------
 
@@ -117,6 +117,28 @@ CREATE TABLE `hostel` (
   `location` varchar(45) DEFAULT NULL,
   `janitor` varchar(45) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `last_edited`
+--
+
+CREATE TABLE `last_edited` (
+  `id` int(5) NOT NULL,
+  `course_code` varchar(20) NOT NULL,
+  `course_year` varchar(20) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `edited_user_id` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `last_edited`
+--
+
+INSERT INTO `last_edited` (`id`, `course_code`, `course_year`, `type`, `edited_user_id`) VALUES
+(1, 'SCS1101', '2014/2015', 'final_result', '34'),
+(2, 'SCS1101', '2015/2016', 'assignment_result', '34');
 
 -- --------------------------------------------------------
 
@@ -214,12 +236,16 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`s_id`, `first_name`, `last_name`, `last_login`, `area`, `school`, `birthdate`, `race`, `religion`, `reg_date`, `out_date`, `active`, `gender`, `stu_image`) VALUES
-('001', 'Kasun', 'Dissanayake', '2017-10-19 20:54:57', 'Panadura', 'Royal College', '1994-05-23', 'Sinhalese', 'Buddhist', '2015-02-10', '', 0, 'male', '../view/images/profile_pic/001.jpg'),
+('001', 'Kasun', 'Dissanayake', '2017-12-08 16:07:41', 'Panadura', 'Royal College', '1994-05-23', 'Sinhalese', 'Buddhist', '2015-02-10', '', 0, 'male', '../view/images/profile_pic/001.jpg'),
 ('002', 'Pasan', 'Basuru', '2017-08-13 11:36:47', 'Kelaniya', 'Mahanama College', '1994-08-26', 'Sinhalese', 'Buddhist', '2015-02-10', '', 0, 'male', '../view/images/profile_pic/002.jpg'),
 ('003', 'Mohan', 'Anuradha', '2017-08-25 16:10:11', 'Salawa', 'Hanwella Rgasinhala College', '1994-04-12', 'Sinhalese', 'Buddhist', '2015-02-10', '', 0, 'male', '../view/images/profile_pic/003.jpg'),
 ('004', 'Kasuni', 'Assalarachchi', '2017-08-13 11:28:21', 'Anuradhapura', 'Anuradhapura Central College', '1995-03-11', 'Sinhalese', 'Buddhist', '2015-02-10', '', 0, 'female', '../view/images/profile_pic/004.jpg'),
 ('005', 'Panduka', 'Liyanathanthri', '', 'Homagama', 'Royal College', '1994-05-23', 'Sinhalese', 'Buddhist', '2015-02-10', '', 0, 'male', '../view/images/profile_pic/005.jpg'),
-('007', 'Wasura', 'Waththe', '', 'Moratuwa', 'St Peters', '08/28/2017', 'Sinhalese', 'Buddhist', '08/29/2017', '08/09/2017', 0, 'female', '../view/images/profile_pic/007.jpg');
+('007', 'Wasura', 'Waththe', '', 'Moratuwa', 'St Peters', '08/28/2017', 'Sinhalese', 'Buddhist', '08/29/2017', '08/09/2017', 0, 'female', '../view/images/profile_pic/007.jpg'),
+('admin_A', 'AAA', 'BB', '', '', '', '', '', '', '', '', 0, '', ''),
+('araffa', 'araffa', 'nn', '', '', '', '', '', '', '', '', 0, '', ''),
+('kamal', 'kamal', 'kannan', '', '', '', '', '', '', '', '', 0, '', ''),
+('sinthu', 'sinthu', 'nesan', '', '', '', '', '', '', '', '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -293,9 +319,9 @@ CREATE TABLE `student_course` (
 --
 
 INSERT INTO `student_course` (`s_id`, `course_id`, `exam_grade`, `assignment_grade`, `start_date`, `end_date`, `attendance`, `year`) VALUES
-('001', 'SCS1101', 'A', 'A', NULL, NULL, NULL, '2015/2016'),
+('001', 'SCS1101', 'X', 'B', NULL, NULL, NULL, '2015/2016'),
 ('002', 'SCS1101', 'B', 'C', NULL, NULL, NULL, '2015/2016'),
-('003', 'SCS1101', 'A', 'B', NULL, NULL, NULL, '2014/2015');
+('003', 'SCS1101', 'B', 'A', NULL, NULL, NULL, '2014/2015');
 
 -- --------------------------------------------------------
 
@@ -389,7 +415,11 @@ INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `em
 (48, 'e', '$2y$12$4easLKnzbT5fZR3sHzIFzejV/7Bcnys73QDBOJg9Q9S1PXW7J9f/W', '', '', NULL, 'staff', NULL),
 (49, 'aca1', '$2y$12$pqvpk4FvbCiXOBEN0sIFtehD6ai6TPIG2uzs1AoEx3fOXj3/y6qHq', '', '', NULL, 'ar', NULL),
 (50, 'mks', 'mks', '', '', 'mks@ucsc.cmb.ac.lk', 'lecturer', 995486251),
-(123456, 'anuradha', '$2y$12$WJ.ccZX/gQ5J7sTPm1hCRu7VoGpJ8BvJgY0wB.9i3qFbNDQoIx8Km', 'anuradha', 'thilakarathne', 'anuradha@gmail.com', 'ar_acedemic', 942770405);
+(123456, 'anuradha', '$2y$12$WJ.ccZX/gQ5J7sTPm1hCRu7VoGpJ8BvJgY0wB.9i3qFbNDQoIx8Km', 'anuradha', 'thilakarathne', 'anuradha@gmail.com', 'ar_acedemic', 942770405),
+(123457, 'kamal', '$2y$12$OJwo2.p.9ECTpg7gCH3OweMmZURhRiyPdc/Zfk0fae9wfYjfFO0pm', 'kamal', 'kannan', 'a@gmail.com', 'lecturer', 942452110),
+(123458, 'sinthu', '$2y$12$7ZBhmjlBDehX.BjD6wojhuP6qECq122ZCOVa5Q5rt.cXn7K8uS0r.', 'sinthu', 'nesan', 'b@gmail.com', 'lecturer', 942452110),
+(123459, 'admin_A', '$2y$12$a1H/kRTbPWmggsmk7Yu2XuuJSpHAERh0spH1khnNPPiSt6EXpR52.', 'AAA', 'BB', 'k@gmail.com', 'admin', 942452110),
+(123460, 'araffa', '$2y$12$zg8ydZPq4kOFb4phtQ1WFetmIJ48wOP7yXi5STgJls/U5984zflFi', 'araffa', 'nn', 'j@gmail.com', 'lecturer', 942452110);
 
 --
 -- Indexes for dumped tables
@@ -425,6 +455,12 @@ ALTER TABLE `events`
 --
 ALTER TABLE `hostel`
   ADD PRIMARY KEY (`hostel_id`);
+
+--
+-- Indexes for table `last_edited`
+--
+ALTER TABLE `last_edited`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `lecturer`
@@ -515,6 +551,11 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `last_edited`
+--
+ALTER TABLE `last_edited`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `scholarship`
 --
 ALTER TABLE `scholarship`
@@ -528,7 +569,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123457;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123461;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

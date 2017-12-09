@@ -61,6 +61,14 @@
         return $result;
       }
 
+      function update_edited_user($user_id,$year,$subject,$type){
+        $query="UPDATE  `last_edited` SET `edited_user_id`=$user_id WHERE course_code=$subject AND course_year=$year AND type=$type";
+
+        $result = self::$db->query($query);
+
+        return $result;
+      }
+
       function get_assignment_result($year,$subject){
         $query = "SELECT s_id,assignment_grade FROM student_course where year=$year AND course_id=$subject ORDER BY s_id";
 
@@ -84,6 +92,24 @@
 
         return $result;
       }
+
+      function get_edited_final($year,$subject){
+        $query = "SELECT username FROM user WHERE id=(SELECT edited_user_id FROM last_edited where course_year=$year AND course_code=$subject AND type='final_result')";
+
+        $result = self::$db->select($query);
+
+        return $result;
+      }
+
+      function get_edited_assignment($year,$subject){
+        $query = "SELECT username FROM user WHERE id=(SELECT edited_user_id FROM last_edited where course_year=$year AND course_code=$subject AND type='assignment_result')";
+
+        $result = self::$db->select($query);
+
+        return $result;
+      }
+
+
 
     }
 ?>

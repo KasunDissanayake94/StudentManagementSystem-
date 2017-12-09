@@ -44,6 +44,12 @@ foreach ($_SESSION['student_list'] as $user) {
 	        <h4>
 	        	Subject : <?php echo $_SESSION['subject'] ?>
 	        </h4>
+	        <h5>
+	        	Final Marks last edited by  : <?php echo $_SESSION['edited_final'] ?>
+	        </h5>
+	        <h5>
+	        	Assignment marks last edited by  : <?php echo $_SESSION['edited_assignment'] ?>
+	        </h5>
 	        <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
         </div>
 		<form action="../controller/lecturer_controller.php" method="post">
