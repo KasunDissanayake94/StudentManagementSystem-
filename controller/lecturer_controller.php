@@ -48,6 +48,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		case 'view_lecturer':
 			$lecturer_controller->view_lecturer();
 			break;
+		case 'update_lecturer_info':
+			$lecturer_controller->update_lecturer_info();
+			break;
 		case 'view_student':
 			$lecturer_controller->view_student();
 			break;
@@ -80,7 +83,6 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         case 'view_report':
         	$lecturer_controller->view_report();
         	break;
-
 		default:
 			//header("Location:../index.php");
 			break;
@@ -112,6 +114,27 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
  		function view_student(){
  			header("Location:../view/view_student.php");
+ 		}
+ 		function update_lecturer_info(){
+ 			$username=$_SESSION['username'];
+ 			$fname=self::$db->quote($_POST['fname']);
+ 			$lname=self::$db->quote($_POST['lname']);
+ 			$gender=self::$db->quote($_POST['gender']);
+ 			$dob=self::$db->quote($_POST['dob']);
+ 			$tel=self::$db->quote($_POST['tel']);
+ 			$email=self::$db->quote($_POST['email']);
+ 			$edu=self::$db->quote($_POST['edu']);
+ 			$research=self::$db->quote($_POST['research']);
+ 			$course=self::$db->quote($_POST['course']);
+ 			$awards=self::$db->quote($_POST['awards']);
+
+ 			$result = self::$lecturer->update_lecturer_info($username,$fname,$lname,$gender,$dob,$tel,$email,$edu,$research,$course,$awards);
+ 			if($result){
+ 				header("Location:../controller/lecturer_controller.php?op=view_lecturer");
+ 			}else{
+ 				echo "something wrong";
+ 			}
+ 			
  		}
 
  		function view_academic(){
