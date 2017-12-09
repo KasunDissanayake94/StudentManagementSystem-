@@ -49,14 +49,17 @@ session_start();
         .wrap {
             width: 100%;
             overflow:auto;
+            font-family: 'georgia', sans-serif;
         }
 
         .fleft {
             float:left;
-            width: 20%;
-            background:#F0F555;
+            width: 22%;
+            background:#0e1a35;
             height: 100%;
             padding-right: 1%;
+            color: #fff;
+            font-size: 14px;
         }
 
         .topic{
@@ -64,9 +67,9 @@ session_start();
         }
         .fright {
             float: right;
-            background:#C696DA;
+            background:#EBDEF0;
             height: 100%;
-            width: 79%;
+            width: 77%;
 
         }
         .fright h1{
@@ -137,12 +140,12 @@ session_start();
         .tableform{
             width:90%;
             height:1200px;
-            margin:30px auto;
+            margin:10px auto;
             border:1px solid silver;
             background:white;
             border-radius:0.3em;
             box-shadow:0 0 5px rgba(0,0,0,0.3);
-            padding:20px;
+            padding:10px;
 
 
         }
@@ -199,6 +202,7 @@ session_start();
 
 </head>
 <body>
+
 
 
 <div class="wrap">
