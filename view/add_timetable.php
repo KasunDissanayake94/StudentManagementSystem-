@@ -1,287 +1,165 @@
+
+<?php
+session_start();
+$result='';
+if(isset($_GET['result'])){
+    $result=$_GET['result'];
+}
+else{
+    $result=null;
+}
+?>
+
 <!DOCTYPE html>
 <html>
+
+
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Creating a Acadamic Timetable </title>
-	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/icon.css">
-	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/demo/demo.css">
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
-	<script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../view/css/style1.css">
-	<script type="text/javascript" src="../view/js/main.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../view/css/style2.css">
+    <link rel="stylesheet" type="text/css" href="../view/css/style1.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="test/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 </head>
-<body>
-	<h1>Creating an Acadamic Timetable</h1>
-	<div class="header" id="header">
-		<div id="btn" class="toggle-btn" onclick="togglesidebar()">
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-		<span id="logout"><a href="">log out</a></span>
-		<span id="head_name"><h3>UCSC Student Management System</h3></span>
-		
-	</div>
-	<div class="side-nav" id="sidebar">
-		
-		<nav>
-			<div class="profile_info">
-					<div class="pic"><img src="../view/images/icon.png"></div>
-					<div class="name">Admin</div>
-			</div>
-			<ul>
-				<li>
-					<a href="lecturer.php">
-						<span  class="active_page">Profile</span>
-					</a>
-				</li>
 
-				<li>
-					<a href="../controller/admin_controller.php?op=Add User">	
-						<span>Add User</span>
-					</a>
-				</li>
+<body class="home">
+<div class="display-table">
+    <div class="row display-table-row">
+        <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+            <div class="logo">
+                <a href="home.html"><img src="../view/images/<?php echo $_SESSION['type'] ?>.jpg" alt="merkery_logo" class="hidden-xs hidden-sm">
+                    <img src="../view/images/<?php echo $_SESSION['type'] ?>.jpg" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
+                </a>
+            </div>
+            <div class="navi">
+                <ul>
+                    <li><a href="../controller/admin_controller.php?op=Profile"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">My Profile</span></a></li>
+                    <li class="active"><a href="../controller/admin_controller.php?op=Add User"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add User</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Search User"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Search User</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Update User"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Update User</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Manage Students"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Manage Students</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Add Time Table"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add Time table</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10 col-sm-11 display-table-cell v-align">
+            <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+            <div class="row">
+                <header>
+                    <div class="col-md-7">
 
-				<li>
-					<a href="../controller/admin_controller.php?op=Search User">
-						<span>Search User</span>
-					</a>
-				</li>
+                        <nav class="navbar-default pull-left">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                        </nav>
 
-				<li>
-					<a href="../controller/admin_controller.php?op=Update User">
-						<span>Update User</span>
-					</a>
-				</li>
+                        <div class="title hidden-xs hidden-sm">
+                            <h3>University of Colombo School of Computing</h3>
+                        </div>
 
-				<li>
-					<a href="../controller/admin_controller.php?op=Manage Students">
-						<span>Manage Students</span>
-					</a>
-				</li>
-				<li>
-					<a href="../controller/admin_controller.php?op=Add Time Table">
-						<span>Add Time Table</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
-		
-	</div>
-	<div class="demo-info" style="margin-bottom:10px">
-		<div class="demo-tip icon-tip">&nbsp;</div>
-		<div>Click and drag a class to timetable.</div>
-	</div>
-	<div class="con">
-		<div style="width:700px;">
-		<div class="left">
-			<table>
-				<tr>
-					<td><div class="item">English</div></td>
-				</tr>
-				<tr>
-					<td><div class="item">Science</div></td>
-				</tr>
-				<tr>
-					<td><div class="item">Music</div></td>
-				</tr>
-				<tr>
-					<td><div class="item">History</div></td>
-				</tr>
-				<tr>
-					<td><div class="item">Computer</div></td>
-				</tr>
-				<tr>
-					<td><div class="item">Mathematics</div></td>
-				</tr>
-				<tr>
-					<td><div class="item">Arts</div></td>
-				</tr>
-				<tr>
-					<td><div class="item">Ethics</div></td>
-				</tr>
-			</table>
-		</div>
-		<div class="right">
-			<table>
-				<tr>
-					<td class="blank"></td>
-					<td class="title">Monday</td>
-					<td class="title">Tuesday</td>
-					<td class="title">Wednesday</td>
-					<td class="title">Thursday</td>
-					<td class="title">Friday</td>
-				</tr>
-				<tr>
-					<td class="time">08:00</td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-				</tr>
-				<tr>
-					<td class="time">09:00</td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-				</tr>
-				<tr>
-					<td class="time">10:00</td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-				</tr>
-				<tr>
-					<td class="time">11:00</td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-				</tr>
-				<tr>
-					<td class="time">12:00</td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-				</tr>
-				<tr>
-					<td class="time">13:00</td>
-					<td class="lunch" colspan="5">Lunch</td>
-				</tr>
-				<tr>
-					<td class="time">14:00</td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-				</tr>
-				<tr>
-					<td class="time">15:00</td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-				</tr>
-				<tr>
-					<td class="time">16:00</td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-					<td class="drop"></td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	</div>
-	
-	<style type="text/css">
-	h1{
-		text-align: center;
-	}
-		.con{
-			margin-top: 60px;
-			margin-left: 300px;
-		}
-		.left{
-			width:120px;
-			float:left;
-		}
-		.left table{
-			background:#E0ECFF;
-		}
-		.left td{
-			background:#eee;
-		}
-		.right{
-			float:right;
-			width:570px;
-		}
-		.right table{
-			background:#E0ECFF;
-			width:100%;
-		}
-		.right td{
-			background:#fafafa;
-			color:#444;
-			text-align:center;
-			padding:2px;
-		}
-		.right td{
-			background:#E0ECFF;
-		}
-		.right td.drop{
-			background:#fafafa;
-			width:100px;
-		}
-		.right td.over{
-			background:#FBEC88;
-		}
-		.item{
-			text-align:center;
-			border:1px solid #499B33;
-			background:#fafafa;
-			color:#444;
-			width:100px;
-		}
-		.assigned{
-			border:1px solid #BC2A4D;
-		}
-		.trash{
-			background-color:red;
-		}
-		
-	</style>
-	<script>
-		$(function(){
-			$('.left .item').draggable({
-				revert:true,
-				proxy:'clone'
-			});
-			$('.right td.drop').droppable({
-				onDragEnter:function(){
-					$(this).addClass('over');
-				},
-				onDragLeave:function(){
-					$(this).removeClass('over');
-				},
-				onDrop:function(e,source){
-					$(this).removeClass('over');
-					if ($(source).hasClass('assigned')){
-						$(this).append(source);
-					} else {
-						var c = $(source).clone().addClass('assigned');
-						$(this).empty().append(c);
-						c.draggable({
-							revert:true
-						});
-					}
-				}
-			});
-			$('.left').droppable({
-				accept:'.assigned',
-				onDragEnter:function(e,source){
-					$(source).addClass('trash');
-				},
-				onDragLeave:function(e,source){
-					$(source).removeClass('trash');
-				},
-				onDrop:function(e,source){
-					$(source).remove();
-				}
-			});
-		});
-	</script>
+                        <!-- <div class="search hidden-xs hidden-sm">
+                            <input type="text" placeholder="Search" id="search">
+                        </div> -->
+                    </div>
+                    <div class="col-md-5">
+                        <div class="header-rightside">
+                            <ul class="list-inline header-top pull-right">
+                                <!-- <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_project">Add Project</a></li> -->
+                                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                <li>
+                                    <a href="#" class="icon-info">
+                                        <i class="fa fa-bell" aria-hidden="true"></i>
+                                        <span class="label label-primary">3</span>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['type'] ?>
+                                        <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <div class="navbar-content">
+                                                <span><?php echo $_SESSION['fname'] ?> <?php echo $_SESSION['lname'] ?></span>
+                                                <p class="text-muted small">
+                                                    <?php echo $_SESSION['username'] ?>
+                                                </p>
+                                                <div class="divider">
+                                                </div>
+                                                <a href="../index.php?op=logout" class="view btn-sm active">log out</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+            </div>
+            <div class="user-dashboard">
+                <h1>Academic Years</h1>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12 ">
+
+                        <div class="sales">
+                            <h2>First Year</h2>
+                            <div class="btn-group">
+                                <a href="../view/create_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12 ">
+                        <div class="sales">
+                            <h2>Second Year</h2>
+                            <div class="btn-group">
+                                <a href="../view/create_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12 ">
+                        <div class="sales">
+                            <h2>Third Year</h2>
+                            <div class="btn-group">
+                                <a href="../view/create_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 ">
+                        <div class="sales">
+                            <h2>Fourth Year</h2>
+                            <div class="btn-group">
+                                <a href="../view/create_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
 </body>
+
 </html>
