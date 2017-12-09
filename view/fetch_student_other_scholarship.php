@@ -7,10 +7,11 @@ if(isset($_POST["query"]))
  $search = mysqli_real_escape_string($connect, $_POST["query"]);
  $query = "
   SELECT * FROM scholarship 
-  WHERE schol_type='Bursary' AND ( name LIKE '%".$search."%' 
+  WHERE schol_type='Other' AND ( name LIKE '%".$search."%' 
   OR  indexno LIKE '%".$search."%' 
   OR course LIKE '%".$search."%' 
-  OR schol_type LIKE '%".$search."%' 
+  OR schol_type LIKE '%".$search."%'
+  OR schol_other LIKE '%".$search."%'  
   OR schol_amount LIKE '%".$search."%')
  ";
 }
@@ -18,7 +19,7 @@ else
 {
  $query = "
   SELECT * FROM scholarship 
-  WHERE schol_type='Bursary'
+  WHERE schol_type='Other'
   ORDER BY indexno
  ";
 }
@@ -32,6 +33,7 @@ if(mysqli_num_rows($result) > 0)
      <th>Name</th>
      <th>Index No</th>
      <th>Course</th>
+     <th>Scholarship Details</th>
      <th>Scholarship Amount</th>
      </tr>
  ';
@@ -46,6 +48,7 @@ if(mysqli_num_rows($result) > 0)
     <td>'.$row["name"].'</td>
     <td>'.$row["indexno"].'</td>
     <td>'.$row["course"].'</td>
+    <td>'.$row["schol_other"].'</td>
     <td>'.$row["schol_amount"].'</td>
     
    
