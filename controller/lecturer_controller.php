@@ -98,7 +98,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
  		function view_lecturer(){
 
- 			$lec_id=$_SESSION['id'];
+ 			$lec_id=$_SESSION['username'];
  			$result = self::$lecturer->view_lecturer($lec_id);
  			if($result){
 				$_SESSION['value']=$result;
@@ -148,7 +148,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  		}
 
  		function update_final_results(){
- 			$user_id=self::$db->quote($_SESSION['id']);
+ 			$user_username=self::$db->quote($_SESSION['username']);
  			$year=self::$db->quote($_SESSION['year']);
  			$subject=self::$db->quote($_SESSION['subject']);
 			$type=self::$db->quote(final_result);	
@@ -161,7 +161,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
 					if($result){
 						echo "Successfully updated";
-						$result_edited = self::$lecturer->update_edited_user($user_id,$year,$subject,$type);
+						$result_edited = self::$lecturer->update_edited_user($user_username,$year,$subject,$type);
 						header("Location:../view/lecturer_academic.php");
 					}else{
 						echo "something wrong";
@@ -196,7 +196,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  		}
 
  		function update_assignment_results(){
- 			$user_id=self::$db->quote($_SESSION['id']);
+ 			$user_username=self::$db->quote($_SESSION['username']);
  			$year=self::$db->quote($_SESSION['year']);
  			$subject=self::$db->quote($_SESSION['subject']);
 			$type=self::$db->quote(assignment_result);
@@ -209,7 +209,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
 					if($result){
 						echo "Successfully updated";
-						$result_edited = self::$lecturer->update_edited_user($user_id,$year,$subject,$type);
+						$result_edited = self::$lecturer->update_edited_user($user_username,$year,$subject,$type);
 						header("Location:../view/lecturer_academic.php");
 					}else{
 						echo "something wrong";
@@ -230,7 +230,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			$edited_final=self::$lecturer->get_edited_final($year,$subject);
 			if($edited_final){
 				foreach ($edited_final as $user) {
-					$edited_user_final=$user['username'];
+					$edited_user_final=$user['edited_user_name'];
 				}
 			}else{
 				$edited_user_final='Not edited yet';
@@ -240,7 +240,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			$edited_assignment=self::$lecturer->get_edited_assignment($year,$subject);
 			if($edited_assignment){
 				foreach ($edited_assignment as $user) {
-				$edited_user_assignment=$user['username'];
+				$edited_user_assignment=$user['edited_user_name'];
 			}
 			}else{
 				$edited_user_assignment='Not edited yet';

@@ -33,7 +33,7 @@ session_start();
                         <li><a href="../controller/lecturer_controller.php?op=view_student"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
                         <li class="active"><a href="../controller/lecturer_controller.php?op=view_academic"><i class="fa fa-book" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Academic</span></a></li>
                         <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calender</span></a></li>
-                        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
+                        <li><a href="../controller/lecturer_controller.php?op=view_report"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -166,10 +166,10 @@ session_start();
                             <option>select subject code
                                 
                               <?php
-                              $lect_id=$_SESSION['id'];
+                              $lect_username=$_SESSION['username'];
                               $connect = mysqli_connect("localhost", "root", "", "sms");
 
-                              $query = "SELECT course_code FROM course where lect_id=$lect_id ORDER BY course_code";
+                              $query = "SELECT course_code FROM course where lect_username=$lect_username ORDER BY course_code";
                               $result = mysqli_query($connect, $query);
                               while($row = mysqli_fetch_array($result))
                               {
@@ -217,10 +217,10 @@ session_start();
                             <option>select subject code
                                 
                               <?php
-                              $lect_id=$_SESSION['id'];
+                              $lect_username=$_SESSION['username'];
                               $connect = mysqli_connect("localhost", "root", "", "sms");
 
-                              $query = "SELECT course_code FROM course where lect_id=$lect_id ORDER BY course_code";
+                              $query = "SELECT course_code FROM course where lect_username=$lect_username ORDER BY course_code";
                               $result = mysqli_query($connect, $query);
                               while($row = mysqli_fetch_array($result))
                               {
@@ -268,10 +268,10 @@ session_start();
                             <option>select subject code
                                 
                               <?php
-                              $lect_id=$_SESSION['id'];
+                              $lect_username=$_SESSION['username'];
                               $connect = mysqli_connect("localhost", "root", "", "sms");
 
-                              $query = "SELECT course_code FROM course where lect_id=$lect_id ORDER BY course_code";
+                              $query = "SELECT course_code FROM course where lect_username=$lect_username ORDER BY course_code";
                               $result = mysqli_query($connect, $query);
                               while($row = mysqli_fetch_array($result))
                               {
