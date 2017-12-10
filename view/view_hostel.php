@@ -29,10 +29,11 @@ session_start();
                     <ul>
                         <li><a href="../controller/caa_academic_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
                        
-                        <li><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
+                        <li ><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
                         <li><a href="../controller/caa_academic_controller.php?op=view_events"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
-                        <li class="active"><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
-                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Table</span></a></li>
+                        <li><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>
+                        <li><a href="../controller/caa_academic_controller.php?op=view_timetable"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Time Table</span></a></li>
+                        <li class="active"><a href="../controller/caa_academic_controller.php?op=view_hostel"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Hostel facilities</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -95,45 +96,46 @@ session_start();
                     </header>
                 </div>
                 <div class="user-dashboard">
+                    
+                    </div>
                     <h1> Computer Application Assistant </h1>
-                
+                    <a href="add_scholarship.php"> <button type="button" class="btn btn-primary btn-lg"> Add Scholarship </button> </a>
+                    <hr>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="sales">
+                                 <h2>View Mahapola</h2>
+                               <div class="btn-group">
+                                    <a href="../controller/caa_academic_controller.php?op=View by Mahapola"><button type="button" class="btn btn-primary btn" name="op" value="View by Mahapola" > Mahapola </button> </a> <br><br> 
+                               </div>
+                            </div>
+                        </div>
 
+                        <div class="col-md-4">
+                            <div class="sales">
+                                 <h2>View Bursary </h2>
+                               <div class="btn-group">
+                                    <a href="../controller/caa_academic_controller.php?op=View by Bursary"> <button type="button" class="btn btn-primary btn" name="op" value="View by Bursary"> Bursary </button> </a> <br> <br>
+                               </div>
+                            </div>
+                        </div>
 
-</body>
-</html>
+                        <div class="col-md-4">
+                           <div class="sales">
+                             <h2>View Other Scholarships </h2>
+                               <div class="btn-group">
+                                    <a href="../controller/caa_academic_controller.php?op=View by Other Scholarship"> <button type="button" class="btn btn-primary btn" name="op" value="View by Other Scholarship"> Other Scholarships  </button> </a> <br> <br>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                    
 
+                    
 
-<script>
-$(document).ready(function(){
-
- load_data();
-
- function load_data(query)
- {
-  $.ajax({
-   url:"fetch_student_mahapola.php",
-   method:"POST",
-   data:{query:query},
-   success:function(data)
-   {
-    $('#result').html(data);
-   }
-  });
- }
- $('#search_text').keyup(function(){
-  var search = $(this).val();
-  if(search != '')
-  {
-   load_data(search);
-  }
-  else
-  {
-   load_data();
-  }
- });
-});
-</script>
-
+                     
+                       
                     </div>
                 </div>
             </div>
@@ -144,10 +146,3 @@ $(document).ready(function(){
 </body>
 
 </html>
-
-
-
-
-
-
-

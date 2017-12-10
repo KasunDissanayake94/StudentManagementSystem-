@@ -6,9 +6,10 @@ if(isset($_POST["query"]))
 {
  $search = mysqli_real_escape_string($connect, $_POST["query"]);
  $query = "
-  SELECT * FROM scholarship 
-  WHERE schol_type='Mahapola' AND (
-  name LIKE '%".$search."%'
+  SELECT * FROM student_scholar(
+  name LIKE
+
+   '%".$search."%'
   OR indexno LIKE '%".$search."%' 
   OR course LIKE '%".$search."%' 
   OR schol_type LIKE '%".$search."%' 
@@ -17,11 +18,7 @@ if(isset($_POST["query"]))
 }
 else
 {
- $query = "
-  SELECT * FROM scholarship 
-  WHERE schol_type='Mahapola'
-  ORDER BY indexno
- ";
+ $query = "SELECT s_id,schol_id,schol_amount FROM student_scholar";
 }
 $result = mysqli_query($connect, $query);
 if(mysqli_num_rows($result) > 0)
@@ -32,7 +29,6 @@ if(mysqli_num_rows($result) > 0)
     <tr>
      <th>Name</th>
      <th>Index No</th>
-     <th>Course</th>
      <th>Scholarship Amount</th>
      </tr>
  ';
@@ -44,10 +40,10 @@ if(mysqli_num_rows($result) > 0)
     
     
    <tr>
-    <td>'.$row["name"].'</td>
-    <td>'.$row["indexno"].'</td>
-    <td>'.$row["course"].'</td>
+    <td>'.$row["s_id"].'</td>
+    <td>'.$row["schol_id"].'</td>
     <td>'.$row["schol_amount"].'</td>
+    
     
    
     
