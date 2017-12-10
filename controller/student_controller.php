@@ -74,6 +74,15 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         case 'Home':
             $student_controller->home();
             break;
+        case 'Grade':
+            $student_controller->grade();
+            break;
+        case 'Repeat':
+            $student_controller->repeat();
+            break;
+        case 'Optional':
+            $student_controller->optional();
+            break;
 		default:
             header("Location:../view/student.php");
 			break;
@@ -144,6 +153,15 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         }
         function home(){
             header("Location:../view/student.php");
+        }
+        function grade(){
+            header("Location:../view/grade.php");
+        }
+        function repeat(){
+            header("Location:../view/repeat.php");
+        }
+        function optional(){
+            header("Location:../view/optional.php");
         }
 
         function save_changes(){
