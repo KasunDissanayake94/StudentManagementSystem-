@@ -163,7 +163,7 @@ if(isset($_SESSION['details'])){
                                             <!-- /.modal -->
                                     </span></center>
 
-                                    
+
 
 
                                 </div>
@@ -177,7 +177,7 @@ if(isset($_SESSION['details'])){
 
 
 
-                                    <form action="../controller/student_controller.php" method="post" class="tab-content">
+                                    <form action="../controller/admin_controller.php" method="post" class="tab-content">
 
                                         <div id="Summery" class="tab-pane fade in active">
 

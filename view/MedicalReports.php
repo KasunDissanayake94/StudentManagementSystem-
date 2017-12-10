@@ -51,10 +51,10 @@ if(isset($_SESSION['details'])){
             </div>
             <div class="navi">
                 <ul>
-                    <li class="active"><a href="../controller/admin_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                    <li><a href="../controller/student_controller.php?op=GPA"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">GPA</span></a></li>
+                    <li ><a href="../controller/student_controller.php?op=Home"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=GPA"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">GPA</span></a></li>
                     <li ><a href="../controller/student_controller.php?op=ScolDetails"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarship Details</span></a></li>
-                    <li><a href="../view/MedicalReports.php"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Medical Reports Submission</span></a></li>
+                    <li  class="active"><a href="../view/MedicalReports.php"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Medical Reports Submission</span></a></li>
                     <li><a href="../controller/student_controller.php?op=SeasonForms"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Season Forms</span></a></li>
                     <li><a href="../controller/student_controller.php?op=Problems"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Request Letters</span></a></li>
                 </ul>

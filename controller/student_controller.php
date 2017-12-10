@@ -62,6 +62,18 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         case 'save_changes':
             $student_controller->save_changes();
             break;
+		case 'ScolDetails':
+			$student_controller->scoldetails();
+			break;
+		case 'SeasonForms':
+			$student_controller->season();
+			break;
+        case 'GPA':
+            $student_controller->gpa();
+            break;
+        case 'Home':
+            $student_controller->home();
+            break;
 		default:
             header("Location:../view/student.php");
 			break;
@@ -121,6 +133,19 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		function problems(){
             header("Location:../view/problems.php");
 		}
+        function scoldetails(){
+            header("Location:../view/ScolDetails.php");
+        }
+        function season(){
+            header("Location:../view/Season.php");
+		}
+        function gpa(){
+            header("Location:../view/GPA.php");
+        }
+        function home(){
+            header("Location:../view/student.php");
+        }
+
         function save_changes(){
 
             $s_id = self::$db->quote($_POST['s_id']);
