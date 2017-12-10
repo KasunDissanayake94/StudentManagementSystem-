@@ -22,6 +22,7 @@ if(isset($_SESSION['details'])){
         $s_id=$user['s_id'];
     }
 }
+
 ?>
 
 <!DOCTYPE html>

@@ -9,6 +9,7 @@
 session_start();
 ?>
 
+
 <?php
 $s_id='';
 $fname='';
@@ -21,6 +22,24 @@ if(isset($_SESSION['details'])){
         $area=$user['area'];
         $s_id=$user['s_id'];
     }
+}
+$samount='';
+$ssdate='';
+$sedate='';
+if(isset($_SESSION['scolres'])){
+    foreach ($_SESSION['scolres'] as $scol) {
+        $sid=$scol['schol_id'];
+        $samount=$scol['schol_amount'];
+        $ssdate=$scol['start_date'];
+        $sedate=$scol['end_date'];
+    }
+}
+$alert='';
+if(isset($_GET['alert'])){
+    $alert=$_GET['alert'];
+}
+else{
+    $alert=null;
 }
 ?>
 
@@ -124,6 +143,45 @@ if(isset($_SESSION['details'])){
                         </div>
                     </div>
                 </header>
+            </div>
+            <!--Forms Starts here -->
+
+            <div class="user-dashboard">
+                <div class="panel-heading">
+                    <h4>
+                        <b>Scolarship Details</b>
+                    </h4>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <?php echo $alert; ?>
+                    </div>
+                </div>
+
+
+                <table class="table" >
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Scholarship ID</th>
+                        <th>Amount</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+
+
+                    <tr>
+                        <td><?php echo $s_id;?></td>
+                        <td><?php echo $sid;?></td>
+                        <td><?php echo $samount;?></td>
+                        <td><?php echo $ssdate;?></td>
+                        <td><?php echo $sedate;?></td>
+
+
+
+
+                    </tr>
+                </table>
+
             </div>
 
         </div>

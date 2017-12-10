@@ -47,6 +47,13 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 			
 		return $result;
  	}
+     function get_scol($st_id){
+         $query = "SELECT * FROM `student_scholar` WHERE `s_id` = ".$st_id."";
+
+         $result = self::$db->select($query);
+
+         return $result;
+     }
  	function update_time($st_id){
  		$query= "UPDATE `student` SET `last_login` = now() WHERE `s_id` = ".$st_id."";
 

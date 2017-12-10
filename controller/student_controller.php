@@ -142,8 +142,18 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		function problems(){
             header("Location:../view/problems.php");
 		}
+		//get student mahapola bursary and other  details
         function scoldetails(){
-            header("Location:../view/ScolDetails.php");
+            $s_id = $_SESSION['username'];
+            $result = self::$student->get_scol($s_id);
+            if($result){
+                $_SESSION['scolres']=$result;
+                header("Location:../view/ScolDetails.php");
+			}else{
+                $alert='<div class="alert alert-danger">You have not Scholarships yet.</div>';
+                header("Location:../view/ScolDetails.php?alert=$alert");
+			}
+
         }
         function season(){
             header("Location:../view/Season.php");
