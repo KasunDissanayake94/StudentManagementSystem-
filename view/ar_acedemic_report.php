@@ -98,7 +98,34 @@ session_start();
                 </header>
             </div>
             <div class="user-dashboard">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="sales">
+                            <h2>View Mahapola</h2>
+                            <div class="btn-group">
+                                <a href="../controller/ar_acedemic_controller.php?op=view_mahapola"><button type="button" class="btn btn-primary btn" name="op" value="View by Mahapola" > Mahapola </button> </a> <br><br>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="col-md-4">
+                        <div class="sales">
+                            <h2>View Bursary </h2>
+                            <div class="btn-group">
+                                <a href="../controller/ar_acedemic_controller.php?op=view_bursary"> <button type="button" class="btn btn-primary btn" name="op" value="View by Bursary"> Bursary </button> </a> <br> <br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="sales">
+                            <h2>View Other Scholarships </h2>
+                            <div class="btn-group">
+                                <a href="../controller/ar_acedemic_controller.php?op=view_other_scholarship"> <button type="button" class="btn btn-primary btn" name="op" value="View by Other Scholarship"> Other Scholarships  </button> </a> <br> <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 

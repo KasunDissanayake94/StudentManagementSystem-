@@ -110,7 +110,7 @@ else{
             </div>
             <div class="user-dashboard">
                 <div class="container">
-                    <form class="form-horizontal" action="../controller/ar_acedemic_controller.php" method="post">
+                    <form class="form-horizontal" action="../controller/ar_acedemic_controller.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <div class="col-sm-12 col-sm-offset-0">
                                 <?php echo $result; ?>
@@ -128,6 +128,8 @@ else{
                         <input type="text" name="event-title" id="eventTitleInput" maxlength="80"/>
                         <label for="event-description">Description</label>
                         <textarea name="event-descripton" id="eventDescriptionInput">Event Description</textarea>
+                        <label for="event-date">Upload File</label>
+                        <input type="file" id="eventfile" name="event-file">
                         <button type="submit" name="op" value="addevent" id="addEvent">Add New Event</button>
                         <button name="cancel-add-event" id="cancelAddEvent">Cancel</button>
                     </div>

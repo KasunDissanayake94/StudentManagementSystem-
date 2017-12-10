@@ -71,6 +71,15 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         case 'addevent':
             $aracedemic_controller->addevent();
             break;
+        case 'view_mahapola':
+            $aracedemic_controller->view_mahapola();
+            break;
+        case 'view_bursary':
+            $aracedemic_controller->view_bursary();
+            break;
+        case 'view_other_scholarship':
+            $aracedemic_controller->view_other_scholarship();
+            break;
 		default:
 			//header("Location:../index.php");
 			break;
@@ -83,7 +92,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
  		function __construct(){
  			self::$db = new DB();
- 			self::$ar_acedemic=new ArAcedemicModel(); 			
+ 			self::$ar_acedemic=new ArAcedemicModel();
  		}
 
  		function view_ar_acedemic(){
@@ -121,24 +130,20 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
         function addevent(){
 
+
+
             $event_date = self::$db->quote($_POST['event-date']);
             $event_title = self::$db->quote($_POST['event-title']);
             $event_des = self::$db->quote($_POST['event-descripton']);
+            $file = $_FILES['file']['name'];
+            $file_tmp = $_FILES['file']['tmp_name'];
+            $file_size = $_FILES['file']['size'];
+            $file_type = $_FILES['file']['type'];
+            $folder = '..view/pdffiles/events/'.$_FILES['file']['name'];
+            move_uploaded_file($file_tmp,$folder);
 
-            //Check this student already in the system
 
-            /*
-            $st_id = self::$db->quote($_POST['username']);
-            $result1 = self::$admin->search_student($st_id);
-            if($result1){
-                //If student already in the system show error message
-                $result='<div class="alert alert-danger">This User already in the System</div>';
-                header("Location:../view/add_student_details.php?result=$result");
-
-            }else{
-                //Add Student to the system
-            */
-                $result = self::$ar_acedemic->addevent($event_date,$event_title,$event_des);
+                $result = self::$ar_acedemic->addevent($event_date,$event_title,$event_des,$file,$file_type,$file_size);
                 if($result == 1){
                     //Successfully Added
                     $result='<div class="alert alert-success">Event Sccessfully Added to the System</div>';
@@ -149,6 +154,44 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
                     header("Location:../view/ar_acedemic_event.php?result=$result");
                 }
             }
+        function view_mahapola(){
+
+
+            $result = self::$ar_acedemic->view_mahapola();
+
+            if($result){
+                $_SESSION['value']=$result;
+                header("Location:../view/ar_view_mahapola.php");
+            }else{
+                echo "something wrong";
+            }
+        }
+
+        function view_bursary(){
+
+
+            $result = self::$ar_acedemic->view_bursary();
+
+            if($result){
+                $_SESSION['value']=$result;
+                header("Location:../view/ar_view_bursary.php");
+            }else{
+                echo "something wrong";
+            }
+        }
+
+        function view_other_scholarship(){
+
+
+            $result = self::$ar_acedemic->view_other_scholarship();
+
+            if($result){
+                $_SESSION['value']=$result;
+                header("Location:../view/other_scholarship.php");
+            }else{
+                echo "something wrong";
+            }
+        }
 
  	}
 ?>

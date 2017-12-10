@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Kasun Dissanayake
- * Date: 12/8/2017
- * Time: 8:37 PM
- */
-
 session_start();
 ?>
 
@@ -14,18 +7,13 @@ session_start();
 
 
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../view/css/style2.css">
-    <link rel="stylesheet" type="text/css" href="../view/css/style1.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="test/main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="../view/js/jquery-3.2.1.min.js"></script>
-    <script src="../view/js/jquery.tabledit.min.js"></script>
-    <script src="../view/js/jquery.tabledit.js"></script>
-    <script src="../view/js/jquery.min.js"></script>
 </head>
 
 <body class="home">
@@ -33,19 +21,18 @@ session_start();
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
             <div class="logo">
-                <a href="home.html"><img src="../view/images/<?php echo $_SESSION['type'] ?>.jpg" alt="merkery_logo" class="hidden-xs hidden-sm">
-                    <img src="../view/images/<?php echo $_SESSION['type'] ?>.jpg" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
+                <a href="home.html"><img src="../view/images/002.jpg" alt="merkery_logo" class="hidden-xs hidden-sm">
+                    <img src="../view/images/002.jpg" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
                 </a>
             </div>
             <div class="navi">
-
                 <ul>
                     <li><a href="../controller/ar_acedemic_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
                     <li><a href="../controller/ar_acedemic_controller.php?op=view_ar_acedemic"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Profile</span></a></li>
                     <li><a href="../controller/ar_acedemic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
                     <li><a href="../controller/ar_acedemic_controller.php?op=ar_approv"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Approvals</span></a></li>
-                    <li class="active"><a href="../controller/ar_acedemic_controller.php?op=manage_user"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Manage Users</span></a></li>
-                    <li><a href="../controller/ar_acedemic_controller.php?op=report"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
+                    <li><a href="../controller/ar_acedemic_controller.php?op=manage_user"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Manage Users</span></a></li>
+                    <li class="active"><a href="../controller/ar_acedemic_controller.php?op=report"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
                     <li><a href="../controller/ar_acedemic_controller.php?op=events"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
                 </ul>
             </div>
@@ -109,56 +96,104 @@ session_start();
                 </header>
             </div>
             <div class="user-dashboard">
-                <div class="panel-heading">
-                    <h4>
-                        <b>Student Details</b>
-                    </h4>
-                    <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
-                </div>
+
+
+                <?php
+                $user_list='';
+
+                if(isset($_SESSION['value'])){
+
+                    foreach ($_SESSION['value'] as $user) {
+                        $user_list .= "<tr>";
+                        $user_list .= "<td>{$user['name']}</td>";
+                        $user_list .= "<td>{$user['indexno']}</td>";
+                        $user_list .= "<td>{$user['course']}</td>";
+                        $user_list .= "<td>{$user['schol_amount']}</td>";
+
+                        $user_list .= "</tr>";
+                        unset($_SESSION['value']);
+                    }
+                }
+
+                ?>
+
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>View All</title>
+                    <style>
+                        .masterlist {
+                            width: 100%;
+                            border-collapse: collapse;
+                        }
+
+                        .masterlist th {
+                            background: #aaa;
+                            text-align: left;
+                        }
+
+                        .masterlist th, .masterlist td {
+                            padding: 10px;
+                            border-bottom: 1px solid #aaa;
+                        }
+
+
+                    </style>
+                </head>
+                <body>
+
+                <h1>View All Students - Bursary </h1>
+                <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
 
                 <div id="result"></div>
 
+                </body>
+                </html>
+
+                <script>
+                    $(document).ready(function(){
+
+                        load_data();
+
+                        function load_data(query)
+                        {
+                            $.ajax({
+                                url:"fetch_student_bursary.php",
+                                method:"POST",
+                                data:{query:query},
+                                success:function(data)
+                                {
+                                    $('#result').html(data);
+                                }
+                            });
+                        }
+                        $('#search_text').keyup(function(){
+                            var search = $(this).val();
+                            if(search != '')
+                            {
+                                load_data(search);
+                            }
+                            else
+                            {
+                                load_data();
+                            }
+                        });
+                    });
+                </script>
             </div>
-
-
         </div>
     </div>
-
 </div>
 
+</div>
 
 </body>
 
 </html>
 
-<script>
-    $(document).ready(function(){
 
-        load_data();
 
-        function load_data(query)
-        {
-            $.ajax({
-                url:"fetch_users.php",
-                method:"POST",
-                data:{query:query},
-                success:function(data)
-                {
-                    $('#result').html(data);
-                }
-            });
-        }
-        $('#search_text').keyup(function(){
-            var search = $(this).val();
-            if(search != '')
-            {
-                load_data(search);
-            }
-            else
-            {
-                load_data();
-            }
-        });
-    });
-</script>
+
+
+
 

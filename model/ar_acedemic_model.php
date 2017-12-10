@@ -27,14 +27,40 @@
         return $result;
       }
 
-      function addevent($event_date,$event_title,$event_des){
-         $query="INSERT INTO events (eventdate,eventtitle,eventdes)
-         VALUES ($event_date,$event_title,$event_des)";
+      function addevent($event_date,$event_title,$event_des,$file,$file_type,$file_size){
+         $query="INSERT INTO events (eventdate,eventtitle,eventdes,file,type,size)
+         VALUES ($event_date,$event_title,$event_des,$file,$file_type,$file_size)";
 
           $result = self::$db->query($query);
 
           return $result;
 
+        }
+        function view_mahapola(){
+            $query = "SELECT * FROM `scholarship`
+              WHERE schol_type='Mahapola'";
+
+            $result = self::$db->select($query);
+
+            return $result;
+        }
+
+        function view_bursary(){
+            $query = "SELECT * FROM `scholarship`
+              WHERE schol_type='Bursary'";
+
+            $result = self::$db->select($query);
+
+            return $result;
+        }
+
+        function view_other_scholarship(){
+            $query = "SELECT * FROM `scholarship`
+              WHERE schol_type='Other'";
+
+            $result = self::$db->select($query);
+
+            return $result;
         }
 
 
