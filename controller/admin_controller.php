@@ -358,12 +358,16 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 	}
 	//Return the more information about the student (Actually returns to the more.php page)
 	function show_moreinformation($var){
-
+		//get the student basic details
+        $result = self::$admin->search_student($var);
+        //get the student schol details
+        $result = self::$admin->search_student($var);
+        //get the student
         $result = self::$admin->search_student($var);
         if ($result) {
 
             $_SESSION['details'] = $result;
-            header("Location:../view/student_detail.php");
+            header("Location:../view/edit_view_more_student_detail.php");
 
 
         }
