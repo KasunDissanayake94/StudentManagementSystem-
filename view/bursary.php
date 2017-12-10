@@ -95,57 +95,25 @@ session_start();
                     </header>
                 </div>
                 <div class="user-dashboard">
-                    <h1> Computer Application Assistant </h1>
+                    <div class="panel-heading">
+                      <h4>
+                        <b>Bursary Details</b>
+                      </h4>
+                      <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
+                    </div>
+
+                    <div id="result"></div>
+                    
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
                    
 
-<?php 
-$user_list='';
-                 
-if(isset($_SESSION['value'])){
 
-foreach ($_SESSION['value'] as $user) {
-        $user_list .= "<tr>";
-        $user_list .= "<td>{$user['name']}</td>";
-        $user_list .= "<td>{$user['indexno']}</td>";
-        $user_list .= "<td>{$user['course']}</td>";
-        $user_list .= "<td>{$user['schol_amount']}</td>";
-        
-        $user_list .= "</tr>";
-        unset($_SESSION['value']);
-    }
-}
-
- ?>
- 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View All</title> 
-    <style> 
-        .masterlist {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .masterlist th {
-            background: #aaa;
-            text-align: left;
-        }
-
-        .masterlist th, .masterlist td {
-            padding: 10px;
-            border-bottom: 1px solid #aaa;
-        }
-
-
-    </style>
-</head>
-<body>
-
-<h1>View All Students - Bursary </h1>
- <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
-
- <div id="result"></div>
         
 </body>
 </html>
