@@ -51,7 +51,7 @@ if(isset($_SESSION['details'])){
             <div class="navi">
                 <ul>
                     <li ><a href="../controller/student_controller.php?op=Home"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                    <li><a href="../controller/student_controller.php?op=Grades"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">View Exam Grades</span></a></li>
+                    <li class="active"><a href="../controller/student_controller.php?op=Grades"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">View Exam Grades</span></a></li>
                     <li ><a href="../controller/student_controller.php?op=Repeat"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Repeat Subjects</span></a></li>
                     <li><a href="../controller/student_controller.php?op=Optional"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Optional Subjects</span></a></li>
 

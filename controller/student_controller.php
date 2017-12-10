@@ -74,7 +74,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         case 'Home':
             $student_controller->home();
             break;
-        case 'Grade':
+        case 'Grades':
             $student_controller->grade();
             break;
         case 'Repeat':
