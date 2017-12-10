@@ -50,7 +50,7 @@ session_start();
                         <li><a href="../controller/lecturer_controller.php?op=view_student"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
                         <li><a href="../controller/lecturer_controller.php?op=view_academic"><i class="fa fa-book" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Academic</span></a></li>
                         <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calender</span></a></li>
-                        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
+                        <li><a href="../controller/lecturer_controller.php?op=view_report"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Reports</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -115,7 +115,11 @@ session_start();
                 <div class="user-dashboard">
                     
                     <div id="content">
-                        <h3>Profile</h3>
+                        <span>
+                            <h3>Profile</h3>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit_details" op=>Edit Details</button>
+                        </span>
+                        
                         <div id="line"></div>
 
                         <div id="table_lecturer">
@@ -171,6 +175,98 @@ session_start();
             </div>
         </div>
 
+    </div>
+
+    <!-- Edit Details Modal -->
+    <div id="edit_details" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header login-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Assignment Results</h4>
+                </div>
+                    <div class="modal-body">
+                            <form class="form-horizontal" action="../controller/admin_controller.php" method="post">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">First Name :</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" id="fname" type="text" name="fname" placeholder="" required value=<?php echo $first_name?> />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Last Name :</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" id="lname" type="text" name="lname" placeholder="" value=<?php echo $last_name?> />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Gender :</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" name="gender" value=<?php echo $gender?>>
+                                          <option value="male">Male</option>
+                                          <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Date of Birth :</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" id="dob" type="text" name="dob" placeholder="" value=<?php echo $dob?> />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Telephone :</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" id="tel" type="text" name="tel" placeholder="" value=<?php echo $telephone?> />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4" for="email">Email:</label>
+                                    <div class="col-sm-8">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="" required value=<?php echo $email?>/>
+                                    </div>  
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Educational Details :</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" id="edu" type="text" name="edu" placeholder="" value=<?php echo $education?> />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Research Interest :</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" id="research" type="text" name="research" placeholder="" value=<?php echo $research?> />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Courses :</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" id="course" type="text" name="course" placeholder="" value=<?php echo $courses?> />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Awards :</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" id="awards" type="text" name="awards" placeholder="" value=<?php echo $awards?> />
+                                    </div>
+                                </div>
+
+
+                                <div class="modal-footer">
+                                    <button type="button" class="cancel" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="add-project" data-dismiss="modal" name="op" value="update_lecturer_info">update</button>
+                                </div>
+
+                              
+                            </form>
+                        </div>
+                
+                
+            </div>
+
+        </div>
     </div>
 
 

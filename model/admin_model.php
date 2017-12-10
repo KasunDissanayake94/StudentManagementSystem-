@@ -66,6 +66,17 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
      }
 
+     //Add lecturer to the database when the user add into the system
+     function addLecturerfromAdmin($username,$fname,$lname,$email){
+         $query="INSERT INTO lecturer (username,first_name,last_name,gender,dob,telephone,email,education,research,courses,awards)
+         VALUES ($username,$fname,$lname,'','','',$email,'','','','')";
+
+         $result = self::$db->query($query);
+
+         return $result;
+
+     }
+
  	function search_user($uname){
  		$query = "SELECT * FROM `user` WHERE username = {$uname} ";
 
