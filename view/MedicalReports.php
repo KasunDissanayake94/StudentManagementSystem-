@@ -125,6 +125,18 @@ if(isset($_SESSION['details'])){
                     </div>
                 </header>
             </div>
+            <div class="user-dashboard">
+                <div class="modal-content">
+                    <div class="modal-header login-header">
+                        <h4 class="modal-title">Medical Report Form</h4>
+                    </div>
+                    <div class="PDF">
+                        <object data="../view/pdffiles/medical_forms/medical.pdf" type="application/pdf" width="1150" height="700">
+                            alt : <a href="../view/pdffiles/medical_forms/medical.pdf">your.pdf</a>
+                        </object>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
