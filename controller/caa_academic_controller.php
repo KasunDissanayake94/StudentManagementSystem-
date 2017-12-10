@@ -139,42 +139,44 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			}
 		}
 	function view_by_mahapola(){
+		header("Location:../view/mahapola.php");
 			
 
-			$result = self::$caa_academic->view_by_mahapola();
+			// $result = self::$caa_academic->view_by_mahapola();
 
-			if($result){
-				$_SESSION['value']=$result;
-				header("Location:../view/mahapola.php");
-			}else{
-				echo "something wrong";
-			}
-		}
+			// if($result){
+			// 	$_SESSION['value']=$result;
+			// 	header("Location:../view/mahapola.php");
+			// }else{
+			// 	echo "something wrong";
+			// }
+	}
 
 	function view_by_bursary(){
-			
+		header("Location:../view/bursary.php");
 
-			$result = self::$caa_academic->view_by_bursary();
+			// $result = self::$caa_academic->view_by_bursary();
 
-			if($result){
-				$_SESSION['value']=$result;
-				header("Location:../view/bursary.php");
-			}else{
-				echo "something wrong";
-			}
+			// if($result){
+			// 	$_SESSION['value']=$result;
+			// 	header("Location:../view/bursary.php");
+			// }else{
+			// 	echo "something wrong";
+			// }
 		}
 
 	function view_by_other_scholarship(){
+		header("Location:../view/other_scholarship.php");
 			
 
-			$result = self::$caa_academic->view_by_other_scholarship();
+			// $result = self::$caa_academic->view_by_other_scholarship();
 
-			if($result){
-				$_SESSION['value']=$result;
-				header("Location:../view/other_scholarship.php");
-			}else{
-				echo "something wrong";
-			}
+			// if($result){
+			// 	$_SESSION['value']=$result;
+			// 	header("Location:../view/other_scholarship.php");
+			// }else{
+			// 	echo "something wrong";
+			// }
 		}
 
  	}

@@ -28,7 +28,9 @@
       }
 
       function update_lecturer_info($username,$fname,$lname,$gender,$dob,$tel,$email,$edu,$research,$course,$awards){
-        $query = "UPDATE  `lecturer` SET `first_name`=$fname,`last_name`=$lname,`gender`=$gender,`dob`=$dob,`telephone`=$tel,`email`=$email,`education`=$edu,`research`=$research,`course`=$course,`awards`=$awards WHERE username=$username";
+        // $query = "UPDATE `lecturer` SET `first_name`=$fname,`last_name`=$lname,`gender`=$gender,`dob`=$dob,`telephone`=$tel,`email`=$email,`education`=$edu,`research`=$research,`course`=$course,`awards`=$awards WHERE username=$username";
+
+        $query = "UPDATE `lecturer` SET `first_name`='a' WHERE username='l1'";
 
         $result = self::$db->query($query);
 

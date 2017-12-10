@@ -95,7 +95,22 @@ session_start();
                     </header>
                 </div>
                 <div class="user-dashboard">
-                    <h1> Computer Application Assistant </h1>
+                    <div class="panel-heading">
+                      <h4>
+                        <b>Mahapola Details</b>
+                      </h4>
+                      <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
+                    </div>
+
+                    <div id="result"></div>
+                    
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
                 
 
 

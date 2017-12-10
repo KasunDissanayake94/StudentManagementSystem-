@@ -188,7 +188,7 @@ session_start();
                     <h4 class="modal-title">Assignment Results</h4>
                 </div>
                     <div class="modal-body">
-                            <form class="form-horizontal" action="../controller/admin_controller.php" method="post">
+                            <form class="form-horizontal" action="../controller/lecturer_controller.php" method="post">
                                 <div class="form-group">
                                     <label class="control-label col-sm-4">First Name :</label>
                                     <div class="col-sm-8">
