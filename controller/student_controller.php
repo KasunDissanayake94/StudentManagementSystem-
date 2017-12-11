@@ -168,7 +168,15 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             header("Location:../view/grade.php");
         }
         function repeat(){
-            header("Location:../view/repeat.php");
+            $s_id = $_SESSION['username'];
+            $result = self::$student->get_repeat($s_id);
+            if($result){
+                $_SESSION['repeat']=$result;
+                header("Location:../view/repeat.php");
+            }else{
+                $alert='<div class="alert alert-danger">You have not repeat Sujects yet.</div>';
+                header("Location:../view/repeat.php?alert=$alert");
+            }
         }
         function optional(){
             header("Location:../view/optional.php");

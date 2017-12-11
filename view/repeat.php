@@ -21,6 +21,26 @@ if(isset($_SESSION['details'])){
         $s_id=$user['s_id'];
     }
 }
+//get the session data
+$samount='';
+$sid='';
+$ssdate='';
+$sedate='';
+if(isset($_SESSION['repeat'])){
+    foreach ($_SESSION['repeat'] as $repeat) {
+        $c_id=$repeat['course_id'];
+        $e_grade=$repeat['exam_grade'];
+        $assignment=$repeat['assignment_grade'];
+        $yr=$repeat['year'];
+    }
+}
+$alert='';
+if(isset($_GET['alert'])){
+    $alert=$_GET['alert'];
+}
+else{
+    $alert=null;
+}
 ?>
 
 <!DOCTYPE html>
@@ -122,6 +142,42 @@ if(isset($_SESSION['details'])){
                         </div>
                     </div>
                 </header>
+            </div>
+            <div class="user-dashboard">
+                <div class="panel-heading">
+                    <h4>
+                        <b>Scolarship Details</b>
+                    </h4>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <?php echo $alert; ?>
+                    </div>
+                </div>
+
+
+                <table class="table" >
+                    <tr>
+                        <th>Course</th>
+                        <th>Exam Grade</th>
+                        <th>Assignment Grade</th>
+                        <th>Year</th>
+
+                    </tr>
+
+
+                    <tr>
+                        <td><?php echo $c_id;?></td>
+                        <td><?php echo $e_grade;?></td>
+                        <td><?php echo $assignment;?></td>
+                        <td><?php echo $yr;?></td>
+
+
+
+
+                    </tr>
+                </table>
+
             </div>
 
         </div>
