@@ -9,18 +9,7 @@ session_start();
 ?>
 
 <?php
-$s_id='';
-$fname='';
-$lname='';
-$area='';
-if(isset($_SESSION['details'])){
-    foreach ($_SESSION['details'] as $user) {
-        $fname=$user['first_name'];
-        $lname=$user['last_name'];
-        $area=$user['area'];
-        $s_id=$user['s_id'];
-    }
-}
+
 
 $s_id='';
 $fname='';
@@ -30,7 +19,6 @@ if(isset($_SESSION['details'])){
     foreach ($_SESSION['details'] as $user) {
         $fname=$user['first_name'];
         $lname=$user['last_name'];
-        $area=$user['area'];
         $s_id=$user['s_id'];
     }
 }
@@ -41,7 +29,10 @@ if(isset($_SESSION['grade'])){
         $c_id=$grade['course_id'];
         $e_grade=$grade['exam_grade'];
         $assignment=$grade['assignment_grade'];
-        $yr=$grade['year'];
+        $atten=$grade['attendance'];
+        $attem=$grade['attempt'];
+        $start=$grade['start_date'];
+        $end=$grade['end_date'];
     }
 }
 $alert='';
@@ -172,7 +163,10 @@ else{
                         <th>Course</th>
                         <th>Exam Grade</th>
                         <th>Assignment Grade</th>
-                        <th>Year</th>
+                        <th>Attendance</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Attempts</th>
 
                     </tr>
 
@@ -181,7 +175,10 @@ else{
                         <td><?php echo $c_id;?></td>
                         <td><?php echo $e_grade;?></td>
                         <td><?php echo $assignment;?></td>
-                        <td><?php echo $yr;?></td>
+                        <td><?php echo $atten;?></td>
+                        <td><?php echo $start;?></td>
+                        <td><?php echo $end;?></td>
+                        <td><?php echo $attem;?></td>
 
 
 
