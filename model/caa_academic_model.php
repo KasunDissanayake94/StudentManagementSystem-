@@ -19,15 +19,6 @@
 
       }
 
-      function caa_profile($caa_username){
-        $query = "SELECT * FROM `caa_academic` WHERE username=$caa_username";
-
-        $result = self::$db->select($query);
-
-        return $result;
-      }
-
-
       function add_scholarship($name,$indexno,$course,$stype,$schol_other,$samount){
 
   
@@ -47,6 +38,15 @@
       // }
 
     }
+
+    function caa_profile($caa_id){
+        $query = "SELECT * FROM `caa_academic` WHERE username = ".$caa_id." ";
+
+        $result = self::$db->select($query);
+
+        return $result;
+      }
+
     function view_hostel($name,$indexno,$course,$stype,$schol_other,$samount)
     {
 

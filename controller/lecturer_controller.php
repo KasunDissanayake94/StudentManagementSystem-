@@ -147,7 +147,13 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  		}
 
  		function view_report(){
- 			header("Location:../view/lecturer_report.php");
+ 			$_SESSION['result'] = self::$lecturer->get_count_result();
+ 			if ($_SESSION['result']) {
+ 				header("Location:../view/lecturer_report.php");
+ 			}else{
+ 				echo "no result";
+ 			}
+ 			
  		}
 
  		// Used for Add button in add final result model

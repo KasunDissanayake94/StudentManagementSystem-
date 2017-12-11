@@ -114,7 +114,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  		}
 
  		 function caa_profile(){
- 		 	$caa_username=$_SESSION['username'];
+ 		 	$caa_username= $_SESSION['username'];
  			$result = self::$caa_academic->caa_profile($caa_username);
  			if($result){
 				$_SESSION['value']=$result;

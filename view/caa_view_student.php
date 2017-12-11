@@ -28,7 +28,7 @@ session_start();
                 <div class="navi">
                     <ul>
                         <li><a href="../controller/caa_academic_controller.php"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                        <li class="active"><a href="../controller/caa_academic_controller.php?op=caa_profile"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">CAA Profile</span></a></li> 
+                        <li><a href="../controller/caa_academic_controller.php?op=caa_profile"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">CAA Profile</span></a></li> 
                         <li class="active"><a href="../controller/caa_academic_controller.php?op=view_student"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Student Details</span></a></li>
                         <li><a href="../controller/caa_academic_controller.php?op=view_events"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
                         <li><a href="../controller/caa_academic_controller.php?op=view_scholarships"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Scholarships</span></a></li>

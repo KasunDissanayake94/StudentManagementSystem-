@@ -119,6 +119,14 @@
         return $result;
       }
 
+      function get_count_result(){
+        $query = "SELECT exam_grade,COUNT(s_id) FROM student_course GROUP BY exam_grade";
+
+        $result = self::$db->select($query);
+
+        return $result;
+      }
+
 
 
     }
