@@ -56,9 +56,6 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		case 'view_student':
 			$aracedemic_controller->view_student();
 			break;
-        case 'ar_approv':
-            $aracedemic_controller->ar_approv();
-            break;
         case 'manage_user':
             $aracedemic_controller->manage_user();
             break;
@@ -110,10 +107,6 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
  		function view_student(){
  			header("Location:../view/ar_acedemic_stdet.php");
- 		}
-
- 		function ar_approv(){
- 			header("Location:../view/ar_acedemic_approv.php");
  		}
 
  		function manage_user(){

@@ -9,17 +9,18 @@ if(isset($_POST["query"]))
     $query = "
   SELECT * FROM student 
   WHERE s_id LIKE '%".$search."%'
-  OR first_name LIKE '%".$search."%' 
-  OR last_name LIKE '%".$search."%' 
-  OR area LIKE '%".$search."%' 
-  OR gender LIKE '%".$search."%' 
+  OR first_name LIKE '%".$search."%'
+  OR mid_name LIKE '%".$search."%' 
+  OR last_name LIKE '%".$search."%'  
   OR school LIKE '%".$search."%' 
   OR birthdate LIKE '%".$search."%' 
-  OR race LIKE '%".$search."%' 
-  OR last_login LIKE '%".$search."%' 
+  OR race LIKE '%".$search."%'
+  OR religion LIKE '%".$search."%' 
   OR reg_date LIKE '%".$search."%' 
-  OR out_date LIKE '%".$search."%' 
+  OR out_date LIKE '%".$search."%'
+  OR gender LIKE '%".$search."%' 
   OR religion LIKE '%".$search."%'
+  OR nic LIKE '%".$search."%'
  ";
 }
 else
@@ -37,15 +38,17 @@ if(mysqli_num_rows($result) > 0)
     <tr>
      <th>Student ID</th>
      <th>First Name</th>
+     <th>Mid Name</th>
      <th>Last Name</th>
-     <th>Area</th>
      <th>School</th>
      <th>BirthDay</th>
      <th>Race</th>
      <th>Religion</th>
+     <th>Register Date</th>
+     <th>Pass Out Date</th>
      <th>Gender</th>
+     <th>NIC</th>
      <th>View</th>
-     <th>Edit</th>
      <th>Delete</th>
      
     </tr>
@@ -58,19 +61,20 @@ if(mysqli_num_rows($result) > 0)
    <tr>
     <td>".$row['s_id']."</td>
     <td>".$row['first_name']."</td>
+    <td>".$row['mid_name']."</td>
     <td>".$row['last_name']."</td>
-    <td>".$row['area']."</td>
     <td>".$row['school']."</td>
     <td>".$row['birthdate']."</td>
     <td>".$row['race']."</td>
     <td>".$row['religion']."</td>
+    <td>".$row['reg_date']."</td>
+    <td>".$row['out_date']."</td>
     <td>".$row['gender']."</td>
+    <td>".$row['nic']."</td>
     <td id='".$row['s_id']."'>
         <button class='btn btn-basic' data-toggle='modal' data-target='#v".$row['s_id']."''>View</button>
     </td>
-    <td id='".$row['s_id']."'>
-        <button class='btn btn-basic' data-toggle='modal' data-target='#e".$row['s_id']."''>Edit</button>
-    </td>
+
     <td id='".$row['s_id']."'>
         <button class='btn btn-basic' data-toggle='modal' data-target='#d".$row['s_id']."''>Delete</button>
     </td>
@@ -102,22 +106,17 @@ if(mysqli_num_rows($result) > 0)
                                 </div>
                             </div>
                             <div class='form-group'>
-                                <label class='control-label col-sm-2'>Last Name :</label>
+                                <label class='control-label col-sm-2'>Mid Name :</label>
                                 <div class='col-sm-10'>
-                                    <input form='formView' class='form-control' id='lastname' value='".$row['last_name']."' type='text' name='lastname' placeholder='Type last name here' required disabled/>
+                                    <input form='formView' class='form-control' id='misname' value='".$row['mid_name']."' type='text' name='midname' placeholder='Type last name here' required disabled/>
                                 </div>
                             </div>
-                            <div class='form-group'>
-                                <label class='control-label col-sm-2' for='email'>Area:</label>
-                                <div class='col-sm-10'>
-                                    <input form='formView' type='text' class='form-control' id='area' value='".$row['area']."' name='area' placeholder='Enter area here' required disabled/>
-                                </div>
-                            </div>
+                            
 
                             <div class='form-group'>
-                                <label class='control-label col-sm-2' for='email'>Email:</label>
+                                <label class='control-label col-sm-2' for='lastname'>Last Name:</label>
                                 <div class='col-sm-10'>
-                                    <input form='formView' type='email' class='form-control' id='email' name='email' placeholder='Enter email here' required disabled/>
+                                    <input form='formView' type='text' class='form-control' id='lastname' name='lastname' value='".$row['last_name']."' placeholder='Enter email here' required disabled/>
                                 </div>
                             </div>
 
@@ -167,6 +166,12 @@ if(mysqli_num_rows($result) > 0)
                                     <input form='formView' class='form-control' id='passdate' value='".$row['gender']."' name='passdate' placeholder='MM/DD/YYYY' type='text' required disabled/>
                                 </div>
                             </div>
+                            <div class='form-group'> <!-- Date input -->
+                                <label class='control-label col-sm-2' for='date'>Gender</label>
+                                <div class='col-sm-10'>
+                                    <input form='formView' class='form-control' id='passdate' value='".$row['nic']."' name='passdate' placeholder='MM/DD/YYYY' type='text' required disabled/>
+                                </div>
+                            </div>
                             
 
                             <div class='modal-footer'>
@@ -207,12 +212,7 @@ if(mysqli_num_rows($result) > 0)
                                     <input form='formEdit' class='form-control' id='lastnameEdit' value='".$row['last_name']."' type='text' name='lastname' placeholder='Type last name here' required />
                                 </div>
                             </div>
-                            <div class='form-group'>
-                                <label class='control-label col-sm-2' for='email'>Area:</label>
-                                <div class='col-sm-10'>
-                                    <input form='formEdit' type='text' class='form-control' id='areaEdit' value='".$row['area']."' name='area' placeholder='Enter area here' required>
-                                </div>
-                            </div>
+                            
 
                             <div class='form-group'>
                                 <label class='control-label col-sm-2' for='email'>Email:</label>
@@ -266,7 +266,7 @@ if(mysqli_num_rows($result) > 0)
                                 <div class='col-sm-10'>
                                     <select form='formEdit' class='form-control' name='gender' id='genderEdit'>
                                         <option selected>Open this select menu</option>
-										";
+                                        ";
         if(strcmp($row['gender'], 'male') == 0){
             $output.= "<option value='male' selected>Male</option>
                                         <option value='female'>Female</option>";
@@ -285,9 +285,9 @@ if(mysqli_num_rows($result) > 0)
                             <div class='modal-footer'>
                                 <button form='formEdit' id='edit".$row['s_id']."' type='submit' class='add-project'   name='op' value='Edited'>Edit </button>
                                 <button form='formEdit' type='button' class='cancel' data-dismiss='modal'>Close</button> 
-								
-								<span class='error' style='display:none'> Please Enter Valid Data</span>
-								<span class='success' style='display:none'> Registration Successfully</span>
+                                
+                                <span class='error' style='display:none'> Please Enter Valid Data</span>
+                                <span class='success' style='display:none'> Registration Successfully</span>
                             </div>
 
 
@@ -320,8 +320,8 @@ if(mysqli_num_rows($result) > 0)
       </div>
       
     </div>
-	 <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
-	<script type='text/javascript' >
+     <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
+    <script type='text/javascript' >
 $('#edit".$row['s_id']."').click(function() {
 
 var username = $('#username".$row['s_id']."').val();
@@ -354,16 +354,16 @@ url: 'http://localhost/StudentManagementSystem-/controller/admin_controller.php?
 data: {
             username: 'a',
             firstname: 'b',
-			lastname: 'c',
-			email: 'd',
-			school: 'e',
-			bday: this.bday,
-			race: this.race,
-			religion: this.religion,
-			regdate: this.regdate,
-			passdate: this.passdate,
-			gender: this.gender,
-			area: this.area,
+            lastname: 'c',
+            email: 'd',
+            school: 'e',
+            bday: this.bday,
+            race: this.race,
+            religion: this.religion,
+            regdate: this.regdate,
+            passdate: this.passdate,
+            gender: this.gender,
+            area: this.area,
         },
 dataType
 success: function(){
