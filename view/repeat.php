@@ -22,10 +22,10 @@ if(isset($_SESSION['details'])){
     }
 }
 //get the session data
-$samount='';
-$sid='';
-$ssdate='';
-$sedate='';
+$yr='';
+$c_id='';
+$e_grade='';
+$assignment='';
 if(isset($_SESSION['repeat'])){
     foreach ($_SESSION['repeat'] as $repeat) {
         $c_id=$repeat['course_id'];

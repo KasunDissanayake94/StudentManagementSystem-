@@ -50,6 +50,15 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
  	//get scolarship data from database
 
      function get_repeat($st_id){
+         $query = "SELECT * FROM `student_course` WHERE `s_id` = ".$st_id." AND `exam_grade` = 'D' AND `exam_grade` = 'C-'";
+
+         $result = self::$db->select($query);
+
+         return $result;
+     }
+     //get student grades
+
+     function get_grades($st_id){
          $query = "SELECT * FROM `student_course` WHERE `s_id` = ".$st_id."";
 
          $result = self::$db->select($query);
