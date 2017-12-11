@@ -127,41 +127,20 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             }
         function view_mahapola(){
 
+            header("Location:../view/ar_view_mahapola.php");
 
-            $result = self::$ar_acedemic->view_mahapola();
-
-            if($result){
-                $_SESSION['value']=$result;
-                header("Location:../view/ar_view_mahapola.php");
-            }else{
-                echo "something wrong";
-            }
         }
 
-        function view_bursary(){
+        function view_bursary()
+        {
 
+            header("Location:../view/ar_view_bursary.php");
 
-            $result = self::$ar_acedemic->view_bursary();
-
-            if($result){
-                $_SESSION['value']=$result;
-                header("Location:../view/ar_view_bursary.php");
-            }else{
-                echo "something wrong";
-            }
         }
-
         function view_other_scholarship(){
 
+            header("Location:../view/ar_acedmic_otherschol.php");
 
-            $result = self::$ar_acedemic->view_other_scholarship();
-
-            if($result){
-                $_SESSION['value']=$result;
-                header("Location:../view/other_scholarship.php");
-            }else{
-                echo "something wrong";
-            }
         }
 
  	}
