@@ -24,6 +24,7 @@ if(isset($_SESSION['details'])){
     }
 }
 $samount='';
+$sid='';
 $ssdate='';
 $sedate='';
 if(isset($_SESSION['scolres'])){
@@ -163,6 +164,7 @@ else{
                     <tr>
                         <th>Student ID</th>
                         <th>Scholarship ID</th>
+                        <th>Scholarship Name</th>
                         <th>Amount</th>
                         <th>Start Date</th>
                         <th>End Date</th>
@@ -172,6 +174,19 @@ else{
                     <tr>
                         <td><?php echo $s_id;?></td>
                         <td><?php echo $sid;?></td>
+                        <td><?php
+                            if($sid==1){
+                                echo "Mahapola";
+                            }
+                            elseif($sid==2){
+                                echo "Bursary";
+                            }
+                            elseif($sid==3){
+                                echo "Bursary";
+                            }
+                            else{
+                                echo "";
+                            }?></td>
                         <td><?php echo $samount;?></td>
                         <td><?php echo $ssdate;?></td>
                         <td><?php echo $sedate;?></td>
