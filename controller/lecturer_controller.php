@@ -115,6 +115,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  		function view_student(){
  			header("Location:../view/view_student.php");
  		}
+ 		
  		function update_lecturer_info(){
  			// $username=$_SESSION['username'];
  			// $fname=self::$db->quote($_POST['fname']);
@@ -128,13 +129,13 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  			// $course=self::$db->quote($_POST['course']);
  			// $awards=self::$db->quote($_POST['awards']);
 
- 			// $result = self::$lecturer->update_lecturer_info($username,$fname,$lname,$gender,$dob,$tel,$email,$edu,$research,$course,$awards);
- 			// if($result){
- 			// 	header("Location:../controller/lecturer_controller.php?op=view_lecturer");
- 			// }else{
- 			// 	echo "something wrong";
- 			// }
- 			header("Location:../controller/lecturer_controller.php?op=view_academic");
+ 			$result = self::$lecturer->update_lecturer_info();
+ 			if($result){
+ 				header("Location:../view/view_lecturer.php");
+ 			}else{
+ 				echo "something wrong";
+ 			}
+ 			
  			
  		}
 
@@ -288,6 +289,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 				$_SESSION['student_list']=$result;
 				header("Location:../view/view_results_form.php");
 			}else{
+				header("Location:../view/lecturer_academic.php");
 				echo "something wrong";
 			}
  		}
