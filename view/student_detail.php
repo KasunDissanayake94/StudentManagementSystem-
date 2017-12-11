@@ -14,11 +14,12 @@ $s_id='';
 $fname='';
 $lname='';
 $area='';
+//basic details
 if(isset($_SESSION['details'])){
     foreach ($_SESSION['details'] as $user) {
         $fname=$user['first_name'];
+        $mname=$user['mid_name'];
         $lname=$user['last_name'];
-        $area=$user['area'];
         $s_id=$user['s_id'];
         $school=$user['school'];
         $bday=$user['birthdate'];
@@ -27,8 +28,22 @@ if(isset($_SESSION['details'])){
         $reg=$user['reg_date'];
         $out=$user['out_date'];
         $gender=$user['gender'];
+        $nic=$user['nic'];
+
     }
 }
+//contact details
+if(isset($_SESSION['details1'])){
+    foreach ($_SESSION['details1'] as $user1) {
+        $con1=$user1['contact1'];
+        $con2=$user1['contact2'];
+        $con=$user1['emg_contact'];
+        $person=$user1['emg_person'];
+
+    }
+}
+//address details
+
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +68,7 @@ if(isset($_SESSION['details'])){
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
             <div class="logo">
-                <a href="home.html"><img src="../view/images/profile_pic/<?php echo $s_id;?>" alt="merkery_logo" class="hidden-xs hidden-sm">
+                <a href="home.html"><img src="../view/images/profile_pic/<?php echo $nic;?>" alt="merkery_logo" class="hidden-xs hidden-sm">
 
                 </a>
             </div>
@@ -162,7 +177,7 @@ if(isset($_SESSION['details'])){
                                 <div class="col-lg-3 col-md-3">
                                     <center>
                                         <span class="text-left">
-                                        <img src="../view/images/profile_pic/<?php echo $s_id;?>" class="img-responsive img-thumbnail">
+                                        <img src="../view/images/profile_pic/<?php echo $nic ;?>" class="img-responsive img-thumbnail">
 
 
                                             <!-- Modal -->
@@ -173,12 +188,12 @@ if(isset($_SESSION['details'])){
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                             <h4 class="modal-title text-success" id="myModalLabel"><i class="fa fa-gear"></i> <span class="text-right">Change Photo</span></h4>
                                                         </div>
-                                                        <div class="modal-body"><center><img src="../view/images/profile_pic/<?php echo $s_id;?>" class="img-responsive img-thumbnail"></center>
+                                                        <div class="modal-body"><center><img src="../view/images/profile_pic/<?php echo $nic;?>" class="img-responsive img-thumbnail"></center>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <form class="uplaod" action="../view/upload.php" method="post" enctype="multipart/form-data" >
                                                                 <input class="up1" type="file" name="fileToUpload" value="Chose Image" >
-                                                                <button class="btn btn-success" type="submit" value="<?php echo $s_id;?>" name="stu_id"><i class="fa fa-photo"></i> Upload</button>
+                                                                <button class="btn btn-success" type="submit" value="<?php echo $nic;?>" name="stu_id"><i class="fa fa-photo"></i> Upload</button>
                                                                 <a href="../view/student_detail.php" class="btn btn-danger"><i class="fa fa-trash"></i> Cancel</a>
                                                             </form>
 
@@ -227,13 +242,18 @@ if(isset($_SESSION['details'])){
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Student ID :</td>
-                                                        <td> <input type="text" value="<?php echo $s_id; ?>" class="form-control" id="email" name="s_id" placeholder="Enter email" required /></td>
+                                                        <td> <input type="text" value="<?php echo $s_id; ?>" class="form-control" id="sid" name="s_id" placeholder="Enter email" required /></td>
 
                                                     </tr>
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> First Name</td>
-                                                        <td> <input type="text" value="<?php echo $fname; ?>" class="form-control" id="email" name="firstname" placeholder="Enter email" required /></td>
+                                                        <td> <input type="text" value="<?php echo $fname; ?>" class="form-control" id="fname" name="firstname" placeholder="Enter email" required /></td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-success"><i class="fa fa-user"></i> Middle Name</td>
+                                                        <td> <input type="text" value="<?php echo $mname; ?>" class="form-control" id="mname" name="mname" placeholder="Enter email" required /></td>
 
                                                     </tr>
                                                     <tr>
@@ -241,27 +261,26 @@ if(isset($_SESSION['details'])){
                                                         <td> <input type="text" value="<?php echo $lname; ?>" class="form-control" id="email" name="lastname" placeholder="Enter email" required /></td>
 
                                                     </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-list-ol"></i> Scholar Number</td>
-                                                        <td> <input type="text" value="45" class="form-control" id="email" name="email" placeholder="Enter email" required disabled/></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-book"></i> Medium</td>
-                                                        <td> <input type="email" value="English" class="form-control" id="email" name="email" placeholder="Enter email" required disabled/></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-group"></i> Class &amp; Section</td>
-                                                        <td> <input type="email" value="12-F" class="form-control" id="email" name="email" placeholder="Enter email" required disabled /></td>
-                                                    </tr>
+
+
+
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-calendar"></i> Birthday</td>
-                                                        <td> <input type="date" value="<?php echo $bday; ?>" class="form-control" id="email" name="email" placeholder="Enter email" required /></td>
+                                                        <td> <input type="date" value="<?php echo $bday; ?>" class="form-control" id="bday" name="bday" placeholder="Enter Birth day" required /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-success"><i class="fa fa-calendar"></i> Religion</td>
+                                                        <td> <input type="text" value="<?php echo $religion; ?>" class="form-control" id="religion" name="religion" placeholder="Enter Religion" required /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-success"><i class="fa fa-calendar"></i> Race</td>
+                                                        <td> <input type="text" value="<?php echo $race; ?>" class="form-control" id="race" name="race" placeholder="Enter Race" required /></td>
                                                     </tr>
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-university"></i> School</td>
 
-                                                        <td> <input type="text" value="<?php echo $school; ?>" class="form-control" id="email" name="email" placeholder="Enter email" required /></td>                                                               </td>
+                                                        <td> <input type="text" value="<?php echo $school; ?>" class="form-control" id="school" name="school" placeholder="Enter email" required /></td>                                                               </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -297,19 +316,19 @@ if(isset($_SESSION['details'])){
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="glyphicon glyphicon-phone"></i> Mobile Number</td>
-                                                        <td>88********</td>
+                                                        <td><?php $con1?></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-success"><i class="fa fa-flag"></i> Nationality</td>
-                                                        <td>Indian</td>
+                                                        <td class="text-success"><i class="fa fa-flag"></i> Home Number</td>
+                                                        <td><?php $con1?></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Father's Name</td>
-                                                        <td>Ajay Mall</td>
+                                                        <td><?php $con?></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="glyphicon glyphicon-phone"></i> Father's Mobile</td>
-                                                        <td>+91 99********</td>
+                                                        <td><?php $person?></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Mother's Name</td>

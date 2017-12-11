@@ -40,8 +40,25 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 		return $result;
 
  	}
+ 	//get basic details
      function getdetails($st_id){
          $query = "SELECT * FROM `student` WHERE `s_id` = ".$st_id."";
+
+         $result = self::$db->select($query);
+
+         return $result;
+     }
+     //get contact details
+     function getcontactdetails($st_id){
+         $query = "SELECT * FROM `student_contact` WHERE `s_id` = ".$st_id."";
+
+         $result = self::$db->select($query);
+
+         return $result;
+     }
+     //get area deatails
+     function getareadetails($st_id){
+         $query = "SELECT * FROM `student_address` WHERE `s_id` = '001'";
 
          $result = self::$db->select($query);
 

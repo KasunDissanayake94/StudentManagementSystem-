@@ -103,12 +103,20 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			self::$student->update_time($st_id);
 			
 			$result = self::$student->getdetails($st_id);
+			$result1 = self::$student->getareadetails($st_id);
+			$result2 = self::$student->getcontactdetails($st_id);
+			//get basic details
 			if ($result) {
 				$_SESSION['details']=$result;
+                $_SESSION['details1']=$result1;
+                $_SESSION['details2']=$result2;
 
-			}else{
-				die("not");
+
+
+            }else{
+
 			}
+
 			
 			
 		}

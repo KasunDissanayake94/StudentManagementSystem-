@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 10, 2017 at 08:52 PM
+-- Generation Time: Dec 11, 2017 at 11:18 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -66,18 +66,21 @@ CREATE TABLE IF NOT EXISTS `course` (
   `course_year` varchar(45) DEFAULT NULL,
   `credits` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
-  `lect_username` varchar(25) NOT NULL,
+  `lect_id` int(10) NOT NULL,
+  `semester` varchar(255) NOT NULL,
+  `c_type` varchar(255) NOT NULL,
+  `year` varchar(5) NOT NULL,
   PRIMARY KEY (`course_id`),
-  UNIQUE KEY `lect_id` (`lect_username`)
+  UNIQUE KEY `lect_id` (`lect_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`course_id`, `course_name`, `course_code`, `course_year`, `credits`, `description`, `lect_username`) VALUES
-(1, 'Software enginering', 'SCS1101', '2014/2015', '2', NULL, 'l1'),
-(2, 'database', 'SCS1102', '2015/2016', '1', NULL, '123457');
+INSERT INTO `course` (`course_id`, `course_name`, `course_code`, `course_year`, `credits`, `description`, `lect_id`, `semester`, `c_type`, `year`) VALUES
+(1, 'Software enginering', 'SCS1101', '1', '2', NULL, 34, '1', 'm', '2016'),
+(2, 'database', 'SCS1102', '1', '1', NULL, 33, '1', 'm', '2016');
 
 -- --------------------------------------------------------
 
@@ -92,8 +95,17 @@ CREATE TABLE IF NOT EXISTS `degree` (
   `duration` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   `start_year` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`degree_id`)
+  PRIMARY KEY (`degree_id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `degree`
+--
+
+INSERT INTO `degree` (`degree_id`, `name`, `duration`, `description`, `start_year`) VALUES
+(1, 'computer science(B.sc)', '3 years', NULL, '2002'),
+(2, 'Information System(B.sc)', '3 years', NULL, '2002');
 
 -- --------------------------------------------------------
 
@@ -134,36 +146,12 @@ CREATE TABLE IF NOT EXISTS `hostel` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `last_edited`
---
-
-DROP TABLE IF EXISTS `last_edited`;
-CREATE TABLE IF NOT EXISTS `last_edited` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `course_code` varchar(20) NOT NULL,
-  `course_year` varchar(20) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  `edited_user_name` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `last_edited`
---
-
-INSERT INTO `last_edited` (`id`, `course_code`, `course_year`, `type`, `edited_user_name`) VALUES
-(1, 'SCS1101', '2014/2015', 'final_result', '\'l1\''),
-(2, 'SCS1101', '2015/2016', 'assignment_result', '\'l1\'');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `lecturer`
 --
 
 DROP TABLE IF EXISTS `lecturer`;
 CREATE TABLE IF NOT EXISTS `lecturer` (
-  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `id` int(20) NOT NULL,
   `username` varchar(30) NOT NULL,
   `first_name` varchar(40) NOT NULL,
   `last_name` varchar(40) NOT NULL,
@@ -176,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `lecturer` (
   `courses` varchar(30) NOT NULL,
   `awards` varchar(50) NOT NULL,
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lecturer`
@@ -189,42 +177,31 @@ INSERT INTO `lecturer` (`id`, `username`, `first_name`, `last_name`, `gender`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `problems`
---
-
-DROP TABLE IF EXISTS `problems`;
-CREATE TABLE IF NOT EXISTS `problems` (
-  `prob_id` int(100) NOT NULL AUTO_INCREMENT,
-  `s_id` varchar(100) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `direct_person` varchar(100) NOT NULL,
-  `resolve` varchar(256) NOT NULL,
-  `problem` varchar(256) NOT NULL,
-  `comments` varchar(256) NOT NULL,
-  PRIMARY KEY (`prob_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `scholarship`
 --
 
 DROP TABLE IF EXISTS `scholarship`;
 CREATE TABLE IF NOT EXISTS `scholarship` (
   `scol_id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(45) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `indexno` varchar(45) DEFAULT NULL,
+  `course` varchar(20) NOT NULL,
+  `schol_type` varchar(40) NOT NULL,
+  `schol_amount` int(20) NOT NULL,
   PRIMARY KEY (`scol_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `scholarship`
 --
 
-INSERT INTO `scholarship` (`scol_id`, `type`) VALUES
-(1, 'mahapola'),
-(2, 'bursary'),
-(3, 'other');
+INSERT INTO `scholarship` (`scol_id`, `name`, `indexno`, `course`, `schol_type`, `schol_amount`) VALUES
+(1, 'arafa', '123', 'IS', 'Mahapola', 5000),
+(2, 'fathima', '456', 'CS', 'Bursary', 10000),
+(3, 'angathan', '7895', 'CS', 'Mahapola', 5000),
+(4, 'zahra', '141', 'CS', 'Mahapola', 5000),
+(5, 'De soyza', '7895', 'IS', 'Bursary', 5000),
+(8, 'angathan', '7895', 'CS', 'Mahapola', 5000);
 
 -- --------------------------------------------------------
 
@@ -243,44 +220,68 @@ CREATE TABLE IF NOT EXISTS `staff` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `stu`
+--
+
+DROP TABLE IF EXISTS `stu`;
+CREATE TABLE IF NOT EXISTS `stu` (
+  `id` int(22) NOT NULL AUTO_INCREMENT,
+  `fname` varchar(22) NOT NULL,
+  `lname` varchar(22) NOT NULL,
+  `gender` varchar(22) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `fname` (`fname`)
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stu`
+--
+
+INSERT INTO `stu` (`id`, `fname`, `lname`, `gender`) VALUES
+(106, 'student1', 'male', 'slastname'),
+(107, 'student2', 'male', 'slastname'),
+(108, 'student3', 'male', 'slastname'),
+(109, 'student4', 'female', 'slastname'),
+(110, 'student5', 'female', 'slastname'),
+(111, 'student6', 'male', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student`
 --
 
 DROP TABLE IF EXISTS `student`;
 CREATE TABLE IF NOT EXISTS `student` (
-  `s_id` varchar(20) NOT NULL,
+  `s_id` int(20) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(30) NOT NULL,
+  `mid_name` varchar(255) NOT NULL,
   `last_name` varchar(40) NOT NULL,
-  `last_login` varchar(40) NOT NULL,
-  `area` varchar(40) NOT NULL,
   `school` varchar(45) NOT NULL,
   `birthdate` varchar(45) NOT NULL,
   `race` varchar(45) NOT NULL,
   `religion` varchar(45) NOT NULL,
   `reg_date` varchar(45) NOT NULL,
   `out_date` varchar(45) NOT NULL,
-  `active` int(11) NOT NULL,
   `gender` varchar(45) NOT NULL,
   `stu_image` varchar(50) NOT NULL,
+  `nic` varchar(11) NOT NULL,
+  `index_no` varchar(255) NOT NULL,
   PRIMARY KEY (`s_id`),
+  UNIQUE KEY `nic` (`nic`),
   KEY `s_id` (`s_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`s_id`, `first_name`, `last_name`, `last_login`, `area`, `school`, `birthdate`, `race`, `religion`, `reg_date`, `out_date`, `active`, `gender`, `stu_image`) VALUES
-('001', 'Kasun', 'Dissanayake', '2017-12-11 01:28:15', 'Panadura', 'Royal College ', '12/04/2017', 'Sinhalese', 'Buddhist', '12/06/2017', '12/27/2017', 0, 'male', 'dvdvdvv'),
-('002', 'Pasan', 'Basuru', '2017-12-11 02:14:01', 'Kelaniya', 'Mahanama College', '1994-08-26', 'Sinhalese', 'Buddhist', '2015-02-10', '', 0, 'male', '../view/images/profile_pic/002.jpg'),
-('003', 'Mohan', 'Anuradha', '2017-08-25 16:10:11', 'Salawa', 'Hanwella Rgasinhala College', '1994-04-12', 'Sinhalese', 'Buddhist', '2015-02-10', '', 0, 'male', '../view/images/profile_pic/003.jpg'),
-('004', 'Kasuni', 'Assalarachchi', '2017-08-13 11:28:21', 'Anuradhapura', 'Anuradhapura Central College', '1995-03-11', 'Sinhalese', 'Buddhist', '2015-02-10', '', 0, 'female', '../view/images/profile_pic/004.jpg'),
-('005', 'Panduka', 'Liyanathanthri', '', 'Homagama', 'Royal College', '1994-05-23', 'Sinhalese', 'Buddhist', '2015-02-10', '', 0, 'male', '../view/images/profile_pic/005.jpg'),
-('007', 'Wasura', 'Waththe', '', 'Moratuwa', 'St Peters', '08/28/2017', 'Sinhalese', 'Buddhist', '08/29/2017', '08/09/2017', 0, 'female', '../view/images/profile_pic/007.jpg'),
-('admin_A', 'AAA', 'BB', '', '', '', '', '', '', '', '', 0, '', ''),
-('araffa', 'araffa', 'nn', '', '', '', '', '', '', '', '', 0, '', ''),
-('kamal', 'kamal', 'kannan', '', '', '', '', '', '', '', '', 0, '', ''),
-('sinthu', 'sinthu', 'nesan', '', '', '', '', '', '', '', '', 0, '', '');
+INSERT INTO `student` (`s_id`, `first_name`, `mid_name`, `last_name`, `school`, `birthdate`, `race`, `religion`, `reg_date`, `out_date`, `gender`, `stu_image`, `nic`, `index_no`) VALUES
+(1, 'Kasun', '', 'Dissanayake', 'Royal College', '1994-05-23', 'Sinhalese', 'Buddhist', '2015-02-10', '', 'male', '../view/images/profile_pic/941440754V.jpg', '941440754V', '15000371'),
+(2, 'Pasan', '', 'Basuru', 'Mahanama College', '1994-08-26', 'Sinhalese', 'Buddhist', '2015-02-10', '', 'male', '../view/images/profile_pic/941440755V.jpg', '324234', '15000372'),
+(3, 'Mohan', '', 'Anuradha', 'Hanwella Rgasinhala College', '1994-04-12', 'Sinhalese', 'Buddhist', '2015-02-10', '', 'male', '../view/images/profile_pic/34234.jpg', '34234', '15000373'),
+(4, 'Kasuni', '', 'Assalarachchi', 'Anuradhapura Central College', '1995-03-11', 'Sinhalese', 'Buddhist', '2015-02-10', '', 'female', '../view/images/profile_pic/4.jpg', '453', '15000374'),
+(5, 'Panduka', '', 'Liyanathanthri', 'Royal College', '1994-05-23', 'Sinhalese', 'Buddhist', '2015-02-10', '', 'male', '../view/images/profile_pic/5.jpg', '2423423', '15000375');
 
 -- --------------------------------------------------------
 
@@ -291,9 +292,10 @@ INSERT INTO `student` (`s_id`, `first_name`, `last_name`, `last_login`, `area`, 
 DROP TABLE IF EXISTS `student_address`;
 CREATE TABLE IF NOT EXISTS `student_address` (
   `s_id` varchar(20) NOT NULL,
-  `number` varchar(45) DEFAULT NULL,
+  `number_` varchar(45) DEFAULT NULL,
   `street` varchar(45) DEFAULT NULL,
   `town` varchar(45) DEFAULT NULL,
+  `p_code` varchar(255) NOT NULL,
   PRIMARY KEY (`s_id`),
   KEY `s_id` (`s_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -302,12 +304,12 @@ CREATE TABLE IF NOT EXISTS `student_address` (
 -- Dumping data for table `student_address`
 --
 
-INSERT INTO `student_address` (`s_id`, `number`, `street`, `town`) VALUES
-('001', '12/A,', 'Galle Road,', 'Panadura'),
-('002', 'No 1,', 'Main Road,', 'Kelaniya'),
-('003', '23/AB,', 'De Silva Rd,', 'Salawa'),
-('004', 'No 5,', 'Main Road,', 'Anuradhapura'),
-('005', '9/B,', 'Silva Rd,', 'Homagama.');
+INSERT INTO `student_address` (`s_id`, `number_`, `street`, `town`, `p_code`) VALUES
+('001', '12/A,', 'Galle Road,', 'Panadura', ''),
+('002', 'No 1,', 'Main Road,', 'Kelaniya', ''),
+('003', '23/AB,', 'De Silva Rd,', 'Salawa', ''),
+('004', 'No 5,', 'Main Road,', 'Anuradhapura', ''),
+('005', '9/B,', 'Silva Rd,', 'Homagama.', '');
 
 -- --------------------------------------------------------
 
@@ -353,7 +355,7 @@ CREATE TABLE IF NOT EXISTS `student_course` (
   `start_date` varchar(45) DEFAULT NULL,
   `end_date` varchar(45) DEFAULT NULL,
   `attendance` varchar(45) DEFAULT NULL,
-  `year` varchar(20) NOT NULL,
+  `attempt` int(5) NOT NULL,
   PRIMARY KEY (`s_id`,`course_id`),
   KEY `s_id` (`s_id`),
   KEY `course_id` (`course_id`)
@@ -363,10 +365,10 @@ CREATE TABLE IF NOT EXISTS `student_course` (
 -- Dumping data for table `student_course`
 --
 
-INSERT INTO `student_course` (`s_id`, `course_id`, `exam_grade`, `assignment_grade`, `start_date`, `end_date`, `attendance`, `year`) VALUES
-('001', 'SCS1101', 'A', 'A', NULL, NULL, NULL, '2015/2016'),
-('002', 'SCS1101', 'C', 'C', NULL, NULL, NULL, '2015/2016'),
-('003', 'SCS1101', 'A', 'A', NULL, NULL, NULL, '2014/2015');
+INSERT INTO `student_course` (`s_id`, `course_id`, `exam_grade`, `assignment_grade`, `start_date`, `end_date`, `attendance`, `attempt`) VALUES
+('001', 'SCS1101', 'A', 'A', NULL, NULL, NULL, 1),
+('002', 'SCS1101', 'B', 'C', NULL, NULL, NULL, 1),
+('003', 'SCS1101', 'A', 'B', NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -427,42 +429,12 @@ CREATE TABLE IF NOT EXISTS `student_hostel` (
 DROP TABLE IF EXISTS `student_scholar`;
 CREATE TABLE IF NOT EXISTS `student_scholar` (
   `s_id` varchar(20) NOT NULL,
-  `schol_id` int(1) NOT NULL,
-  `schol_amount` varchar(20) NOT NULL,
+  `scol_id` int(1) NOT NULL,
   `start_date` varchar(45) DEFAULT NULL,
   `end_date` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`s_id`,`schol_id`),
+  PRIMARY KEY (`s_id`,`scol_id`),
   KEY `s_id` (`s_id`),
-  KEY `scol_id` (`schol_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `student_scholar`
---
-
-INSERT INTO `student_scholar` (`s_id`, `schol_id`, `schol_amount`, `start_date`, `end_date`) VALUES
-('002', 1, '5000', NULL, NULL),
-('003', 2, '3000', NULL, NULL),
-('004', 1, '6000', NULL, NULL),
-('005', 3, '4000', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `timetable`
---
-
-DROP TABLE IF EXISTS `timetable`;
-CREATE TABLE IF NOT EXISTS `timetable` (
-  `tt_id` int(100) NOT NULL AUTO_INCREMENT,
-  `year` varchar(10) NOT NULL,
-  `degree_id` varchar(20) NOT NULL,
-  `semester` int(10) NOT NULL,
-  `course_id` varchar(20) NOT NULL,
-  `lec_id` varchar(20) NOT NULL,
-  `place` varchar(30) NOT NULL,
-  `time` varchar(30) NOT NULL,
-  PRIMARY KEY (`tt_id`)
+  KEY `scol_id` (`scol_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -478,33 +450,36 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) NOT NULL,
   `first_name` varchar(40) NOT NULL,
   `last_name` varchar(40) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
   `type` varchar(255) NOT NULL,
-  `nic` int(11) DEFAULT NULL,
+  `nic` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=123464 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=123462 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `type`, `nic`) VALUES
-(33, 'a', '$2y$12$gGNIqrD/GIdm6JdbVevvsekRzeEH0NJk4oe26N4BWKVAk9CBJvZmG', 'anga', 'angathan', NULL, 'admin', NULL),
-(34, 'l1', '$2y$12$WJ.ccZX/gQ5J7sTPm1hCRu7VoGpJ8BvJgY0wB.9i3qFbNDQoIx8Km', 'K.P.M.K.', 'Silva', 'mks@ucsc.cmb.ac.lk', 'lecturer', 111111111),
-(38, 's1', '$2y$12$Zio8FQrdadoGJw1mDYALze9O13VIwtiXsqpgaegjwrrEJtnKWRgYS', '', '', NULL, 'student', NULL),
-(40, 'SAR', '$2y$12$DlQc0sWW8vRc0SZw1tBSeObR4hBFBf3LuRCu/8TbrhveyLmx1Vgde', 'kasuni', 'kassa', 'asas@gmail.com', 'SAR_examin', 1234567895),
-(41, 'caa', '$2y$12$kuCGs4HQ6ptnjn.beFKdBOtaXNK8RFtBehX6rJ8KwdQCEoM6l9w7a', 'araffa', 'fathima', 'aaa@gmail.com', 'caa_academic', 954621420),
-(42, 'student1', '$2y$12$PbYjaQQe50tfrMGsXq48z.Xu1Jkwuyd4IGUjhr1ivGn85sTZjwV5y', '', '', NULL, 'student', NULL),
-(43, 'JacintaRCarpenter@armyspy.com', '$2y$12$c0XDXprJhW7jU9OunYV3MuIO.z8VIDkfUAXptn.WLbpprlmzNWzCm', '', '', NULL, 'student', NULL),
-(45, '001', '$2y$12$E8cIy3Aa3KrGGxPsNQUC0OurefWWeZWnGICp8dkR.n6HoTJMyYdVq', '', '', NULL, 'student', NULL),
-(46, '002', '$2y$12$bZBhQRP5r9KduKqzwKf3HuFzRm0uTXwW7XSo2ol.yp4l3uOM2FGZq', '', '', NULL, 'student', NULL),
-(47, '003', '$2y$12$bjgTnV1UIaFQU.LoLD8rdu7JXiceVFL8uI0bwHAYPEG.yp13V.SzK', '', '', NULL, 'student', NULL),
-(49, 'aca1', '$2y$12$pqvpk4FvbCiXOBEN0sIFtehD6ai6TPIG2uzs1AoEx3fOXj3/y6qHq', '', '', NULL, 'ar', NULL),
-(123456, 'anuradha', '$2y$12$WJ.ccZX/gQ5J7sTPm1hCRu7VoGpJ8BvJgY0wB.9i3qFbNDQoIx8Km', 'anuradha', 'thilakarathne', 'anuradha@gmail.com', 'ar_acedemic', 942770405),
-(123457, 'kamal', '$2y$12$OJwo2.p.9ECTpg7gCH3OweMmZURhRiyPdc/Zfk0fae9wfYjfFO0pm', 'kamal', 'kannan', 'a@gmail.com', 'lecturer', 942452110),
-(123461, 'kobi', '$2y$12$HfEYbQe.WeOYdmnEJUJTEuN0Xnkp75v9HnbjC38C6Ze6vLBdwFjhi', 'kobi', 'kk', 'k@mail.com', 'admin', 942452110),
-(123463, 'lec_anga', '$2y$12$BckumA3L5kIJrAVEvmN2Ae1oM4N4F/b4mn0iKrrisJPKu2E0/HXty', 'anga', 'angathan', 'a@gmail.com', 'lecturer', 942452110);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `type`, `nic`) VALUES
+(33, 'basurupasan@gmail.com', '$2y$12$gGNIqrD/GIdm6JdbVevvsekRzeEH0NJk4oe26N4BWKVAk9CBJvZmG', 'anga', 'angathan', 'admin', NULL),
+(34, 'l1', '$2y$12$WJ.ccZX/gQ5J7sTPm1hCRu7VoGpJ8BvJgY0wB.9i3qFbNDQoIx8Km', 'K.P.M.K.', 'Silva', 'lecturer', '111111111'),
+(37, 'a2', '$2y$12$XdW/K5vRiNfLcPVR8xhj6uzIDyKuqSPDmmLZq1ajOQIWtyIxVrzKu', '', '', 'admin', NULL),
+(38, 's1', '$2y$12$Zio8FQrdadoGJw1mDYALze9O13VIwtiXsqpgaegjwrrEJtnKWRgYS', '', '', 'student', NULL),
+(39, 's2', '$2y$12$8Auu4gLKTAYRRZvqm8uSzehiS7SvgDkEQqXR9dvcB8A3NP0oYmJCy', '', '', 'student', NULL),
+(40, 'SAR', '$2y$12$DlQc0sWW8vRc0SZw1tBSeObR4hBFBf3LuRCu/8TbrhveyLmx1Vgde', 'kasuni', 'kassa', 'SAR_examin', '1234567895'),
+(42, 'student1', '$2y$12$PbYjaQQe50tfrMGsXq48z.Xu1Jkwuyd4IGUjhr1ivGn85sTZjwV5y', '', '', 'student', NULL),
+(43, 'JacintaRCarpenter@armyspy.com', '$2y$12$c0XDXprJhW7jU9OunYV3MuIO.z8VIDkfUAXptn.WLbpprlmzNWzCm', '', '', 'student', NULL),
+(45, '001', '$2y$12$E8cIy3Aa3KrGGxPsNQUC0OurefWWeZWnGICp8dkR.n6HoTJMyYdVq', '', '', 'student', NULL),
+(46, '002', '$2y$12$bZBhQRP5r9KduKqzwKf3HuFzRm0uTXwW7XSo2ol.yp4l3uOM2FGZq', '', '', 'student', NULL),
+(47, '003', '$2y$12$bjgTnV1UIaFQU.LoLD8rdu7JXiceVFL8uI0bwHAYPEG.yp13V.SzK', '', '', 'student', NULL),
+(48, 'e', '$2y$12$4easLKnzbT5fZR3sHzIFzejV/7Bcnys73QDBOJg9Q9S1PXW7J9f/W', '', '', 'staff', NULL),
+(49, 'aca1', '$2y$12$pqvpk4FvbCiXOBEN0sIFtehD6ai6TPIG2uzs1AoEx3fOXj3/y6qHq', '', '', 'ar', NULL),
+(50, 'mks', 'mks', '', '', 'lecturer', '995486251'),
+(123456, 'anuradha', '$2y$12$WJ.ccZX/gQ5J7sTPm1hCRu7VoGpJ8BvJgY0wB.9i3qFbNDQoIx8Km', 'anuradha', 'thilakarathne', 'ar_acedemic', '942770405'),
+(123458, 'sar1', '$2y$12$J7lZui/zh.77ywYLdqYLA.3zcvVndxYC2TwSIkZyB6ghcMMC99tzS', '', '', 'SAR_exam', '12312312'),
+(123459, 'kasun@gmail.com', '$2y$12$q00eIy0XgyOtSSloSKSsD.Tjv1nyWOToPSihvI2sJtuB3isUbYFei', 'Kasuni', 'Dissanayake', '', '923453456V'),
+(123460, 'kp@gmail.com', '123', 'Kasun', 'Dissanayake', 'student', '941440754V'),
+(123461, 'kpdissanayake@gmail.com', '123', 'Kasun', 'Silva', 'student', '94144');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
