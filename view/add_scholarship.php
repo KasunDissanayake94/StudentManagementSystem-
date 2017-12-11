@@ -103,31 +103,12 @@ session_start();
                             <form class="form-horizontal" action="../controller/caa_academic_controller.php" method="post">
                                
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2">Name :</label>
-                                    <div class="col-sm-10">
-                                        <input  class="form-control" id="name" type="text" name="name" placeholder="Student name here" required />
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label class="control-label col-sm-2">Index Number :</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" id="indexno" type="text" name="indexno" placeholder="Student index No here" />
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                <label class="control-label col-sm-2" for="radio">Course:</label>
-                                <div class="col-sm-10">
-                                    <div class="radio">
-                                        <label><input type="radio" name="course" value="IS" required>Information Systems</label>
-                                    </div>
-                                    <div class="radio">
-                                        <label><input type="radio" name="course" value="CS" required>Computer Science</label>
-                                    </div>
-                                  
-                                  
-                                </div>
-                              </div>
                               <div class="form-group">
                                 <label class="control-label col-sm-2"  for="radio">Type Of Scholarship :</label>
                                 <div class="col-sm-10">
@@ -155,7 +136,7 @@ session_start();
                                     <button type="submit" class="add-project" data-dismiss="modal" name="op" value="Add Scholarship">
                                     Add Scholarship</button>
                                     <button type="reset" class="add-project" data-dismiss="modal" value="Cancel">
-                                    Cancel</button>
+                                    Reset</button>
                                    
                                 </div>
 

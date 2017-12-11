@@ -19,10 +19,10 @@
 
       }
 
-      function add_scholarship($name,$indexno,$course,$stype,$schol_other,$samount){
+      function add_scholarship($indexno,$stype,$schol_other,$samount){
 
   
-      $query = "INSERT INTO `scholarship`( `name`, `indexno`, `course`, `schol_type`,`schol_other`, `schol_amount`) VALUES (".$name.",".$indexno.",".$course.",".$stype.",".$schol_other.",".$samount.")";
+      $query = "INSERT INTO `student_scholar`(`s_id`,`schol_id`,`schol_other`, `schol_amount`) VALUES (".$indexno.",".$stype.",".$schol_other.",".$samount.")";
 
       $result = self::$db->query($query);
     

@@ -174,8 +174,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 				$_SESSION['student_list']=$result;
 				header("Location:../view/add_final_results_form.php");
 			}else{
-				$result1 = self::$lecturer->add_to_student_course();
-				header("Location:../view/lecturer_academic.php");
+				// $result1 = self::$lecturer->add_to_student_course();
+				$result='<div class="alert alert-danger">Sorry!We cannot Add this User to the System</div>';
+                header("Location:../view/lecturer_academic.php?result=$result");
 			}
 
  			
@@ -224,7 +225,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 				$_SESSION['student_list']=$result;
 				header("Location:../view/add_assignment_results_form.php");
 			}else{
-				$result1 = self::$lecturer->add_to_student_course();
+				// $result1 = self::$lecturer->add_to_student_course();
 				header("Location:../view/lecturer_academic.php");
 			}
  		}
