@@ -39,7 +39,7 @@ if(mysqli_num_rows($result) > 0)
      <th>Race</th>
      <th>Religion</th>
      <th>Gender</th>
-     <th>View</th>
+
     </tr>
  ';
  while($row = mysqli_fetch_array($result))
@@ -58,9 +58,7 @@ if(mysqli_num_rows($result) > 0)
     <td>'.$row["race"].'</td>
     <td>'.$row["religion"].'</td>
     <td>'.$row["gender"].'</td>
-    <td id="c22">
-        <button class="btn btn-basic" id="btn2" onclick="btn1Call(event);">View</button>
-    </td>
+
     
    </tr>
 

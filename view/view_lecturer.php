@@ -1,5 +1,12 @@
 <?php 
 session_start();
+$result='';
+if(isset($_GET['result'])){
+    $result=$_GET['result'];
+}
+else{
+    $result=null;
+}
  ?>
 
  <?php
@@ -117,7 +124,7 @@ session_start();
                     <div id="content">
                         <span>
                             <h3>Profile</h3>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit_details" op=>Edit Details</button>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#edit_details" op=>Edit Details</button><?php echo $result; ?>
                         </span>
                         
                         <div id="line"></div>

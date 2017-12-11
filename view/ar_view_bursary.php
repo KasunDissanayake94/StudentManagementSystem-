@@ -21,8 +21,8 @@ session_start();
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
             <div class="logo">
-                <a href="home.html"><img src="../view/images/002.jpg" alt="merkery_logo" class="hidden-xs hidden-sm">
-                    <img src="../view/images/002.jpg" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
+                <a href="home.html"><img src="../view/images/002.png" alt="merkery_logo" class="hidden-xs hidden-sm">
+                    <img src="../view/images/002.png" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
                 </a>
             </div>
             <div class="navi">
@@ -95,61 +95,31 @@ session_start();
                 </header>
             </div>
             <div class="user-dashboard">
-
-
-                <?php
-                $user_list='';
-
-                if(isset($_SESSION['value'])){
-
-                    foreach ($_SESSION['value'] as $user) {
-                        $user_list .= "<tr>";
-                        $user_list .= "<td>{$user['name']}</td>";
-                        $user_list .= "<td>{$user['indexno']}</td>";
-                        $user_list .= "<td>{$user['course']}</td>";
-                        $user_list .= "<td>{$user['schol_amount']}</td>";
-
-                        $user_list .= "</tr>";
-                        unset($_SESSION['value']);
-                    }
-                }
-
-                ?>
-
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>View All</title>
-                    <style>
-                        .masterlist {
-                            width: 100%;
-                            border-collapse: collapse;
-                        }
-
-                        .masterlist th {
-                            background: #aaa;
-                            text-align: left;
-                        }
-
-                        .masterlist th, .masterlist td {
-                            padding: 10px;
-                            border-bottom: 1px solid #aaa;
-                        }
-
-
-                    </style>
-                </head>
-                <body>
-
-                <h1>View All Students - Bursary </h1>
-                <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
+                <div class="panel-heading">
+                    <h4>
+                        <b>Bursary Details</b>
+                    </h4>
+                    <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
+                </div>
 
                 <div id="result"></div>
 
-                </body>
-                </html>
+            </div>
 
-                <script>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+</body>
+</html>
+
+
+<script>
                     $(document).ready(function(){
 
                         load_data();

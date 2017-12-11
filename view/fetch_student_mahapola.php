@@ -6,10 +6,10 @@ if(isset($_POST["query"]))
 {
  $search = mysqli_real_escape_string($connect, $_POST["query"]);
  $query = "
-  SELECT student.s_id,student.first_name,student.last_name,student_scholar.schol_amount FROM student,student_scholar 
-  WHERE (student.s_id=student_scholar.s_id)
+  SELECT student.index_no,student.first_name,student.last_name,student_scholar.schol_amount FROM student,student_scholar 
+  WHERE (student.index_no=student_scholar.index_no)
   AND (student_scholar.schol_id=1)
-  AND (student.s_id LIKE '%".$search."%'
+  AND (student.index_no LIKE '%".$search."%'
   OR first_name LIKE '%".$search."%' 
   OR last_name LIKE '%".$search."%' 
   OR schol_amount LIKE '%".$search."%')
@@ -18,8 +18,8 @@ if(isset($_POST["query"]))
 }
 else
 {
- $query = "SELECT student.s_id,student.first_name,student.last_name,student_scholar.schol_amount FROM student,student_scholar 
-WHERE student.s_id=student_scholar.s_id AND student_scholar.schol_id=1";
+ $query = "SELECT student.index_no,student.first_name,student.last_name,student_scholar.schol_amount FROM student,student_scholar 
+WHERE student.index_no=student_scholar.index_no AND student_scholar.schol_id=1";
 }
 $result = mysqli_query($connect, $query);
 if(mysqli_num_rows($result) > 0)
@@ -39,7 +39,7 @@ if(mysqli_num_rows($result) > 0)
   $output .= '
 
    <tr>
-    <td>'.$row["s_id"].'</td>
+    <td>'.$row["index_no"].'</td>
     <td>'.$row["first_name"].'</td>
     <td>'.$row["last_name"].'</td>
     <td>'.$row["schol_amount"].'</td>

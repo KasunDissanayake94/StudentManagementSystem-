@@ -99,16 +99,26 @@ session_start();
                 </div>
                 <div class="user-dashboard">
                     <div class="col-md-6">
-                        <h3>Line chart</h3>
+                        <h3>Pass percentage of students</h3>
                         
                         <div class="">
                             
                     <div id="chart_div"></div>
                         </div>
+                        <!-- <?php 
+            foreach ($_SESSION['result1'] as $row1){
+                $year=$row1["y"];
+                $total=$row1["total"];
+                $fail=$row1["fail"];
+
+                $pass=($total-$fail)*100/($total);
+                echo "['".$year."', ".$pass."],";
+            } 
+        ?> -->
                         
                     </div>
                     <div class="col-md-6">
-                        <h3>Pie chart</h3>
+                        <h3>Results obtained by students</h3>
                         <div class="">
                             
                             <div id="piechart" style="width: 500px; height: 300px;"></div>
@@ -135,22 +145,31 @@ google.charts.setOnLoadCallback(drawBasic);
 function drawBasic() {
 
       var data = new google.visualization.DataTable();
-      data.addColumn('number', 'X');
-      data.addColumn('number', 'Dogs');
+      data.addColumn('number', 'year');
+      data.addColumn('number', 'percentage');
 
       data.addRows([
+
+        <?php 
+            foreach ($_SESSION['result1'] as $row1){
+                $year=$row1["y"];
+                $total=$row1["total"];
+                $fail=$row1["fail"];
+
+                $pass=($total-$fail)*100/($total);
+                echo "[".$year.", ".$pass."],";
+            } 
+        ?>
         
-        [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
-        [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
-        [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
+        // [0, 0, 0],   [1, 10, 12]
       ]);
 
       var options = {
         hAxis: {
-          title: 'Time'
+          title: 'year'
         },
         vAxis: {
-          title: 'Popularity'
+          title: 'Pass percentage'
         }
       };
 

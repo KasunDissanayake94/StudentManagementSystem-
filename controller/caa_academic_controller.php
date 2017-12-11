@@ -147,19 +147,16 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
  		function add_scholarship(){
  		// 	header("Location:../view/view_scholarships.php");
- 		// }
 
- 		
-			$name = self::$db->quote($_POST['name']);
 			$indexno = self::$db->quote($_POST['indexno']);
-			$course = self::$db->quote($_POST['course']);
 			$stype = self::$db->quote($_POST['stype']);
 			$schol_other = self::$db->quote($_POST['schol_other']);
 			$samount = self::$db->quote($_POST['samount']);
 			
-			$result = self::$caa_academic->add_scholarship($name,$indexno,$course,$stype,$schol_other,$samount);
+			$result = self::$caa_academic->add_scholarship($indexno,$stype,$schol_other,$samount);
 
 			if($result == 1){
+				header("Location:../view/view_scholarships.php");
 				echo "Scholarship Details Added Successfully....";
 				
 			}else{

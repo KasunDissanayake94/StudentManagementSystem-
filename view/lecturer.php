@@ -18,6 +18,18 @@
 
 ?>
 
+<?php
+    $lect_username=$_SESSION['username'];
+    $connect = mysqli_connect("localhost", "root", "", "sms");
+
+
+
+
+    $query = "SELECT year as y,COUNT(s_id) as fail,(SELECT COUNT(s_id) FROM student_course WHERE course_id=(SELECT course_code FROM course where lect_username=$lect_username) AND year=y) as total FROM student_course WHERE course_id=(SELECT course_code FROM course where lect_username=$lect_username) AND exam_grade='W' GROUP BY YEAR";
+    $result = mysqli_query($connect, $query);
+
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -31,6 +43,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="test/main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body class="home">
@@ -113,43 +126,19 @@
                 </div>
                 <div class="user-dashboard">
                     <h1>Lecturer</h1>
-                    <div class="row">
-                        <div class="col-md-5 col-sm-5 col-xs-12 gutter">
-
-                            <div class="sales">
-                                <h2>Details</h2>
-
-                                <div class="btn-group">
-                                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span>Period:</span> Last Year
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a href="#">2012</a>
-                                        <a href="#">2014</a>
-                                        <a href="#">2015</a>
-                                        <a href="#">2016</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7 col-sm-7 col-xs-12 gutter">
-
-                            <div class="sales report">
-                                <h2>Report</h2>
-                                <div class="btn-group">
-                                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span>Period:</span> Last Year
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a href="#">2012</a>
-                                        <a href="#">2014</a>
-                                        <a href="#">2015</a>
-                                        <a href="#">2016</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-2">
+                        
                     </div>
+                    <div class="col-md-8">
+                        <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+                    </div>
+                    <div class="col-md-2">
+                        
+                    </div>
+
+
+                     
+                    
                 </div>
             </div>
         </div>
@@ -159,3 +148,36 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Total students ', 'Fail'],
+          <?php 
+            foreach ($result as $row){
+                echo "['".$row["y"]."', ".$row["total"].", ".$row["fail"]."],";
+            } 
+        ?>
+
+
+          // ['2014', 1000, 400],
+          // ['2015', 1170, 460],
+          // ['2016', 660, 1120],
+          // ['2017', 1030, 540]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Student progress for your subject',
+            subtitle: '',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>

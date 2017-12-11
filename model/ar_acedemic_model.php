@@ -30,7 +30,7 @@
       function addevent($event_date,$event_title,$event_des,$file,$file_type,$file_size){
          $query="INSERT INTO events (eventdate,eventtitle,eventdes,file,type,size)
          VALUES ($event_date,$event_title,$event_des,$file,$file_type,$file_size)";
-
+die($query);
           $result = self::$db->query($query);
 
           return $result;

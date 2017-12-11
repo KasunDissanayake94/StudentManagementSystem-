@@ -124,66 +124,23 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         function addevent(){
 
 
-
-            $event_date = self::$db->quote($_POST['event-date']);
-            $event_title = self::$db->quote($_POST['event-title']);
-            $event_des = self::$db->quote($_POST['event-descripton']);
-            $file = $_FILES['file']['name'];
-            $file_tmp = $_FILES['file']['tmp_name'];
-            $file_size = $_FILES['file']['size'];
-            $file_type = $_FILES['file']['type'];
-            $folder = '..view/pdffiles/events/'.$_FILES['file']['name'];
-            move_uploaded_file($file_tmp,$folder);
-
-
-                $result = self::$ar_acedemic->addevent($event_date,$event_title,$event_des,$file,$file_type,$file_size);
-                if($result == 1){
-                    //Successfully Added
-                    $result='<div class="alert alert-success">Event Sccessfully Added to the System</div>';
-                    header("Location:../view/ar_acedemic_event.php?result=$result");
-                    //Error Message
-                }else{
-                    $result='<div class="alert alert-danger">Sorry Failed to Add the Event</div>';
-                    header("Location:../view/ar_acedemic_event.php?result=$result");
-                }
             }
         function view_mahapola(){
 
+            header("Location:../view/ar_view_mahapola.php");
 
-            $result = self::$ar_acedemic->view_mahapola();
-
-            if($result){
-                $_SESSION['value']=$result;
-                header("Location:../view/ar_view_mahapola.php");
-            }else{
-                echo "something wrong";
-            }
         }
 
-        function view_bursary(){
+        function view_bursary()
+        {
 
+            header("Location:../view/ar_view_bursary.php");
 
-            $result = self::$ar_acedemic->view_bursary();
-
-            if($result){
-                $_SESSION['value']=$result;
-                header("Location:../view/ar_view_bursary.php");
-            }else{
-                echo "something wrong";
-            }
         }
-
         function view_other_scholarship(){
 
+            header("Location:../view/ar_acedmic_otherschol.php");
 
-            $result = self::$ar_acedemic->view_other_scholarship();
-
-            if($result){
-                $_SESSION['value']=$result;
-                header("Location:../view/other_scholarship.php");
-            }else{
-                echo "something wrong";
-            }
         }
 
  	}

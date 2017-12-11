@@ -2,8 +2,6 @@
 session_start();
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 
@@ -97,37 +95,74 @@ session_start();
                 </header>
             </div>
             <div class="user-dashboard">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="sales">
-                            <h2>View Mahapola</h2>
-                            <div class="btn-group">
-                                <a href="../controller/ar_acedemic_controller.php?op=view_mahapola"><button type="button" class="btn btn-primary btn" name="op" value="view_mahapola" > Mahapola </button> </a> <br><br>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="sales">
-                            <h2>View Bursary </h2>
-                            <div class="btn-group">
-                                <a href="../controller/ar_acedemic_controller.php?op=view_bursary"> <button type="button" class="btn btn-primary btn" name="op" value="view_bursary"> Bursary </button> </a> <br> <br>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="sales">
-                            <h2>View Other Scholarships </h2>
-                            <div class="btn-group">
-                                <a href="../controller/ar_acedemic_controller.php?op=view_other_scholarship"> <button type="button" class="btn btn-primary btn" name="op" value="view_other_scholarship"> Other Scholarships  </button> </a> <br> <br>
-                            </div>
-                        </div>
-                    </div>
+                <div class="panel-heading">
+                    <h4>
+                        <b>Other Scholarship Details</b>
+                    </h4>
+                    <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
                 </div>
 
+                <div id="result"></div>
+
             </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>
+
+<script>
+    $(document).ready(function(){
+
+        load_data();
+
+        function load_data(query)
+        {
+            $.ajax({
+                url:"fetch_student_other_scholarship.php",
+                method:"POST",
+                data:{query:query},
+                success:function(data)
+                {
+                    $('#result').html(data);
+                }
+            });
+        }
+        $('#search_text').keyup(function(){
+            var search = $(this).val();
+            if(search != '')
+            {
+                load_data(search);
+            }
+            else
+            {
+                load_data();
+            }
+        });
+    });
+</script>
+
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
 
 </body>
 
 </html>
+
+
+
+
+
+
+
