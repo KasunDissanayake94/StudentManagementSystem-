@@ -26,6 +26,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
 	@$op = $_REQUEST['op'];
 	@$id = $_SESSION['user'];
+	@$id = $_SESSION['nic'];
 
 
 
@@ -98,13 +99,17 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		{
 			self::$db = new DB();
 			$time=self::$student = new StudentModel();
-			$st_id=$_SESSION['username'];			
+			$st_id=$_SESSION['username'];
+            //get the nic no of the student
+            $nic=self::$student->getnic($st_id);
+            //get the student id of the student
+            $sid=self::$student->getid($nic);
 
-			self::$student->update_time($st_id);
-			
-			$result = self::$student->getdetails($st_id);
-			$result1 = self::$student->getareadetails($st_id);
-			$result2 = self::$student->getcontactdetails($st_id);
+			self::$student->update_time($nic);
+
+			$result = self::$student->getdetails($nic);
+			$result1 = self::$student->getareadetails($sid);
+			$result2 = self::$student->getcontactdetails($nic);
 			//get basic details
 			if ($result) {
 				$_SESSION['details']=$result;
@@ -123,8 +128,8 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
 		
 		function automethod(){
-			$st_id = self::$db->quote($_POST['user']);
-			$result = self::$student->search_student($st_id);
+			$nic = self::$db->quote($_POST['nic']);
+			$result = self::$student->search_student($nic);
 			
 		}
 		function fill_profile(){

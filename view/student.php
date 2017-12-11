@@ -10,8 +10,15 @@ $area='';
 if(isset($_SESSION['details'])){
     foreach ($_SESSION['details'] as $user) {
         $fname=$user['first_name'];
+        $fname=$user['mid_name'];
         $lname=$user['last_name'];
-        $s_id=$user['s_id'];
+        $lname=$user['school'];
+        $lname=$user['birthdate'];
+        $lname=$user['race'];
+        $lname=$user['religion'];
+        $lname=$user['gender'];
+        $lname=$user['nic'];
+        $lname=$user['index_no'];
     }
 }
 ?>
@@ -101,7 +108,7 @@ if(isset($_SESSION['details'])){
                                     <ul class="dropdown-menu">
                                         <li>
                                             <div class="navbar-content">
-                                                <span><?php echo $fname ?> <?php echo $lname ?></span>
+                                                <span><?php echo $_SESSION['fname'] ?> <?php echo $_SESSION['lname'] ?></span>
                                                 <p class="text-muted small">
                                                     <?php echo $_SESSION['username'] ?>
                                                 </p>

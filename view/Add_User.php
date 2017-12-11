@@ -149,7 +149,7 @@ else{
                                 <div class="form-group">
                                     <label class="control-label col-sm-2">Type :</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="gender">
+                                        <select class="form-control" name="type">
                                             <option selected>Select type here</option>
                                             <option value="admin">Admin</option>
                                             <option value="student">Student</option>

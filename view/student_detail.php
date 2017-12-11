@@ -34,11 +34,12 @@ if(isset($_SESSION['details'])){
 }
 //contact details
 if(isset($_SESSION['details1'])){
-    foreach ($_SESSION['details1'] as $user1) {
-        $con1=$user1['contact1'];
-        $con2=$user1['contact2'];
-        $con=$user1['emg_contact'];
-        $person=$user1['emg_person'];
+    foreach ($_SESSION['details1'] as $user) {
+        $con1=$user['contact1'];
+        $con2=$user['contact2'];
+        $emgcon=$user['emg_contact'];
+        $emgper=$user['emg_person'];
+
 
     }
 }
@@ -320,32 +321,18 @@ if(isset($_SESSION['details1'])){
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-flag"></i> Home Number</td>
-                                                        <td><?php $con1?></td>
+                                                        <td><?php $con2?></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-success"><i class="fa fa-user"></i> Father's Name</td>
-                                                        <td><?php $con?></td>
+                                                        <td class="text-success"><i class="glyphicon glyphicon-phone"></i> Emergency Person</td>
+                                                        <td><?php $emgper?></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="text-success"><i class="glyphicon glyphicon-phone"></i> Father's Mobile</td>
-                                                        <td><?php $person?></td>
+                                                        <td class="text-success"><i class="fa fa-user"></i> Emergency Person Name</td>
+                                                        <td><?php $emgcon?></td>
                                                     </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-user"></i> Mother's Name</td>
-                                                        <td>Hemlata Mall</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="glyphicon glyphicon-phone"></i> Mother's Mobile</td>
-                                                        <td>+91 90********</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-user"></i> Emergency Contact Person</td>
-                                                        <td>Pawan Mall</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="glyphicon glyphicon-phone"></i> Emergency Contact Person's Mobile</td>
-                                                        <td>+91 88********</td>
-                                                    </tr>
+
+
 
                                                     </tbody>
                                                 </table>

@@ -41,24 +41,45 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
  	}
  	//get basic details
-     function getdetails($st_id){
-         $query = "SELECT * FROM `student` WHERE `s_id` = ".$st_id."";
+     function getdetails($nic){
+         $query = "SELECT * FROM `student` WHERE `nic` ={$nic}";
+
+         $result = self::$db->select($query);
+
+         return $result;
+     }
+     function getnic($u){
+         self::$db = new DB();
+         $name = $u;
+         $type = "null";
+         $query = "SELECT `nic` FROM user WHERE `username` = ".$name."";
+
+         $result = self::$db->select($query);
+         if($result){
+             $nic = $result[0]['nic'];
+         }
+         return $nic;
+
+     }
+     //pass student identity for the student controller
+     function getid($nic){
+         $query = "SELECT `s_id` FROM `student` WHERE `nic` ={$nic}";
 
          $result = self::$db->select($query);
 
          return $result;
      }
      //get contact details
-     function getcontactdetails($st_id){
-         $query = "SELECT * FROM `student_contact` WHERE `s_id` = ".$st_id."";
+     function getcontactdetails($nic){
+         $query = "SELECT * FROM `student_contact` WHERE `s_id` = {$nic}";
 
          $result = self::$db->select($query);
 
          return $result;
      }
      //get area deatails
-     function getareadetails($st_id){
-         $query = "SELECT * FROM `student_address` WHERE `s_id` = '001'";
+     function getareadetails($nic){
+         $query = "SELECT * FROM `student_address` WHERE `s_id` = {$nic}";
 
          $result = self::$db->select($query);
 

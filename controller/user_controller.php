@@ -75,6 +75,7 @@ class UserController
 			$user = new UserModel($username);
 			$type = $this->gettype($username);
 			$id=$this->getId($username);
+			$nic=$this->getnic($username);
 			$fname=$this->getFname($username);
 			$lname=$this->getLname($username);
 
@@ -83,6 +84,7 @@ class UserController
 			$_SESSION['type'] = $type;
 			$_SESSION['username'] = $username;
 			$_SESSION['id']=$id;
+			$_SESSION['nic']=$nic;
 			$_SESSION['fname']=$fname;
 			$_SESSION['lname']=$lname;
 
@@ -112,6 +114,15 @@ class UserController
 		}
 		return $fname;
 	}
+    function getnic($u){
+        $fname="null";
+        $query="SELECT `nic` FROM user WHERE `username`=".$u."";
+        $result=self::$db->select($query);
+        if($result){
+            $nic=$result[0]['nic'];
+        }
+        return $nic;
+    }
 
 	function getLname($u){
 		$lname="null";

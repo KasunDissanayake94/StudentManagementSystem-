@@ -30,6 +30,7 @@ switch ($op) {
 			
 			
 			$type = $user_controller->getType($username,$password);
+			//$nic = $user_controller->getnic($username,$password);
 
 			switch ($type) {
 
