@@ -21,6 +21,37 @@ if(isset($_SESSION['details'])){
         $s_id=$user['s_id'];
     }
 }
+
+$s_id='';
+$fname='';
+$lname='';
+$area='';
+if(isset($_SESSION['details'])){
+    foreach ($_SESSION['details'] as $user) {
+        $fname=$user['first_name'];
+        $lname=$user['last_name'];
+        $area=$user['area'];
+        $s_id=$user['s_id'];
+    }
+}
+//get the session data
+
+if(isset($_SESSION['grade'])){
+    foreach ($_SESSION['grade'] as $grade) {
+        $c_id=$grade['course_id'];
+        $e_grade=$grade['exam_grade'];
+        $assignment=$grade['assignment_grade'];
+        $yr=$grade['year'];
+    }
+}
+$alert='';
+if(isset($_GET['alert'])){
+    $alert=$_GET['alert'];
+}
+else{
+    $alert=null;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +84,6 @@ if(isset($_SESSION['details'])){
                     <li ><a href="../controller/student_controller.php?op=Home"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
                     <li class="active"><a href="../controller/student_controller.php?op=Grades"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">View Exam Grades</span></a></li>
                     <li ><a href="../controller/student_controller.php?op=Repeat"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Repeat Subjects</span></a></li>
-                    <li><a href="../controller/student_controller.php?op=Optional"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Optional Subjects</span></a></li>
 
                 </ul>
             </div>
@@ -122,6 +152,43 @@ if(isset($_SESSION['details'])){
                         </div>
                     </div>
                 </header>
+            </div>
+            <!--contend-->
+            <div class="user-dashboard">
+                <div class="panel-heading">
+                    <h4>
+                        <b>Scolarship Details</b>
+                    </h4>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <?php echo $alert; ?>
+                    </div>
+                </div>
+
+
+                <table class="table" >
+                    <tr>
+                        <th>Course</th>
+                        <th>Exam Grade</th>
+                        <th>Assignment Grade</th>
+                        <th>Year</th>
+
+                    </tr>
+
+
+                    <tr>
+                        <td><?php echo $c_id;?></td>
+                        <td><?php echo $e_grade;?></td>
+                        <td><?php echo $assignment;?></td>
+                        <td><?php echo $yr;?></td>
+
+
+
+
+                    </tr>
+                </table>
+
             </div>
 
         </div>

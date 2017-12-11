@@ -39,14 +39,15 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
 		return $result;
 
- 	} 
- 	function getdetails($st_id){
- 		$query = "SELECT * FROM `student` WHERE `s_id` = ".$st_id."";
-
-		$result = self::$db->select($query);
-			
-		return $result;
  	}
+     function getdetails($st_id){
+         $query = "SELECT * FROM `student` WHERE `s_id` = ".$st_id."";
+
+         $result = self::$db->select($query);
+
+         return $result;
+     }
+     //get scolarship data from database
      function get_scol($st_id){
          $query = "SELECT * FROM `student_scholar` WHERE `s_id` = ".$st_id."";
 
@@ -54,6 +55,24 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
          return $result;
      }
+
+     function get_repeat($st_id){
+         $query = "SELECT * FROM `student_course` WHERE `s_id` = ".$st_id." AND `exam_grade` = 'D' AND `exam_grade` = 'C-'";
+
+         $result = self::$db->select($query);
+
+         return $result;
+     }
+     //get student grades
+
+     function get_grades($st_id){
+         $query = "SELECT * FROM `student_course` WHERE `s_id` = ".$st_id."";
+
+         $result = self::$db->select($query);
+
+         return $result;
+     }
+
  	function update_time($st_id){
  		$query= "UPDATE `student` SET `last_login` = now() WHERE `s_id` = ".$st_id."";
 

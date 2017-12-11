@@ -10,7 +10,21 @@ if(isset($_SESSION['student_list'])){
 foreach ($_SESSION['student_list'] as $user) {
         $user_list .= "<tr>";
 		$user_list .= "<td>{$user['s_id']}</td>";
-        $user_list .= "<td><input type='text' name='".$user['s_id']."' value='".$user['exam_grade']."'/></td>";
+        // $user_list .= "<td><input type='text' name='".$user['s_id']."' value='".$user['exam_grade']."'/></td>";
+        $user_list .= "<td><SELECT type='text' name='".$user['s_id']."' value='".$user['exam_grade']."'>
+        <option>".$user['exam_grade']."</option>
+        <option>A+</option>
+        <option>A</option>
+        <option>A-</option>
+        <option>B+</option>
+        <option>B</option>
+        <option>B-</option>
+        <option>C+</option>
+        <option>C</option>
+        <option>C-</option>
+        <option>D+</option>
+        <option>W</option>
+        			</SELECT></td>";
 		$user_list .= "</tr>";
 		$_SESSION['s_id']=$user['s_id'];
         // unset($_SESSION['student_list']);
