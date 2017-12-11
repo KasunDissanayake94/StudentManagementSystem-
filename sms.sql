@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2017 at 01:27 PM
+-- Generation Time: Dec 11, 2017 at 02:20 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -46,7 +46,7 @@ CREATE TABLE `ar_acedemic` (
 --
 
 INSERT INTO `ar_acedemic` (`id`, `username`, `first_name`, `last_name`, `gender`, `dob`, `telephone`, `email`, `education`, `research`, `courses`, `awards`) VALUES
-(123456, 'anuradha', 'thilakarathne', 'mohan', 'male', '1994-10-03', '0776709705', 'mohan@gamil.com', '', '', '', '');
+(123456, 'mohan@gmail.com', 'thilakarathne', 'mohan', 'male', '1994-10-03', '0776709705', 'mohan@gamil.com', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE `caa_academic` (
 --
 
 INSERT INTO `caa_academic` (`caa_id`, `username`, `first_name`, `last_name`, `gender`, `dob`, `telephone`, `email`, `education`, `research`, `courses`, `awards`) VALUES
-(123123, 'caa', 'Arafa', 'Nihar', 'Female', '1995-06-06', '0769080868', 'arafanihar101@gmail.com', 'B. Sc in Information Systems', '', '', '');
+(123123, 'arafa@gmail.com', 'Arafa', 'Nihar', 'Female', '1995-06-06', '0769080868', 'arafanihar101@gmail.com', 'B. Sc in Information Systems', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -206,7 +206,7 @@ CREATE TABLE `lecturer` (
 
 INSERT INTO `lecturer` (`id`, `username`, `first_name`, `last_name`, `gender`, `dob`, `telephone`, `email`, `education`, `research`, `courses`, `awards`) VALUES
 (33, 'john01', 'John', 'Ward', 'male', '2017-10-03', '0771234567', 'a@gmail.com', 'BSc (Col),MSc (Swansea),PhD(Cardiff)', 'Multidatabase & Knowledgebases', 'SCS 2109 Database II', 'Not included yet'),
-(34, 'l1', 'K.P.M.K.', 'Silva', 'Male', '2016-07-20', '0714576125', 'mks@ucsc.cmb.ac.lk', 'BSc - Computer Science Special (Colombo) 1992', 'Computer Hardware and Systems', 'Theory of Computing', 'Not included yet');
+(34, 'l1', 'K.P.M.K.', 'Silva', 'male', '2016-07-20', '0777873108', 'mks@ucsc.cmb.ac.lk', 'BSc', 'Computer', 'Theory', 'Not');
 
 -- --------------------------------------------------------
 
