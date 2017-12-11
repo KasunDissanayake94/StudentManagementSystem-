@@ -19,7 +19,7 @@ if(isset($_POST["query"]))
   WHERE username LIKE '%".$search."%'
   OR first_name LIKE '%".$search."%' 
   OR last_name LIKE '%".$search."%' 
-  OR email LIKE '%".$search."%' 
+  OR nic LIKE '%".$search."%' 
   OR type LIKE '%".$search."%' 
    
 
@@ -42,7 +42,7 @@ if(mysqli_num_rows($result) > 0)
      <th>User Name</th>
      <th>First Name</th>
      <th>Last Name</th>
-     <th>Email</th>
+     <th>NIC</th>
      <th>Type</th>
      <th>New</th>
      <th>Edit</th>
@@ -61,7 +61,7 @@ if(mysqli_num_rows($result) > 0)
     <td>'.$row["username"].'</td>
     <td>'.$row["first_name"].'</td>
     <td>'.$row["last_name"].'</td>
-    <td>'.$row["email"].'</td>
+    <td>'.$row["nic"].'</td>
     <td>'.$row["type"].'</td>
     <td id="'.$row["username"].'">
         <button class="btn btn-basic" data-toggle="modal" data-target="#v'.$row["username"].'"">View</button>
@@ -107,19 +107,16 @@ if(mysqli_num_rows($result) > 0)
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="email">Email:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="area" value="'.$row["email"].'" name="area" placeholder="Enter area here" required disabled/>
+                                    <input type="text" class="form-control" id="area" value="'.$row["nic"].'" name="area" placeholder="Enter area here" required disabled/>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="email">Type:</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="email" value="'.$row["email"].'" name="email" placeholder="Enter email here" required disabled/>
+                                    <input type="email" class="form-control" id="email" value="'.$row["type"].'" name="email" placeholder="Enter email here" required disabled/>
                                 </div>
-                            </div>
-
-
-                            
+                            </div>                          
                             
 
                             <div class="modal-footer">
@@ -162,14 +159,14 @@ if(mysqli_num_rows($result) > 0)
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="email">Email :</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="area" value="'.$row["email"].'" name="area" placeholder="Enter area here" required />
+                                    <input type="text" class="form-control" id="area" value="'.$row["nic"].'" name="area" placeholder="Enter area here" required />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="email">Type :</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" value="'.$row["email"].'" id="email" name="email" placeholder="Enter email here" required />
+                                    <input type="email" class="form-control" value="'.$row["type"].'" id="email" name="email" placeholder="Enter email here" required />
                                 </div>
                             </div>
 

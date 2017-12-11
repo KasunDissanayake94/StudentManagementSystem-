@@ -33,7 +33,6 @@ session_start();
                     <li class="active"><a href="../controller/admin_controller.php?op=Home"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
                     <li><a href="../controller/admin_controller.php?op=Modify Students"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Modify Students</span></a></li>
                     <li><a href="../controller/admin_controller.php?op=Search Students"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Search Students</span></a></li>
-                    <li><a href="../controller/admin_controller.php?op=Add Student Details"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add Student Details</span></a></li>
                 </ul>
             </div>
         </div>

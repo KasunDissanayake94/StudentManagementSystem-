@@ -26,10 +26,10 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
 
 
-    function addUser($username,$pass,$fname,$lname,$email,$type,$nic){
+    function addUser($username,$pass,$fname,$lname,$type,$nic){
     //Insert user into the database
          $password = $this->hashPassword($pass);
-         $query = "INSERT INTO `user` (`username`,`password`,`first_name`,`last_name`,`email`,`type`,`nic`) VALUES (".$username.",".$password.",".$fname.",".$lname.",".$email.",".$type.",".$nic.")";
+         $query = "INSERT INTO `user` (`username`,`password`,`first_name`,`last_name`,`type`,`nic`) VALUES (".$username.",".$password.",".$fname.",".$lname.",".$type.",".$nic.")";
          $result = self::$db->query($query);
          return $result;
      }

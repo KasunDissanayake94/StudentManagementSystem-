@@ -9,7 +9,7 @@ if(isset($_SESSION['value1'])){
         $first_name=$user['first_name'];
         $last_name=$user['last_name'];
         $uname=$user['username'];
-        $email=$user['email'];
+        $nic=$user['nic'];
         $type=$user['type'];
 
 
@@ -127,12 +127,12 @@ if(isset($_SESSION['value1'])){
                                 <td><?php echo $last_name?></td>
                             </tr>
                             <tr>
-                                <td><b>Username</b></td>
-                                <td><?php echo $uname?></td>
+                                <td><b>Email</b></td>
+                                <td><?php echo $uname;?></td>
                             </tr>
                             <tr>
-                                <td><b>Email</b></td>
-                                <td><?php echo $email;?></td>
+                                <td><b>NIC</b></td>
+                                <td><?php echo $nic;?></td>
                             </tr>
                             <tr>
                                 <td><b>Type</b></td>

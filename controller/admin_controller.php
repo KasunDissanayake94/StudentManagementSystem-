@@ -144,51 +144,25 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
 		function addUser(){
 
-			$id = self::$db->quote($_POST['id']);
 			$username = self::$db->quote($_POST['username']);
 			$pass = self::$db->quote($_POST['password']);
 			$fname = self::$db->quote($_POST['fname']);
 			$lname = self::$db->quote($_POST['lname']);
-			$email = self::$db->quote($_POST['email']);
 			$type = self::$db->quote($_POST['type']);
 			$nic = self::$db->quote($_POST['nic']);
 
 
 
-			$result = self::$admin->addUser($username,$pass,$fname,$lname,$email,$type,$nic);
+			$result = self::$admin->addUser($username,$pass,$fname,$lname,$type,$nic);
 
 			if($result == 1){
 				//User Sucessfully Added to the user table
+                $result='<div class="alert alert-success">This user Added Successfully to the System</div>';
+                header("Location:../view/Add_User.php?result=$result");
 
-
-				//If this user is a student add him into the student table too
-				if ($type=='student'){
-					
-                    $result = self::$admin->addStudentfromAdmin($username,$fname,$lname,$email);
-                    if($result == 1){
-                        $result='<div class="alert alert-success">This user Added Successfully to the System</div>';
-                        header("Location:../view/Add_User.php?result=$result");
-					}
-					else{
-                        $result='<div class="alert alert-success">This Student Already in the System.Student can access the System now</div>';
-                        header("Location:../view/Add_User.php?result=$result");
-
-					}
-				}elseif ($type=='lecturer'){
-					$result = self::$admin->addLecturerfromAdmin($id,$username,$fname,$lname,$email);
-					if($result == 1){
-                        $result='<div class="alert alert-success">This user Added Successfully to the System</div>';
-                        header("Location:../view/Add_User.php?result=$result");
-					}
-					else{
-                        $result='<div class="alert alert-success">This Student Already in the System.Student can access the System now</div>';
-                        header("Location:../view/Add_User.php?result=$result");
-
-					}
-				}
 
 			}else{
-                $result='<div class="alert alert-danger">Sorry! This User already in the System</div>';
+                $result='<div class="alert alert-danger">Sorry!We cannot Add this User to the System</div>';
                 header("Location:../view/Add_User.php?result=$result");
 
 			}

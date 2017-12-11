@@ -116,53 +116,51 @@ else{
                                         <?php echo $result; ?>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2">UserID :</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" id="id" type="text" name="id" placeholder="User ID here" required />
-                                    </div>
-                                </div>
+
                                 <div class="form-group">
                                     <label class="control-label col-sm-2">Username :</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" id="username" type="text" name="username" placeholder="User Name" />
+                                        <input class="form-control" id="username" type="email" name="username" placeholder="Valid Email here" />
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                <label class="control-label col-sm-2" for="email">Email:</label>
-                                <div class="col-sm-10">
-                                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
-                                </div>
-                              </div>
 
 
                               <div class="form-group">
                                 <label class="control-label col-sm-2">NIC :</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" id="nic" type="text" name="nic" placeholder="NIC" />
+                                  <input class="form-control" id="nic" type="text" name="nic" placeholder="xxxxxxxxXV" />
                                 </div>
                               </div>
 
                               <div class="form-group">
                                 <label class="control-label col-sm-2">First Name :</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" id="fname" type="text" name="fname" placeholder="Valid Email here" />
+                                  <input class="form-control" id="fname" type="text" name="fname" placeholder="First Name here" />
                                 </div>
                               </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2">Last Name :</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" id="lname" type="text" name="lname" placeholder="Valid Email here" />
+                                        <input class="form-control" id="lname" type="text" name="lname" placeholder="Last Name here" />
                                     </div>
                                 </div>
 
-                              <div class="form-group">
-                                <label class="control-label col-sm-2">Type :</label>
-                                <div class="col-sm-10">
-                                  <input class="form-control" id="type" type="text" name="type" placeholder="User Type here" />
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Type :</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="gender">
+                                            <option selected>Select type here</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="student">Student</option>
+                                            <option value="ar_acedamic">Assistant Registrar(Acadamic)</option>
+                                            <option value="caa_academic">Computer Application Assistant(Acadamic)</option>
+                                            <option value="SAR_exam">Senior Assistant Registrar(Examination)</option>
+                                            <option value="CAA_exam">Computer Application Assistant(Examination)</option>
+
+                                        </select>
+                                    </div>
                                 </div>
-                              </div>
 
                               <div class="form-group">
                                 <label class="control-label col-sm-2">Password :</label>

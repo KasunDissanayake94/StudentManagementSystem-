@@ -17,9 +17,8 @@ $area='';
 if(isset($_SESSION['details'])){
     foreach ($_SESSION['details'] as $user) {
         $fname=$user['first_name'];
+        $midname=$user['mid_name'];
         $lname=$user['last_name'];
-        $area=$user['area'];
-        $s_id=$user['s_id'];
         $school=$user['school'];
         $bday=$user['birthdate'];
         $race=$user['race'];
@@ -27,6 +26,8 @@ if(isset($_SESSION['details'])){
         $reg=$user['reg_date'];
         $out=$user['out_date'];
         $gender=$user['gender'];
+        $nic=$user['nic'];
+        $index=$user['index_no'];
     }
 }
 ?>
