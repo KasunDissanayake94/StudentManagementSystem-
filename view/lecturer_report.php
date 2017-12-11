@@ -24,8 +24,8 @@ session_start();
         <div class="row display-table-row">
             <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
                 <div class="logo">
-                    <a href="home.html"><img src="../view/images/002.jpg" alt="merkery_logo" class="hidden-xs hidden-sm">
-                        <img src="../view/images/002.jpg" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
+                    <a href="home.html"><img src="../view/images/002.png" alt="merkery_logo" class="hidden-xs hidden-sm">
+                        <img src="../view/images/002.png" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
                     </a>
                 </div>
                 <div class="navi">
@@ -100,6 +100,7 @@ session_start();
                 <div class="user-dashboard">
                     <div class="col-md-6">
                         <h3>Line chart</h3>
+                        
                         <div class="">
                             
                     <div id="chart_div"></div>
@@ -138,6 +139,7 @@ function drawBasic() {
       data.addColumn('number', 'Dogs');
 
       data.addRows([
+        
         [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
         [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
         [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
@@ -161,6 +163,7 @@ function drawBasic() {
 
        
 </script>
+
 <script type="text/javascript">
      google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
@@ -168,14 +171,20 @@ function drawBasic() {
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
+            ['Results', 'Percentage'],
+            <?php 
+                foreach ($_SESSION['result'] as $row){
+                    echo "['".$row["exam_grade"]."', ".$row["COUNT(s_id)"]."],";
+                } 
+            ?>
+          // ['Task', 'Hours per Day'],
+          // ['Work',     11],
+          // ['Eat',      2],
+          // ['Commute',  2],
         ]);
 
         var options = {
-          title: 'Pass percentage of students'
+          title: 'Percentage of Results'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

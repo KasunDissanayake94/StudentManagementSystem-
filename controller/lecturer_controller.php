@@ -116,24 +116,25 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  			header("Location:../view/view_student.php");
  		}
  		function update_lecturer_info(){
- 			$username=$_SESSION['username'];
- 			$fname=self::$db->quote($_POST['fname']);
- 			$lname=self::$db->quote($_POST['lname']);
- 			$gender=self::$db->quote($_POST['gender']);
- 			$dob=self::$db->quote($_POST['dob']);
- 			$tel=self::$db->quote($_POST['tel']);
- 			$email=self::$db->quote($_POST['email']);
- 			$edu=self::$db->quote($_POST['edu']);
- 			$research=self::$db->quote($_POST['research']);
- 			$course=self::$db->quote($_POST['course']);
- 			$awards=self::$db->quote($_POST['awards']);
+ 			// $username=$_SESSION['username'];
+ 			// $fname=self::$db->quote($_POST['fname']);
+ 			// $lname=self::$db->quote($_POST['lname']);
+ 			// $gender=self::$db->quote($_POST['gender']);
+ 			// $dob=self::$db->quote($_POST['dob']);
+ 			// $tel=self::$db->quote($_POST['tel']);
+ 			// $email=self::$db->quote($_POST['email']);
+ 			// $edu=self::$db->quote($_POST['edu']);
+ 			// $research=self::$db->quote($_POST['research']);
+ 			// $course=self::$db->quote($_POST['course']);
+ 			// $awards=self::$db->quote($_POST['awards']);
 
- 			$result = self::$lecturer->update_lecturer_info($username,$fname,$lname,$gender,$dob,$tel,$email,$edu,$research,$course,$awards);
- 			if($result){
- 				header("Location:../controller/lecturer_controller.php?op=view_lecturer");
- 			}else{
- 				echo "something wrong";
- 			}
+ 			// $result = self::$lecturer->update_lecturer_info($username,$fname,$lname,$gender,$dob,$tel,$email,$edu,$research,$course,$awards);
+ 			// if($result){
+ 			// 	header("Location:../controller/lecturer_controller.php?op=view_lecturer");
+ 			// }else{
+ 			// 	echo "something wrong";
+ 			// }
+ 			header("Location:../controller/lecturer_controller.php?op=view_academic");
  			
  		}
 
@@ -146,7 +147,13 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  		}
 
  		function view_report(){
- 			header("Location:../view/lecturer_report.php");
+ 			$_SESSION['result'] = self::$lecturer->get_count_result();
+ 			if ($_SESSION['result']) {
+ 				header("Location:../view/lecturer_report.php");
+ 			}else{
+ 				echo "no result";
+ 			}
+ 			
  		}
 
  		// Used for Add button in add final result model

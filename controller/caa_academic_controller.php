@@ -75,7 +75,11 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         	break;		
         case "view_hostel":
          	$caa_academic_controller->view_hostel();
-        	break;						
+        	break;
+        case "add_hostel":
+            die('adrg');
+            //$caa_academic_controller->add_hostel();
+            break;
 		default:
 			//header("Location:../index.php");
 			break;
@@ -110,12 +114,36 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  		}
 
  		 function caa_profile(){
- 			header("Location:../view/caa_profile.php");
- 		}
+ 		 	$caa_username= $_SESSION['username'];
+ 			$result = self::$caa_academic->caa_profile($caa_username);
+ 			if($result){
+				$_SESSION['value']=$result;
+				header("Location:../view/caa_profile.php");
+			}else{
+				echo "something wrong";
+			}
 
- 		 function view_hostel(){
- 			header("Location:../view/view_hostel.php");
  		}
+        function view_hostel(){
+            header("Location:../view/add_hostel.php");
+        }
+
+ 		 function add_hostel(){
+ 		     die('adrg');
+             $name = self::$db->quote($_POST['name']);
+             $indexno = self::$db->quote($_POST['indexno']);
+             $course = self::$db->quote($_POST['course']);
+             $stype = self::$db->quote($_POST['stype']);
+
+             $result = self::$caa_academic->view_hostel($name,$indexno,$course,$stype);
+
+             if($result == 1){
+                 echo "Hostel Details Added Successfully....";
+
+             }else{
+                 echo "something wrong";
+             }
+         }
 
  		function add_scholarship(){
  		// 	header("Location:../view/view_scholarships.php");

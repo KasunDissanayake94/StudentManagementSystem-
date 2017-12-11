@@ -39,6 +39,25 @@
 
     }
 
+    function caa_profile($caa_id){
+        $query = "SELECT * FROM `caa_academic` WHERE username = ".$caa_id." ";
+
+        $result = self::$db->select($query);
+
+        return $result;
+      }
+
+    function view_hostel($name,$indexno,$course,$stype,$schol_other,$samount)
+    {
+
+
+        $query = "INSERT INTO `stu_hostel`( `name`, `indexno`, `course`, `descition`) VALUES (" . $name . "," . $indexno . "," . $course . "," . $stype . ")";
+
+        $result = self::$db->query($query);
+
+        return $result;
+    }
+
     function view_by_mahapola(){
     $query = "SELECT * FROM `scholarship`
               WHERE schol_type='Mahapola'
