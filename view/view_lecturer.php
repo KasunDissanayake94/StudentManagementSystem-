@@ -256,7 +256,7 @@ session_start();
 
                                 <div class="modal-footer">
                                     <button type="button" class="cancel" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="add-project" data-dismiss="modal" name="op" value="update_lecturer_info">update</button>
+                                    <button type="submit" class="add-project" name="op" value="update_lecturer_info">Update</button>
                                 </div>
 
                               
