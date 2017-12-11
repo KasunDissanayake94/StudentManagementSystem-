@@ -16,6 +16,7 @@ $lname='';
 $area='';
 if(isset($_SESSION['details'])){
     foreach ($_SESSION['details'] as $user) {
+        $s_id=$user['s_id'];
         $fname=$user['first_name'];
         $midname=$user['mid_name'];
         $lname=$user['last_name'];
@@ -188,13 +189,18 @@ if(isset($_SESSION['details'])){
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Student ID :</td>
-                                                        <td> <input type="text" value="<?php echo $s_id; ?>" class="form-control" id="email" name="s_id" placeholder="Enter email" required /></td>
+                                                        <td> <input type="text" value="<?php echo $index; ?>" class="form-control" id="email" name="s_id" placeholder="" required disabled/></td>
 
                                                     </tr>
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> First Name</td>
                                                         <td> <input type="text" value="<?php echo $fname; ?>" class="form-control" id="email" name="firstname" placeholder="Enter email" required /></td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-success"><i class="fa fa-user"></i> Mid Name</td>
+                                                        <td> <input type="text" value="<?php echo $midname; ?>" class="form-control" id="email" name="firstname" placeholder="Enter email" required /></td>
 
                                                     </tr>
                                                     <tr>

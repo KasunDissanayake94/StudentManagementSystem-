@@ -11,7 +11,6 @@ if(isset($_SESSION['details'])){
     foreach ($_SESSION['details'] as $user) {
         $fname=$user['first_name'];
         $lname=$user['last_name'];
-        $area=$user['area'];
         $s_id=$user['s_id'];
     }
 }

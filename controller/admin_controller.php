@@ -116,7 +116,6 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			$admin_controller->delete($del_id);
 			break;
         case 'Delete_User':
-
             $admin_controller->delete_user($delete_user_id);
             break;
 		case 'Edited':
@@ -124,6 +123,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			break;
         case 'Profile':
             $admin_controller->profile();
+            break;
+        case 'save_changes':
+            $admin_controller->change();
             break;
 		default:
 			//index.php
@@ -346,9 +348,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		//get the student basic details
         $result = self::$admin->search_student($var);
         //get the student schol details
-        $result = self::$admin->search_student($var);
+       // $result = self::$admin->search_student($var);
         //get the student
-        $result = self::$admin->search_student($var);
+        //$result = self::$admin->search_student($var);
         if ($result) {
 
             $_SESSION['details'] = $result;
