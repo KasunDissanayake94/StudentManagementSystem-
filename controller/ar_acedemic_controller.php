@@ -124,28 +124,6 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         function addevent(){
 
 
-
-            $event_date = self::$db->quote($_POST['event-date']);
-            $event_title = self::$db->quote($_POST['event-title']);
-            $event_des = self::$db->quote($_POST['event-descripton']);
-            $file = $_FILES['file']['name'];
-            $file_tmp = $_FILES['file']['tmp_name'];
-            $file_size = $_FILES['file']['size'];
-            $file_type = $_FILES['file']['type'];
-            $folder = '..view/pdffiles/events/'.$_FILES['file']['name'];
-            move_uploaded_file($file_tmp,$folder);
-
-
-                $result = self::$ar_acedemic->addevent($event_date,$event_title,$event_des,$file,$file_type,$file_size);
-                if($result == 1){
-                    //Successfully Added
-                    $result='<div class="alert alert-success">Event Sccessfully Added to the System</div>';
-                    header("Location:../view/ar_acedemic_event.php?result=$result");
-                    //Error Message
-                }else{
-                    $result='<div class="alert alert-danger">Sorry Failed to Add the Event</div>';
-                    header("Location:../view/ar_acedemic_event.php?result=$result");
-                }
             }
         function view_mahapola(){
 

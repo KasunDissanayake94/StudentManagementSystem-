@@ -23,8 +23,8 @@ session_start();
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
             <div class="logo">
-                <a href="home.html"><img src="../view/images/002.jpg" alt="merkery_logo" class="hidden-xs hidden-sm">
-                    <img src="../view/images/002.jpg" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
+                <a href="home.html"><img src="../view/images/002.png" alt="merkery_logo" class="hidden-xs hidden-sm">
+                    <img src="../view/images/002.png" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
                 </a>
             </div>
             <div class="navi">
@@ -102,7 +102,7 @@ session_start();
                         <div class="sales">
                             <h2>View Mahapola</h2>
                             <div class="btn-group">
-                                <a href="../controller/ar_acedemic_controller.php?op=view_mahapola"><button type="button" class="btn btn-primary btn" name="op" value="View by Mahapola" > Mahapola </button> </a> <br><br>
+                                <a href="../controller/ar_acedemic_controller.php"><button type="button" class="btn btn-primary btn" name="op" value="view_mahapola" > Mahapola </button> </a> <br><br>
                             </div>
                         </div>
                     </div>
@@ -111,7 +111,7 @@ session_start();
                         <div class="sales">
                             <h2>View Bursary </h2>
                             <div class="btn-group">
-                                <a href="../controller/ar_acedemic_controller.php?op=view_bursary"> <button type="button" class="btn btn-primary btn" name="op" value="View by Bursary"> Bursary </button> </a> <br> <br>
+                                <a href="../controller/ar_acedemic_controller.php?op=view_bursary"> <button type="button" class="btn btn-primary btn" name="op" value="view_bursary"> Bursary </button> </a> <br> <br>
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@ session_start();
                         <div class="sales">
                             <h2>View Other Scholarships </h2>
                             <div class="btn-group">
-                                <a href="../controller/ar_acedemic_controller.php?op=view_other_scholarship"> <button type="button" class="btn btn-primary btn" name="op" value="View by Other Scholarship"> Other Scholarships  </button> </a> <br> <br>
+                                <a href="../controller/ar_acedemic_controller.php?op=view_other_scholarship"> <button type="button" class="btn btn-primary btn" name="op" value="view_other_scholarship"> Other Scholarships  </button> </a> <br> <br>
                             </div>
                         </div>
                     </div>
