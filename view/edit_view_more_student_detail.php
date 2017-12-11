@@ -55,7 +55,7 @@ if(isset($_SESSION['details'])){
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
             <div class="logo">
-                <a href="home.html"><img src="../view/images/profile_pic/<?php echo $s_id;?>" alt="merkery_logo" class="hidden-xs hidden-sm">
+                <a href="home.html"><img src="../view/images/profile_pic/<?php echo $nic;?>" alt="merkery_logo" class="hidden-xs hidden-sm">
 
                 </a>
             </div>
@@ -157,7 +157,7 @@ if(isset($_SESSION['details'])){
                                 <div class="col-lg-3 col-md-3">
                                     <center>
                                         <span class="text-left">
-                                        <img src="../view/images/profile_pic/<?php echo $s_id;?>" class="img-responsive img-thumbnail">
+                                        <img src="../view/images/profile_pic/<?php echo $nic;?>" class="img-responsive img-thumbnail">
 
 
                                             <!-- Modal -->
@@ -208,18 +208,7 @@ if(isset($_SESSION['details'])){
                                                         <td> <input type="text" value="<?php echo $lname; ?>" class="form-control" id="email" name="lastname" placeholder="Enter email" required /></td>
 
                                                     </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-list-ol"></i> Scholar Number</td>
-                                                        <td> <input type="text" value="45" class="form-control" id="email" name="email" placeholder="Enter email" required disabled/></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-book"></i> Medium</td>
-                                                        <td> <input type="email" value="English" class="form-control" id="email" name="email" placeholder="Enter email" required disabled/></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-group"></i> Class &amp; Section</td>
-                                                        <td> <input type="email" value="12-F" class="form-control" id="email" name="email" placeholder="Enter email" required disabled /></td>
-                                                    </tr>
+
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-calendar"></i> Birthday</td>
                                                         <td> <input type="date" value="<?php echo $bday; ?>" class="form-control" id="email" name="email" placeholder="Enter email" required /></td>

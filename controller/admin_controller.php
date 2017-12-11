@@ -68,7 +68,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         	$admin_controller->search_user();
         	break;
         case 'Update User':
-        	$admin_controller->search_user();
+        	$admin_controller->update_user();
         	break;
         case 'Manage Students':
         	$admin_controller->manage_students();
@@ -176,6 +176,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		function search_user(){
 			header("Location:../view/search_users_by_admin.php");
 		}
+        function update_user(){
+            header("Location:../view/edit_users_by_admin.php");
+        }
 		function modify_user(){
 			header("Location:../view/search_user.php");
 
@@ -306,7 +309,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             $result = self::$admin->view_all_students();
             if($result){
                 $_SESSION['student_info']=$result;
-                header("Location:../view/newsearch.php");
+                header("Location:../view/new_search1.php");
             }else{
                 echo "something wrong";
             }

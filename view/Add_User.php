@@ -110,7 +110,7 @@ else{
                             <h4 class="modal-title">Add User Form</h4>
                         </div>   
                         <div class="modal-body">
-                            <form class="form-horizontal" action="../controller/admin_controller.php" method="post">
+                            <form class="form-horizontal" action="../controller/admin_controller.php" method="post" id="myform">
                                 <div class="form-group">
                                     <div class="col-sm-10 col-sm-offset-2">
                                         <?php echo $result; ?>
@@ -120,7 +120,7 @@ else{
                                 <div class="form-group">
                                     <label class="control-label col-sm-2">Username :</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" id="username" type="email" name="username" placeholder="Valid Email here" />
+                                        <input class="form-control" id="username" type="email" name="username" placeholder="Valid Email here" required/>
                                     </div>
                                 </div>
 
@@ -129,20 +129,20 @@ else{
                               <div class="form-group">
                                 <label class="control-label col-sm-2">NIC :</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" id="nic" type="text" name="nic" placeholder="xxxxxxxxXV" />
+                                  <input class="form-control" id="nic" type="text" name="nic" placeholder="xxxxxxxxxV" required maxlength="10" minlength="10" size="10"/>
                                 </div>
                               </div>
 
                               <div class="form-group">
                                 <label class="control-label col-sm-2">First Name :</label>
                                 <div class="col-sm-10">
-                                  <input class="form-control" id="fname" type="text" name="fname" placeholder="First Name here" />
+                                  <input class="form-control" id="fname" type="text" name="fname" placeholder="First Name here" required/>
                                 </div>
                               </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2">Last Name :</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" id="lname" type="text" name="lname" placeholder="Last Name here" />
+                                        <input class="form-control" id="lname" type="text" name="lname" placeholder="Last Name here" required/>
                                     </div>
                                 </div>
 
@@ -150,7 +150,6 @@ else{
                                     <label class="control-label col-sm-2">Type :</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" name="type">
-                                            <option selected>Select type here</option>
                                             <option value="admin">Admin</option>
                                             <option value="student">Student</option>
                                             <option value="ar_acedamic">Assistant Registrar(Acadamic)</option>
@@ -187,3 +186,20 @@ else{
 </body>
 
 </html>
+<script>
+    $(document).ready(function () {
+        $('#myform').validate({ // initialize the plugin
+            rules: {
+                nic: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            submitHandler: function (form) { // for demo
+                alert('valid form submitted'); // for demo
+                return false; // for demo
+            }
+        });
+
+    });
+</script>

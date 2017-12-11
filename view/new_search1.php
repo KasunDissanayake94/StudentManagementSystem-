@@ -138,7 +138,7 @@ else{
         function load_data(query)
         {
             $.ajax({
-                url:"new_fetch1.php",
+                url:"../view/fetch1.php",
                 method:"POST",
                 data:{query:query},
                 success:function(data)

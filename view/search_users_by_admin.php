@@ -124,7 +124,7 @@ else{
                     <h4>
                         <b>Student Details</b>
                     </h4>
-                    <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
+                    <label><input type="text" name="search_text" id="search_text" placeholder="Search by User Details" class="form-control" /></label>
                 </div>
 
 

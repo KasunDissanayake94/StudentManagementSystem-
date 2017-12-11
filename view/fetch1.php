@@ -1,29 +1,35 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Kasun Dissanayake
- * Date: 10/15/2017
- * Time: 9:38 PM
- */
-
+//fetch.php
+session_start();
 $connect = mysqli_connect("localhost", "root", "", "sms");
-
-
 $output = "";
-$data = $_GET['searchData'];
-
-$query2 = "";
-
-if($data == "")
+if(isset($_POST["query"]))
 {
-    $query2 = "SELECT * FROM student";
+    $search = mysqli_real_escape_string($connect, $_POST["query"]);
+    $query = "
+  SELECT * FROM student 
+  WHERE s_id LIKE '%".$search."%'
+  OR first_name LIKE '%".$search."%'
+  OR mid_name LIKE '%".$search."%' 
+  OR last_name LIKE '%".$search."%'  
+  OR school LIKE '%".$search."%' 
+  OR birthdate LIKE '%".$search."%' 
+  OR race LIKE '%".$search."%'
+  OR religion LIKE '%".$search."%' 
+  OR reg_date LIKE '%".$search."%' 
+  OR out_date LIKE '%".$search."%'
+  OR gender LIKE '%".$search."%' 
+  OR religion LIKE '%".$search."%'
+  OR nic LIKE '%".$search."%'
+ ";
 }
 else
 {
-    $query2 = "SELECT * FROM student WHERE first_name LIKE '%".$data."%'";
+    $query = "
+  SELECT * FROM student ORDER BY s_id
+ ";
 }
-
-$result2 = mysqli_query($connect,$query2);
+$result2 = mysqli_query($connect,$query);
 
 if(mysqli_num_rows($result2)>0)
 {
@@ -32,16 +38,18 @@ if(mysqli_num_rows($result2)>0)
         $first_name=($rows['first_name']);
         $last_name=($rows['last_name']);
         $s_id=($rows['s_id']);
+        $nic=($rows['nic']);
         $i_image=($rows['stu_image']);
-        $link= '../view/images/profile_pic/'.$s_id.'.jpg';
+        $link= '../view/images/profile_pic/'.$nic.'.jpg';
         //Call the admin controller calss to get the more information about the student
         $more_link='../controller/admin_controller?student_id='.$s_id;
         echo "<div class=\"member\" style='float:left;
-    width:200px;
+    width:210px;
     height:350px;
     background:#fff;
     padding:3px;
     margin-right:3px;
+    margin-left:3px;
     -moz-box-shadow: 1px 2px 2px #ccc;
     -webkit-box-shadow: 1px 2px 2px #ccc;
     box-shadow: 1px 2px 2px #ccc;'>

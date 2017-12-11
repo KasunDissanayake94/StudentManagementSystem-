@@ -121,7 +121,7 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
     //delete user
      function delete_user($delete_user_id){
 
-         $query = "DELETE FROM `user` WHERE username = '$delete_user_id' ";
+         $query = "DELETE FROM `user` WHERE nic = '$delete_user_id' ";
 
          $result = self::$db->query($query);
 

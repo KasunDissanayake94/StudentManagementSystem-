@@ -1,11 +1,20 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Kasun Dissanayake
+ * Date: 12/8/2017
+ * Time: 8:37 PM
+ */
+
 session_start();
+
 if(isset($_GET['status'])){
     $status=$_GET['status'];
 }
 else{
     $status=null;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -38,9 +47,12 @@ else{
             </div>
             <div class="navi">
                 <ul>
-                    <li ><a href="../controller/admin_controller.php?op=Home"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                    <li><a href="../controller/admin_controller.php?op=Modify Students"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Modify Students</span></a></li>
-                    <li class="active"><a href="../controller/admin_controller.php?op=Search Students"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Search Students</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Profile"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">My Profile</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Add User"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add User</span></a></li>
+                    <li class="active"><a href="../controller/admin_controller.php?op=Search User"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Search User</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Update User"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Update User</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Manage Students"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Manage Students</span></a></li>
+                    <li><a href="../controller/admin_controller.php?op=Add Time Table"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Add Time table</span></a></li
                 </ul>
             </div>
         </div>
@@ -112,8 +124,9 @@ else{
                     <h4>
                         <b>Student Details</b>
                     </h4>
-                    <label><input type="text" name="search_text" id="search_text" placeholder="Search by Student Details" class="form-control" /></label>
+                    <label><input type="text" name="search_text" id="search_text" placeholder="Search by User Details" class="form-control" /></label>
                 </div>
+
 
                 <div id="result"></div>
 
@@ -138,7 +151,7 @@ else{
         function load_data(query)
         {
             $.ajax({
-                url:"new_fetch1.php",
+                url:"fetch_users_for_edit.php",
                 method:"POST",
                 data:{query:query},
                 success:function(data)
@@ -160,3 +173,4 @@ else{
         });
     });
 </script>
+
