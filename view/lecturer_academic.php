@@ -1,5 +1,12 @@
 <?php 
 session_start();
+$result='';
+if(isset($_GET['result'])){
+    $result=$_GET['result'];
+}
+else{
+    $result=null;
+}
  ?>
 
 

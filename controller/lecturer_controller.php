@@ -151,8 +151,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  		}
 
  		function view_report(){
+ 			$lect_username=$_SESSION['username'];
  			$_SESSION['result'] = self::$lecturer->get_count_result();
- 			if ($_SESSION['result']) {
+ 			$_SESSION['result1']= self::$lecturer->get_pass_list($lect_username);
+ 			if ($_SESSION['result'] && $_SESSION['result1']) {
  				header("Location:../view/lecturer_report.php");
  			}else{
  				echo "no result";
@@ -175,7 +177,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 				header("Location:../view/add_final_results_form.php");
 			}else{
 				// $result1 = self::$lecturer->add_to_student_course();
-				$result='<div class="alert alert-danger">Sorry!We cannot Add this User to the System</div>';
+				$result='<div class="alert alert-danger">You don`t have access to this...!!</div>';
                 header("Location:../view/lecturer_academic.php?result=$result");
 			}
 
@@ -195,9 +197,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 					$result = self::$lecturer->update_final_results($s_id,$final_result);
 
 					if($result){
-						echo "Successfully updated";
+						
 						$result_edited = self::$lecturer->update_edited_user($user_username,$year,$subject,$type);
-						header("Location:../view/lecturer_academic.php");
+						$result='<div class="alert alert-success">Successfully updated..!!</div>';
+                		header("Location:../view/lecturer_academic.php?result=$result");
 					}else{
 						echo "something wrong";
 					}
@@ -226,7 +229,8 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 				header("Location:../view/add_assignment_results_form.php");
 			}else{
 				// $result1 = self::$lecturer->add_to_student_course();
-				header("Location:../view/lecturer_academic.php");
+				$result='<div class="alert alert-danger">You don`t have access to this...!!</div>';
+                header("Location:../view/lecturer_academic.php?result=$result");
 			}
  		}
 
@@ -243,9 +247,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 					$result = self::$lecturer->update_assignment_results($s_id,$assignment_result);
 
 					if($result){
-						echo "Successfully updated";
+						
 						$result_edited = self::$lecturer->update_edited_user($user_username,$year,$subject,$type);
-						header("Location:../view/lecturer_academic.php");
+						$result='<div class="alert alert-success">Successfully updated..!!</div>';
+                		header("Location:../view/lecturer_academic.php?result=$result");
 					}else{
 						echo "something wrong";
 					}
@@ -293,8 +298,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 				$_SESSION['student_list']=$result;
 				header("Location:../view/view_results_form.php");
 			}else{
-				header("Location:../view/lecturer_academic.php");
-				echo "something wrong";
+				$result='<div class="alert alert-danger">You don`t have access to this...!!</div>';
+                header("Location:../view/lecturer_academic.php?result=$result");
+				// header("Location:../view/lecturer_academic.php");
+				// echo "something wrong";
 			}
  		}
 

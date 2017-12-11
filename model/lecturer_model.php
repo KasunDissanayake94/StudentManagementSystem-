@@ -127,6 +127,16 @@
         return $result;
       }
 
+      function get_pass_list($lect_username){
+        $query = "SELECT year as y,COUNT(s_id) as fail,(SELECT COUNT(s_id) FROM student_course WHERE course_id=(SELECT course_code FROM course where lect_username=$lect_username) AND year=y) as total FROM student_course WHERE course_id=(SELECT course_code FROM course where lect_username=$lect_username) AND exam_grade='W' GROUP BY YEAR";
+
+        $result = self::$db->select($query);
+
+        return $result;
+      }
+
+      
+
 
 
     }
