@@ -38,6 +38,16 @@
       // }
 
     }
+    function view_hostel($name,$indexno,$course,$stype,$schol_other,$samount)
+    {
+
+
+        $query = "INSERT INTO `stu_hostel`( `name`, `indexno`, `course`, `descition`) VALUES (" . $name . "," . $indexno . "," . $course . "," . $stype . ")";
+
+        $result = self::$db->query($query);
+
+        return $result;
+    }
 
     function view_by_mahapola(){
     $query = "SELECT * FROM `scholarship`
