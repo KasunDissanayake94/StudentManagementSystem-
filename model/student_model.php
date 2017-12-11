@@ -39,15 +39,22 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
 		return $result;
 
- 	} 
- 	function getdetails($st_id){
- 		$query = "SELECT * FROM `student` WHERE `s_id` = ".$st_id."";
-
-		$result = self::$db->select($query);
-			
-		return $result;
  	}
- 	//get scolarship data from database
+     function getdetails($st_id){
+         $query = "SELECT * FROM `student` WHERE `s_id` = ".$st_id."";
+
+         $result = self::$db->select($query);
+
+         return $result;
+     }
+     //get scolarship data from database
+     function get_scol($st_id){
+         $query = "SELECT * FROM `student_scholar` WHERE `s_id` = ".$st_id."";
+
+         $result = self::$db->select($query);
+
+         return $result;
+     }
 
      function get_repeat($st_id){
          $query = "SELECT * FROM `student_course` WHERE `s_id` = ".$st_id." AND `exam_grade` = 'D' AND `exam_grade` = 'C-'";

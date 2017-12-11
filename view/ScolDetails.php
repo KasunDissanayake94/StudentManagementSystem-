@@ -162,7 +162,6 @@ else{
 
                 <table class="table" >
                     <tr>
-                        <th>Student ID</th>
                         <th>Scholarship ID</th>
                         <th>Scholarship Name</th>
                         <th>Amount</th>
@@ -172,7 +171,6 @@ else{
 
 
                     <tr>
-                        <td><?php echo $s_id;?></td>
                         <td><?php echo $sid;?></td>
                         <td><?php
                             if($sid==1){
