@@ -110,7 +110,15 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
  		}
 
  		 function caa_profile(){
- 			header("Location:../view/caa_profile.php");
+ 		 	$caa_username=$_SESSION['username'];
+ 			$result = self::$caa_academic->caa_profile($caa_username);
+ 			if($result){
+				$_SESSION['value']=$result;
+				header("Location:../view/caa_profile.php");
+			}else{
+				echo "something wrong";
+			}
+
  		}
 
  		 function view_hostel(){
