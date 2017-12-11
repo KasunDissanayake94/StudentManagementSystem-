@@ -109,7 +109,6 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			}else{
 				echo "something wrong";
 			}
-
  			
  		}
 

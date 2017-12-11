@@ -9,16 +9,18 @@ if(isset($_POST["query"]))
     $query = "
   SELECT * FROM student 
   WHERE s_id LIKE '%".$search."%'
-  OR first_name LIKE '%".$search."%' 
-  OR last_name LIKE '%".$search."%' 
-  OR gender LIKE '%".$search."%' 
+  OR first_name LIKE '%".$search."%'
+  OR mid_name LIKE '%".$search."%' 
+  OR last_name LIKE '%".$search."%'  
   OR school LIKE '%".$search."%' 
   OR birthdate LIKE '%".$search."%' 
-  OR race LIKE '%".$search."%' 
-  OR last_login LIKE '%".$search."%' 
+  OR race LIKE '%".$search."%'
+  OR religion LIKE '%".$search."%' 
   OR reg_date LIKE '%".$search."%' 
-  OR out_date LIKE '%".$search."%' 
+  OR out_date LIKE '%".$search."%'
+  OR gender LIKE '%".$search."%' 
   OR religion LIKE '%".$search."%'
+  OR nic LIKE '%".$search."%'
  ";
 }
 else
