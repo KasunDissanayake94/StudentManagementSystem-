@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2017 at 05:54 PM
+-- Generation Time: Dec 11, 2017 at 06:26 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -425,7 +425,7 @@ CREATE TABLE `student_hostel` (
 --
 
 CREATE TABLE `student_scholar` (
-  `s_id` varchar(20) NOT NULL,
+  `index_no` varchar(20) NOT NULL,
   `schol_id` int(1) NOT NULL,
   `schol_other` varchar(50) NOT NULL,
   `schol_amount` varchar(20) NOT NULL
@@ -435,11 +435,12 @@ CREATE TABLE `student_scholar` (
 -- Dumping data for table `student_scholar`
 --
 
-INSERT INTO `student_scholar` (`s_id`, `schol_id`, `schol_other`, `schol_amount`) VALUES
-('002', 1, '', '5000'),
-('003', 2, '', '3000'),
-('004', 1, '', '6000'),
-('005', 3, '', '4000');
+INSERT INTO `student_scholar` (`index_no`, `schol_id`, `schol_other`, `schol_amount`) VALUES
+('15000371', 1, '', '5000'),
+('15000372', 2, '', '3000'),
+('15000373', 1, '', '6000'),
+('15000374', 3, '', '4000'),
+('15000375', 2, '', '1000');
 
 -- --------------------------------------------------------
 
@@ -613,8 +614,8 @@ ALTER TABLE `student_hostel`
 -- Indexes for table `student_scholar`
 --
 ALTER TABLE `student_scholar`
-  ADD PRIMARY KEY (`s_id`,`schol_id`),
-  ADD KEY `s_id` (`s_id`),
+  ADD PRIMARY KEY (`index_no`,`schol_id`),
+  ADD KEY `s_id` (`index_no`),
   ADD KEY `scol_id` (`schol_id`);
 
 --
