@@ -112,9 +112,9 @@ session_start();
                               <div class="form-group">
                                 <label class="control-label col-sm-2"  for="radio">Type Of Scholarship :</label>
                                 <div class="col-sm-10">
-                                   <div class="radio"><label><input type="radio" id="stype" name="stype" value="Mahapola" required>Mahapola </label></div>
-                                   <div class="radio"><label><input type="radio" id="stype" name="stype" value="Bursary" required>Bursary </label></div>
-                                   <div class="radio"><label><input type="radio" id="stype" name="stype" value="Other" required>Other </label></div>
+                                   <div class="radio"><label><input type="radio" id="stype" name="stype" value="1" required>Mahapola </label></div>
+                                   <div class="radio"><label><input type="radio" id="stype" name="stype" value="2" required>Bursary </label></div>
+                                   <div class="radio"><label><input type="radio" id="stype" name="stype" value="3" required>Other </label></div>
                                  
                                 </div>
                               </div>

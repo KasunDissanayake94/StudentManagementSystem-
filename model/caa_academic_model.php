@@ -22,7 +22,7 @@
       function add_scholarship($indexno,$stype,$schol_other,$samount){
 
   
-      $query = "INSERT INTO `student_scholar`(`s_id`,`schol_id`,`schol_other`, `schol_amount`) VALUES (".$indexno.",".$stype.",".$schol_other.",".$samount.")";
+      $query = "INSERT INTO `student_scholar`(`index_no`,`schol_id`,`schol_other`, `schol_amount`) VALUES (".$indexno.",".$stype.",".$schol_other.",".$samount.")";
 
       $result = self::$db->query($query);
     
