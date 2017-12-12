@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2017 at 06:26 PM
+-- Generation Time: Dec 12, 2017 at 05:02 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -374,9 +374,8 @@ CREATE TABLE `student_course` (
 
 INSERT INTO `student_course` (`s_id`, `course_id`, `exam_grade`, `assignment_grade`, `start_date`, `end_date`, `attendance`, `attempt`, `year`) VALUES
 ('001', 'SCS1101', 'A+', 'A-', NULL, NULL, NULL, 1, '2016'),
-('002', 'SCS1101', 'B+', 'B-', NULL, NULL, NULL, 1, '2016'),
-('003', 'SCS1101', 'C+', 'C-', NULL, NULL, NULL, 1, '2016'),
-('1', '', '', '', '', '', '', 0, '');
+('002', 'SCS1101', 'W', 'B', NULL, NULL, NULL, 1, '2016'),
+('003', 'SCS1101', 'W', 'C-', NULL, NULL, NULL, 1, '2015');
 
 -- --------------------------------------------------------
 
