@@ -17,7 +17,7 @@ if(isset($_SESSION['details'])){
         $lname=$user['race'];
         $lname=$user['religion'];
         $lname=$user['gender'];
-        $lname=$user['nic'];
+        $nic=$user['nic'];
         $lname=$user['index_no'];
     }
 }
@@ -44,7 +44,7 @@ if(isset($_SESSION['details'])){
     <div class="row display-table-row">
         <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
             <div class="logo">
-                <a href="home.html"><img src="../view/images/profile_pic/<?php echo $s_id;?>" alt="merkery_logo" class="hidden-xs hidden-sm">
+                <a href="home.html"><img src="../view/images/profile_pic/<?php echo $nic;?>" alt="merkery_logo" class="hidden-xs hidden-sm">
 
                 </a>
             </div>
