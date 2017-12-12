@@ -79,7 +79,7 @@ if(mysqli_num_rows($result) > 0)
                 <div class="modal-content">
                     <div class="modal-header login-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title">Edit Form</h4>
+                    <h4 class="modal-title">View Form</h4>
                 </div>
                     <div class="modal-body">
                         <form class="form-horizontal" action="../controller/admin_controller.php" method="post">
@@ -87,7 +87,7 @@ if(mysqli_num_rows($result) > 0)
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Username :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="username" value="d'.$row["username"].'" type="text" name="username" placeholder="Type Student ID here" required disabled/>
+                                    <input class="form-control" id="username" value="'.$row["username"].'" type="text" name="username" placeholder="Type Student ID here" required disabled/>
                                 </div>
                             </div>
                             <div class="form-group">

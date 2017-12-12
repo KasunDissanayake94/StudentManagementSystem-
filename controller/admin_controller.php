@@ -185,6 +185,14 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
 		}
         function updated(){
+            if(isset($_SESSION['userresult'])){
+
+                foreach ($_SESSION['userresult'] as $user) {
+                    $s_id=$user['id'];
+
+
+                }
+            }
 
             $username = self::$db->quote($_POST['username']);
             $pass = self::$db->quote($_POST['password']);
@@ -200,16 +208,18 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             if($result == 1){
                 //User Sucessfully Added to the user table
                 $result='<div class="alert alert-success">This user updated Successfully to the System</div>';
-                header("Location:../view/Add_User.php?result=$result");
+                header("Location:../view/edit_users_by_admin.php?result=$result");
 
 
             }else{
                 $result='<div class="alert alert-danger">Sorry!You cannot Update this User </div>';
-                header("Location:../view/Add_User.php?result=$result");
+                header("Location:../view/edit_users_by_admin.php?result=$result");
 
             }
 
         }
+        function canceled(){
+            header("Location:../view/edit_users_by_admin.php");		}
 		function add_user(){
 			header("Location:../view/Add_User.php");
 		}
@@ -445,7 +455,6 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         function edit_user($var1){
 
             $result = self::$admin->search_user($var1);
-            header("Location:../view/edit_user.php");
 
             if($result){
                 $_SESSION['userresult']=$result;
