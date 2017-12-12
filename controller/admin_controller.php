@@ -412,7 +412,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         }
         function edit_user($var1){
 
-            header("Location:../view/view_user_profile.php");
+            header("Location:../view/edit_user.php");
             $result = self::$admin->search_user($var1);
             if($result){
                 $_SESSION['userresult']=$result;

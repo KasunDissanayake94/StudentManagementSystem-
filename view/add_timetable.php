@@ -115,7 +115,7 @@ else{
                                 <a href="chose_details_timetable.php"><button class="btn btn-primary" data-toggle="modal"> Add TimeTable
                                     </button>
                                 </a>
-                                
+
                                 </a>
                             </div>
                         </div>
