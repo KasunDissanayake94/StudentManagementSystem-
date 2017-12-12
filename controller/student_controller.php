@@ -4,7 +4,7 @@ session_start();
 if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
 	$type = $_SESSION['type'];
-	
+
 	switch ($type) {
 		case 'admin':
 			header("Location:../view/admin.php");
@@ -99,17 +99,21 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		{
 			self::$db = new DB();
 			$time=self::$student = new StudentModel();
-			$st_id=$_SESSION['username'];
+			$username=$_SESSION['username'];
             //get the nic no of the student
-            $nic=self::$student->getnic($st_id);
+            $nic=self::$student->getnic($username);
             //get the student id of the student
+            $_SESSION['nic']=$nic;
+            //get the student id
             $sid=self::$student->getid($nic);
 
-			self::$student->update_time($nic);
+            $_SESSION['s_id']=$sid;
+
+			self::$student->update_time($sid);
 
 			$result = self::$student->getdetails($nic);
+			$result2 = self::$student->getcontactdetails($sid);
 			$result1 = self::$student->getareadetails($sid);
-			$result2 = self::$student->getcontactdetails($nic);
 			//get basic details
 			if ($result) {
 				$_SESSION['details']=$result;
@@ -178,7 +182,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             header("Location:../view/student.php");
         }
         function grade(){
-            $s_id = $_SESSION['username'];
+            $s_id = $_SESSION['s_id'];
             $result = self::$student->get_grades($s_id);
             if($result){
                 $_SESSION['grade']=$result;
@@ -208,8 +212,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             $s_id = self::$db->quote($_POST['s_id']);
             $firstname = self::$db->quote($_POST['firstname']);
             $lastname = self::$db->quote($_POST['lastname']);
+            $mname = self::$db->quote($_POST['mname']);
+            $school = self::$db->quote($_POST['school']);
 
-            $result = self::$student->update_student($s_id,$firstname,$lastname);
+            $result = self::$student->update_student($s_id,$firstname,$lastname,$mname,$school);
             if($result){
                 //If student already in the system show error message
                 $result='<div class="alert alert-danger">Updated </div>';

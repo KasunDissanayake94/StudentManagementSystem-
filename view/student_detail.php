@@ -33,8 +33,8 @@ if(isset($_SESSION['details'])){
     }
 }
 //contact details
-if(isset($_SESSION['details1'])){
-    foreach ($_SESSION['details1'] as $user) {
+if(isset($_SESSION['details2'])){
+    foreach ($_SESSION['details2'] as $user) {
         $con1=$user['contact1'];
         $con2=$user['contact2'];
         $emgcon=$user['emg_contact'];
@@ -44,7 +44,16 @@ if(isset($_SESSION['details1'])){
     }
 }
 //address details
+if(isset($_SESSION['details1'])){
+    foreach ($_SESSION['details1'] as $user) {
+        $no=$user['number_'];
+        $street=$user['street'];
+        $town=$user['town'];
+        $p_code=$user['p_code'];
 
+
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +130,7 @@ if(isset($_SESSION['details1'])){
                                         <li>
                                             <div class="navbar-content">
                                                 <a href="../controller/student_controller.php?op=edit_by_student" class="view btn-sm active">Edit Profile</a>
-                                                <a href="../index.php?op=logout" class="view btn-sm active">View Profile</a>
+                                                <a href="../controller/student_controller.php?op=view_by_student" class="view btn-sm active">View Profile</a>
                                             </div>
                                         </li>
                                     </ul>
@@ -228,7 +237,6 @@ if(isset($_SESSION['details1'])){
                                         <li class="active"><a data-toggle="tab" href="#Summery" class="text-success"><i class="fa fa-indent"></i> Summery</a></li>
                                         <li><a data-toggle="tab" href="#Contact" class="text-success"><i class="fa fa-bookmark-o"></i> Contact Info</a></li>
                                         <li><a data-toggle="tab" href="#Address" class="text-success"><i class="fa fa-home"></i> Address</a></li>
-                                        <li><a data-toggle="tab" href="#General" class="text-success"><i class="fa fa-info"></i> General Info</a></li>
                                     </ul>
 
 
@@ -294,13 +302,18 @@ if(isset($_SESSION['details1'])){
                                                     <tbody>
 
                                                     <tr>
-                                                        <td class="text-success"><i class="fa fa-home"></i> Address</td>
-                                                        <td>
-                                                            <address>
+                                                        <td class="text-success"><i class="fa fa-home"></i> No</td>
+                                                        <td> <input type="text" value="<?php echo $no; ?>" class="form-control" id="no" name="no" placeholder="Address No" required /></td>
 
-                                                                    <?php echo $area; ?>
-                                                            </address>
                                                         </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-success"><i class="fa fa-user"></i> Street</td>
+                                                        <td> <input type="text" value="<?php echo $street; ?>" class="form-control" id="street" name="street" placeholder="Street" required /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-success"><i class="fa fa-user"></i> Town</td>
+                                                        <td> <input type="text" value="<?php echo $town; ?>" class="form-control" id="town" name="town" placeholder="Town" required /></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -311,26 +324,24 @@ if(isset($_SESSION['details1'])){
                                                 <table class="table">
                                                     <tbody>
 
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-envelope-o"></i> Email ID</td>
-                                                        <td><a href="mailto:****@pawanmall.net?subject=Email from &amp;body=Hello, Viddhyut Mall">****@pawanmall.net</a></td>
-                                                    </tr>
+
                                                     <tr>
                                                         <td class="text-success"><i class="glyphicon glyphicon-phone"></i> Mobile Number</td>
-                                                        <td><?php $con1?></td>
+                                                        <td> <input type="text" value="<?php echo $con1; ?>" class="form-control" id="con1" name="con1" placeholder="Mobile Number" required /></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-flag"></i> Home Number</td>
-                                                        <td><?php $con2?></td>
+                                                        <td> <input type="text" value="<?php echo $con2; ?>" class="form-control" id="con2" name="con2" placeholder="Home Number" required /></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="glyphicon glyphicon-phone"></i> Emergency Person</td>
-                                                        <td><?php $emgper?></td>
+                                                        <td> <input type="text" value="<?php echo $emgcon; ?>" class="form-control" id="emg_con" name="emg_con" placeholder="Emergency Person" required /></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Emergency Person Name</td>
-                                                        <td><?php $emgcon?></td>
+                                                        <td> <input type="text" value="<?php echo $emgper; ?>" class="form-control" id="emg_per" name="emg_per" placeholder="Emergency Person Name" required /></td>
                                                     </tr>
+
 
 
 
@@ -338,44 +349,7 @@ if(isset($_SESSION['details1'])){
                                                 </table>
                                             </div>
                                         </div>
-                                        <div id="General" class="tab-pane fade">
-                                            <div class="table-responsive panel">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-university"></i> Last School</td>
-                                                        <td>Pawan Mall's School</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-calendar"></i> Date of Admission</td>
-                                                        <td>March 4, 2009</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-home"></i> Birth Place</td>
-                                                        <td>Delhi</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-calendar"></i> Academic Year</td>
-                                                        <td>2015-2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-medkit"></i> Medical Condition</td>
-                                                        <td>Normal</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="fa fa-thumbs-up"></i> Active/Inactive</td>
-                                                        <td>Student is Active</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-success"><i class="glyphicon glyphicon-time"></i> Last Editing</td>
-                                                        <td>2015-08-20 09:41:56</td>
-                                                    </tr>
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
 
                                         <button name="op" value="cancel_changes" type="submit" class="btn btn-danger" style="float: right; margin-left: 10px;"><i class="fa fa-trash"></i> Cancel</button>
                                         <button name="op" value="save_changes" type="submit" class="btn btn-success" style="float: right"><i class="fa fa-gear"></i> Save Changes</button>

@@ -18,6 +18,7 @@ if(isset($_SESSION['details'])){
         $fname=$user['first_name'];
         $lname=$user['last_name'];
         $s_id=$user['s_id'];
+        $s_id=$user['nic'];
     }
 }
 ?>

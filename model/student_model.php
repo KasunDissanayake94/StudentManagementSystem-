@@ -42,7 +42,8 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
  	}
  	//get basic details
      function getdetails($nic){
-         $query = "SELECT * FROM `student` WHERE `nic` ={$nic}";
+         $query = "SELECT * FROM student WHERE nic ='$nic'";
+
 
          $result = self::$db->select($query);
 
@@ -63,23 +64,25 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
      }
      //pass student identity for the student controller
      function getid($nic){
-         $query = "SELECT `s_id` FROM `student` WHERE `nic` ={$nic}";
+         $query = "SELECT s_id FROM student WHERE nic ='$nic'";
 
          $result = self::$db->select($query);
-
-         return $result;
+         if($result){
+             $s_id = $result[0]['s_id'];
+         }
+         return $s_id;
      }
      //get contact details
-     function getcontactdetails($nic){
-         $query = "SELECT * FROM `student_contact` WHERE `s_id` = {$nic}";
+     function getcontactdetails($s_id){
+         $query = "SELECT * FROM student_contact WHERE s_id = '$s_id'";
 
          $result = self::$db->select($query);
 
          return $result;
      }
      //get area deatails
-     function getareadetails($nic){
-         $query = "SELECT * FROM `student_address` WHERE `s_id` = {$nic}";
+     function getareadetails($s_id){
+         $query = "SELECT * FROM student_address WHERE s_id = '$s_id'";
 
          $result = self::$db->select($query);
 
@@ -118,9 +121,9 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
  		return $result;
  	}
- 	function update_student($st_id,$firstname,$lastname){
+ 	function update_student($st_id,$firstname,$lastname,$midname,$school){
 
-        $query= "UPDATE `student` SET `first_name` = ".$firstname."  WHERE `s_id` = ".$st_id."";
+        $query= "UPDATE `student` SET `mid_name` = ".$midname."  WHERE `s_id` = ".$st_id."";
 
         $result = self::$db->query($query);
 
