@@ -52,6 +52,11 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		$op="Delete_User";
 
 	}
+	//get the edit id
+	if(isset($_GET['edit_id'])){
+		$var1 = $_GET['edit_id']; //some_value
+		$op="edit_User";
+	}
 
 
 
@@ -126,6 +131,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             break;
         case 'save_changes':
             $admin_controller->change();
+            break;
+        case 'edit_User':
+            $admin_controller->edit_user($var1);
             break;
 		default:
 			//index.php
@@ -387,27 +395,7 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
                 header("Location:../view/search_users_by_admin.php?status=$result");
 			}
         }
-	//Admin update student details
-        function edit(){
-            $username = $_REQUEST['username'];
-            $firstname = $_REQUEST['firstname'];
-            $lastname = $_REQUEST['lastname'];
-            $email = $_REQUEST['email'];
-            $school = $_REQUEST['school'];
-            $bday = $_REQUEST['bday'];
-            $race = $_REQUEST['race'];
-            $religion = $_REQUEST['religion'];
-            $regdate = $_REQUEST['regdate'];
-            $passdate = $_REQUEST['passdate'];
-            $gender = $_REQUEST['gender'];
-            $area = $_REQUEST['area'];
 
-            $connection = mysqli_connect('localhost', 'root', '', 'sms') or die('unable to connect to the DB');
-
-            $query = "INSERT INTO student(s_id, first_name, last_name, email, school) VALUES('$username', '$firstname', '$lastname', '$email', '$school')";
-
-            mysqli_query($connection, $query) or die('unable to execute');
-        }
 	//View Current User profile
         function profile(){
 
@@ -416,6 +404,19 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             if($result){
                 $_SESSION['value1']=$result;
                 header("Location:../view/view_user_profile.php");
+            }else{
+                echo "something wrong";
+            }
+
+
+        }
+        function edit_user($var1){
+
+            header("Location:../view/view_user_profile.php");
+            $result = self::$admin->search_user($var1);
+            if($result){
+                $_SESSION['userresult']=$result;
+                header("Location:../view/edit_user.php");
             }else{
                 echo "something wrong";
             }

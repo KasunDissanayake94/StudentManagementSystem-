@@ -135,6 +135,13 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
          return $result;
      }
+     function edit_user($u_id){
+         $query = "SELECT * FROM `user` WHERE id = ".$u_id." ";
+
+         $result = self::$db->select($query);
+
+         return $result;
+     }
  }
 
 ?>
