@@ -87,5 +87,15 @@
 
     return $result;
   }
+
+  function check_student($indexno){
+    $query = "SELECT * FROM `student`
+              WHERE index_no=$indexno
+    ";
+
+    $result = self::$db->select($query);
+
+    return $result;
+  }
   }
 ?>

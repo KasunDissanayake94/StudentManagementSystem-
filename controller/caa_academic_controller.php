@@ -76,6 +76,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         case "view_hostel":
          	$caa_academic_controller->view_hostel();
         	break;
+        case "reset":
+         	$caa_academic_controller->reset();
+        	break;
         case "add_hostel":
             die('adrg');
             //$caa_academic_controller->add_hostel();
@@ -99,6 +102,10 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 
  		function view_student(){
  			header("Location:../view/caa_view_student.php");
+ 		}
+
+ 		function reset(){
+ 			header("Location:../view/add_scholarship.php");
  		}
 
  		function view_events(){
@@ -152,16 +159,29 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			$stype = self::$db->quote($_POST['stype']);
 			$schol_other = self::$db->quote($_POST['schol_other']);
 			$samount = self::$db->quote($_POST['samount']);
-			
-			$result = self::$caa_academic->add_scholarship($indexno,$stype,$schol_other,$samount);
 
-			if($result == 1){
-				header("Location:../view/view_scholarships.php");
-				echo "Scholarship Details Added Successfully....";
+			$check_student = self::$caa_academic->check_student($indexno);
+			if ($check_student) {
+				$result = self::$caa_academic->add_scholarship($indexno,$stype,$schol_other,$samount);
+
+				if($result == 1){
+				// header("Location:../view/add_scholarship.php");
+				// echo "Scholarship Details Added Successfully....";
+					$result='<div class="alert alert-success">Successfully added..!!</div>';
+	            	header("Location:../view/add_scholarship.php?result=$result");
 				
+				}else{
+					$result='<div class="alert alert-danger">Scholarship already added..!!</div>';
+	            	header("Location:../view/add_scholarship.php?result=$result");
+				}
 			}else{
-				echo "something wrong";
+				$result='<div class="alert alert-danger">Insert Correct index No..!!</div>';
+	            header("Location:../view/add_scholarship.php?result=$result");
 			}
+			
+			
+
+			
 		}
 	function view_by_mahapola(){
 		header("Location:../view/mahapola.php");

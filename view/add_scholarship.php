@@ -1,5 +1,12 @@
 <?php 
 session_start();
+$result='';
+if(isset($_GET['result'])){
+    $result=$_GET['result'];
+}
+else{
+    $result=null;
+}
  ?>
 
 <!DOCTYPE html>
@@ -98,8 +105,10 @@ session_start();
                     <div class="modal-content">
                         <div class="modal-header login-header">
                             <h4 class="modal-title">Add Scholarship </h4>
+
                         </div>   
                         <div class="modal-body">
+                            <?php echo $result; ?>
                             <form class="form-horizontal" action="../controller/caa_academic_controller.php" method="post">
                                
                                 <div class="form-group">
