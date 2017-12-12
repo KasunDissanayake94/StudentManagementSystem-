@@ -199,13 +199,13 @@ else{
                                 <div class="form-group">
                                     <label class="control-label col-sm-4">First Name :</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control" id="fname" type="text" name="fname" placeholder="" required value=<?php echo $first_name?> />
+                                        <input class="form-control" id="fname" type="text" name="fname" placeholder="" required value=<?php echo $first_name?> disabled/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-4">Last Name :</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control" id="lname" type="text" name="lname" placeholder="" value=<?php echo $last_name?> />
+                                        <input class="form-control" id="lname" type="text" name="lname" placeholder="" value=<?php echo $last_name?> disabled/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -232,7 +232,7 @@ else{
                                 <div class="form-group">
                                     <label class="control-label col-sm-4" for="email">Email:</label>
                                     <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="" required value=<?php echo $email?>/>
+                                        <input type="email" class="form-control" id="email" name="email" placeholder=""  value=<?php echo $email?> />
                                     </div>  
                                 </div>
                                 <div class="form-group">

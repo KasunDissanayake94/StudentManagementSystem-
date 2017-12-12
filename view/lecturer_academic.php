@@ -162,9 +162,9 @@ else{
                     <div class="form-group">
                         <label>Academic year</label>
                         <select class="form-control" name="year">
-                          <option value="2014">2014</option>
-                          <option value="2015">2015</option>
-                          <option value="2016">2016</option>
+                          <option value="2014">2015</option>
+                          <option value="2015">2016</option>
+                          <option value="2016">2017</option>
                         </select>
                     </div>
 
@@ -213,9 +213,9 @@ else{
                     <div class="form-group">
                         <label>Academic year</label>
                         <select class="form-control" name="year">
-                          <option value="2014">2014</option>
-                          <option value="2015">2015</option>
-                          <option value="2016">2016</option>
+                          <option value="2014">2015</option>
+                          <option value="2015">2016</option>
+                          <option value="2016">2017</option>
                         </select>
                     </div>
 
@@ -264,9 +264,9 @@ else{
                     <div class="form-group">
                         <label>Academic year</label>
                         <select class="form-control" name="year">
-                          <option value="2014">2014</option>
-                          <option value="2015">2015</option>
-                          <option value="2016">2016</option>
+                          <option value="2014">2015</option>
+                          <option value="2015">2016</option>
+                          <option value="2016">2017</option>
                         </select>
                     </div>
 
