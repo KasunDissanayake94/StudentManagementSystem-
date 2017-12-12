@@ -251,23 +251,23 @@ if(isset($_SESSION['details1'])){
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Student ID :</td>
-                                                        <td> <input type="text" value="<?php echo $s_id; ?>" class="form-control" id="sid" name="s_id" placeholder="Enter email" required /></td>
+                                                        <td> <input type="text" value="<?php echo $s_id; ?>" class="form-control" id="sid" name="s_id" placeholder="Enter email" required disabled/></td>
 
                                                     </tr>
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> First Name</td>
-                                                        <td> <input type="text" value="<?php echo $fname; ?>" class="form-control" id="fname" name="firstname" placeholder="Enter email" required /></td>
+                                                        <td> <input type="text" value="<?php echo $fname; ?>" class="form-control" id="fname" name="firstname" placeholder="Enter email" required disabled/></td>
 
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Middle Name</td>
-                                                        <td> <input type="text" value="<?php echo $mname; ?>" class="form-control" id="mname" name="mname" placeholder="Enter email" required /></td>
+                                                        <td> <input type="text" value="<?php echo $mname; ?>" class="form-control" id="mname" name="mname" placeholder="Enter email" required disabled/></td>
 
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Last Name</td>
-                                                        <td> <input type="text" value="<?php echo $lname; ?>" class="form-control" id="email" name="lastname" placeholder="Enter email" required /></td>
+                                                        <td> <input type="text" value="<?php echo $lname; ?>" class="form-control" id="email" name="lastname" placeholder="Enter email" required disabled/></td>
 
                                                     </tr>
 
@@ -275,21 +275,21 @@ if(isset($_SESSION['details1'])){
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-calendar"></i> Birthday</td>
-                                                        <td> <input type="date" value="<?php echo $bday; ?>" class="form-control" id="bday" name="bday" placeholder="Enter Birth day" required /></td>
+                                                        <td> <input type="date" value="<?php echo $bday; ?>" class="form-control" id="bday" name="bday" placeholder="Enter Birth day" required disabled/></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-calendar"></i> Religion</td>
-                                                        <td> <input type="text" value="<?php echo $religion; ?>" class="form-control" id="religion" name="religion" placeholder="Enter Religion" required /></td>
+                                                        <td> <input type="text" value="<?php echo $religion; ?>" class="form-control" id="religion" name="religion" placeholder="Enter Religion" required disabled/></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-calendar"></i> Race</td>
-                                                        <td> <input type="text" value="<?php echo $race; ?>" class="form-control" id="race" name="race" placeholder="Enter Race" required /></td>
+                                                        <td> <input type="text" value="<?php echo $race; ?>" class="form-control" id="race" name="race" placeholder="Enter Race" required disabled/></td>
                                                     </tr>
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-university"></i> School</td>
 
-                                                        <td> <input type="text" value="<?php echo $school; ?>" class="form-control" id="school" name="school" placeholder="Enter email" required /></td>                                                               </td>
+                                                        <td> <input type="text" value="<?php echo $school; ?>" class="form-control" id="school" name="school" placeholder="Enter email" required disabled/></td>                                                               </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -303,17 +303,17 @@ if(isset($_SESSION['details1'])){
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-home"></i> No</td>
-                                                        <td> <input type="text" value="<?php echo $no; ?>" class="form-control" id="no" name="no" placeholder="Address No" required /></td>
+                                                        <td> <input type="text" value="<?php echo $no; ?>" class="form-control" id="no" name="no" placeholder="Address No" required disabled/></td>
 
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Street</td>
-                                                        <td> <input type="text" value="<?php echo $street; ?>" class="form-control" id="street" name="street" placeholder="Street" required /></td>
+                                                        <td> <input type="text" value="<?php echo $street; ?>" class="form-control" id="street" name="street" placeholder="Street" required disabled/></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Town</td>
-                                                        <td> <input type="text" value="<?php echo $town; ?>" class="form-control" id="town" name="town" placeholder="Town" required /></td>
+                                                        <td> <input type="text" value="<?php echo $town; ?>" class="form-control" id="town" name="town" placeholder="Town" required disabled/></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -327,19 +327,19 @@ if(isset($_SESSION['details1'])){
 
                                                     <tr>
                                                         <td class="text-success"><i class="glyphicon glyphicon-phone"></i> Mobile Number</td>
-                                                        <td> <input type="text" value="<?php echo $con1; ?>" class="form-control" id="con1" name="con1" placeholder="Mobile Number" required /></td>
+                                                        <td> <input type="text" value="<?php echo $con1; ?>" class="form-control" id="con1" name="con1" placeholder="Mobile Number" required disabled/></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-flag"></i> Home Number</td>
-                                                        <td> <input type="text" value="<?php echo $con2; ?>" class="form-control" id="con2" name="con2" placeholder="Home Number" required /></td>
+                                                        <td> <input type="text" value="<?php echo $con2; ?>" class="form-control" id="con2" name="con2" placeholder="Home Number" required disabled/></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="glyphicon glyphicon-phone"></i> Emergency Person</td>
-                                                        <td> <input type="text" value="<?php echo $emgcon; ?>" class="form-control" id="emg_con" name="emg_con" placeholder="Emergency Person" required /></td>
+                                                        <td> <input type="text" value="<?php echo $emgcon; ?>" class="form-control" id="emg_con" name="emg_con" placeholder="Emergency Person" required disabled/></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Emergency Person Name</td>
-                                                        <td> <input type="text" value="<?php echo $emgper; ?>" class="form-control" id="emg_per" name="emg_per" placeholder="Emergency Person Name" required /></td>
+                                                        <td> <input type="text" value="<?php echo $emgper; ?>" class="form-control" id="emg_per" name="emg_per" placeholder="Emergency Person Name" required disabled/></td>
                                                     </tr>
 
 
@@ -350,9 +350,6 @@ if(isset($_SESSION['details1'])){
                                             </div>
                                         </div>
 
-
-                                        <button name="op" value="cancel_changes" type="submit" class="btn btn-danger" style="float: right; margin-left: 10px;"><i class="fa fa-trash"></i> Cancel</button>
-                                        <button name="op" value="save_changes" type="submit" class="btn btn-success" style="float: right"><i class="fa fa-gear"></i> Save Changes</button>
                                     </form>
 
                                 </div>

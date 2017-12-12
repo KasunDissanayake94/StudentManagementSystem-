@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-if(isset($_GET['result'])){
-    $result=$_GET['result'];
+if(isset($_GET['edit'])){
+    $result=$_GET['edit'];
 }
 else{
     $result=null;
@@ -251,7 +251,7 @@ if(isset($_SESSION['details1'])){
 
                                                     <tr>
                                                         <td class="text-success"><i class="fa fa-user"></i> Student ID :</td>
-                                                        <td> <input type="text" value="<?php echo $s_id; ?>" class="form-control" id="sid" name="s_id" placeholder="Enter email" required /></td>
+                                                        <td> <input type="text" value="<?php echo $s_id; ?>" class="form-control" id="sid" name="s_id" placeholder="Enter email" required disabled/></td>
 
                                                     </tr>
 

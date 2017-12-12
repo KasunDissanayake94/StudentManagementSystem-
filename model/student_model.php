@@ -121,14 +121,36 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
 
  		return $result;
  	}
- 	function update_student($st_id,$firstname,$lastname,$midname,$school){
+ 	function update_student($st_id,$firstname,$lastname,$mname,$school,$bday,$religion,$race){
+        //$query= "UPDATE `student` SET `mid_name` = ".$mname.",`first_name` = ".$firstname.",`last_name` = ".$lastname.",`birthdate` = ".$bday.",`religion` = ".$religion.",`race` = ".$race.",`school` = ".$school."  WHERE `s_id` = ".$st_id."";
 
-        $query= "UPDATE `student` SET `mid_name` = ".$midname."  WHERE `s_id` = ".$st_id."";
+        $query= "UPDATE `student` SET `mid_name` = ".$mname."  WHERE `s_id` = ".$st_id."";
+
+
 
         $result = self::$db->query($query);
 
         return $result;
     }
+     function update_student_con($st_id,$con1,$con2,$emgcon,$emgper){
+         $query= "UPDATE `student_contact` SET `contact1` = ".$con1.",`contact2` = ".$con2.",`emg_contact` = ".$emgcon.",`emg_person` = ".$emgper."  WHERE `s_id` = ".$st_id."";
+
+
+
+         $result = self::$db->query($query);
+
+         return $result;
+     }
+     function update_student_address($st_id,$no,$street,$town){
+         $query= "UPDATE `student_address` SET `number_` = ".$no.",`street` = ".$street.",`town` = ".$town."  WHERE `s_id` = ".$st_id."";
+
+
+
+         $result = self::$db->query($query);
+
+         return $result;
+     }
+
 
  	
  }

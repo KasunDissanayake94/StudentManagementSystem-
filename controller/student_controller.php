@@ -213,17 +213,33 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
             $firstname = self::$db->quote($_POST['firstname']);
             $lastname = self::$db->quote($_POST['lastname']);
             $mname = self::$db->quote($_POST['mname']);
+            $bday = self::$db->quote($_POST['bday']);
+            $religion = self::$db->quote($_POST['religion']);
+            $race = self::$db->quote($_POST['race']);
             $school = self::$db->quote($_POST['school']);
 
-            $result = self::$student->update_student($s_id,$firstname,$lastname,$mname,$school);
+            $con1 = self::$db->quote($_POST['con1']);
+            $con2 = self::$db->quote($_POST['con2']);
+            $emgcon = self::$db->quote($_POST['emgcon']);
+            $emgper = self::$db->quote($_POST['emg_per']);
+
+            $no = self::$db->quote($_POST['no']);
+            $street = self::$db->quote($_POST['street']);
+            $town = self::$db->quote($_POST['town']);
+
+
+
+            $result = self::$student->update_student($s_id,$firstname,$lastname,$mname,$school,$bday,$religion,$race);
+
             if($result){
                 //If student already in the system show error message
-                $result='<div class="alert alert-danger">Updated </div>';
-                header("Location:../controller/student_controller?op=edit_by_student");
+                $result='<div class="alert alert-success">Updated </div>';
+
+                header("Location:../controller/student_detail.php?edit=$result");
 
             }else{
                 $result='<div class="alert alert-danger">Sory Failed to Update</div>';
-                header("Location:../controller/student_controller?op=edit_by_student");
+                header("Location:../controller/student_detail.php?edit=$result");
             }
 
 
