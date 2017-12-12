@@ -66,6 +66,12 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		case 'Add':
 			$admin_controller->addUser();
 			break;
+        case 'Updated':
+            $admin_controller->updated();
+            break;
+        case 'Canceled':
+            $admin_controller->canceled();
+            break;
 		case 'Add User':
         	$admin_controller->add_user();
         	break;
@@ -178,6 +184,32 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			}
 
 		}
+        function updated(){
+
+            $username = self::$db->quote($_POST['username']);
+            $pass = self::$db->quote($_POST['password']);
+            $fname = self::$db->quote($_POST['fname']);
+            $lname = self::$db->quote($_POST['lname']);
+            $type = self::$db->quote($_POST['type']);
+            $nic = self::$db->quote($_POST['nic']);
+
+
+
+            $result = self::$admin->update_user($s_id,$username,$pass,$fname,$lname,$type,$nic);
+
+            if($result == 1){
+                //User Sucessfully Added to the user table
+                $result='<div class="alert alert-success">This user updated Successfully to the System</div>';
+                header("Location:../view/Add_User.php?result=$result");
+
+
+            }else{
+                $result='<div class="alert alert-danger">Sorry!You cannot Update this User </div>';
+                header("Location:../view/Add_User.php?result=$result");
+
+            }
+
+        }
 		function add_user(){
 			header("Location:../view/Add_User.php");
 		}
@@ -412,8 +444,9 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         }
         function edit_user($var1){
 
-            header("Location:../view/edit_user.php");
             $result = self::$admin->search_user($var1);
+            header("Location:../view/edit_user.php");
+
             if($result){
                 $_SESSION['userresult']=$result;
                 header("Location:../view/edit_user.php");

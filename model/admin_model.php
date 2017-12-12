@@ -78,14 +78,15 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
      }
 
  	function search_user($uname){
- 		$query = "SELECT * FROM `user` WHERE username = {$uname} ";
+ 		$query = "SELECT * FROM `user` WHERE sid = {$uname} ";
 
-		$result = self::$db->select($query);
+
+		$result = self::$db->query($query);
 
 		return $result;
  	}
- 	function update_user($name,$type){
- 		$query="UPDATE  `user` SET `type`='{$type}'WHERE username='{$name}'";
+ 	function update_user($u_id,$username,$pass,$fname,$lname,$type,$nic){
+ 		$query="UPDATE  `user` SET `type`='{$type}',`username`='{$username}',`first_name`='{$fname}',`last_name`='{$lname}' WHERE id='{$u_id}'";
 
  		$result = self::$db->select($query);
 

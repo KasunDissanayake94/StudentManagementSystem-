@@ -143,7 +143,7 @@ if(isset($_SESSION['value1'])){
                             <div class="form-group">
                                 <label class="control-label col-sm-2">NIC :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="nic" type="text" name="nic" value="<?php echo $uname?>" placeholder="xxxxxxxxxV" required maxlength="10" minlength="10" size="10"/>
+                                    <input class="form-control" id="nic" type="text" name="nic" value="<?php echo $nic?>" placeholder="xxxxxxxxxV" required maxlength="10" minlength="10" size="10"/>
                                 </div>
                             </div>
 
@@ -185,7 +185,7 @@ if(isset($_SESSION['value1'])){
 
                             <div class="modal-footer">
                                 <button type="submit" class="add-project" data-dismiss="modal" name="op" value="Updated">Update</button>
-                                <button type="submit" class="add-project" data-dismiss="modal" name="op" value="Updated">Cancel</button>
+                                <button type="submit" class="add-project" data-dismiss="modal" name="op" value="Canceled">Cancel</button>
                             </div>
 
 
