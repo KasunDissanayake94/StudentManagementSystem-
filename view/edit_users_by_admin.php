@@ -7,7 +7,13 @@
  */
 
 session_start();
-
+$result='';
+if(isset($_GET['result'])){
+    $result=$_GET['result'];
+}
+else{
+    $result=null;
+}
 if(isset($_GET['status'])){
     $status=$_GET['status'];
 }
@@ -119,6 +125,11 @@ else{
                     <div class="form-group">
                         <div class="col-sm-10 col-sm-offset-2">
                             <?php echo $status; ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <?php echo $result; ?>
                         </div>
                     </div>
                     <h4>

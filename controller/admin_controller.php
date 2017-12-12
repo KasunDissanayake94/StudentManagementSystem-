@@ -66,6 +66,12 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 		case 'Add':
 			$admin_controller->addUser();
 			break;
+        case 'Updated':
+            $admin_controller->updated();
+            break;
+        case 'Canceled':
+            $admin_controller->canceled();
+            break;
 		case 'Add User':
         	$admin_controller->add_user();
         	break;
@@ -178,6 +184,42 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
 			}
 
 		}
+        function updated(){
+            if(isset($_SESSION['userresult'])){
+
+                foreach ($_SESSION['userresult'] as $user) {
+                    $s_id=$user['id'];
+
+
+                }
+            }
+
+            $username = self::$db->quote($_POST['username']);
+            $pass = self::$db->quote($_POST['password']);
+            $fname = self::$db->quote($_POST['fname']);
+            $lname = self::$db->quote($_POST['lname']);
+            $type = self::$db->quote($_POST['type']);
+            $nic = self::$db->quote($_POST['nic']);
+
+
+
+            $result = self::$admin->update_user($s_id,$username,$pass,$fname,$lname,$type,$nic);
+
+            if($result == 1){
+                //User Sucessfully Added to the user table
+                $result='<div class="alert alert-success">This user updated Successfully to the System</div>';
+                header("Location:../view/edit_users_by_admin.php?result=$result");
+
+
+            }else{
+                $result='<div class="alert alert-danger">Sorry!You cannot Update this User </div>';
+                header("Location:../view/edit_users_by_admin.php?result=$result");
+
+            }
+
+        }
+        function canceled(){
+            header("Location:../view/edit_users_by_admin.php");		}
 		function add_user(){
 			header("Location:../view/Add_User.php");
 		}
@@ -412,8 +454,8 @@ if(isset($_SESSION['type']) && isset($_SESSION['user'])){
         }
         function edit_user($var1){
 
-            header("Location:../view/edit_user.php");
             $result = self::$admin->search_user($var1);
+
             if($result){
                 $_SESSION['userresult']=$result;
                 header("Location:../view/edit_user.php");

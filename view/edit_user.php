@@ -10,14 +10,14 @@ else{
 }
 ?>
 <?php
-if(isset($_SESSION['value1'])){
+if(isset($_SESSION['userresult'])){
 
-    foreach ($_SESSION['value1'] as $user) {
-        $first_name=$user['first_name'];
-        $last_name=$user['last_name'];
-        $uname=$user['username'];
-        $nic=$user['nic'];
-        $type=$user['type'];
+    foreach ($_SESSION['userresult'] as $user) {
+        $f=$user['first_name'];
+        $l=$user['last_name'];
+        $u=$user['username'];
+        $n=$user['nic'];
+        $t=$user['type'];
 
 
     }
@@ -130,11 +130,16 @@ if(isset($_SESSION['value1'])){
                                     <?php echo $result; ?>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    <?php echo $result; ?>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Username :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="username" type="email" name="username" value="<?php echo $uname?>" placeholder="Valid Email here" required disabled/>
+                                    <input class="form-control" id="username" type="email" name="username" value="<?php echo $u?>" placeholder="Valid Email here" required />
                                 </div>
                             </div>
 
@@ -143,20 +148,20 @@ if(isset($_SESSION['value1'])){
                             <div class="form-group">
                                 <label class="control-label col-sm-2">NIC :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="nic" type="text" name="nic" value="<?php echo $uname?>" placeholder="xxxxxxxxxV" required maxlength="10" minlength="10" size="10"/>
+                                    <input class="form-control" id="nic" type="text" name="nic" value="<?php echo $n;?>" placeholder="xxxxxxxxxV" required maxlength="10" minlength="10" size="10"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-2">First Name :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="fname" type="text" name="fname" value="<?php echo $first_name?>" placeholder="First Name here" required/>
+                                    <input class="form-control" id="fname" type="text" name="fname" value="<?php echo $f;?>" placeholder="First Name here" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Last Name :</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="lname" type="text" name="lname" value="<?php echo $last_name?>" placeholder="Last Name here" required/>
+                                    <input class="form-control" id="lname" type="text" name="lname" value="<?php echo $l;?>" placeholder="Last Name here" required/>
                                 </div>
                             </div>
 
@@ -164,7 +169,7 @@ if(isset($_SESSION['value1'])){
                                 <label class="control-label col-sm-2">Type :</label>
                                 <div class="col-sm-10">
                                     <select class="form-control" name="type">
-                                        <option value="admin"><?php echo $type;?></option>
+                                        <option value="admin"><?php echo $t;?></option>
                                         <option value="admin">Admin</option>
                                         <option value="student">Student</option>
                                         <option value="ar_acedamic">Assistant Registrar(Acadamic)</option>
@@ -185,7 +190,7 @@ if(isset($_SESSION['value1'])){
 
                             <div class="modal-footer">
                                 <button type="submit" class="add-project" data-dismiss="modal" name="op" value="Updated">Update</button>
-                                <button type="submit" class="add-project" data-dismiss="modal" name="op" value="Updated">Cancel</button>
+                                <a href="../view/edit_users_by_admin.php"><button type="button" class="add-project" data-dismiss="modal">Cancel</button></a>
                             </div>
 
 
